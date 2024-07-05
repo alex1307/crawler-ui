@@ -1,0 +1,198 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #F0F2F5;
+    margin: 0;
+    padding: 20px;
+}
+
+.search-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #007BFF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.search-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.search-table td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.search-table label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.field-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-row label {
+    margin-bottom: 5px;
+}
+
+.field-row select,
+.field-row input {
+    height: 36px;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.checkbox-container {
+    margin-top: 20px;
+}
+
+.checkbox-group {
+    margin-bottom: 20px;
+}
+
+.custom-checkbox-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+
+.custom-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 150px;
+}
+
+.custom-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.custom-checkbox-grid input[type="checkbox"]:checked+label::before {
+    background: #007BFF;
+    border-color: #007BFF;
+}
+
+.custom-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Aligns the button to the right */
+    align-items: center;
+    /* Centers the button vertically */
+    width: 100%;
+    /* Ensures the container takes the full width */
+    margin-top: 20px;
+    /* Adjusts spacing as needed */
+}
+
+.search-button {
+    width: 250px;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.search-table button:hover {
+    background-color: #0056b3;
+}
+
+.results-area,
+.charts-area {
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.results-area h2,
+.charts-area h2 {
+    color: #007BFF;
+}
+
+.rainbow-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rainbow-table th,
+.rainbow-table td {
+    padding: 10px;
+    text-align: left;
+    color: #fff;
+}
+
+.rainbow-table th {
+    background-color: #4CAF50;
+}
+
+.rainbow-table td {
+    border: none;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .search-table td {
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Fair</title>
+    <script type="module" src="./scripts/data.js"></script>
+    <script type="module" src="./scripts/enums.js"></script>
+    <script type="module" src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <script type="module" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <link rel="stylesheet" href="./styles/searchstyles.css">
+    <link rel="stylesheet" href="styles/cards.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+</head>
+
+<body>
+    <div class="search-container">
+        <h2>Car Search Filters</h2>
+        <form id="searchForm" class="search-form">
+            <table class="search-table">
+                <tr>
+                    <td colspan="2">
+                        <div class="field-row">
+                            <label for="make">Search:</label>
+                            <input id="search" name="search" value="" type="text" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="make">Make:</label>
+                            <select id="make">
+                                <option value="">Select a make</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="model">Model:</label>
+                            <select id="model"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="priceMin">Price Min:</label>
+                            <select id="priceMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="priceMax">Price Max:</label>
+                            <select id="priceMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="save_diffMin">Save Diff(min):</label>
+                            <select id="save_diffMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="save_diffMax">To:</label>
+                            <select id="save_diffMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="discountMin">Discount %(min):</label>
+                            <select id="discountMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="discountMax">To:</label>
+                            <select id="discountMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="mileageMin">Mileage From:</label>
+                            <select id="mileageMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="mileageMax">Mileage To:</label>
+                            <select id="mileageMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="powerMin">Power From:</label>
+                            <select id="powerMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="powerMax">Power To:</label>
+                            <select id="powerMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="yearMin">Year From:</label>
+                            <select id="yearMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="yearMax">To:</label>
+                            <select id="yearMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="created_onMin">Published on:</label>
+                            <select id="created_onMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="ccMin">CC Min (cm³):</label>
+                            <select id="ccMin"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="ccMax">CC Max (cm³):</label>
+                            <select id="ccMax"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field-row">
+                            <label for="sort_by_primary">Sort By:</label>
+                            <select id="sort_by_primary"></select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field-row">
+                            <label for="asc_primary">Asc/Desc:</label>
+                            <select id="asc_primary">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="checkbox-container">
+                <div class="checkbox-group">
+                    <label>Gearbox:</label>
+                    <div id="gearbox" class="custom-checkbox-grid">
+                        <!-- Checkboxes will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <label>Engine:</label>
+                    <div id="engine" class="custom-checkbox-grid">
+                        <!-- Checkboxes will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+            <!--align button to the right center -->
+            <div class="button-container">
+                <button type="button" id="searchButton" class="search-button">Search</button>
+            </div>
+
+        </form>
+        <div class="results-area">
+            <div class="container">
+                <div class="row" id="results">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const filters = ['price', 'power', 'mileage', 'cc', 'make', 'engine', 'gearbox', 'year', 'group_by',
+        'sort_by', 'asc', 'estimated_price', 'save_diff', 'discount', 'search', 'created_on'];
+    filters.forEach(filter => populateFilter(filter));
+
+    document.getElementById('searchButton').addEventListener('click', generateRequestData);
+    document.getElementById('sort_by_primary').onchange = updateSecondarySortVisibility;
+
+    document.getElementById('make').addEventListener('change', function () {
+        const selectedMake = this.value;
+        if (selectedMake) {
+            fetchModels(selectedMake);
+        } else {
+            clearModels();
+        }
+    });
+});
+
+// Determine the environment
+const isLocalhost = window.location.hostname === 'localhost';
+
+// Set the base URL based on the environment
+const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+
+function fetchModels(make) {
+    const url = `${baseUrl}/enums/${make}/models?source=estimated_price`;
+    fetch(url, {
+        headers: {
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            populateModelsDropdown(data);
+        })
+        .catch(error => console.error('Error fetching models:', error));
+}
+
+function populateModelsDropdown(models) {
+    const modelSelect = document.getElementById('model');
+    if (modelSelect) {
+        modelSelect.innerHTML = '<option value="">Select a model</option>';
+        for (const [key, value] of Object.entries(models)) {
+            const option = document.createElement('option');
+            option.value = key;
+            option.textContent = value;
+            modelSelect.appendChild(option);
+        }
+    } else {
+        console.error('Model select element not found');
+    }
+}
+
+function clearModels() {
+    const modelSelect = document.getElementById('model');
+    modelSelect.innerHTML = '<option value="">Select a model</option>';
+}
+
+function populateFilter(name) {
+    fetch(`${baseUrl}/enums/${name}?source=estimated_price`, {
+        headers: {
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (['engine', 'gearbox'].includes(name)) {
+                populateCheckboxes(data, name);
+            } if (name === 'make') {
+                populateMakesDropdown();
+            } if (name === 'sort_by' || name === 'asc') {
+                populateDropdown(data, '_primary', name);
+                populateDropdown(data, '_secondary', name);
+            }
+            else {
+                populateDropdown(data, 'Min', name);
+                populateDropdown(data, 'Max', name);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function populateDropdown(data, type, elementId) {
+    const select = document.getElementById(`${elementId}${type}`);
+    // /let sorted = Object.entries(data).sort((a, b) => a[0].localeCompare(b[0])); // Sort by make names
+    if (elementId === 'group_by' || elementId === 'make' || elementId === 'engine' || elementId === 'gearbox' || elementId === 'asc') {
+        return;
+    }
+    if (elementId === 'sort_by') {
+        Object
+            .entries(data)
+            .sort((a, b) => a[0].localeCompare(b[0])).forEach(([key, value]) => {
+                const option = document.createElement('option');
+                option.name = elementId;
+                option.value = key;
+                option.textContent = value;
+                select.appendChild(option);
+            }); // Sort by make names
+
+    } else {
+        Object
+            .entries(data)
+            .forEach(([key, value]) => {
+                const option = document.createElement('option');
+                option.name = elementId;
+                if (key === '0' && type === 'Min') {
+                    option.value = key;
+                    option.textContent = "From";
+                } else if (key === '0' && type === 'Max') {
+                    option.value = key;
+                    option.textContent = "To";
+                } else {
+                    option.value = key;
+                    option.textContent = value;
+                }
+                select.appendChild(option);
+            });
+    }
+
+}
+
+function populateCheckboxes(data, containerId) {
+    const container = document.getElementById(containerId);
+    const wrapper = document.createElement('div');
+    Object.entries(data).forEach(([key, value]) => {
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = containerId + key;
+        checkbox.name = containerId;
+        checkbox.value = key;
+
+        const label = document.createElement('label');
+        label.htmlFor = containerId + key;
+        label.textContent = value;
+
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(label);
+        container.appendChild(wrapper);
+    });
+}
+
+function generateRequestData() {
+    const requestData = {
+        source: "estimated_price",
+        group_by: [],
+        aggregate: {},
+        sort: [],//        sort: [{ "asc": ["year", true] }, { "asc": ["source", true] }],
+        filter_string: [],
+        filter_i32: [],
+        filter_date: [],
+        // Assuming gearbox and year might require special handling
+        filter_f64: []
+    };
+
+    // Handling min/max inputs for price, mileage, and cc.
+    let gte = {};
+    let lte = {};
+    ['price', 'mileage', 'cc', 'power', 'year', 'save_diff', 'discount'].forEach(field => {
+        const minElement = document.getElementById(`${field}Min`);
+        const maxElement = document.getElementById(`${field}Max`);
+
+        if (minElement && minElement.value) {
+            const value = parseInt(minElement.value, 10);
+            if (value > 0) {
+                gte[`${field}`] = value;
+            }
+        }
+        if (maxElement && maxElement.value) {
+            const value = parseInt(maxElement.value, 10);
+            if (value > 0) {
+                lte[`${field}`] = value;
+
+            }
+
+        }
+
+    });
+
+    if (gte && Object.keys(gte).length > 0) {
+        requestData.filter_i32.push({ "Gte": [gte, true] });
+    }
+
+    if (lte && Object.keys(lte).length > 0) {
+        requestData.filter_i32.push({ "Lte": [lte, true] });
+    }
+
+    // Handling 'make' separately as a string filter
+    const makeSelect = document.getElementById('make');
+    if (makeSelect && makeSelect.value) {
+        requestData.filter_string.push({ Eq: [{ "make": makeSelect.value }, true] });
+    }
+
+    const model = document.getElementById('model');
+    if (model && model.value) {
+        requestData.filter_string.push({ Eq: [{ "model": model.value }, true] });
+    }
+
+    const search = document.getElementById('search');
+    if (search && search.value) {
+        requestData.search = search.value;
+    }
+    const created_on = document.getElementById('created_onMin');
+    if (created_on && created_on.value && created_on.value !== '0') {
+        console.log("Created on: ", created_on.value);
+        requestData.filter_date.push({ Gte: [{ "created_on": created_on.value }, true] });
+    }
+
+    const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
+    if (groupByCheckboxes.length > 0) {
+        const values = Array.from(groupByCheckboxes).map(cb => cb.value);
+        requestData.group_by = values;
+        requestData.aggregate = { "price": ["max", "count", { "quantile": 0.25 }] };
+    }
+
+
+
+    // Example handling for checkboxes (e.g., gearbox, year)
+    // Assuming gearbox options are checkboxes with a common name
+    const gearboxCheckboxes = document.querySelectorAll('input[name="gearbox"]:checked');
+    if (gearboxCheckboxes.length > 0) {
+        const values = Array.from(gearboxCheckboxes).map(cb => cb.value);
+        requestData.filter_string.push({ In: ['gearbox', values] });
+
+    }
+
+    // Assuming year is handled with checkboxes or a range and collecting all checked years
+    const yearCheckboxes = document.querySelectorAll('input[name="year"]:checked');
+    if (yearCheckboxes.length > 0) {
+        console.log(yearCheckboxes);
+        const values = Array.from(yearCheckboxes).map(cb => parseInt(cb.value, 10));
+        requestData.filter_i32.push({ In: ['year', values] });
+    }
+
+    // Assuming engine type is handled with checkboxes
+    const engineCheckboxes = document.querySelectorAll('input[name="engine"]:checked');
+    if (engineCheckboxes.length > 0) {
+        const values = Array.from(engineCheckboxes).map(cb => cb.value);
+        requestData.filter_string.push({ In: ['engine', values] });
+    }
+    ['sort_by_primary', 'sort_by_secondary'].forEach(sortElement => {
+        const sortSelect = document.getElementById(sortElement);
+        if (sortSelect && sortSelect.value) {
+            const ascSelect = (sortElement === 'sort_by_primary') ?
+                document.getElementById('asc_primary') : document.getElementById('asc_secondary');
+            const asc = ascSelect.value === 'asc';
+            requestData.sort.push({ [asc ? 'asc' : 'desc']: [sortSelect.value, true] });
+        }
+    });
+
+    document.getElementById('results').textContent = JSON.stringify(requestData, null, 2);
+    console.log('Request data:', requestData);
+    showData(requestData);
+    // Place your fetch API call here as shown previously
+}
+
+function populateMakesDropdown() {
+    fetch(`${baseUrl}/enums/make?source=estimated_price`)
+        .then(response => response.json())
+        .then(data => {
+            const sortedMakes = Object.entries(data).sort((a, b) => a[1].localeCompare(b[1])); // Sort by make names
+            const select = document.getElementById('make');
+            select.innerHTML = '<option value="">Select a make</option>';
+            sortedMakes.forEach(([key, value]) => {
+                if (value) { // Exclude empty values
+                    const option = document.createElement('option');
+                    option.value = key;
+                    option.textContent = value;
+                    select.appendChild(option);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching makes:', error));
+}
+
+function updateSecondarySortVisibility() {
+    const primarySort = document.getElementById('sort_by_primary').value;
+    const secondarySortRow = document.getElementById('secondary_sort_row');
+    const secondarySortSelect = document.getElementById('sort_by_secondary');
+
+    if (primarySort) {
+        secondarySortRow.style.display = ''; // Show the secondary sort options
+        populateSecondaryOptions(primarySort); // Populate secondary options excluding the primary selected
+    } else {
+        secondarySortRow.style.display = 'none'; // Hide if no primary sort is selected
+    }
+}
+
+function populateSecondaryOptions(excludeOption) {
+
+    const ps = document.getElementById('sort_by_primary');
+    const selected = ps.options[ps.selectedIndex].value;
+    const secondarySortSelect = document.getElementById('sort_by_secondary');
+    secondarySortSelect.innerHTML = '';
+    Array.from(ps.options).filter(option => option.value !== selected).forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option.value;
+        opt.textContent = option.textContent;
+        secondarySortSelect.appendChild(opt);
+    });
+}
+
+function updateSortOptions() {
+    const groupBySelect = document.getElementById('group_by');
+    const sortPrimarySelect = document.getElementById('sort_by_primary');
+
+    // Get the currently selected value in group_by
+    let selectedGroupBy = groupBySelect.value;
+    const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
+    if (groupByCheckboxes.length > 0) {
+        selectedGroupBy = Array.from(groupByCheckboxes).map(cb => cb.value);
+    }
+
+    // Clear current options in sort dropdown
+    sortPrimarySelect.innerHTML = '';
+
+    // Add a new option based on the selected group_by
+
+
+    selectedGroupBy.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option;
+        opt.textContent = option.charAt(0).toUpperCase() + option.slice(1); // Capitalize the first letter
+        sortPrimarySelect.appendChild(opt);
+    });
+
+    // Optionally add more options or handle multiple group_by selections
+    // This part can be expanded based on specific requirements
+}

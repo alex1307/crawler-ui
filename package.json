@@ -1,0 +1,33 @@
+{
+    "name": "crawler-example",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+        "start": "parcel src/index.html src/statistic.html src/demo.html --port 3124",
+        "dev": "parcel src/index.html src/statistic.html src/demo.html --port 3124",
+        "build": "parcel build src/index.html src/statistic.html src/demo.html --dist-dir dist",
+        "serve": "parcel serve dist/index.html dist/statistic.html src/demo.html --dist-dir dist"
+    },
+    "devDependencies": {
+        "assert": "^2.1.0",
+        "browserify-zlib": "^0.2.0",
+        "buffer": "^6.0.3",
+        "events": "^3.3.0",
+        "https-browserify": "^1.0.0",
+        "os-browserify": "^0.3.0",
+        "parcel": "^2.6.2",
+        "path-browserify": "^1.0.1",
+        "process": "^0.11.10",
+        "stream-browserify": "^3.0.0",
+        "stream-http": "^3.2.0",
+        "url": "^0.11.3",
+        "util": "^0.12.5"
+    },
+    "dependencies": {
+        "@cubejs-client/core": "^0.31.0",
+        "bootstrap": "^5.3.3",
+        "chart.js": "^4.0.0",
+        "punycode": "^2.3.1",
+        "winston": "^3.11.0"
+    }
+}
