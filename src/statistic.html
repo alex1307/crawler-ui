@@ -17,11 +17,57 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.smartWizard.min.js"></script>
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            width: 100%;
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover,
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .footer {
+            padding: 10px 0;
+            text-align: center;
+            background-color: #343a40;
+            color: #ffffff;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #d4d4d4;
+        }
+
         .bcontent {
             margin-top: 10px;
         }
 
-        /* Style for the "Next" button */
         /* Style for the "Next" button */
         .btn-toolbar .sw-btn-next {
             background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
@@ -118,7 +164,25 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">CarDeals</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="search.html">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="statistic.html">Statistics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4 content">
         <h2>Vehicle Price Calculator</h2>
         <form id="calculatorForm" class="search-form">
             <div id="smartwizard">
@@ -213,7 +277,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Step 2: Group By Fields -->
                     <div id="step-2" class="tab-pane" role="tabpanel">
                         <div class="description">
@@ -354,7 +417,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="orderColumn2">Select second column to order by:</label>
                             <div class="row">
@@ -413,20 +475,28 @@
                     </div>
 
                     <!-- Step 5: Confirm Details -->
-                    <div id="step-5" class="tab-pane step-content" role="tabpanel" style="display: block;">
+                    <div id="step-5" class="tab-pane step-content" role="tabpanel">
                         <div id="errors" class="description"></div>
                     </div>
                 </div>
             </div>
         </form>
         <div class="content mt-4" id="results"></div>
+    </div>
 
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 CarDeals</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="search.html">Search</a> |
+            <a href="statistic.html">Statistics</a>
+        </p>
     </div>
 
     <script type="module">
         import { populateFilter, fetchModels, clearModels, generateRequestData, captureData, validateJSON } from './scripts/statistic.js';
         import { showStatisticData } from './scripts/rainbow.js';
-
 
         function redirectToResultsPage(requestData) {
             console.log("Local storage data:", requestData);
@@ -449,11 +519,6 @@
                     showPreviousButton: true
                 }
             });
-
-            // Hide the search button initially
-
-
-
         });
 
         $('#smartwizard').on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
@@ -470,7 +535,6 @@
                 } else {
                     return false;
                 }
-
             }
             return true;
         });

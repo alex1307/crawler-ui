@@ -13,10 +13,14 @@
         body {
             background-color: #f8f9fa;
             font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .navbar {
             background-color: #343a40;
+            width: 100%;
         }
 
         .navbar-brand,
@@ -29,8 +33,12 @@
             color: #d4d4d4;
         }
 
-        #results {
-            margin-top: 20px;
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         .results-container {
@@ -38,23 +46,18 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .result-item {
-            border-bottom: 1px solid #e9ecef;
-            padding: 10px 0;
-        }
-
-        .result-item:last-child {
-            border-bottom: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
         }
 
         .footer {
-            margin-top: 20px;
             padding: 10px 0;
             text-align: center;
             background-color: #343a40;
             color: #ffffff;
+            width: 100%;
         }
 
         .footer a {
@@ -72,7 +75,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">CarDeals</a>
+        <a class="navbar-brand" href="#">Vehicles Fair</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -89,13 +92,15 @@
     </nav>
 
     <!-- Results Section -->
-    <div id="results">
-
+    <div class="content">
+        <div id="results" class="results-container">
+            <div class="row" id="results-content"></div>
+        </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 CarDeals</p>
+        <p>&copy; 2024 Vehicles Fair</p>
         <p>
             <a href="index.html">Home</a> |
             <a href="search.html">Search</a> |
@@ -117,19 +122,16 @@
                 if (requestData) {
                     showStatisticData(requestData);
                 } else {
-                    document.getElementById('results').innerHTML = '<p>No search data found. Please return to the search page.</p>';
+                    document.getElementById('results-content').innerHTML = '<p>No search data found. Please return to the search page.</p>';
                 }
-
             } else if ('search' === type) {
                 if (requestData) {
-                    const div = document.getElementById('results');
-                    div.classList.add('content');
                     search(requestData);
                 } else {
-                    document.getElementById('results').innerHTML = '<p>No search data found. Please return to the search page.</p>';
+                    document.getElementById('results-content').innerHTML = '<p>No search data found. Please return to the search page.</p>';
                 }
             } else {
-                document.getElementById('results').innerHTML = '<p>Unsupported type. Please try again.</p>';
+                document.getElementById('results-content').innerHTML = '<p>Unsupported type. Please try again.</p>';
             }
             localStorage.clear();
         });
