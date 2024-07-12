@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="module" src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <script type="module" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="styles/price-cards.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-brand:hover,
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        .results-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item {
+            border-bottom: 1px solid #e9ecef;
+            padding: 10px 0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            text-align: center;
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">CarDeals</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="search.html">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="statistic.html">Statistics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Results Section -->
+    <div id="results">
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 CarDeals</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="search.html">Search</a> |
+            <a href="statistic.html">Statistics</a>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="module">
+        import { showStatisticData } from './scripts/rainbow.js';
+        import { search } from './scripts/data.js';
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const type = localStorage.getItem('type');
+            const requestData = JSON.parse(localStorage.getItem('requestData'));
+            if ('statistic' === type) {
+                if (requestData) {
+                    showStatisticData(requestData);
+                } else {
+                    document.getElementById('results').innerHTML = '<p>No search data found. Please return to the search page.</p>';
+                }
+
+            } else if ('search' === type) {
+                if (requestData) {
+                    const div = document.getElementById('results');
+                    div.classList.add('content');
+                    search(requestData);
+                } else {
+                    document.getElementById('results').innerHTML = '<p>No search data found. Please return to the search page.</p>';
+                }
+            } else {
+                document.getElementById('results').innerHTML = '<p>Unsupported type. Please try again.</p>';
+            }
+            localStorage.clear();
+        });
+    </script>
+</body>
+
+</html>

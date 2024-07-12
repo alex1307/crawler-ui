@@ -2,10 +2,11 @@ body {
     background-color: #eee
 }
 
+
 .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #80bdff;
+    border: 2px solid #007BFF;
     outline: 0;
     box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25)
 }
@@ -21,3 +22,5 @@ body {
 .mt-200 {
     margin-top: 200px
 }
+
+/* Style for the "Next" button */

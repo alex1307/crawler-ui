@@ -118,7 +118,8 @@ function showError(message) {
 export function validateJSON(json) {
     try {
         const data = JSON.parse(json);
-        const selected = [data.make, data.model, data.year, data.engine, data.gearbox, data.power].filter(field => data[field] !== null);
+        const selected = [data.make, data.model, data.year, data.engine, data.gearbox, data.power].filter(field => field !== null);
+        console.log("Selected: ", selected);
         if (selected.length < 2) {
             console.log("invalid data");
             showError('fill in all vehicle filter fields');
@@ -150,28 +151,7 @@ export function validateJSON(json) {
     }
 }
 
-export function displayResults(data) {
-    if (!Array.isArray(data.statistics)) {
-        console.error('Expected data.statistics to be an array, but got:', data.statistics);
-        alert('An error occurred while processing statistics. Please try again.');
-        return;
-    }
 
-    const table = $('<table class="table table-striped"></table>');
-    const thead = $('<thead><tr><th>Statistic</th><th>Value</th></tr></thead>');
-    const tbody = $('<tbody></tbody>');
-
-    data.statistics.forEach(stat => {
-        const tr = $('<tr></tr>');
-        tr.append(`<td>${stat.stat}</td>`);
-        tr.append(`<td>${stat.value}</td>`);
-        tbody.append(tr);
-    });
-
-    table.append(thead);
-    table.append(tbody);
-    $('#resultContainer').html(table);
-}
 
 
 
@@ -411,7 +391,6 @@ export function generateRequestData() {
 
     document.getElementById('results').textContent = JSON.stringify(requestData, null, 2);
     console.log('Request data:', requestData);
-    showData(requestData);
     // Place your fetch API call here as shown previously
 }
 

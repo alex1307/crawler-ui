@@ -1,12 +1,12 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #F0F2F5;
+    background: white;
     margin: 0;
     padding: 20px;
 }
 
 .search-container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 20px auto;
     background-color: rgba(255, 255, 255, 0.4);
     padding: 20px;
@@ -104,7 +104,7 @@ h2 {
 }
 
 .custom-checkbox-grid input[type="checkbox"]:checked+label::before {
-    background: #007BFF;
+    /* background: #007BFF; */
     border-color: #007BFF;
 }
 
@@ -115,7 +115,7 @@ h2 {
     top: 5px;
     width: 6px;
     height: 12px;
-    border: solid #fff;
+    border: 2px solid #007BFF;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
@@ -190,9 +190,9 @@ h2 {
     color: #333;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .search-table td {
         display: block;
         width: 100%;
     }
-}
+} */

@@ -3,17 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'sort_by', 'asc', 'estimated_price', 'save_diff', 'discount', 'search', 'created_on'];
     filters.forEach(filter => populateFilter(filter));
 
-    document.getElementById('searchButton').addEventListener('click', generateRequestData);
-    document.getElementById('sort_by_primary').onchange = updateSecondarySortVisibility;
-
-    document.getElementById('make').addEventListener('change', function () {
-        const selectedMake = this.value;
-        if (selectedMake) {
-            fetchModels(selectedMake);
-        } else {
-            clearModels();
-        }
-    });
 });
 
 // Determine the environment
@@ -142,119 +131,7 @@ function populateCheckboxes(data, containerId) {
     });
 }
 
-function generateRequestData() {
-    const requestData = {
-        source: "estimated_price",
-        group_by: [],
-        aggregate: {},
-        sort: [],//        sort: [{ "asc": ["year", true] }, { "asc": ["source", true] }],
-        filter_string: [],
-        filter_i32: [],
-        filter_date: [],
-        // Assuming gearbox and year might require special handling
-        filter_f64: []
-    };
 
-    // Handling min/max inputs for price, mileage, and cc.
-    let gte = {};
-    let lte = {};
-    ['price', 'mileage', 'cc', 'power', 'year', 'save_diff', 'discount'].forEach(field => {
-        const minElement = document.getElementById(`${field}Min`);
-        const maxElement = document.getElementById(`${field}Max`);
-
-        if (minElement && minElement.value) {
-            const value = parseInt(minElement.value, 10);
-            if (value > 0) {
-                gte[`${field}`] = value;
-            }
-        }
-        if (maxElement && maxElement.value) {
-            const value = parseInt(maxElement.value, 10);
-            if (value > 0) {
-                lte[`${field}`] = value;
-
-            }
-
-        }
-
-    });
-
-    if (gte && Object.keys(gte).length > 0) {
-        requestData.filter_i32.push({ "Gte": [gte, true] });
-    }
-
-    if (lte && Object.keys(lte).length > 0) {
-        requestData.filter_i32.push({ "Lte": [lte, true] });
-    }
-
-    // Handling 'make' separately as a string filter
-    const makeSelect = document.getElementById('make');
-    if (makeSelect && makeSelect.value) {
-        requestData.filter_string.push({ Eq: [{ "make": makeSelect.value }, true] });
-    }
-
-    const model = document.getElementById('model');
-    if (model && model.value) {
-        requestData.filter_string.push({ Eq: [{ "model": model.value }, true] });
-    }
-
-    const search = document.getElementById('search');
-    if (search && search.value) {
-        requestData.search = search.value;
-    }
-    const created_on = document.getElementById('created_onMin');
-    if (created_on && created_on.value && created_on.value !== '0') {
-        console.log("Created on: ", created_on.value);
-        requestData.filter_date.push({ Gte: [{ "created_on": created_on.value }, true] });
-    }
-
-    const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
-    if (groupByCheckboxes.length > 0) {
-        const values = Array.from(groupByCheckboxes).map(cb => cb.value);
-        requestData.group_by = values;
-        requestData.aggregate = { "price": ["max", "count", { "quantile": 0.25 }] };
-    }
-
-
-
-    // Example handling for checkboxes (e.g., gearbox, year)
-    // Assuming gearbox options are checkboxes with a common name
-    const gearboxCheckboxes = document.querySelectorAll('input[name="gearbox"]:checked');
-    if (gearboxCheckboxes.length > 0) {
-        const values = Array.from(gearboxCheckboxes).map(cb => cb.value);
-        requestData.filter_string.push({ In: ['gearbox', values] });
-
-    }
-
-    // Assuming year is handled with checkboxes or a range and collecting all checked years
-    const yearCheckboxes = document.querySelectorAll('input[name="year"]:checked');
-    if (yearCheckboxes.length > 0) {
-        console.log(yearCheckboxes);
-        const values = Array.from(yearCheckboxes).map(cb => parseInt(cb.value, 10));
-        requestData.filter_i32.push({ In: ['year', values] });
-    }
-
-    // Assuming engine type is handled with checkboxes
-    const engineCheckboxes = document.querySelectorAll('input[name="engine"]:checked');
-    if (engineCheckboxes.length > 0) {
-        const values = Array.from(engineCheckboxes).map(cb => cb.value);
-        requestData.filter_string.push({ In: ['engine', values] });
-    }
-    ['sort_by_primary', 'sort_by_secondary'].forEach(sortElement => {
-        const sortSelect = document.getElementById(sortElement);
-        if (sortSelect && sortSelect.value) {
-            const ascSelect = (sortElement === 'sort_by_primary') ?
-                document.getElementById('asc_primary') : document.getElementById('asc_secondary');
-            const asc = ascSelect.value === 'asc';
-            requestData.sort.push({ [asc ? 'asc' : 'desc']: [sortSelect.value, true] });
-        }
-    });
-
-    document.getElementById('results').textContent = JSON.stringify(requestData, null, 2);
-    console.log('Request data:', requestData);
-    showData(requestData);
-    // Place your fetch API call here as shown previously
-}
 
 function populateMakesDropdown() {
     fetch(`${baseUrl}/enums/make?source=estimated_price`)
@@ -275,7 +152,7 @@ function populateMakesDropdown() {
         .catch(error => console.error('Error fetching makes:', error));
 }
 
-function updateSecondarySortVisibility() {
+export function updateSecondarySortVisibility() {
     const primarySort = document.getElementById('sort_by_primary').value;
     const secondarySortRow = document.getElementById('secondary_sort_row');
     const secondarySortSelect = document.getElementById('sort_by_secondary');

@@ -3,16 +3,18 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-        "start": "parcel src/index.html src/statistic.html src/demo.html --port 3124",
-        "dev": "parcel src/index.html src/statistic.html src/demo.html --port 3124",
-        "build": "parcel build src/index.html src/statistic.html src/demo.html --dist-dir dist",
-        "serve": "parcel serve dist/index.html dist/statistic.html src/demo.html --dist-dir dist"
+        "start": "parcel src/search.html src/statistic.html src/results.html",
+        "dev": "parcel src/search.html src/statistic.html src/results.html",
+        "build": "parcel build src/search.html src/statistic.html src/results.html --dist-dir dist && node copyTemplates.mjs --no-cache --no-optimize ",
+        "serve": "http-server dist -p 9090"
     },
     "devDependencies": {
         "assert": "^2.1.0",
         "browserify-zlib": "^0.2.0",
         "buffer": "^6.0.3",
+        "copyfiles": "^2.4.1",
         "events": "^3.3.0",
+        "http-server": "^14.1.1",
         "https-browserify": "^1.0.0",
         "os-browserify": "^0.3.0",
         "parcel": "^2.6.2",

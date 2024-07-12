@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #647df9;
+}
+
+.content {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.content .card {
+  background: #fff;
+  width: calc(20% - 20px);
+  text-align: center;
+  padding: 15px 30px 30px 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.content .good-price .top {
+  height: 120px;
+  color: #fff;
+  padding: 5px;
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 50% 100%, 0% 45%); */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 25% 100%, 0 75%);
+}
+
+.content .fair-price .top {
+  position: relative;
+  padding: 20px;
+  background: #F44336;
+  /* clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0); */
+  clip-path: polygon(0 25%, 25% 0, 75% 0, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0 75%);
+}
+
+.content .high-price .top {
+  position: relative;
+  padding: 5px;
+  /* clip-path: polygon(0 66%, 50% 0, 100% 66%, 100% 100%, 0 100%); */
+  clip-path: polygon(0 25%, 25% 0, 75% 0, 100% 25%, 100% 100%, 0 100%);
+
+}
+
+
+
+.content .good-price .top .price-sec {
+  font-weight: 600;
+}
+
+.content .fair-price .top .price-sec {
+  margin-top: 0px;
+  font-weight: 600;
+}
+
+.content .card .top .title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+
+.content .card .top .price {
+  font-size: 36px;
+}
+
+.content .card .info {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.content .card .details .one {
+  margin-top: 25px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.content .card .details .one::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  background: #ddd;
+  height: 1px;
+  left: 0;
+  top: -12px;
+  border-radius: 25px;
+}
+
+.content .card .details .one i {
+  color: #2db94d;
+}
+
+.content .card .details i.fa-times {
+  color: #cd3241;
+}
+
+.content .card button {
+  outline: none;
+  border: none;
+  height: 42px;
+  color: #fff;
+  margin-top: 30px;
+  border-radius: 3px;
+  font-size: 18px;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+
+.content .card .top .price-sec {
+  font-weight: 600;
+  margin-top: 0px;
+}
+
+
+.content .one .top,
+.content .one button {
+  background: #14eb6e;
+}
+
+.content .two .top,
+.content .two button {
+  background: #e87130;
+}
+
+.content .good-price .top .price-sec {
+  font-weight: 600;
+
+}
+
+.content .good-price .top {
+  background: rgba(228, 222, 222, 0.993);
+}
+
+.content .good-price button {
+  background: #14eb6e;
+}
+
+
+.content .fair-price .top .price-sec {
+  font-weight: 600;
+  margin-top: 0px;
+}
+
+.content .fair-price .top {
+  background: rgba(228, 222, 222, 0.993);
+}
+
+.content .fair-price button {
+  background: #11BCC3;
+}
+
+.content .high-price .top {
+  background: rgba(228, 222, 222, 0.993);
+}
+
+
+.content .high-price button {
+  /* background: #e87130; */
+  background: #F44336
+}
+
+.content .high-price .top .price-sec {
+  font-weight: 600;
+
+}
+
+.content button:hover {
+  filter: brightness(90%);
+}
+
+.content .one ::selection {
+  background: #8af5b6;
+}
+
+.content .two ::selection {
+  background: #f2b08c;
+}
+
+.content .high-price ::selection {
+  /* background: #d0f9fb; */
+  background: #F44336;
+}
+
+@media (min-width:1000px) and (max-width:1199px) {
+  .content .card {
+    background: #fff;
+    width: calc(25% - 15px);
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width:750px) and (max-width:999px) {
+  .content .card {
+    background: #fff;
+    width: calc(33% - 10px);
+    margin-bottom: 20px;
+  }
+
+  .content .good-price {
+    margin-bottom: 15px;
+    width: calc(33% - 5px);
+  }
+
+  .content .fair-price {
+    margin-bottom: 15px;
+    width: calc(33% - 5px);
+  }
+
+  .content .high-price {
+    margin-bottom: 15px;
+    width: calc(33% - 5px);
+  }
+}
+
+@media (min-width:500px) and (max-width:749px) {
+
+
+  .content .card {
+    width: calc(50% - 5px);
+    margin-bottom: 15px;
+  }
+
+  .content .good-price {
+    margin-bottom: 15px;
+    width: calc(50% - 5px);
+  }
+
+  .content .fair-price {
+    margin-bottom: 15px;
+    width: calc(50% - 5px);
+  }
+}
+
+@media (max-width:499px) {
+  .content .card {
+    width: 100%;
+  }
+}

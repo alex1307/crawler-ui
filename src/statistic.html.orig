@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles/stat.css">
+    <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard_theme_arrows.min.css"
+        rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.smartWizard.min.js"></script>
+
+    <style>
+        .bcontent {
+            margin-top: 10px;
+        }
+
+        .modal-body .form-control {
+            margin-bottom: 10px;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-200">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+                Vehicle Price Calculator</button>
+        </div>
+        <div id="resultContainer" class="mt-4">
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Vehicle Price Calculator</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="smartwizard">
+                            <ul>
+                                <li><a href="#step-1">Step 1<br /><small>Vehicle Filter</small></a></li>
+                                <li><a href="#step-2">Step 2<br /><small>Group By Fields</small></a></li>
+                                <li><a href="#step-3">Step 3<br /><small>Statistics</small></a></li>
+                                <li><a href="#step-4">Step 4<br /><small>Order Results</small></a></li>
+                                <li><a href="#step-5">Step 5<br /><small>Validate and Search</small></a></li>
+                            </ul>
+                            <div class="mt-5">
+                                <!-- Step 1: Vehicle Filter -->
+                                <div id="step-1" class="tab-pane" role="tabpanel">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="make">Make</label>
+                                            <select id="make" class="form-control">
+                                                <option value="">Select Make</option>
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="model">Model</label>
+                                            <select id="model" class="form-control">
+                                                <option value="">Select Model</option>
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="year">Year</label>
+                                            <select id="year" class="form-control">
+                                                <option value="">Select Year</option>
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="engine">Engine</label>
+                                            <select id="engine" class="form-control">
+                                                <option value="">Select Engine</option>
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="gearbox">Gearbox</label>
+                                            <select id="gearbox" class="form-control">
+                                                <option value="">Select Gearbox</option>
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="power">Power</label>
+                                            <input type="number" id="power" class="form-control"
+                                                placeholder="Power(hp)">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p>Advanced Search filters...</p>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="yearMin">Year from</label>
+                                            <select id="yearMin" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="yearMax">Year To</label>
+                                            <select id="yearMax" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="powerMin">Power From</label>
+                                            <select id="powerMin" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="powerMax">Power To</label>
+                                            <select id="powerMax" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="mileageMin">Mileage From</label>
+                                            <select id="mileageMin" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="mileageMax">Mileage To</label>
+                                            <select id="mileageMax" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label for="ccMin">CC From</label>
+                                            <select id="ccMin" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="ccMax">CC To</label>
+                                            <select id="ccMax" class="form-control">
+                                                <!-- Add options dynamically -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Group By Fields -->
+                                <div id="step-2" class="tab-pane" role="tabpanel">
+                                    <div class="description">
+                                        <p>In this step, you can select the fields by which you want to group the
+                                            vehicles. By grouping the data, you can analyze the vehicle statistics more
+                                            effectively. All fields are selected by default, but you can uncheck any
+                                            field that you don't want to group by.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="groupByMake" checked>
+                                            <label class="form-check-label" for="groupByMake">Make</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="groupByModel" checked>
+                                            <label class="form-check-label" for="groupByModel">Model</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="groupByYear" checked>
+                                            <label class="form-check-label" for="groupByYear">Year</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="groupByEngine" checked>
+                                            <label class="form-check-label" for="groupByEngine">Engine</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="groupByGearbox" checked>
+                                            <label class="form-check-label" for="groupByGearbox">Gearbox</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="groupByPower" checked>
+                                            <label class="form-check-label" for="groupByPower">Power</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Statistics -->
+                                <div id="step-3" class="tab-pane" role="tabpanel">
+                                    <div class="description">
+                                        <p> In this step, you will see various statistics about the selected vehicles.
+                                            Here’s a brief explanation of each statistic.
+                                            You can select which statistics you would like to see for the selected
+                                            vehicles.
+                                            Please check the boxes for the statistics you are interested in:</p>
+                                        <ul>
+                                            <li><strong>Count:</strong> The total number of vehicles in each group.</li>
+                                            <li><strong>Minimum (Min):</strong> The lowest value in the dataset.</li>
+                                            <li><strong>Maximum (Max):</strong> The highest value in the dataset.</li>
+                                            <li><strong>Average (Avg):</strong> The sum of all values divided by the
+                                                number of values (also known as the mean).</li>
+                                            <li><strong>Median:</strong> The middle value in the dataset when the values
+                                                are sorted in order.</li>
+                                            <li><strong>Standard Deviation (Std):</strong> A measure of the amount of
+                                                variation or dispersion in the dataset.</li>
+                                            <li><strong>Relative Standard Deviation (RSD):</strong> The standard
+                                                deviation expressed as a percentage of the mean.</li>
+                                            <li><strong>Percentiles:</strong> Values below which a certain percentage of
+                                                the data falls. For example, the 60th percentile is the value below
+                                                which 60% of the data lies.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="statCount" checked>
+                                            <label class="form-check-label" for="statCount">Count</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="statAvg" checked>
+                                            <label class="form-check-label" for="statAvg">Average (Mean)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="statMedian" checked>
+                                            <label class="form-check-label" for="statMedian">Median</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="statMean" checked>
+                                            <label class="form-check-label" for="statMean">Mean</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="std">
+                                            <label class="form-check-label" for="std">Standard Deviation</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="rsd">
+                                            <label class="form-check-label" for="rsd">Relative Standard
+                                                Deviation</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="statMin">
+                                            <label class="form-check-label" for="statMin">Min</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="statMax">
+                                            <label class="form-check-label" for="statMax">Max</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="quantile_60">
+                                            <label class="form-check-label" for="quantile_60">Percentile(60%)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="quantile_66">
+                                            <label class="form-check-label" for="quantile_66">Percentile(66%)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="quantile_70">
+                                            <label class="form-check-label" for="quantile_70">Percentile(70%)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="quantile_75">
+                                            <label class="form-check-label" for="quantile_75">Percentile(75%)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="quantile_80">
+                                            <label class="form-check-label" for="quantile_80">Percentile(80%)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="quantile_90">
+                                            <label class="form-check-label" for="quantile_90">Percentile(90%)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="step-4" class="tab-pane" role="tabpanel">
+                                    <div class="description">
+                                        <p>In this step, you can select the fields by which you want to order the
+                                            vehicles. By ordering the data, you can analyze the vehicle statistics more
+                                            effectively. All fields are selected by default, but you can uncheck any
+                                            field that you don't want to order by.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="orderColumn1">Select the first column you want to order the data
+                                            by:</label>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <select id="orderColumn1" class="form-control">
+                                                    <option value="">Please select</option>
+                                                    <option value="make">Make</option>
+                                                    <option value="model">Model</option>
+                                                    <option value="year">Year</option>
+                                                    <option value="engine">Engine</option>
+                                                    <option value="gearbox">Gearbox</option>
+                                                    <option value="power">Power</option>
+                                                    <option value="mileage">Mileage</option>
+                                                    <option value="cc">CC</option>
+                                                    <option value="estimated_price">Estimated Price</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="order1" value="asc" checked> Ascending
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="order1" value="desc"> Descending
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="orderColumn2">Select the second column you want to order the data
+                                            by:</label>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <select id="orderColumn2" class="form-control">
+                                                    <optionv alue="">Please select</option>
+                                                        <option value="make">Make</option>
+                                                        <option value="model">Model</option>
+                                                        <option value="year">Year</option>
+                                                        <option value="engine">Engine</option>
+                                                        <option value="gearbox">Gearbox</option>
+                                                        <option value="power">Power</option>
+                                                        <option value="mileage">Mileage</option>
+                                                        <option value="cc">CC</option>
+                                                        <option value="estimated_price">Estimated Price</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="order2" value="asc" checked> Ascending
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="order2" value="desc"> Descending
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="orderColumn3">Select the third column you want to order the data
+                                            by:</label>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <select id="orderColumn3" class="form-control">
+                                                    <option value="">Please select</option>
+                                                    <option value="make">Make</option>
+                                                    <option value="model">Model</option>
+                                                    <option value="year">Year</option>
+                                                    <option value="engine">Engine</option>
+                                                    <option value="gearbox">Gearbox</option>
+                                                    <option value="power">Power</option>
+                                                    <option value="mileage">Mileage</option>
+                                                    <option value="cc">CC</option>
+                                                    <option value="estimated_price">Estimated Price</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="order3" value="asc" checked> Ascending
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="order3" value="desc"> Descending
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="step-5" class="tab-pane" role="tabpanel">
+
+                                    <div id="errors" class="description">
+                                    </div>
+                                    <div class="btn-container">
+                                        <button class="btn btn-primary" id="vehiclePriceCalculator"
+                                            style="display:none;">Search</button>
+                                    </div>
+
+                                </div>
+
+                                <!-- Step 4: Confirm Details -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import { populateFilter, fetchModels, clearModels, generateRequestData, captureData, validateJSON, displayResults } from './scripts/statistic.js';
+        import { showStatisticData } from './scripts/rainbow.js';
+        $(document).ready(function () {
+            const filters = ['price', 'power', 'mileage', 'cc', 'make', 'engine', 'gearbox', 'year'];
+            filters.forEach(filter => populateFilter(filter));
+
+            $('#smartwizard').smartWizard({
+                theme: 'arrows',
+                transitionEffect: 'fade',
+                toolbarSettings: {
+                    toolbarPosition: 'bottom',
+                    toolbarButtonPosition: 'right',
+                    showNextButton: true,
+                    showPreviousButton: true
+                }
+            });
+
+        });
+
+
+        //[showStep; leaveStep; beginReset; endReset; beginFinish; endFinish;]
+        $('#smartwizard').on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
+            if (stepNumber === 4) {
+                const json = captureData();
+                if (!validateJSON(json)) {
+                    //alert('Invalid data, please check your selections.');
+                    return true;
+                }
+            }
+            return true;
+        });
+
+
+        $('#vehiclePriceCalculator, #vehiclePriceCalculatorBottom').click(function () {
+            const json = captureData();
+            if (validateJSON(json)) {
+                const data = JSON.parse(json);
+                $('#exampleModal').modal('hide');
+                showStatisticData(data);
+            } else {
+                alert('Invalid data, please check your selections.');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded');
+            document.getElementById('make').addEventListener('change', function () {
+                console.log('make changed');
+                const selectedMake = this.value;
+                if (selectedMake) {
+                    fetchModels(selectedMake);
+                } else {
+                    clearModels();
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
