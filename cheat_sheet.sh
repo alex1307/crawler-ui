@@ -6,6 +6,7 @@ yarn global add serve
 serve -s dist -l 3124
 
  yarn upgrade --registry https://registry.yarnpkg.com
+ yarn build --no-cache                      
  yarn copyfiles -u 1 src/assets/images/* dist 
  yarn copyfiles -u 1 static/**/* dist         
- yarn build --no-cache                               
+          
