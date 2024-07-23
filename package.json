@@ -27,7 +27,7 @@
         "util": "^0.12.5"
     },
     "dependencies": {
-        "@cubejs-client/core": "^0.31.0",
+        "@cubejs-client/core": "0.35.23",
         "bootstrap": "^5.3.3",
         "chart.js": "^4.0.0",
         "punycode": "^2.3.1",

@@ -10,7 +10,7 @@ export function captureData() {
         make: $('#make').val() || null,
         model: $('#model').val() || null,
         year: $('#year').val() ? parseInt($('#year').val(), 10) : null,
-        engine: $('#engine').val() || null,
+        engine: [],
         gearbox: $('#gearbox').val() || null,
 
         yearFrom: $('#yearMin').val() ? parseInt($('#yearMin').val(), 10) : null,
@@ -34,6 +34,14 @@ export function captureData() {
         stat_column: $('#stat_column').val() || "price",
         estimated_price: $('#estimated_price').val() ? parseInt($('#estimated_price').val(), 10) : null,
     };
+
+    const engineCheckboxes = document.querySelectorAll('input[name="engine"]:checked');
+    if (engineCheckboxes.length > 0) {
+        console.log("Engine checkboxes: ", engineCheckboxes);
+        data.engine = Array.from(engineCheckboxes).map(cb => cb.value);
+    }
+
+    console.log(data);
 
     if (data.ccFrom == 0) {
         data.ccFrom = null;
@@ -199,7 +207,7 @@ export function populateFilter(name) {
     })
         .then(response => response.json())
         .then(data => {
-            if (['engine', 'gearbox', 'year'].includes(name)) {
+            if (name === 'gearbox') {
                 //populateCheckboxes(data, name);
                 populateDropdown(data, '', name);
             }
@@ -216,6 +224,9 @@ export function populateFilter(name) {
             if (['year', 'power', 'cc', 'mileage'].includes(name)) {
                 populateDropdown(data, 'Min', name);
                 populateDropdown(data, 'Max', name);
+            }
+            if (name === 'engine') {
+                populateCheckboxes(data, name);
             }
         })
         .catch(error => console.error('Error:', error));

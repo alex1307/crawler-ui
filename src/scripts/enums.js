@@ -11,7 +11,7 @@ const isLocalhost = window.location.hostname === 'localhost';
 // Set the base URL based on the environment
 const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
 
-function fetchModels(make) {
+export function fetchModels(make) {
     const url = `${baseUrl}/enums/${make}/models?source=estimated_price`;
     fetch(url, {
         headers: {
@@ -41,7 +41,7 @@ function populateModelsDropdown(models) {
     }
 }
 
-function clearModels() {
+export function clearModels() {
     const modelSelect = document.getElementById('model');
     modelSelect.innerHTML = '<option value="">Select a model</option>';
 }

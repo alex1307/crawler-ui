@@ -69,13 +69,106 @@
         .footer a:hover {
             color: #d4d4d4;
         }
+
+        /* Tooltip container */
+        a.tooltips {
+            position: relative;
+            display: inline;
+        }
+
+        a.tooltips span {
+            position: absolute;
+            width: 200px;
+            color: #FFFFFF;
+            background: #000000;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            visibility: hidden;
+            border-radius: 6px;
+        }
+
+        a.tooltips span:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 35%;
+            margin-left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 8px solid #000000;
+            border-right: 8px solid transparent;
+            border-left: 8px solid transparent;
+        }
+
+        a:hover.tooltips span {
+            visibility: visible;
+            opacity: 0.8;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -76px;
+            z-index: 999;
+        }
+
+        .one .equipment-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Tooltip text */
+        .one .equipment-container .tooltipx .tooltiptext {
+            visibility: hidden;
+            width: max-content;
+            background-color: #555;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Tooltip arrow */
+        .one .equipment-container .tooltipx .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        /* Show the tooltip text when you mouse over the equipment container */
+        .one .equipment-container:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.addEventListener('click', (event) => {
+                if (event.target.classList.contains('goButton')) {
+                    const url = event.target.getAttribute('data-url');
+                    window.open(url, '_blank');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">KatMaX</a>
+        <a class="navbar-brand" href="#">KatMaX😻🦁🐸</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -100,7 +193,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 KatMaX</p>
+        <p>&copy; 2024 KatMaX😻🦁🐸</p>
         <p>
             <a href="index.html">Home</a> |
             <a href="search.html">Search</a> |
@@ -120,6 +213,7 @@
             const requestData = JSON.parse(localStorage.getItem('requestData'));
             if ('statistic' === type) {
                 if (requestData) {
+                    console.log(requestData);
                     showStatisticData(requestData);
                 } else {
                     document.getElementById('results-content').innerHTML = '<p>No search data found. Please return to the search page.</p>';

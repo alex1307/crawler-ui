@@ -211,112 +211,6 @@ function generateChart(data, containerId) {
     });
 }
 
-// function createCardsFromData(data, containerId) {
-//     // Extract metadata and sort it by column_index to ensure correct column order
-//     const metadata = data.metadata.sort((a, b) => a.column_index - b.column_index);
-
-//     // Prepare a container for the cards
-//     const container = document.getElementById(containerId);
-//     container.innerHTML = ""; // Clear previous contents
-
-//     // Assuming each array in your data object has the same length
-//     const numRows = data.count;
-
-//     // Create card elements
-//     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-//         const cardContainer = document.createElement("div");
-//         cardContainer.className = "col-md-3 col-sm-4";
-
-//         const card = document.createElement("div");
-//         var img;
-//         if (data['discount'][rowIndex] > 12) {
-//             card.className = "pricingTable green";
-//             img = `<img src="${arrowGreen}" alt="High Price" style="width:16px; height:16px; vertical-align:middle;">`;
-//         } else if (data['discount'][rowIndex] > 0 && data['discount'][rowIndex] <= 12) {
-//             card.className = "pricingTable blue";
-//             img = `<img src="${arrowTale}" alt="Fair Price" style="width:16px; height:16px; vertical-align:middle;">`;
-//         } else {
-//             card.className = "pricingTable red";
-//             img = `<img src="${arrowRed}" alt="Good Price" style="width:16px; height:16px; vertical-align:middle;">`;
-//         }
-
-
-//         const title = document.createElement("h3");
-//         title.className = "title";
-//         title.textContent = data['title'][rowIndex];
-//         card.appendChild(title);
-
-//         const priceValue = document.createElement("div");
-//         priceValue.className = "price-value";
-//         priceValue.innerHTML = `Save € ${data['save_diff'][rowIndex]} <span class="month">${data['discount'][rowIndex].toLocaleString()}% ${img}</span>`;
-//         card.appendChild(priceValue);
-
-//         const pricingContent = document.createElement("ul");
-//         pricingContent.className = "pricing-content";
-//         const items = [document.createElement("li"), document.createElement("li"), document.createElement("li"), document.createElement("li")];
-//         metadata.forEach((meta, index) => {
-//             if (meta.visible === false ||
-//                 meta.column_name === 'title' ||
-//                 meta.column_name === 'save_diff' ||
-//                 meta.column_name === 'discount' ||
-//                 meta.column_name === 'currency' ||
-//                 meta.column_name === 'url' ||
-//                 meta.column_name === 'changed_on') return; // Skip invisible columns and already used columns
-//             const columnName = meta.column_name;
-//             var cellValue;
-//             if (columnName === 'year') {
-//                 cellValue = data[columnName][rowIndex];
-//             } else {
-//                 cellValue = typeof data[columnName][rowIndex] === "number" ? data[columnName][rowIndex].toLocaleString() : data[columnName][rowIndex];
-//             }
-//             if (columnName === 'price') {
-//                 items[0].innerHTML = `€ ${cellValue}`;
-//             } else if (columnName === 'estimated_price') {
-//                 items[1].innerHTML = `<p>Estimated: € ${cellValue}<p>`;
-//             } else if (columnName === 'equipment') {
-//                 const maxItemsToShow = 4;
-//                 const values = cellValue.split(',').slice(0, maxItemsToShow);
-//                 items[3].innerHTML = `<p>${values.join('<br>')}</p>`;
-//             } else {
-//                 if (cellValue != 'null' && cellValue != 'undefined' && cellValue != '0') {
-//                     if (columnName === 'cc') {
-//                         items[2].innerHTML += `${cellValue} &#13220<br>`;
-//                     } else if (columnName === 'mileage') {
-//                         items[2].innerHTML += `${cellValue} km<br>`;
-//                     } else if (columnName === 'power_ps') {
-//                         items[2].innerHTML += `${cellValue} hp<br>`;
-//                     } else if (columnName === 'power_kw') {
-//                         items[2].innerHTML += `${cellValue} kw<br>`;
-//                     } else if (columnName === 'created_on') {
-//                         items[2].innerHTML += `Published: ${cellValue}<br>`;
-//                     } else if (columnName === 'source') {
-//                         items[2].innerHTML += `${cellValue}<br>`;
-//                     } else {
-//                         items[2].innerHTML += `${cellValue}<br>`;
-//                     }
-//                 }
-//             }
-
-
-//         });
-//         console.log(items);
-
-//         items.forEach((item) => { pricingContent.appendChild(item); });
-//         card.appendChild(pricingContent);
-
-
-
-//         const viewLink = document.createElement("a");
-//         viewLink.href = data['url'][rowIndex] === null ? "#" : data['url'][rowIndex];
-//         viewLink.className = "pricingTable-signup";
-//         viewLink.textContent = "View";
-//         viewLink.target = "_blank";
-//         card.appendChild(viewLink);
-
-//         cardContainer.appendChild(card);
-//         container.appendChild(cardContainer);
-//     }
-// }
 
 function replacePlaceholders(template, data) {
     return template.replace(/\$\w+/g, (placeholder) => {
@@ -353,15 +247,87 @@ async function createCardsFromData(data, containerId) {
     // Create card elements
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
         let cardTemplate;
+        var color = 'green';
+        var mode_emoji = '🚗💰💸💳🚀💵💰💳😎';
         if (data['discount'][rowIndex] > 12) {
             cardTemplate = goodPriceTemplate;
+            color = 'green';
+            mode_emoji = '👌🙌🔥📢🏷️🛒🔝🛍️😱🤑';
         } else if (data['discount'][rowIndex] > 0 && data['discount'][rowIndex] <= 12) {
             cardTemplate = fairPriceTemplate;
+            color = 'tale';
+            mode_emoji = '🚗🛍️💶💶💶😎'
         } else {
             cardTemplate = highPriceTemplate;
+            color = 'red';
+            mode_emoji = '🚗🫰🏻💶💰💸💳🚀💵🤔';
         }
 
         // Prepare data for placeholders
+        const currency = data['currency'][rowIndex];
+        var price = data['price'][rowIndex];
+        var estimated_price = data['estimated_price'][rowIndex];
+        const price_in_eur = data['price_in_eur'][rowIndex];
+        const estimated_price_in_eur = data['estimated_price_in_eur'][rowIndex];
+        var save_diff = data['save_diff'][rowIndex];
+        const save_diff_in_eur = data['safe_diff_in_eur'][rowIndex];
+        var price_txt = '';
+        if (currency === 'BGN') {
+            price_txt = `
+                ${mode_emoji}
+                <br>
+                <i style="color:${color};">Price :</i><b>🇧🇬 ${price} BGN</b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>🇧🇬 ${estimated_price}</b>
+                <br>
+                <i style="color:${color};">Price: </i> <b>€ ${price_in_eur} </b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>€ ${estimated_price_in_eur}</b>
+                <br>`;
+
+            save_diff = `${save_diff_in_eur}/🇧🇬 ${save_diff} BGN`;
+        } else if (currency === 'PLN') {
+            price_txt = `
+                ${mode_emoji}
+                <br>
+                <i style="color:${color};">Price :</i><b>🇵🇱 ${price} PLN</b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>🇵🇱 ${estimated_price}</b>
+                <br>
+                <i style="color:${color};">Price: </i> <b>€ ${price_in_eur} </b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>€ ${estimated_price_in_eur}</b>
+                <br>`;
+            save_diff = `${save_diff_in_eur}/🇵🇱 ${save_diff} PLN`;
+        } else if (currency === 'CHF') {
+
+            price_txt = `
+                ${mode_emoji}
+                <br>
+                <i style="color:${color};">Price :</i><b>🇨🇭 ${price} CHF</b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>🇨🇭 ${estimated_price}</b>
+                <br>
+                <i style="color:${color};">Price: </i> <b>€ ${price_in_eur} </b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>€ ${estimated_price_in_eur}</b>
+                <br>`;
+            save_diff = `${save_diff_in_eur}/🇨🇭 ${save_diff} CHF`;
+        } else {
+            price_txt = `
+                ${mode_emoji}
+                <br>
+                <i style="color:${color};">Price: </i> <b>€ ${price_in_eur} </b>
+                <br>
+                <i style="color:${color};">Estimation :</i><b>€ ${estimated_price_in_eur}</b>
+                <br>`;
+            save_diff = `${save_diff}`;
+        }
+        const equipmentArray = data['equipment'][rowIndex].split(',');
+        const firstFourEquipment = equipmentArray.slice(0, 4).join('<br>');
+        console.log("TOP 4 Equipment: ", firstFourEquipment);
+        const fullEquipment = equipmentArray.join('<br>');
+        console.log("Full Equipment: ", fullEquipment);
         const cardData = {
             title: data['title'][rowIndex],
             make: data['make'][rowIndex],
@@ -370,15 +336,19 @@ async function createCardsFromData(data, containerId) {
             engine: data['engine'][rowIndex],
             gearbox: data['gearbox'][rowIndex],
             //consumption: data['consumption'][rowIndex],
-            price: `${data['price'][rowIndex].toLocaleString()}`,
-            estimated_price: `${data['estimated_price'][rowIndex].toLocaleString()}`,
-            save_diff: `${data['save_diff'][rowIndex].toLocaleString()}`,
+            price_txt: price_txt,
+            price: data['price'][rowIndex],
+            estimated_price: data['estimated_price'][rowIndex],
+            save_diff: save_diff,
             markup: `${data['discount'][rowIndex].toLocaleString() + '%'}`,
             discount: `${data['discount'][rowIndex].toLocaleString() + '%'}`, // Assuming 'markup' is in your data
             mileage: `${data['mileage'][rowIndex].toLocaleString()} km`,
             power: `${data['power'][rowIndex]} hp / ${data['power_kw'][rowIndex]} kw`,
             published: `Published: ${data['created_on'][rowIndex].toLocaleString()}`,
             equipment: data['equipment'][rowIndex].split(',').join('<br>'),
+            firstFourEquipment: firstFourEquipment,
+            fullEquipment: fullEquipment,
+            url: data['url'][rowIndex],
         };
 
         const cardHTML = replacePlaceholders(cardTemplate, cardData);

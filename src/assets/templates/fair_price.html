@@ -2,9 +2,15 @@
     <div class="top">
         <div class="info">
             <img src="../assets/images/arrow-tale.png" height="48px" width="48px" />
-            <div class="price-sec">
+            <!-- <div class="price-sec">
                 <span class="dollar" style="font-size: large; color: teal; font-weight: bold;">€</span>
                 <span class="price" style="font-size: large; color: teal; font-weight: bold;">$price</span>
+            </div> -->
+            <div class="price-sec">
+                <span class="dollar" style="font-size: small; color: teal; font-weight: bold;">Save: €</span>
+                <span class="price" style="font-size: small; color: teal; font-weight: bold;"> $save_diff</span>
+                <br>
+                <span class="dollar" style="font-size: large; color: teal; font-weight: bold;">- $discount</span>
             </div>
         </div>
     </div>
@@ -19,41 +25,38 @@
                     <b>$make $model</b><br>
                     $year $engine $gearbox
                     <br>
-                    $consumption
+                    ⛽ $consumption
+                    <br>
+                    🛣️🏃🏻⏱️ $mileage
+                    <br>
+                    🐎💪⚡ $power
+                    <br>
+                    📅 📣 $published
                 </p>
             </span>
+            <i class="fas fa-check"></i>
 
         </div>
         <div class="one">
             <span class="text-align: left;">
                 <p style="text-align: left;">
-                    <i style="color:teal;">Estimated Price:</i> <b>$estimated_price</b>
-                    <i style="color:teal;">Save:</i> <b>€ $save_diff 🫰🏻💶 </b>
-                    <i style="color:teal;">Discount:</i> <b>$discount 👍💶 </b>
-                </p>
-            </span>
-
-        </div>
-        <div class="one">
-            <span>
-                <p style="text-align: left;">
-                    $mileage
-                    <br>
-                    $power
-                    <br>
-                    $published
+                    $price_txt
                 </p>
             </span>
             <i class="fas fa-check"></i>
         </div>
         <div class="one">
-            <span>
+            <div class="equipment-container">
                 <p style="text-align: left;">
-                    $equipment
+                    <span class="equipment-preview">$firstFourEquipment</span>
                 </p>
-            </span>
+                <div class="tooltipx">
+                    <span class="tooltiptext">$fullEquipment</span>
+                </div>
+            </div>
             <i class="fas fa-check"></i>
+            <!-- Other details -->
         </div>
-        <button>🚦🏃🚀 Go for it</button>
+        <button class="goButton" data-url="$url">🚦🏃🚀 Go for it</button>
     </div>
 </div>

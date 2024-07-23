@@ -35,7 +35,7 @@ body {
 
 
 .content .good-price .top {
-  height: 120px;
+  height: 150px;
   color: #fff;
   padding: 5px;
   /* clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 50% 100%, 0% 45%); */
@@ -85,7 +85,7 @@ body {
 }
 
 .content .card .details .one {
-  margin-top: 25px;
+  margin-top: 20px;
   font-size: 15px;
   display: flex;
   justify-content: space-between;
