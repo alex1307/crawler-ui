@@ -13,25 +13,24 @@ export function captureData() {
         engine: [],
         gearbox: $('#gearbox').val() || null,
 
-        yearFrom: $('#yearMin').val() ? parseInt($('#yearMin').val(), 10) : null,
-        yearTo: $('#yearMax').val() ? parseInt($('#yearMax').val(), 10) : null,
+        yearFrom: $('#yearFrom').val() ? parseInt($('#yearFrom').val(), 10) : null,
+        yearTo: $('#yearTo').val() ? parseInt($('#yearTo').val(), 10) : null,
 
 
-        powerFrom: $('#powerMin').val() ? parseInt($('#powerMin').val(), 10) : null,
-        powerTo: $('#powerMax').val() ? parseInt($('#powerMax').val(), 10) : null,
-        power: $('#power').val() ? parseInt($('#power').val(), 10) : null,
+        powerFrom: $('#powerFrom').val() ? parseInt($('#powerFrom').val(), 10) : null,
+        powerTo: $('#powerTo').val() ? parseInt($('#powerTo').val(), 10) : null,
 
-        mileageFrom: $('#mileageMin').val() ? parseInt($('#mileageFrom').val(), 10) : null,
-        mileageTo: $('#mileageMax').val() ? parseInt($('#mileageMax').val(), 10) : null,
-        mileage: $('#mileage').val() ? parseInt($('#mileage').val(), 10) : null,
+        mileageFrom: $('#mileageFrom').val() ? parseInt($('#mileageFrom').val(), 10) : null,
+        mileageTo: $('#mileageTo').val() ? parseInt($('#mileageTo').val(), 10) : null,
 
-        ccFrom: $('#ccMin').val() ? parseInt($('#ccMin').val(), null) : null,
-        ccTo: $('#ccMax').val() ? parseInt($('#ccMax').val(), 10) : null,
-        cc: $('#cc').val() ? parseInt($('#cc').val(), 10) : null,
+
+        ccFrom: $('#ccFrom').val() ? parseInt($('#ccFrom').val(), null) : null,
+        ccTo: $('#ccTo').val() ? parseInt($('#ccTo').val(), 10) : null,
+
         group: [],
         aggregators: [],
         order: [],
-        stat_column: $('#stat_column').val() || "price",
+        stat_column: $('input[name="statColumn"]:checked').val() || "price_in_eur",
         estimated_price: $('#estimated_price').val() ? parseInt($('#estimated_price').val(), 10) : null,
     };
 
@@ -75,7 +74,8 @@ export function captureData() {
     if ($('#groupByYear').is(':checked')) data.group.push('year');
     if ($('#groupByEngine').is(':checked')) data.group.push('engine');
     if ($('#groupByGearbox').is(':checked')) data.group.push('gearbox');
-    if ($('#groupByPower').is(':checked')) data.group.push('power');
+    if ($('#groupByPower').is(':checked')) data.group.push('power_breakdown');
+    if ($('#groupByMileage').is(':checked')) data.group.push('mileage_breakdown');
 
     // Statistics checkboxes
     if ($('#statCount').is(':checked')) data.aggregators.push('count');
@@ -92,6 +92,10 @@ export function captureData() {
     if ($('#statP90').is(':checked')) data.aggregators.push('quantile_90');
     if ($('#std').is(':checked')) data.aggregators.push('std');
     if ($('#rsd').is(':checked')) data.aggregators.push('rsd');
+
+
+
+
 
     // Orders
     if ($('#orderColumn1').val()) {
@@ -212,6 +216,10 @@ export function populateFilter(name) {
                 populateDropdown(data, '', name);
             }
 
+            if (name === 'mileage_status') {
+                populateDropdown(data, '', name);
+            }
+
             if (name === 'make') {
                 populateMakesDropdown();
             }
@@ -222,8 +230,8 @@ export function populateFilter(name) {
             }
 
             if (['year', 'power', 'cc', 'mileage'].includes(name)) {
-                populateDropdown(data, 'Min', name);
-                populateDropdown(data, 'Max', name);
+                populateDropdown(data, 'From', name);
+                populateDropdown(data, 'To', name);
             }
             if (name === 'engine') {
                 populateCheckboxes(data, name);
@@ -255,10 +263,10 @@ export function populateDropdown(data, type, elementId) {
             .forEach(([key, value]) => {
                 const option = document.createElement('option');
                 option.name = elementId;
-                if (key === '0' && type === 'Min') {
+                if (key === '0' && type === 'From') {
                     option.value = key;
                     option.textContent = "From";
-                } else if (key === '0' && type === 'Max') {
+                } else if (key === '0' && type === 'To') {
                     option.value = key;
                     option.textContent = "To";
                 } else {
@@ -308,9 +316,9 @@ export function generateRequestData() {
     // Handling min/max inputs for price, mileage, and cc.
     let gte = {};
     let lte = {};
-    ['price', 'mileage', 'cc', 'power', 'year', 'save_diff', 'discount'].forEach(field => {
-        const minElement = document.getElementById(`${field}Min`);
-        const maxElement = document.getElementById(`${field}Max`);
+    ['price', 'mileage', 'cc', 'power', 'year', 'saveDiff', 'discount', 'mileage_status'].forEach(field => {
+        const minElement = document.getElementById(`${field}From`);
+        const maxElement = document.getElementById(`${field}To`);
 
         if (minElement && minElement.value) {
             const value = parseInt(minElement.value, 10);
@@ -352,10 +360,10 @@ export function generateRequestData() {
     if (search && search.value) {
         requestData.search = search.value;
     }
-    const created_on = document.getElementById('created_onMin');
+    const created_on = document.getElementById('createdOnMin');
     if (created_on && created_on.value && created_on.value !== '0') {
         console.log("Created on: ", created_on.value);
-        requestData.filter_date.push({ Gte: [{ "created_on": created_on.value }, true] });
+        requestData.filter_date.push({ Gte: [{ "createdOn": created_on.value }, true] });
     }
 
     const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
@@ -390,15 +398,15 @@ export function generateRequestData() {
         const values = Array.from(engineCheckboxes).map(cb => cb.value);
         requestData.filter_string.push({ In: ['engine', values] });
     }
-    ['sort_by_primary', 'sort_by_secondary'].forEach(sortElement => {
-        const sortSelect = document.getElementById(sortElement);
-        if (sortSelect && sortSelect.value) {
-            const ascSelect = (sortElement === 'sort_by_primary') ?
-                document.getElementById('asc_primary') : document.getElementById('asc_secondary');
-            const asc = ascSelect.value === 'asc';
-            requestData.sort.push({ [asc ? 'asc' : 'desc']: [sortSelect.value, true] });
-        }
-    });
+    // ['sort_by_primary', 'sort_by_secondary'].forEach(sortElement => {
+    //     const sortSelect = document.getElementById(sortElement);
+    //     if (sortSelect && sortSelect.value) {
+    //         const ascSelect = (sortElement === 'sort_by_primary') ?
+    //             document.getElementById('asc_primary') : document.getElementById('asc_secondary');
+    //         const asc = ascSelect.value === 'asc';
+    //         requestData.sort.push({ [asc ? 'asc' : 'desc']: [sortSelect.value, true] });
+    //     }
+    // });
 
     document.getElementById('results').textContent = JSON.stringify(requestData, null, 2);
     console.log('Request data:', requestData);

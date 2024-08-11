@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const filters = ['price', 'power', 'mileage', 'cc', 'make', 'engine', 'gearbox', 'year', 'group_by',
-        'sort_by', 'asc', 'estimated_price', 'save_diff', 'discount', 'search', 'created_on'];
+    const filters = ['price', 'power', 'mileage', 'cc', 'make', 'engine', 'gearbox', 'year', 'saveDiff', 'discount', 'increase', 'overcharge'];
     filters.forEach(filter => populateFilter(filter));
 
 });
@@ -55,17 +54,15 @@ function populateFilter(name) {
     })
         .then(response => response.json())
         .then(data => {
-            if (['engine', 'gearbox'].includes(name)) {
+            if ('engine' === name) {
                 populateCheckboxes(data, name);
-            } if (name === 'make') {
+            } else if ('gearbox' === name) {
+                populateDropdown(data, '', name);
+            } else if (name === 'make') {
                 populateMakesDropdown();
-            } if (name === 'sort_by' || name === 'asc') {
-                populateDropdown(data, '_primary', name);
-                populateDropdown(data, '_secondary', name);
-            }
-            else {
-                populateDropdown(data, 'Min', name);
-                populateDropdown(data, 'Max', name);
+            } else {
+                populateDropdown(data, 'From', name);
+                populateDropdown(data, 'To', name);
             }
         })
         .catch(error => console.error('Error:', error));
@@ -74,39 +71,28 @@ function populateFilter(name) {
 function populateDropdown(data, type, elementId) {
     const select = document.getElementById(`${elementId}${type}`);
     // /let sorted = Object.entries(data).sort((a, b) => a[0].localeCompare(b[0])); // Sort by make names
-    if (elementId === 'group_by' || elementId === 'make' || elementId === 'engine' || elementId === 'gearbox' || elementId === 'asc') {
+    if (elementId === 'group_by' || elementId === 'make' || elementId === 'engine' || elementId === 'asc') {
         return;
     }
-    if (elementId === 'sort_by') {
-        Object
-            .entries(data)
-            .sort((a, b) => a[0].localeCompare(b[0])).forEach(([key, value]) => {
-                const option = document.createElement('option');
-                option.name = elementId;
+
+    Object
+        .entries(data)
+        .forEach(([key, value]) => {
+            const option = document.createElement('option');
+            option.name = elementId;
+            if (key === '0' && type === 'From') {
+                option.value = key;
+                option.textContent = "From";
+            } else if (key === '0' && type === 'To') {
+                option.value = key;
+                option.textContent = "To";
+            } else {
                 option.value = key;
                 option.textContent = value;
-                select.appendChild(option);
-            }); // Sort by make names
+            }
+            select.appendChild(option);
+        });
 
-    } else {
-        Object
-            .entries(data)
-            .forEach(([key, value]) => {
-                const option = document.createElement('option');
-                option.name = elementId;
-                if (key === '0' && type === 'Min') {
-                    option.value = key;
-                    option.textContent = "From";
-                } else if (key === '0' && type === 'Max') {
-                    option.value = key;
-                    option.textContent = "To";
-                } else {
-                    option.value = key;
-                    option.textContent = value;
-                }
-                select.appendChild(option);
-            });
-    }
 
 }
 
@@ -152,57 +138,57 @@ function populateMakesDropdown() {
         .catch(error => console.error('Error fetching makes:', error));
 }
 
-export function updateSecondarySortVisibility() {
-    const primarySort = document.getElementById('sort_by_primary').value;
-    const secondarySortRow = document.getElementById('secondary_sort_row');
-    const secondarySortSelect = document.getElementById('sort_by_secondary');
+// export function updateSecondarySortVisibility() {
+//     const primarySort = document.getElementById('sort_by_primary').value;
+//     const secondarySortRow = document.getElementById('secondary_sort_row');
+//     const secondarySortSelect = document.getElementById('sort_by_secondary');
 
-    if (primarySort) {
-        secondarySortRow.style.display = ''; // Show the secondary sort options
-        populateSecondaryOptions(primarySort); // Populate secondary options excluding the primary selected
-    } else {
-        secondarySortRow.style.display = 'none'; // Hide if no primary sort is selected
-    }
-}
+//     if (primarySort) {
+//         secondarySortRow.style.display = ''; // Show the secondary sort options
+//         populateSecondaryOptions(primarySort); // Populate secondary options excluding the primary selected
+//     } else {
+//         secondarySortRow.style.display = 'none'; // Hide if no primary sort is selected
+//     }
+// }
 
-function populateSecondaryOptions(excludeOption) {
+// function populateSecondaryOptions(excludeOption) {
 
-    const ps = document.getElementById('sort_by_primary');
-    const selected = ps.options[ps.selectedIndex].value;
-    const secondarySortSelect = document.getElementById('sort_by_secondary');
-    secondarySortSelect.innerHTML = '';
-    Array.from(ps.options).filter(option => option.value !== selected).forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option.value;
-        opt.textContent = option.textContent;
-        secondarySortSelect.appendChild(opt);
-    });
-}
+//     const ps = document.getElementById('sort_by_primary');
+//     const selected = ps.options[ps.selectedIndex].value;
+//     const secondarySortSelect = document.getElementById('sort_by_secondary');
+//     secondarySortSelect.innerHTML = '';
+//     Array.from(ps.options).filter(option => option.value !== selected).forEach(option => {
+//         const opt = document.createElement('option');
+//         opt.value = option.value;
+//         opt.textContent = option.textContent;
+//         secondarySortSelect.appendChild(opt);
+//     });
+// }
 
-function updateSortOptions() {
-    const groupBySelect = document.getElementById('group_by');
-    const sortPrimarySelect = document.getElementById('sort_by_primary');
+// function updateSortOptions() {
+//     const groupBySelect = document.getElementById('group_by');
+//     const sortPrimarySelect = document.getElementById('sort_by_primary');
 
-    // Get the currently selected value in group_by
-    let selectedGroupBy = groupBySelect.value;
-    const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
-    if (groupByCheckboxes.length > 0) {
-        selectedGroupBy = Array.from(groupByCheckboxes).map(cb => cb.value);
-    }
+//     // Get the currently selected value in group_by
+//     let selectedGroupBy = groupBySelect.value;
+//     const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
+//     if (groupByCheckboxes.length > 0) {
+//         selectedGroupBy = Array.from(groupByCheckboxes).map(cb => cb.value);
+//     }
 
-    // Clear current options in sort dropdown
-    sortPrimarySelect.innerHTML = '';
+//     // Clear current options in sort dropdown
+//     sortPrimarySelect.innerHTML = '';
 
-    // Add a new option based on the selected group_by
+//     // Add a new option based on the selected group_by
 
 
-    selectedGroupBy.forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option;
-        opt.textContent = option.charAt(0).toUpperCase() + option.slice(1); // Capitalize the first letter
-        sortPrimarySelect.appendChild(opt);
-    });
+//     selectedGroupBy.forEach(option => {
+//         const opt = document.createElement('option');
+//         opt.value = option;
+//         opt.textContent = option.charAt(0).toUpperCase() + option.slice(1); // Capitalize the first letter
+//         sortPrimarySelect.appendChild(opt);
+//     });
 
-    // Optionally add more options or handle multiple group_by selections
-    // This part can be expanded based on specific requirements
-}
+//     // Optionally add more options or handle multiple group_by selections
+//     // This part can be expanded based on specific requirements
+// }

@@ -23,4 +23,105 @@ body {
     margin-top: 200px
 }
 
+/* .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+   
+    margin-top: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-container label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.checkbox-container label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.checkbox-container input[type="checkbox"]:checked+label::before {
+    background: #007BFF;
+}
+
+.checkbox-container input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+} */
+
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Adjusts the spacing between the radio-label pairs */
+    margin-top: 10px;
+}
+
+.checkbox-container input[type="radio"] {
+    display: none;
+}
+
+.checkbox-container label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.checkbox-container label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 50%;
+    /* Changed to make it circular for radio buttons */
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.checkbox-container input[type="radio"]:checked+label::before {
+    background: #007BFF;
+}
+
+.checkbox-container input[type="radio"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
 /* Style for the "Next" button */

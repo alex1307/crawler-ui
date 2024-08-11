@@ -21,7 +21,8 @@ h2 {
 }
 
 .search-form {
-    width: 100%;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .search-table {
@@ -188,6 +189,46 @@ h2 {
     border: none;
     background-color: #f9f9f9;
     color: #333;
+}
+
+/* General Section - light blue */
+.general-section,
+.technical-section,
+.prices-section,
+.sorting-section {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 0;
+    /* Remove bottom margin to eliminate gaps */
+    border: 1px solid #ccc;
+    /* Subtle border to define each section */
+}
+
+/* Ensure sections are connected visually by blending the borders */
+.general-section {
+    background-color: #d8eafd;
+    border-bottom: 1px solid #b0c8e1;
+    /* Slightly darker border for separation */
+}
+
+.technical-section {
+    background-color: #d4f3e6;
+    border-top: 1px solid #b0e2c7;
+    /* Slightly darker border for separation */
+    border-bottom: 1px solid #b0e2c7;
+}
+
+.prices-section {
+    background-color: #fff8d6;
+    border-top: 1px solid #e7e0b2;
+    /* Slightly darker border for separation */
+    border-bottom: 1px solid #e7e0b2;
+}
+
+.sorting-section {
+    background-color: #ffe6f0;
+    border-top: 1px solid #e1b8c6;
+    /* Slightly darker border for separation */
 }
 
 /* @media (max-width: 768px) {

@@ -5,7 +5,7 @@
     "scripts": {
         "start": "parcel src/search.html src/statistic.html src/results.html",
         "dev": "parcel src/search.html src/statistic.html src/results.html",
-        "build": "parcel build src/search.html src/statistic.html src/results.html --dist-dir dist && node copy-static-files.js && node copyTemplates.mjs --no-cache",
+        "build": "parcel build src/search.html src/statistic.html src/results.html --dist-dir dist --no-cache",
         "serve": "http-server dist  -p 9090"
     },
     "devDependencies": {
