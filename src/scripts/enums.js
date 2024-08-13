@@ -81,10 +81,10 @@ function populateDropdown(data, type, elementId) {
             const option = document.createElement('option');
             option.name = elementId;
             if (key === '0' && type === 'From') {
-                option.value = key;
+                option.value = "";
                 option.textContent = "From";
             } else if (key === '0' && type === 'To') {
-                option.value = key;
+                option.value = "";
                 option.textContent = "To";
             } else {
                 option.value = key;

@@ -583,10 +583,25 @@
     <script type="module">
         import { populateFilter, fetchModels, clearModels, generateRequestData, captureData, validateJSON } from './scripts/statistic.js';
         import { showStatisticData } from './scripts/rainbow.js';
-
+        localStorage.clear();
         function redirectToResultsPage(requestData) {
             console.log("Local storage data:", requestData);
             localStorage.setItem('requestData', JSON.stringify(requestData));
+            const columns = [];
+
+            const groupByFields = requestData.group;
+            groupByFields.forEach(groupByField => {
+                columns.push({ value: groupByField, text: groupByField });
+            });
+
+            const stat_column = requestData.stat_column;
+            const aggregators = requestData.aggregators;
+            aggregators.forEach(aggregator => {
+                columns.push({ value: `${stat_column}_${aggregator}`, text: `${aggregator}` });
+            });
+
+
+            localStorage.setItem('columns', JSON.stringify(columns));
             localStorage.setItem('type', 'statistic');
             window.location.href = `results.html`;
         }

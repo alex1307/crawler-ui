@@ -35,6 +35,7 @@ export function showStatisticData(requestData) {
         },
         body: JSON.stringify(requestData)
     }).then((response) => response.json()).then((data) => {
+        document.getElementById('results').innerHTML = "";
         createTableFromData(data, "results", dark_mode_colors);
     }).catch((error) => {
         console.error("Error:", error);

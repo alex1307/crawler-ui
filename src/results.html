@@ -152,6 +152,28 @@
             visibility: visible;
             opacity: 1;
         }
+
+        .order-control {
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+
+        .order-control select,
+        .order-control .radio-inline {
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .order-control label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .d-inline-block {
+            display: inline-block;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -168,7 +190,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">KatMaX😻🦁🐸</a>
+        <a class="navbar-brand" href="#">MatkaT😻🦁🐸</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -186,14 +208,52 @@
 
     <!-- Results Section -->
     <div class="content">
+        <div class="sorting-section">
+            <div class="row mt-3 align-items-center">
+                <div class="col-md-3 mb-3">
+                    <select id="orderColumn1" class="form-control">
+
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="d-flex align-items-center">
+                        <label class="radio-inline mr-2">
+                            <input type="radio" name="order1" value="asc" checked> Asc⬆
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="order1" value="desc"> Desc⬇
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <select id="orderColumn2" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="d-flex align-items-center">
+                        <label class="radio-inline mr-2">
+                            <input type="radio" name="order2" value="asc" checked> Asc⬆
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="order2" value="desc"> Desc⬇
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                    <button id="sortButton" class="btn btn-primary w-100">Sort</button>
+                </div>
+            </div>
+        </div>
         <div id="results" class="results-container">
-            <div class="row" id="results-content"></div>
+
         </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 KatMaX😻🦁🐸</p>
+        <p>&copy; 2024 MatkaT😻🦁🐸</p>
         <p>
             <a href="index.html">Home</a> |
             <a href="search.html">Search</a> |
@@ -201,35 +261,7 @@
         </p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script type="module">
-        import { showStatisticData } from './scripts/rainbow.js';
-        import { search } from './scripts/data.js';
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const type = localStorage.getItem('type');
-            const requestData = JSON.parse(localStorage.getItem('requestData'));
-            if ('statistic' === type) {
-                if (requestData) {
-                    console.log(requestData);
-                    showStatisticData(requestData);
-                } else {
-                    document.getElementById('results-content').innerHTML = '<p>No search data found. Please return to the search page.</p>';
-                }
-            } else if ('search' === type) {
-                if (requestData) {
-                    search(requestData);
-                } else {
-                    document.getElementById('results-content').innerHTML = '<p>No search data found. Please return to the search page.</p>';
-                }
-            } else {
-                document.getElementById('results-content').innerHTML = '<p>Unsupported type. Please try again.</p>';
-            }
-            localStorage.clear();
-        });
-    </script>
+    <script type="module" src="scripts/results.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,7 @@
  yarn build --no-cache   
  sleep 1
  yarn copyfiles -u 1 src/assets/images/* dist 
+ yarn copyfiles -u 1 src/assets/templates/* dist
 #  sleep 1
 #  yarn copyfiles -u 1 static/**/* dist       
  sleep 1

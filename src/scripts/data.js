@@ -18,6 +18,7 @@ function showData(requestData) {
         console.log("Success:", data);
         // Assuming 'data' is the structure you've provided, or adjust the following functions as necessary
         // const transformedData = transformDataForChart(data);
+        document.getElementById('results').textContent = '';
         createCardsFromData(data, "results");
         //generateChart(data, "chart-container");
     }).catch((error) => {
@@ -31,6 +32,21 @@ export function search(json) {
 
 export function redirect() {
     const json = generateRequestData();
+    const columns = [
+        { value: "make", text: "Make" },
+        { value: "model", text: "Model" },
+        { value: "year", text: "Year" },
+        { value: "engine", text: "Engine" },
+        { value: "gearbox", text: "Gearbox" },
+        { value: "power", text: "Power" },
+        { value: "mileage", text: "Mileage" },
+        { value: "price_in_eur", text: "Price" },
+        { value: "discount", text: "Discount" },
+        { value: "save_diff", text: "Saved Difference" },
+        { value: "increase", text: "Increase" },
+        { value: "extra_charge", text: "Extra Charge" }
+    ];
+    localStorage.setItem('columns', JSON.stringify(columns));
     localStorage.setItem('requestData', JSON.stringify(json));
     localStorage.setItem('type', 'search');
     window.location.href = `results.html`;
@@ -69,9 +85,12 @@ function generateRequestData() {
         increaseTo: $('#increaseTo').val() ? parseInt($('#increaseTo').val(), 10) : null,
 
         createdOnFrom: $('#createdOnFrom').val() ? parseInt($('#createdOnFrom').val(), 10) : null,
+        createdOnTo: $('#createdOnTo').val() ? parseInt($('#createdOnTo').val(), 10) : null,
 
         order: [],
         engine: [],
+        aggregators: [],
+        group: []
 
     };
 

@@ -3,9 +3,10 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
+        "copy-assets": "yarn copyfiles -u 1 src/assets/images/* dist && yarn copyfiles -u 1 static/**/* dist && yarn copyfiles -u 1 src/assets/templates/* dist",
         "start": "parcel src/search.html src/statistic.html src/results.html",
         "dev": "parcel src/search.html src/statistic.html src/results.html",
-        "build": "parcel build src/search.html src/statistic.html src/results.html --dist-dir dist --no-cache",
+        "build": "parcel build src/search.html src/statistic.html src/results.html src/price_calculator.html --dist-dir dist --no-cache",
         "serve": "http-server dist  -p 9090"
     },
     "devDependencies": {

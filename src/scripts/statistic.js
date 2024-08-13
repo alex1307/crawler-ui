@@ -241,42 +241,43 @@ export function populateFilter(name) {
 }
 
 export function populateDropdown(data, type, elementId) {
-    const select = document.getElementById(`${elementId}${type}`);
-    // /let sorted = Object.entries(data).sort((a, b) => a[0].localeCompare(b[0])); // Sort by make names
-    if (elementId === 'group_by' || elementId === 'make' || elementId === 'asc') {
-        return;
-    }
-    if (elementId === 'sort_by') {
-        Object
-            .entries(data)
-            .sort((a, b) => a[0].localeCompare(b[0])).forEach(([key, value]) => {
-                const option = document.createElement('option');
-                option.name = elementId;
-                option.value = key;
-                option.textContent = value;
-                select.appendChild(option);
-            }); // Sort by make names
-
-    } else {
-        Object
-            .entries(data)
-            .forEach(([key, value]) => {
-                const option = document.createElement('option');
-                option.name = elementId;
-                if (key === '0' && type === 'From') {
-                    option.value = key;
-                    option.textContent = "From";
-                } else if (key === '0' && type === 'To') {
-                    option.value = key;
-                    option.textContent = "To";
-                } else {
+    if (document.getElementById(`${elementId}${type}`)) {
+        const select = document.getElementById(`${elementId}${type}`);
+        // /let sorted = Object.entries(data).sort((a, b) => a[0].localeCompare(b[0])); // Sort by make names
+        if (elementId === 'group_by' || elementId === 'make' || elementId === 'asc') {
+            return;
+        }
+        if (elementId === 'sort_by') {
+            Object
+                .entries(data)
+                .sort((a, b) => a[0].localeCompare(b[0])).forEach(([key, value]) => {
+                    const option = document.createElement('option');
+                    option.name = elementId;
                     option.value = key;
                     option.textContent = value;
-                }
-                select.appendChild(option);
-            });
-    }
+                    select.appendChild(option);
+                }); // Sort by make names
 
+        } else {
+            Object
+                .entries(data)
+                .forEach(([key, value]) => {
+                    const option = document.createElement('option');
+                    option.name = elementId;
+                    if (key === '0' && type === 'From') {
+                        option.value = key;
+                        option.textContent = "From";
+                    } else if (key === '0' && type === 'To') {
+                        option.value = key;
+                        option.textContent = "To";
+                    } else {
+                        option.value = key;
+                        option.textContent = value;
+                    }
+                    select.appendChild(option);
+                });
+        }
+    }
 }
 
 export function populateCheckboxes(data, containerId) {
