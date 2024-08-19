@@ -264,27 +264,6 @@
 
         localStorage.clear();
 
-        function redirectToResultsPage(requestData) {
-            console.log("Local storage data:", requestData);
-            localStorage.setItem('requestData', JSON.stringify(requestData));
-            const columns = [];
-
-            const groupByFields = requestData.group;
-            groupByFields.forEach(groupByField => {
-                columns.push({ value: groupByField, text: groupByField });
-            });
-
-            const stat_column = requestData.stat_column;
-            const aggregators = requestData.aggregators;
-            aggregators.forEach(aggregator => {
-                columns.push({ value: `${stat_column}_${aggregator}`, text: `${aggregator}` });
-            });
-
-            localStorage.setItem('columns', JSON.stringify(columns));
-            localStorage.setItem('type', 'statistic');
-            window.location.href = `results.html`;
-        }
-
         $(document).ready(function () {
             const filters = ['make', 'engine', 'gearbox', 'year'];
             filters.forEach(filter => populateFilter(filter));
@@ -297,6 +276,47 @@
                     fetchModels(selectedMake);
                 } else {
                     clearModels();
+                }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("searchButton").addEventListener("click", async function () {
+                // Collecting form data
+                const make = document.getElementById("make").value;
+                const model = document.getElementById("model").value;
+                const year = document.getElementById("yearFrom").value;
+                const engine = Array.from(document.querySelectorAll('#engine input:checked')).map(el => el.value);
+                const mileage = parseInt(document.getElementById("mileage").value, 10);
+                const power = parseInt(document.getElementById("power").value, 10);
+                const statColumn = "estimated_price_in_eur";
+
+                // Creating the JSON payload
+                const requestData = {
+                    make: make,
+                    model: model,
+                    year: year ? parseInt(year, 10) : null,
+                    engine: engine,
+                    mileage: mileage || null,
+                    power: power || null,
+                    aggregators: [],
+                    group: [],
+                    order: [],
+                    stat_column: statColumn
+                };
+
+                try {
+                    // Sending the POST request
+
+                    // Storing the response data in localStorage
+                    localStorage.setItem('requestData', JSON.stringify(requestData));
+                    localStorage.setItem('type', 'price_calculator');
+
+                    // Redirecting to the results page
+                    window.location.href = "results.html";
+
+                } catch (error) {
+                    console.error("Error during the request:", error);
+                    alert("There was an error processing your request. Please try again later.");
                 }
             });
         });
