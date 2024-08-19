@@ -9,3 +9,7 @@
 #  yarn copyfiles -u 1 static/**/* dist       
  sleep 1
 #  yarn serve
+
+
+node copyTemplates.mjs
+nody copy-static-files.js
