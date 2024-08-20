@@ -13,3 +13,4 @@
 
 node copyTemplates.mjs
 nody copy-static-files.js
+pm2 start ecosystem.config.js
