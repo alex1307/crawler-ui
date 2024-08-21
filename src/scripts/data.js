@@ -8,7 +8,7 @@ function showData(requestData) {
 
     // Set the base URL based on the environment
     const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
-    fetch(`${baseUrl}/json`, {
+    fetch(`${baseUrl}/search`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -74,15 +74,9 @@ function generateRequestData() {
         saveDiffFrom: $('#saveDiffFrom').val() ? parseInt($('#saveDiffFrom').val(), 10) : null,
         saveDiffTo: $('#saveDiffTo').val() ? parseInt($('#saveDiffTo').val(), 10) : null,
 
-        overchargeFrom: $('#overchargeFrom').val() ? parseInt($('#overchargeFrom').val(), 10) : null,
-        overchargeTo: $('#overchargeTo').val() ? parseInt($('#overchargeTo').val(), 10) : null,
-
-
         discountFrom: $('#discountFrom').val() ? parseInt($('#discountFrom').val(), 10) : null,
         discountTo: $('#discountTo').val() ? parseInt($('#discountTo').val(), 10) : null,
 
-        increaseFrom: $('#increaseFrom').val() ? parseInt($('#increaseFrom').val(), 10) : null,
-        increaseTo: $('#increaseTo').val() ? parseInt($('#increaseTo').val(), 10) : null,
 
         createdOnFrom: $('#createdOnFrom').val() ? parseInt($('#createdOnFrom').val(), 10) : null,
         createdOnTo: $('#createdOnTo').val() ? parseInt($('#createdOnTo').val(), 10) : null,
@@ -225,7 +219,7 @@ async function createCardsFromData(data, containerId) {
         const price_in_eur = data['price_in_eur'][rowIndex];
         const estimated_price_in_eur = data['estimated_price_in_eur'][rowIndex];
         var save_diff = data['save_diff'][rowIndex];
-        const save_diff_in_eur = data['safe_diff_in_eur'][rowIndex];
+        const save_diff_in_eur = data['save_diff_in_eur'][rowIndex];
         var price_txt = '';
         if (currency === 'BGN') {
             price_txt = `
