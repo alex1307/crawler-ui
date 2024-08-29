@@ -264,12 +264,12 @@ export function populateDropdown(data, type, elementId) {
                 .forEach(([key, value]) => {
                     const option = document.createElement('option');
                     option.name = elementId;
-                    if (key === '0' && type === 'From') {
+                    if (key === '0' && elementId.includes('From')) {
                         option.value = key;
-                        option.textContent = "From";
-                    } else if (key === '0' && type === 'To') {
+                        option.textContent = 'From';
+                    } else if (key === '0' && elementId.includes('To')) {
                         option.value = key;
-                        option.textContent = "To";
+                        option.textContent = 'To';
                     } else {
                         option.value = key;
                         option.textContent = value;
@@ -283,7 +283,12 @@ export function populateDropdown(data, type, elementId) {
 export function populateCheckboxes(data, containerId) {
     const container = document.getElementById(containerId);
     const wrapper = document.createElement('div');
-    Object.entries(data).forEach(([key, value]) => {
+    const sortedEntries = Object.entries(data).sort(([keyA], [keyB]) => {
+        return keyA.localeCompare(keyB); // Sorts the keys alphabetically
+    });
+
+    // 
+    sortedEntries.forEach(([key, value]) => {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';

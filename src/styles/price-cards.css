@@ -234,7 +234,7 @@ body {
   }
 }
 
-@media (min-width:500px) and (max-width:749px) {
+@media (min-width:577px) and (max-width:749px) {
 
 
   .content .card {
@@ -250,6 +250,19 @@ body {
   .content .fair-price {
     margin-bottom: 15px;
     width: calc(50% - 5px);
+  }
+}
+
+@media (max-width: 576px) {
+  .content .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .content .good-price,
+  .content .fair-price,
+  .content .high-price {
+    width: 100%;
   }
 }
 

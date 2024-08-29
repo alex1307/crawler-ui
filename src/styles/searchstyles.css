@@ -231,9 +231,57 @@ h2 {
     /* Slightly darker border for separation */
 }
 
-/* @media (max-width: 768px) {
+/* Add responsiveness to the search form */
+@media (max-width: 768px) {
+    .search-form {
+        width: 100%;
+    }
+
     .search-table td {
         display: block;
         width: 100%;
     }
-} */
+
+    .field-row {
+        flex-direction: column;
+    }
+
+    .search-table label {
+        margin-bottom: 10px;
+    }
+
+    .checkbox-container {
+        flex-direction: column;
+    }
+
+    .button-container {
+        justify-content: center;
+    }
+
+    .search-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-title {
+        font-size: 1.5em;
+    }
+
+    .search-form {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .prices-section,
+    .technical-section,
+    .general-section,
+    .sorting-section {
+        padding: 10px;
+    }
+
+    .search-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

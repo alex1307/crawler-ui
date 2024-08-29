@@ -125,3 +125,16 @@ body {
 }
 
 /* Style for the "Next" button */
+
+@media (max-width: 576px) {
+    .content .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content .good-price,
+    .content .fair-price,
+    .content .high-price {
+        width: 100%;
+    }
+}

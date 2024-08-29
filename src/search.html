@@ -17,7 +17,6 @@
     <style>
         body {
             background-color: #ffffff;
-            /* Change this to your desired background color */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -46,29 +45,74 @@
             width: 100%;
         }
 
-        .footer {
-            padding: 10px 0;
-            text-align: center;
-            background-color: #343a40;
-            color: #ffffff;
-            width: 100%;
-        }
 
-        .footer a {
-            color: #ffffff;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: #d4d4d4;
-        }
 
         .header-title {
             font-size: 2.5em;
             margin-top: 20px;
             margin-bottom: 20px;
             color: #343a40;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            /* Added margin to create space between the button and footer */
+        }
+
+        .search-button {
+            width: 100%;
+            max-width: 300px;
+            height: 45px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        .footer {
+            padding: 15px 0;
+            text-align: center;
+            color: #333;
+            /* A neutral, soft color for the text */
+            width: 100%;
+            font-size: 14px;
+            /* Adjust the font size if needed */
+            border-top: 1px solid #ddd;
+            /* A subtle border to separate the footer from the content */
+            background-color: #f9f9f9;
+            /* A very light background to keep it distinct yet minimal */
+        }
+
+        .footer p {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            /* Adjust the font size if needed */
+        }
+
+        /* Adjust the font size if needed */
+        .footer a:hover {
+            color: #d4d4d4;
+        }
+
+
+        @media (max-width: 576px) {
+            .header-title {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
@@ -77,6 +121,10 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">ExoMexo😻🦁🐸</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -247,121 +295,18 @@
                         </div>
                     </div>
                 </div>
-                <!--Sorting-->
-                <div class="sorting-section">
-                    <div class="row mt-3">
-
-                        <div class="col-md-6 mb-3">
-                            <label for="orderColumn1">Select 1st column to order by:</label>
-                            <select id="orderColumn1" class="form-control">
-                                <option value="">Please select</option>
-                                <option value="make">Make</option>
-                                <option value="model">Model</option>
-                                <option value="year">Year</option>
-                                <option value="engine">Engine</option>
-                                <option value="gearbox">Gearbox</option>
-                                <option value="power">Power</option>
-                                <option value="mileage">Mileage</option>
-                                <option value="cc">CC</option>
-                                <option value="estimated_price">Estimated Price</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="orderColumn1">Select Order: Asc⬆/Desc⬇</label>
-                            <div style="vertical-align: center;">
-                                <label class="radio-inline">
-                                    <input type="radio" name="order1" value="asc" checked> Ascending
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="order1" value="desc"> Descending
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-
-                        <div class="col-md-6 mb-3">
-                            <label for="orderColumn2">Select 2nd column to order by:</label>
-                            <select id="orderColumn2" class="form-control">
-                                <option value="">Please select</option>
-                                <option value="make">Make</option>
-                                <option value="model">Model</option>
-                                <option value="year">Year</option>
-                                <option value="engine">Engine</option>
-                                <option value="gearbox">Gearbox</option>
-                                <option value="power">Power</option>
-                                <option value="mileage">Mileage</option>
-                                <option value="cc">CC</option>
-                                <option value="estimated_price">Estimated Price</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="orderColumn2">Select Order: Asc⬆/Desc⬇</label>
-                            <div style="vertical-align: center;">
-                                <label class="radio-inline">
-                                    <input type="radio" name="order2" value="asc" checked> Ascending
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="order2" value="desc"> Descending
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3">
-
-                        <div class="col-md-6 mb-3">
-                            <label for="orderColumn3">Select 3rd column to order by:</label>
-                            <select id="orderColumn3" class="form-control">
-                                <option value="">Please select</option>
-                                <option value="make">Make</option>
-                                <option value="model">Model</option>
-                                <option value="year">Year</option>
-                                <option value="engine">Engine</option>
-                                <option value="gearbox">Gearbox</option>
-                                <option value="power">Power</option>
-                                <option value="mileage">Mileage</option>
-                                <option value="cc">CC</option>
-                                <option value="estimated_price">Estimated Price</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="orderColumn3">Select Order: Asc⬆/Desc⬇</label>
-                            <div style="vertical-align: center;">
-                                <label class="radio-inline">
-                                    <input type="radio" name="order3" value="asc" checked> Ascending
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="order3" value="desc"> Descending
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="button-container mt-4">
+                    <button type="button" id="searchButton" class="btn btn-primary btn-lg btn-block">Search</button>
                 </div>
             </div>
-
+        </form>
     </div>
 
 
-
-
-    <div class="button-container mt-4">
-        <button type="button" id="searchButton" class="btn btn-primary btn-lg btn-block">Search</button>
-    </div>
-    </form>
-    <div class="content" id="results"></div>
-    </div>
 
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 ExoMexo😻🦁🐸</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="search.html">Search</a> |
-            <a href="statistic.html">Statistics</a> |
-            <a href="price_calculator.html">Price Calculator</a>
-        </p>
     </div>
 
     <script type="module">
@@ -369,7 +314,6 @@
         import { fetchModels, clearModels } from './scripts/enums.js';
         localStorage.clear();
         document.getElementById('searchButton').addEventListener('click', redirect);
-
 
         document.getElementById('make').addEventListener('change', function () {
             const selectedMake = this.value;
@@ -379,7 +323,6 @@
                 clearModels();
             }
         });
-        //document.getElementById('sort_by_primary').onchange = updateSecondarySortVisibility;
     </script>
 </body>
 
