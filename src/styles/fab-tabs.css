@@ -75,10 +75,12 @@ body {
 }
 
 .custom-checkbox-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    flex: 1 1 auto;
+    /* Flex to occupy available space evenly */
+    min-width: 100px;
+    /* Minimum width to keep checkboxes readable */
+
+    /* Ensure three checkboxes per row by default */
 }
 
 .custom-checkbox-grid input[type="checkbox"] {
@@ -95,7 +97,7 @@ body {
     font-size: 16px;
     line-height: 24px;
     margin: 5px;
-    width: 150px;
+    width: 130px;
 }
 
 .custom-checkbox-grid input[type="checkbox"]+label::before {
@@ -146,6 +148,169 @@ body {
     display: none;
 }
 
+.hidden-checkbox {
+    display: none;
+}
+
+.accordion .card-header {
+    padding: 0;
+    border: none;
+}
+
+.btn-link {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.scrollable-container {
+    display: inline-block;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-height: 250px;
+    overflow-y: auto;
+    width: 100%;
+
+}
+
+/* Ensure the checkboxes remain in a row and expand evenly */
+.form-check-inline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+
+
+
+/*
+Functoins
+*/
+
+.functions-checkbox-grid {
+    flex: 1 1 auto;
+    /* Flex to occupy available space evenly */
+    min-width: 100px;
+    /* Minimum width to keep checkboxes readable */
+    max-width: calc(25% - 10px);
+    /* Ensure three checkboxes per row by default */
+}
+
+.functions-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.functions-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 250px;
+}
+
+.functions-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.functions-checkbox-grid input[type="checkbox"]:checked+label::before {
+    /* background: #007BFF; */
+    border-color: #007BFF;
+}
+
+.functions-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #007BFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Group By*/
+
+.group-by-column-checkbox-grid {
+    flex: 1 1 calc(20% - 10px);
+    /* Occupy up to 20% of the row, adjusted for gap */
+    min-width: 100px;
+    max-width: 100px;
+    /* Limit the max-width to prevent excessive growth */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centers content inside the checkbox container */
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 90px;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]:checked+label::before {
+    /* background: #007BFF; */
+    border-color: #007BFF;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #007BFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 992px) {
+    .functions-checkbox-grid {
+        max-width: calc(33% - 10px);
+        /* Ensure three checkboxes per row by default */
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-tabs {
@@ -167,6 +332,16 @@ body {
         height: 50px;
         font-size: 20px;
     }
+
+    .custom-checkbox-grid {
+        flex: 1 1 calc(50% - 10px);
+        /* Two columns on smaller screens */
+    }
+
+    .functions-checkbox-grid {
+        max-width: calc(50% - 10px);
+        /* Ensure three checkboxes per row by default */
+    }
 }
 
 @media (max-width: 576px) {
@@ -187,5 +362,14 @@ body {
     .fab-container {
         bottom: 10px;
         right: 10px;
+    }
+
+    .custom-checkbox-grid {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .functions-checkbox-grid {
+        max-width: calc(100% - 10px);
+        /* Ensure three checkboxes per row by default */
     }
 }

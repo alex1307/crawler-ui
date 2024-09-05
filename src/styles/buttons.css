@@ -1,0 +1,193 @@
+<style>Modal Content Styling .modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Heading */
+.section h6 {
+    font-weight: bold;
+    color: #0056b3;
+    /* Primary color for headings */
+}
+
+/* Section Description Text */
+.section p {
+    color: #666;
+    /* Subtle gray for description text */
+}
+
+/* Filters Section Styling */
+#modalFiltersSection {
+    background-color: #f8f9fa;
+    /* Light gray background for filters */
+    border-left: 5px solid #007BFF;
+    /* Blue accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Grouped/Classified By Section Styling */
+#modalGroupedBySection {
+    background-color: #eaf4fe;
+    /* Light blue background for grouped data */
+    border-left: 5px solid #007BFF;
+    /* Blue accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Statistical Functions Section Styling */
+#modalStatFunctionsSection {
+    background-color: #fef4ea;
+    /* Light orange background for statistical functions */
+    border-left: 5px solid #FFA500;
+    /* Orange accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Data to Analyze Section Styling */
+#modalDataToAnalyzeSection {
+    background-color: #eaf7ea;
+    /* Light green background for data to analyze */
+    border-left: 5px solid #28a745;
+    /* Green accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Modal Footer Button Styling */
+.modal-footer .btn-primary {
+    background-color: #007BFF;
+    border-color: #007BFF;
+    transition: background-color 0.3s;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.header-container {
+    display: flex;
+    /* Arrange items in a row */
+    align-items: center;
+    /* Vertically center items */
+    gap: 15px;
+    /* Space between items */
+    padding: 5px 0;
+    /* Optional padding for visual balance */
+    width: 275px;
+}
+
+.header-button {
+    flex: 1;
+    /* Allow the button to take up available space */
+    display: flex;
+    align-items: center;
+    /* Center button content vertically */
+    justify-content: space-between;
+    /* Spread button content evenly */
+    margin: 0;
+    /* Remove default margins */
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    /* Increase the icon size */
+    cursor: pointer;
+    /* Change cursor to pointer */
+}
+
+.help-text {
+    font-size: 1rem;
+    /* Adjust font size as needed */
+    color: #333;
+    /* Customize text color */
+}
+
+/* Floating Search Button Styling */
+.floating-search-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.floating-search-btn i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.floating-search-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the search criteria heading */
+.search-criteria-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between the text and the button */
+    font-weight: bold;
+    color: #0056b3;
+    /* Customize color to match your theme */
+    margin-bottom: 15px;
+}
+
+/* Advanced search button styling */
+#toggleAdvancedSearch {
+    margin-left: auto;
+    /* Pushes the button to the right end */
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#toggleAdvancedSearch:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-toggle {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.btn-toggle:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Optional: Adjust margin or position if needed */
+.btn-toggle.more-btn {
+    margin-top: 10px;
+    /* Add some spacing if needed */
+}
+
+</style>

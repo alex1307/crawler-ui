@@ -1,0 +1,47 @@
+/* Responsive adjustments */
+@media (max-width: 992px) {
+
+    .custom-checkbox-grid>div,
+    .group-by-column-checkbox-grid,
+    .functions-checkbox-grid>div {
+        max-width: calc(33% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .custom-checkbox-grid>div,
+    .group-by-column-checkbox-grid,
+    .functions-checkbox-grid>div {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .nav-tabs {
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs .nav-item {
+        width: 50%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-tabs .nav-item {
+        width: 100%;
+    }
+
+    .tab-pane {
+        padding: 15px;
+    }
+
+    .custom-checkbox-grid>div,
+    .group-by-column-checkbox-grid,
+    .functions-checkbox-grid>div {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    .functions-checkbox-grid {
+        max-width: calc(100% - 10px);
+    }
+}
