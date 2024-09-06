@@ -9,7 +9,7 @@ export default defineConfig({
             input: {
                 search: resolve(__dirname, 'src/search.html'),
                 results: resolve(__dirname, 'src/results.html'),
-                price_calculator: resolve(__dirname, 'src/price_calculator.html'),
+                price_calculator: resolve(__dirname, 'src/calculator.html'),
                 analysis: resolve(__dirname, 'src/analysis.html'),
             },
         },

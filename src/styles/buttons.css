@@ -111,35 +111,82 @@
     /* Customize text color */
 }
 
-/* Floating Search Button Styling */
-.floating-search-btn {
+
+.floating-button-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    /* Keeps the buttons fixed on the page */
+    bottom: 10%;
+    /* Distance from the bottom of the viewport */
+    right: 45%;
+    /* Distance from the right of the viewport */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* Space between buttons */
     z-index: 1000;
-    background-color: #007BFF;
-    color: #fff;
+    /* Ensures buttons are above other elements */
+}
+
+/* Search Button Styling */
+
+
+/* Calculate Button Styling */
+/* Floating Button Styles (applies to all relevant buttons) */
+.floating-search-btn,
+.floating-calculate-btn,
+.floating-view-analysis-btn {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    /* Example gradient */
     border: none;
-    border-radius: 50px;
-    padding: 15px 25px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
     font-size: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.floating-search-btn i {
+/* Spacing for icons inside all floating buttons */
+.floating-search-btn i,
+.floating-calculate-btn i,
+.floating-view-analysis-btn i {
     margin-right: 10px;
-    font-size: 20px;
+    /* Consistent spacing for all button icons */
 }
 
-.floating-search-btn:hover {
-    background-color: #0056b3;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+/* Hover Effects */
+.floating-search-btn:hover,
+.floating-calculate-btn:hover,
+.floating-view-analysis-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
+
+.floating-search-btn i,
+.floating-calculate-btn i,
+.floating-view-analysis-btn i {
+    margin-right: 10px;
+    /* Consistent spacing for all button icons */
+}
+
+/* Hover Effects */
+.floating-search-btn:hover,
+.floating-calculate-btn:hover,
+.floating-view-analysis-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.floating-search-btn,
+.floating-calculate-btn,
+.floating-view-analysis-btn i {
+    margin-right: 8px;
+}
+
+/* Hover Effects */
 
 /* Styling for the search criteria heading */
 .search-criteria-heading {

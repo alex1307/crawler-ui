@@ -26,6 +26,8 @@ export function captureData() {
 
         ccFrom: $('#ccFrom').val() ? parseInt($('#ccFrom').val(), null) : null,
         ccTo: $('#ccTo').val() ? parseInt($('#ccTo').val(), 10) : null,
+        priceFrom: $('#priceFrom').val() ? parseInt($('#priceFrom').val(), 10) : null,
+        priceTo: $('#priceTo').val() ? parseInt($('#priceTo').val(), 10) : null,
 
         group: [],
         aggregators: [],

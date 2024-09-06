@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Vehicle Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/fab-tabs.css">
+    <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/buttons.css">
     <link rel="stylesheet" href="styles/header-footer.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard_theme_arrows.min.css"
         rel="stylesheet" type="text/css" />
@@ -74,30 +78,31 @@
                 <div class="col-md-12 mb-3">
                     <!-- Adjust to ensure correct alignment within the layout -->
                     <div class="col-md-12 mb-3">
-                        <label>Engine:</label>
-                        <div id="engine" class="custom-checkbox-grid"></div>
+                        <label> Engine <div id="engine" class="custom-checkbox-grid">
+                            </div>
+                        </label>
                     </div>
                 </div>
             </div>
             <div id="basicSearch" style="display: block;">
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="basicSearchYearFrom">Production Year</label>
-                        <select id="basicSearchYearFrom" class="form-control"></select>
+                        <label for="yearFrom">Production Year</label>
+                        <select id="yearFrom" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="basicSearchPriceTo">Max Price</label>
-                        <select id="basicSearchPriceTo" class="form-control"></select>
+                        <label for="priceTo">Max Price</label>
+                        <select id="priceTo" class="form-control"></select>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="basicSearchMileageTo">Mileage</label>
-                        <select id="basicSearchMileageTo" class="form-control"></select>
+                        <label for="mileageTo">Mileage</label>
+                        <select id="mileageTo" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="basicSearchPowerFrom">Power</label>
-                        <select id="basicSearchPowerFrom" class="form-control"></select>
+                        <label for="powerFrom">Power</label>
+                        <select id="powerFrom" class="form-control"></select>
                     </div>
                 </div>
 
@@ -105,8 +110,8 @@
             <div id="advancedSearch" style="display: none;">
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchGearbox">Gearbox</label>
-                        <select id="advancedSearchGearbox" class="form-control">
+                        <label for="gearbox">Gearbox</label>
+                        <select id="gearbox" class="form-control">
                             <option value="">Select Gearbox</option>
                         </select>
                     </div>
@@ -117,14 +122,14 @@
                         <select id="advancedSearchYearFrom" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchYearTo">Year</label>
-                        <select id="advancedSearchYearTo" class="form-control"></select>
+                        <label for="yearTo">Year</label>
+                        <select id="yearTo" class="form-control"></select>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchMileageFrom">Mileage</label>
-                        <select id="advancedSearchMileageFrom" class="form-control"></select>
+                        <label for="mileageFrom">Mileage</label>
+                        <select id="mileageFrom" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="advancedSearchMileageTo">Mileage</label>
@@ -137,18 +142,28 @@
                         <select id="advancedSearchPowerFrom" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchPowerTo">Power</label>
-                        <select id="advancedSearchPowerTo" class="form-control"></select>
+                        <label for="powerTo">Power</label>
+                        <select id="powerTo" class="form-control"></select>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchCcFrom">cm³</label>
-                        <select id="advancedSearchCcFrom" class="form-control"></select>
+                        <label for="priceFrom">Price</label>
+                        <select id="priceFrom" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchCcTo">cm³</label>
-                        <select id="advancedSearchCcTo" class="form-control"></select>
+                        <label for="priceTo">Price</label>
+                        <select id="advancedSearchPriceTo" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3">
+                        <label for="ccFrom">cm³</label>
+                        <select id="ccFrom" class="form-control"></select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="ccTo">cm³</label>
+                        <select id="ccTo" class="form-control"></select>
                     </div>
                 </div>
             </div>
@@ -204,7 +219,7 @@
                                     </div>
 
                                 </div>
-                                <div class="group-by-column-checkbox-grid">
+                                <div class="custom-checkbox-grid">
                                     <button class="btn-toggle more-btn" id="toggleMoreColumns">More...</button>
                                 </div>
 
@@ -247,35 +262,33 @@
                                     </div>
                                 </div>
                                 <div class="form-check-inline">
-                                    <div class="custom-checkbox-grid">
+                                    <div class="functions-checkbox-grid">
                                         <input type="radio" name="statColumn" id="price_in_eur" value="price_in_eur"
                                             checked>
                                         <label for="price_in_eur">Price</label>
                                     </div>
-                                    <div class="custom-checkbox-grid">
+                                    <div class="functions-checkbox-grid">
                                         <input type="radio" name="statColumn" id="estimated_price_in_eur"
                                             value="estimated_price_in_eur">
                                         <label for="estimated_price_in_eur">Estimated Price</label>
                                     </div>
-                                    <div class="hidden-radio" style="display: none;">
-                                        <input type="radio" class="column-check-input" name="statColumn"
-                                            id="save_diff_in_eur" value="save_diff_in_eur">
-                                        <label for="save_diff_in_eur">📉⬇️ Save Difference €</label>
+                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                        <input type="radio" name="statColumn" id="save_diff_in_eur"
+                                            value="save_diff_in_eur">
+                                        <label for="save_diff_in_eur">Save Difference €</label>
                                     </div>
-                                    <div class="hidden-radio" style="display: none;">
-                                        <input type="radio" class="column-check-input" name="statColumn"
-                                            id="extra_charge_in_eur" value="extra_charge_in_eur">
-                                        <label for="extra_charge_in_eur">📈🔺 Extra Charge €</label>
+                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                        <input type="radio" name="statColumn" id="extra_charge_in_eur"
+                                            value="extra_charge_in_eur">
+                                        <label for="extra_charge_in_eur">Extra Charge €</label>
                                     </div>
-                                    <div class="hidden-radio" style="display: none;">
-                                        <input type="radio" class="column-check-input" name="statColumn" id="discount"
-                                            value="discount">
-                                        <label for="discount">📉⬇️ Discount %</label>
+                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                        <input type="radio" name="statColumn" id="discount" value="discount">
+                                        <label for="discount">Discount %</label>
                                     </div>
-                                    <div class="hidden-radio" style="display: none;">
-                                        <input type="radio" class="column-check-input" name="statColumn" id="increase"
-                                            value="increase">
-                                        <label for="increase">📈🔺 Increased %</label>
+                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                        <input type="radio" name="statColumn" id="increase" value="increase">
+                                        <label for="increase">Increased %</label>
                                     </div>
                                     <!-- Add similar structure for other radio buttons -->
                                 </div>
@@ -387,149 +400,152 @@
             </div>
 
         </div>
-        <div class="mt-3">
-            <!-- Floating Search Button -->
-            <button id="floatingSearchButton" class="floating-search-btn">
-                <i class="fas fa-search"></i> Search
-            </button>
-
-            <!-- Bootstrap Modal -->
-            <div class="modal fade" id="groupHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Understanding Grouping and Statistics:</strong></p>
-                            <p>Selecting the checkboxes above allows you to group the vehicles based on the
-                                selected criteria. For example, you can group the vehicles by their make, model,
-                                or year of manufacture. This helps you to organize the data and see trends and
-                                patterns more clearly.</p>
-                            <p>Specifically for mileage, the vehicles will be grouped into the following
-                                categories:</p>
-                            <ul>
-                                <li>Up to 20,000 km.</li>
-                                <li>20,000 - 40,000 km.</li>
-                                <li>40,000 - 60,000 km.</li>
-                                <li>60,000 - 80,000 km.</li>
-                                <li>80,000 - 100,000 km.</li>
-                                <li>100,000 - 120,000 km.</li>
-                                <li>120,000 - 150,000 km.</li>
-                                <li>Over 150,000 km.</li>
-                            </ul>
-                            <p>Checking the power checkbox, the vehicles will be grouped into the following
-                                categories:</p>
-                            <ul>
-                                <li>Up to 90 h.p.</li>
-                                <li>90 - 130 h.p.</li>
-                                <li>130 - 250 h.p.</li>
-                                <li>150 - 200 h.p.</li>
-                                <li>200 - 252 h.p.</li>
-                                <li>252 - 303 h.p.</li>
-                                <li>303 - 358 h.p.</li>
-                                <li>358 - 403 h.p.</li>
-                                <li>403 - 454 h.p.</li>
-                                <li>Over 454 h.p.</li>
-                            </ul>
-                            <p>By grouping vehicles in this way, you can get a statistical overview for each
-                                group, such as:</p>
-                            <ul>
-                                <li><strong>Count:</strong> The total number of vehicles in each group.</li>
-                                <li><strong>Average:</strong> The average value of a certain attribute (e.g.,
-                                    price) within each group.</li>
-                                <li><strong>Minimum and Maximum:</strong> The lowest and highest values within
-                                    each group.</li>
-                            </ul>
-                            <p>This statistical overview helps you understand the characteristics of vehicles in
-                                each category, making it easier to analyze and make informed decisions.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="columnsHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="description">
-                                <p><strong>Select Columns to Analyze:</strong> Choose one or more columns from
-                                    your dataset
-                                    that you wish to analyze. Each checkbox represents a different column. For
-                                    example, you
-                                    might want to analyze the 'Price' or 'Estimated Price' columns to understand
-                                    their
-                                    distribution and summary statistics. <strong>All prices are in EUR(€).
-                                        [Discount] and
-                                        [Increase] columns are percentages (for example 25%).</strong></p>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="functionsHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Statistical Functions Description:</strong></p>
-                            <ul>
-                                <li><strong>Count:</strong> Total number of data points in the selected column.
-                                </li>
-                                <li><strong>Min:</strong> The smallest value in the selected column.</li>
-                                <li><strong>Max:</strong> The largest value in the selected column.</li>
-                                <li><strong>Average (Mean):</strong> The sum of all values divided by the number
-                                    of
-                                    values in the selected column.</li>
-                                <li><strong>Median:</strong> The middle value when the selected column's values
-                                    are
-                                    ordered from smallest to largest.</li>
-                                <li><strong>Standard Deviation:</strong> A measure of how spread out the values
-                                    in the
-                                    selected column are around the mean.</li>
-                                <li><strong>Relative Standard Deviation (RSD):</strong> The standard deviation
-                                    expressed
-                                    as a percentage of the mean, indicating the extent of variability in
-                                    relation to the
-                                    mean.</li>
-                                <li><strong>Percentiles:</strong> Values below which a certain percentage of the
-                                    data in
-                                    the selected column falls. For example, the 60th percentile is the value
-                                    below which
-                                    60% of the data falls.</li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- Hidden Help Text (initially hidden, shown on hover or click) -->
-        </div>
-
     </div>
+
+    <!-- Floating Search Button -->
+    <div class="floating-button-container">
+        <!-- Floating Search Button -->
+        <button id="floatingSearchButton" class="floating-view-analysis-btn">
+            <i class="fas fa-chart-line"></i> View Analysis Data
+        </button>
+    </div>
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="groupHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Understanding Grouping and Statistics:</strong></p>
+                    <p>Selecting the checkboxes above allows you to group the vehicles based on the
+                        selected criteria. For example, you can group the vehicles by their make, model,
+                        or year of manufacture. This helps you to organize the data and see trends and
+                        patterns more clearly.</p>
+                    <p>Specifically for mileage, the vehicles will be grouped into the following
+                        categories:</p>
+                    <ul>
+                        <li>Up to 20,000 km.</li>
+                        <li>20,000 - 40,000 km.</li>
+                        <li>40,000 - 60,000 km.</li>
+                        <li>60,000 - 80,000 km.</li>
+                        <li>80,000 - 100,000 km.</li>
+                        <li>100,000 - 120,000 km.</li>
+                        <li>120,000 - 150,000 km.</li>
+                        <li>Over 150,000 km.</li>
+                    </ul>
+                    <p>Checking the power checkbox, the vehicles will be grouped into the following
+                        categories:</p>
+                    <ul>
+                        <li>Up to 90 h.p.</li>
+                        <li>90 - 130 h.p.</li>
+                        <li>130 - 250 h.p.</li>
+                        <li>150 - 200 h.p.</li>
+                        <li>200 - 252 h.p.</li>
+                        <li>252 - 303 h.p.</li>
+                        <li>303 - 358 h.p.</li>
+                        <li>358 - 403 h.p.</li>
+                        <li>403 - 454 h.p.</li>
+                        <li>Over 454 h.p.</li>
+                    </ul>
+                    <p>By grouping vehicles in this way, you can get a statistical overview for each
+                        group, such as:</p>
+                    <ul>
+                        <li><strong>Count:</strong> The total number of vehicles in each group.</li>
+                        <li><strong>Average:</strong> The average value of a certain attribute (e.g.,
+                            price) within each group.</li>
+                        <li><strong>Minimum and Maximum:</strong> The lowest and highest values within
+                            each group.</li>
+                    </ul>
+                    <p>This statistical overview helps you understand the characteristics of vehicles in
+                        each category, making it easier to analyze and make informed decisions.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="columnsHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="description">
+                        <p><strong>Select Columns to Analyze:</strong> Choose one or more columns from
+                            your dataset
+                            that you wish to analyze. Each checkbox represents a different column. For
+                            example, you
+                            might want to analyze the 'Price' or 'Estimated Price' columns to understand
+                            their
+                            distribution and summary statistics. <strong>All prices are in EUR(€).
+                                [Discount] and
+                                [Increase] columns are percentages (for example 25%).</strong></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="functionsHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Statistical Functions Description:</strong></p>
+                    <ul>
+                        <li><strong>Count:</strong> Total number of data points in the selected column.
+                        </li>
+                        <li><strong>Min:</strong> The smallest value in the selected column.</li>
+                        <li><strong>Max:</strong> The largest value in the selected column.</li>
+                        <li><strong>Average (Mean):</strong> The sum of all values divided by the number
+                            of
+                            values in the selected column.</li>
+                        <li><strong>Median:</strong> The middle value when the selected column's values
+                            are
+                            ordered from smallest to largest.</li>
+                        <li><strong>Standard Deviation:</strong> A measure of how spread out the values
+                            in the
+                            selected column are around the mean.</li>
+                        <li><strong>Relative Standard Deviation (RSD):</strong> The standard deviation
+                            expressed
+                            as a percentage of the mean, indicating the extent of variability in
+                            relation to the
+                            mean.</li>
+                        <li><strong>Percentiles:</strong> Values below which a certain percentage of the
+                            data in
+                            the selected column falls. For example, the 60th percentile is the value
+                            below which
+                            60% of the data falls.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Hidden Help Text (initially hidden, shown on hover or click) -->
+
+
+
     <div class="footer">
         <p>&copy; 2024 ExoMexo😻🦁🐸</p>
 

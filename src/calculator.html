@@ -2,130 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vehicle Statistics</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description"
+        content="eXoMexo - Your premier platform for discovering car deals, comprehensive statistics, and accurate price estimations." />
+    <meta name="author" content="KatMat Team" />
+    <meta name="keywords" content="car deals, statistics, price, data analysis, car market, aggregator, eXoMexo" />
+    <title>eXoMexo🦁🐸</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/stat.css">
     <link rel="stylesheet" href="styles/searchstyles.css">
     <link rel="stylesheet" href="styles/header-footer.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/base.css">
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.smartWizard.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-
-
         .content {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-        }
-
-
-        .bcontent {
-            margin-top: 10px;
-        }
-
-        /* Style for the "Next" button */
-        .btn-toolbar .sw-btn-next {
-            background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
-            /* Gradient */
-            border: none !important;
-            color: white !important;
-            border-radius: 25px !important;
-            padding: 10px 30px !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .btn-toolbar .sw-btn-next:hover {
-            background: linear-gradient(135deg, #2575fc, #6a11cb) !important;
-            /* Gradient reverse */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        /* Style for the "Previous" button */
-        .btn-toolbar .sw-btn-prev {
-            background: linear-gradient(135deg, #f7971e, #ffd200) !important;
-            /* Gradient */
-            border: none !important;
-            color: white !important;
-            border-radius: 25px !important;
-            padding: 10px 30px !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .btn-toolbar .sw-btn-prev:hover {
-            background: linear-gradient(135deg, #ffd200, #f7971e) !important;
-            /* Gradient reverse */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        /* Style for the "Search" button inside step-5 */
-        #step-5 .btn-primary.sw-btn-search {
-            background: linear-gradient(135deg, #28a745, #4caf50) !important;
-            /* Green */
-            border: none !important;
-            color: white !important;
-            border-radius: 25px !important;
-            padding: 10px 30px !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-            transition: all 0.3s ease !important;
-        }
-
-        #step-5 .btn-primary.sw-btn-search:hover {
-            background: linear-gradient(135deg, #4caf50, #28a745) !important;
-            /* Gradient reverse */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        /* Additional button styling */
-        .btn-toolbar .sw-btn,
-        #step-5 .btn-primary.sw-btn-search {
-            border-radius: 25px !important;
-            padding: 10px 30px !important;
-        }
-
-        /* Style for the step tabs */
-        .smartwizard .nav-tabs {
-            border-bottom: none;
-        }
-
-        .smartwizard .nav-link {
-            border-radius: 25px !important;
-            background: linear-gradient(135deg, #f7971e, #ffd200) !important;
-            /* Previous button color */
-            border: none !important;
-            color: white !important;
-            margin: 0 5px;
-            transition: all 0.3s ease !important;
-        }
-
-        .smartwizard .nav-link:hover {
-            background: linear-gradient(135deg, #ffd200, #f7971e) !important;
-            /* Gradient reverse */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        .smartwizard .nav-link.done {
-            background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
-            /* Next button color */
-        }
-
-        .smartwizard .nav-link.active {
-            background: linear-gradient(135deg, #28a745, #4caf50) !important;
-            /* Green */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
         }
     </style>
 </head>
@@ -214,14 +116,16 @@
 
                 </div>
             </div>
-            <div class="button-container mt-4">
-                <button type="button" id="searchButton" class="btn btn-primary btn-lg btn-block">🧮📈💵 Calculate
-                    Price</button>
-            </div>
         </form>
-        <div class="content mt-4" id="results"></div>
-    </div>
+        <div style="height: 35px;">
 
+        </div>
+    </div>
+    <div class="floating-button-container">
+        <button type=" button" id="searchButton" class="floating-calculate-btn">
+            <i class="fas fa-calculator"></i> Calculate Prices
+        </button>
+    </div>
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 ExoMexo😻🦁🐸</p>

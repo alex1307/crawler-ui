@@ -6,25 +6,25 @@ const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:30
 
 let map = new Map();
 map.set('make', 'make');
-
-map.set('basicSearchYearFrom', 'year');
-map.set('basicSearchPriceTo', 'price');
-map.set('basicSearchMileageTo', 'mileage');
-map.set('basicSearchPowerFrom', 'power');
-
 map.set('engine', 'engine');
+
+map.set('yearFrom', 'year');
+map.set('mileageTo', 'mileage');
+map.set('powerFrom', 'power');
+map.set('priceTo', 'price');
+
+map.set('priceFrom', 'price');
+map.set('ccFrom', 'cc');
+map.set('ccTo', 'cc');
+map.set('gearbox', 'gearbox');
+map.set('yearTo', 'year');
+map.set('mileageFrom', 'mileage');
+
+
 map.set('advancedSearchYearFrom', 'year');
-map.set('advancedSearchYearTo', 'year');
-
-map.set('advancedSearchMileageFrom', 'mileage');
-map.set('advancedSearchMileageTo', 'mileage');
-
 map.set('advancedSearchPowerFrom', 'power');
-map.set('advancedSearchPowerTo', 'power');
-map.set('advancedSearchCcFrom', 'cc');
-map.set('advancedSearchCcTo', 'cc');
-map.set('advancedSearchGearbox', 'gearbox');
-map.set('advancedSearchPriceFrom', 'price');
+
+map.set('advancedSearchMileageTo', 'mileage');
 map.set('advancedSearchPriceTo', 'price');
 
 
@@ -55,8 +55,38 @@ function redirectToResultsPage(requestData) {
     window.location.href = `results.html`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
 
+// Ensure this script is loaded after the DOM elements are available
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleAdvancedButton = document.getElementById('toggleAdvancedSearch');
+
+    // Add a click event listener to toggle advanced search
+    toggleAdvancedButton.addEventListener('click', function (event) {
+        //event.preventDefault(); // Prevent default button behavior
+
+        const advancedFields = document.getElementById('advancedSearch');
+        const basicFields = document.getElementById('basicSearch');
+        advancedFields.style.display = advancedFields.style.display === 'none' ? 'block' : 'none';
+        basicFields.style.display = basicFields.style.display === 'none' ? 'block' : 'none';
+
+        if (advancedFields.style.display === 'block') {
+            // Populate advanced search fields
+            document.getElementById('advancedSearchYearFrom').value = document.getElementById('yearFrom').value;
+            document.getElementById('advancedSearchMileageTo').value = document.getElementById('mileageTo').value;
+            document.getElementById('advancedSearchPowerFrom').value = document.getElementById('powerFrom').value;
+            document.getElementById('advancedSearchPriceTo').value = document.getElementById('priceTo').value;
+        } else {
+            // Clear advanced search fields
+            document.getElementById('yearFrom').value = document.getElementById('advancedSearchYearFrom').value;
+            document.getElementById('mileageTo').value = document.getElementById('advancedSearchMileageTo').value;
+            document.getElementById('powerFrom').value = document.getElementById('advancedSearchPowerFrom').value;
+            document.getElementById('priceTo').value = document.getElementById('advancedSearchPriceTo').value;
+
+        }
+
+        // Toggle button text between Advanced and Basic
+        this.textContent = advancedFields.style.display === 'none' ? 'Advanced' : 'Basic';
+    });
     document.getElementById('make').addEventListener('change', function () {
         const selectedMake = this.value;
         if (selectedMake) {
@@ -65,13 +95,59 @@ document.addEventListener('DOMContentLoaded', () => {
             clearModels();
         }
     });
-});
-document.getElementById('toggleAdvancedSearch').addEventListener('click', function () {
-    const advancedFields = document.getElementById('advancedSearch');
-    const basicFields = document.getElementById('basicSearch');
-    advancedFields.style.display = advancedFields.style.display === 'none' ? 'block' : 'none';
-    basicFields.style.display = basicFields.style.display === 'none' ? 'block' : 'none';
-    this.textContent = advancedFields.style.display === 'none' ? 'Advanced' : 'Basic';
+
+    document.getElementById('toggleMoreColumns').addEventListener('click', function (event) {
+        const hiddenCheckboxes = document.querySelectorAll('.hidden-checkbox');
+        if (hiddenCheckboxes.length === 0) {
+            return;
+        }
+        const isHidden = hiddenCheckboxes[0].style.display === 'none';
+        hiddenCheckboxes.forEach(checkbox => {
+            checkbox.style.display = isHidden ? 'inline-block' : 'none';
+        });
+        this.textContent = isHidden ? 'Less...' : 'More...';
+    });
+    document.getElementById('toggleStatColumn').addEventListener('click', function (event) {
+        const hiddenCheckboxes = document.querySelectorAll('.hidden-radio');
+        if (hiddenCheckboxes.length === 0) {
+            return;
+        }
+        const isHidden = hiddenCheckboxes[0].style.display === 'none';
+        hiddenCheckboxes.forEach(checkbox => {
+            checkbox.style.display = isHidden ? 'inline-block' : 'none';
+        });
+        this.textContent = isHidden ? 'Less...' : 'More...';
+    });
+    document.getElementById('toggleFnMore').addEventListener('click', function (event) {
+        const hiddenCheckboxes = document.querySelectorAll('.hidden-function');
+        if (hiddenCheckboxes.length === 0) {
+            return;
+        }
+        const isHidden = hiddenCheckboxes[0].style.display === 'none';
+        hiddenCheckboxes.forEach(checkbox => {
+            checkbox.style.display = isHidden ? 'inline-block' : 'none';
+        });
+        this.textContent = isHidden ? 'Less...' : 'More...';
+    });
+    document.getElementById('floatingSearchButton').addEventListener('click', function () {
+        const json = captureData();
+        console.log("JSON:", json);
+        if (validateJSON(json)) {
+            // Parse and display the selected parameters in the summary modal
+            const data = JSON.parse(json);
+            populateModalSections(data);
+
+            // Show the summary modal
+            $('#summaryModal').modal('show');
+        } else {
+            return false; // Stop the process if JSON validation fails
+        }
+    });
+    document.querySelector('#summaryModal .btn-primary').addEventListener('click', function () {
+        const json = captureData();
+        const data = JSON.parse(json);
+        redirectToResultsPage(data); // Execute the redirection to the results page
+    });
 
 });
 
@@ -81,58 +157,6 @@ $(function () {
 });
 // Show help text on hover or click
 
-
-
-document.getElementById('toggleMoreColumns').addEventListener('click', function () {
-    const hiddenCheckboxes = document.querySelectorAll('.hidden-checkbox');
-    if (hiddenCheckboxes.length === 0) {
-        return;
-    }
-    const isHidden = hiddenCheckboxes[0].style.display === 'none';
-    hiddenCheckboxes.forEach(checkbox => {
-        checkbox.style.display = isHidden ? 'inline-block' : 'none';
-    });
-    this.textContent = isHidden ? 'Less...' : 'More...';
-});
-
-document.getElementById('toggleStatColumn').addEventListener('click', function () {
-    const hiddenCheckboxes = document.querySelectorAll('.hidden-radio');
-    if (hiddenCheckboxes.length === 0) {
-        return;
-    }
-    const isHidden = hiddenCheckboxes[0].style.display === 'none';
-    hiddenCheckboxes.forEach(checkbox => {
-        checkbox.style.display = isHidden ? 'inline-block' : 'none';
-    });
-    this.textContent = isHidden ? 'Less...' : 'More...';
-});
-document.getElementById('toggleFnMore').addEventListener('click', function () {
-    const hiddenCheckboxes = document.querySelectorAll('.hidden-function');
-    if (hiddenCheckboxes.length === 0) {
-        return;
-    }
-    const isHidden = hiddenCheckboxes[0].style.display === 'none';
-    hiddenCheckboxes.forEach(checkbox => {
-        checkbox.style.display = isHidden ? 'inline-block' : 'none';
-    });
-    this.textContent = isHidden ? 'Less...' : 'More...';
-});
-
-
-document.getElementById('floatingSearchButton').addEventListener('click', function () {
-    const json = captureData();
-    console.log("JSON:", json);
-    if (validateJSON(json)) {
-        // Parse and display the selected parameters in the summary modal
-        const data = JSON.parse(json);
-        populateModalSections(data);
-
-        // Show the summary modal
-        $('#summaryModal').modal('show');
-    } else {
-        return false; // Stop the process if JSON validation fails
-    }
-});
 
 // Function to display the selected parameters in the summary modal
 function populateModalSections(data) {
@@ -146,7 +170,30 @@ function populateModalSections(data) {
     const filters = [];
     if (data.make) filters.push(`Make: ${data.make}`);
     if (data.model) filters.push(`Model: ${data.model}`);
+
     if (data.year) filters.push(`Year: ${data.year}`);
+    if (data.yearFrom) filters.push(`Year From: ${data.yearFrom}`);
+    if (data.yearTo) filters.push(`Year To: ${data.yearTo}`);
+
+    if (data.mileage) filters.push(`Mileage: ${data.mileage} km`);
+    if (data.mileageFrom) filters.push(`Mileage From: ${data.mileageFrom} km`);
+    if (data.mileageTo) filters.push(`Mileage To: ${data.mileageTo} km`);
+
+    if (data.power) filters.push(`Power: ${data.power} hp`);
+    if (data.powerFrom) filters.push(`Power From: ${data.powerFrom} hp`);
+    if (data.powerTo) filters.push(`Power To: ${data.powerTo} hp`);
+
+    if (data.priceTo) filters.push(`Price To: ${data.priceTo} €`);
+    if (data.price) filters.push(`Price: ${data.price} €`);
+    if (data.priceFrom) filters.push(`Price From: ${data.priceFrom} €`);
+
+    if (data.cc) filters.push(`CC: ${data.cc}`);
+    if (data.ccFrom) filters.push(`CC From: ${data.ccFrom} cm³`);
+    if (data.ccTo) filters.push(`CC To: ${data.ccTo} cm³`);
+
+    if (data.gearbox) filters.push(`Gearbox: ${data.gearbox}`);
+
+
     if (data.engine && data.engine.length > 0) filters.push(`Engine: ${data.engine.join(', ')}`);
     document.getElementById('modalFiltersSection').textContent = filters.join(' | ');
 
@@ -170,11 +217,7 @@ function populateModalSections(data) {
 
 
 // Handle the confirmation button click inside the modal
-document.querySelector('#summaryModal .btn-primary').addEventListener('click', function () {
-    const json = captureData();
-    const data = JSON.parse(json);
-    redirectToResultsPage(data); // Execute the redirection to the results page
-});
+
 
 function populateFilters(enumName, elementId) {
     fetch(`${baseUrl}/enums/${enumName}?source = estimated_price`, {
