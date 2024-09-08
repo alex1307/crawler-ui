@@ -5,9 +5,9 @@
     "scripts": {
         "copy-assets": "yarn copyfiles -u 1 src/assets/images/* dist && yarn copyfiles -u 1 static/**/* dist && yarn copyfiles -u 1 src/assets/templates/* dist",
         "start": "vite",
-        "dev": "vite",
+        "dev": "vite --port 9090",
         "build": "vite build",
-        "serve": "serve -s dist -l 9090"
+        "serve": "vite --port 9090"
     },
     "devDependencies": {
         "copyfiles": "^2.4",
