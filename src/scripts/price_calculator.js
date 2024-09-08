@@ -69,7 +69,7 @@ function display(responseData) {
     addListItem('Quantile 80', `${responseData.quantile_80} EUR`, 'The price below which 80% of the data points fall.');
     addListItem('Quantile 85', `${responseData.quantile_85} EUR`, 'The price below which 85% of the data points fall.');
     addListItem('Max Price', `${responseData.max} EUR`, 'The highest price found in the data.');
-    addListItem('Count', responseData.itemsCount, 'The number of data points used in the analysis.');
+    addListItem('Count', responseData.count, 'The number of data points used in the analysis.');
     addListItem('RSD (Relative Standard Deviation)', `${responseData.rsd}%`, 'This value shows the variability of the data. A lower RSD indicates more consistency in the price data.');
     // Append the list group to the card body
     cardBody.appendChild(listGroup);

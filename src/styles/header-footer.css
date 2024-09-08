@@ -1,10 +1,5 @@
 /* General Body Styling */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-}
+
 
 /* Navbar Styling */
 .navbar {

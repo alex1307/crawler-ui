@@ -17,7 +17,7 @@ const dark_mode_colors = [
     'bg-danger',
     'bg-warning',
     'bg-info',
-    'bg-light',
+    'bg-dark'
 ];
 
 // Set the base URL based on the environment

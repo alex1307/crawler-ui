@@ -9,6 +9,18 @@
     .custom-checkbox-grid {
         flex: 1 1 calc(25% - 10px);
     }
+
+    .table {
+        font-size: 18px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 18px;
+        /* Adjust font size for smaller screens */
+        padding: 6px;
+        /* Reduce padding further on mobile */
+    }
 }
 
 @media (max-width: 1000px) {
@@ -33,6 +45,18 @@
 
     .search-form {
         width: 100%;
+    }
+
+    .table {
+        font-size: 15px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 15px;
+        /* Adjust font size for smaller screens */
+        padding: 6px;
+        /* Reduce padding further on mobile */
     }
 }
 
@@ -59,6 +83,18 @@
 
     .search-form {
         width: 100%;
+    }
+
+    .table {
+        font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+        font-size: 12px;
+        /* Adjust font size for smaller screens */
+        padding: 5px;
+        /* Reduce padding further on mobile */
     }
 }
 

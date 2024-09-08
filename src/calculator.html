@@ -35,7 +35,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">ExoMexo😻🦁🐸</a>
+        <a class="navbar-brand" href="#">ExoMexo🦁🐸</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -48,7 +48,7 @@
                     <a class="nav-link" href="analysis">Data Analysis</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="price_calculator">Price Calculator</a>
+                    <a class="nav-link" href="calculator">Price Calculator</a>
                 </li>
             </ul>
         </div>
@@ -128,12 +128,12 @@
     </div>
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 ExoMexo😻🦁🐸</p>
+        <p>&copy; 2024 ExoMexo🦁🐸</p>
         <p>
             <a href="index.html">Home</a> |
             <a href="search">Search</a> |
             <a href="analysis">Data Analysis</a> |
-            <a href="price_calculator">Price Calculator</a>
+            <a href="calculator">Price Calculator</a>
         </p>
     </div>
 
@@ -162,7 +162,7 @@
                 // Collecting form data
                 const make = document.getElementById("make").value;
                 const model = document.getElementById("model").value;
-                const year = document.getElementById("yearFrom").value;
+                const year = parseInt(document.getElementById("yearFrom").value, 10);
                 const engine = Array.from(document.querySelectorAll('#engine input:checked')).map(el => el.value);
                 const mileage = parseInt(document.getElementById("mileage").value, 10);
                 const power = parseInt(document.getElementById("power").value, 10);
@@ -171,7 +171,7 @@
                 // Creating the JSON payload
                 const requestData = {
                     make: make,
-                    model: model,
+                    model: model ? model : null,
                     year: year ? parseInt(year, 10) : null,
                     engine: engine,
                     mileage: mileage || null,

@@ -7,14 +7,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: #647df9;
-}
+
 
 .content {
   max-width: 1440px;
