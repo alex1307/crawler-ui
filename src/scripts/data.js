@@ -15,7 +15,6 @@ function showData(requestData) {
         },
         body: JSON.stringify(requestData)
     }).then((response) => response.json()).then((data) => {
-        console.log("Success:", data);
         // Assuming 'data' is the structure you've provided, or adjust the following functions as necessary
         // const transformedData = transformDataForChart(data);
         document.getElementById('results').textContent = '';
@@ -90,7 +89,6 @@ function generateRequestData() {
 
     const engineCheckboxes = document.querySelectorAll('input[name="engine"]:checked');
     if (engineCheckboxes.length > 0) {
-        console.log("Engine checkboxes: ", engineCheckboxes);
         data.engine = Array.from(engineCheckboxes).map(cb => cb.value);
     }
     // document.getElementById('results').textContent = JSON.stringify(requestData, null, 2);
@@ -141,8 +139,6 @@ function generateChart(data, containerId) {
         backgroundColor: randomColor()
     }));
     // Verify datasets and labels are populated
-    console.log("Labels (Years):", years);
-    console.log("Datasets:", datasets);
     // Generate the chart
     new Chart(ctx, {
         type: "bar",
@@ -169,7 +165,6 @@ function replacePlaceholders(template, data) {
 }
 
 async function loadTemplate(url) {
-    console.log("Loading template");
     const response = await fetch(url);
     if (!response.ok) {
         throw new Error(`Could not load template: ${url}`);
@@ -191,8 +186,7 @@ async function createCardsFromData(data, containerId) {
     const container = document.getElementById(containerId);
 
     // Assuming each array in your data object has the same length
-    const numRows = data.count;
-    console.log("Rows:", numRows);
+    const numRows = data.itemsCount;
     // Create card elements
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
         let cardTemplate;
@@ -274,9 +268,7 @@ async function createCardsFromData(data, containerId) {
         }
         const equipmentArray = data['equipment'][rowIndex].split(',');
         const firstFourEquipment = equipmentArray.slice(0, 4).join('<br>');
-        console.log("TOP 4 Equipment: ", firstFourEquipment);
         const fullEquipment = equipmentArray.join('<br>');
-        console.log("Full Equipment: ", fullEquipment);
         const cardData = {
             title: data['title'][rowIndex],
             make: data['make'][rowIndex],

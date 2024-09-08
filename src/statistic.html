@@ -589,7 +589,6 @@
         import { showStatisticData } from './scripts/rainbow.js';
         localStorage.clear();
         function redirectToResultsPage(requestData) {
-            console.log("Local storage data:", requestData);
             localStorage.setItem('requestData', JSON.stringify(requestData));
             const columns = [];
 
@@ -626,23 +625,7 @@
             });
         });
 
-        $('#smartwizard').on("showStep", function (e, anchorObject, stepNumber, stepDirection) {
-            console.log("showStep");
-            // Show the search button only on the last step
-            if (stepNumber === 4) { // Assuming stepNumber 4 corresponds to Step 5
-                console.log("final step #5");
-                const json = captureData();
-                if (validateJSON(json)) {
-                    console.log("Redirecting to results.html");
-                    const data = JSON.parse(json);
-                    console.log("DATA: ", data);// This function should collect your form data
-                    redirectToResultsPage(data);
-                } else {
-                    return false;
-                }
-            }
-            return true;
-        });
+
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('make').addEventListener('change', function () {

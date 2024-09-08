@@ -146,11 +146,10 @@
         $(document).ready(function () {
             const filters = ['make', 'engine', 'gearbox', 'year'];
             filters.forEach(filter => populateFilter(filter));
-            console.log("Filters populated");
+
 
             $('#make').change(function () {
                 const selectedMake = $(this).val();
-                console.log("Selected make:", selectedMake);
                 if (selectedMake) {
                     fetchModels(selectedMake);
                 } else {

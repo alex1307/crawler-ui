@@ -38,11 +38,8 @@ export function captureData() {
 
     const engineCheckboxes = document.querySelectorAll('input[name="engine"]:checked');
     if (engineCheckboxes.length > 0) {
-        console.log("Engine checkboxes: ", engineCheckboxes);
         data.engine = Array.from(engineCheckboxes).map(cb => cb.value);
     }
-
-    console.log(data);
 
     if (data.ccFrom == 0) {
         data.ccFrom = null;
@@ -118,9 +115,6 @@ export function captureData() {
             asc: $('input[name="order3"]:checked').val() === 'asc'
         });
     }
-
-
-    console.log(data);
     return JSON.stringify(data);
 }
 function showError(message) {
@@ -133,9 +127,7 @@ export function validateJSON(json) {
     try {
         const data = JSON.parse(json);
         const selected = [data.make, data.model, data.year, data.engine, data.gearbox, data.power].filter(field => field !== null);
-        console.log("Selected: ", selected);
         if (selected.length < 2) {
-            console.log("invalid data");
             showError('fill in all vehicle filter fields');
             return false;
         }
@@ -143,18 +135,13 @@ export function validateJSON(json) {
 
         // Check for empty groupBy and statistics
         if (data.group.length === 0) {
-            console.log("invalid data");
             showError('Please select at least one group by field.');
             return false;
         }
         if (data.aggregators.length === 0) {
             showError('Please select at least one statistic.');
-            console.log("invalid data");
             return false;
         }
-
-        console.log("Valid JSON. Proceeding to display results.");
-
         // Clear any previous errors
         $('#errors').text('');
         $('#vehiclePriceCalculator').show();
@@ -370,7 +357,6 @@ export function generateRequestData() {
     }
     const created_on = document.getElementById('createdOnMin');
     if (created_on && created_on.value && created_on.value !== '0') {
-        console.log("Created on: ", created_on.value);
         requestData.filter_date.push({ Gte: [{ "createdOn": created_on.value }, true] });
     }
 
@@ -395,7 +381,6 @@ export function generateRequestData() {
     // Assuming year is handled with checkboxes or a range and collecting all checked years
     const yearCheckboxes = document.querySelectorAll('input[name="year"]:checked');
     if (yearCheckboxes.length > 0) {
-        console.log(yearCheckboxes);
         const values = Array.from(yearCheckboxes).map(cb => parseInt(cb.value, 10));
         requestData.filter_i32.push({ In: ['year', values] });
     }
@@ -406,18 +391,9 @@ export function generateRequestData() {
         const values = Array.from(engineCheckboxes).map(cb => cb.value);
         requestData.filter_string.push({ In: ['engine', values] });
     }
-    // ['sort_by_primary', 'sort_by_secondary'].forEach(sortElement => {
-    //     const sortSelect = document.getElementById(sortElement);
-    //     if (sortSelect && sortSelect.value) {
-    //         const ascSelect = (sortElement === 'sort_by_primary') ?
-    //             document.getElementById('asc_primary') : document.getElementById('asc_secondary');
-    //         const asc = ascSelect.value === 'asc';
-    //         requestData.sort.push({ [asc ? 'asc' : 'desc']: [sortSelect.value, true] });
-    //     }
-    // });
 
     document.getElementById('results').textContent = JSON.stringify(requestData, null, 2);
-    console.log('Request data:', requestData);
+
     // Place your fetch API call here as shown previously
 }
 

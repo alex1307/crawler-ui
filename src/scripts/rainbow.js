@@ -43,6 +43,7 @@ export function showStatisticData(requestData) {
 }
 
 function createTableFromData(data, containerId, colors = dark_mode_colors) {
+
     // Extract metadata and sort it by column_index to ensure correct column order
     const metadata = data.metadata.sort((a, b) => a.column_index - b.column_index);
     // Generate rainbow colors for the number of columns
@@ -70,7 +71,7 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
     table_header.appendChild(headerRow);
     const table_body = table.createTBody();
     // Assuming each array in your data object has the same length
-    const numRows = data.count;
+    const numRows = data.itemsCount;
     const length = colors.length;
     // Create table rows
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {

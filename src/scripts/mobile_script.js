@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log('Success:', data);
             // Assuming 'data' is the structure you've provided, or adjust the following functions as necessary
             const transformedData = transformDataForChart(data);
             createTableFromData(data, 'table-container');
@@ -71,7 +70,7 @@ function createTableFromData(data, containerId) {
     table.appendChild(headerRow);
 
     // Assuming each array in your data object has the same length
-    const numRows = data.count;
+    const numRows = data.itemsCount;
 
     // Create table rows
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
@@ -126,8 +125,7 @@ function generateChart(data) {
     }));
 
     // Verify datasets and labels are populated
-    console.log("Labels (Years):", years);
-    console.log("Datasets:", datasets);
+
 
     // Generate the chart
     new Chart(ctx, {

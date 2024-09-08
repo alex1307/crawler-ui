@@ -34,7 +34,6 @@ map.forEach((enumName, elementId) => {
 
 localStorage.clear();
 function redirectToResultsPage(requestData) {
-    console.log("Local storage data:", requestData);
     localStorage.setItem('requestData', JSON.stringify(requestData));
     const columns = [];
 
@@ -131,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('floatingSearchButton').addEventListener('click', function () {
         const json = captureData();
-        console.log("JSON:", json);
         if (validateJSON(json)) {
             // Parse and display the selected parameters in the summary modal
             const data = JSON.parse(json);
