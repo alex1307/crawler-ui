@@ -115,7 +115,7 @@
 .floating-button-container {
     position: fixed;
     /* Keeps the buttons fixed on the page */
-    bottom: 10%;
+    bottom: 15%;
     /* Distance from the bottom of the viewport */
     right: 45%;
     /* Distance from the right of the viewport */
@@ -132,9 +132,7 @@
 
 /* Calculate Button Styling */
 /* Floating Button Styles (applies to all relevant buttons) */
-.floating-search-btn,
-.floating-calculate-btn,
-.floating-view-analysis-btn {
+.floating-btn {
     background: linear-gradient(135deg, #007bff, #0056b3);
     /* Example gradient */
     border: none;
@@ -150,43 +148,19 @@
 }
 
 /* Spacing for icons inside all floating buttons */
-.floating-search-btn i,
-.floating-calculate-btn i,
-.floating-view-analysis-btn i {
+.floating-btn i {
     margin-right: 10px;
     /* Consistent spacing for all button icons */
 }
 
 /* Hover Effects */
-.floating-search-btn:hover,
-.floating-calculate-btn:hover,
-.floating-view-analysis-btn:hover {
+.floating-btn:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
 }
 
-.floating-search-btn i,
-.floating-calculate-btn i,
-.floating-view-analysis-btn i {
-    margin-right: 10px;
-    /* Consistent spacing for all button icons */
-}
 
-/* Hover Effects */
-.floating-search-btn:hover,
-.floating-calculate-btn:hover,
-.floating-view-analysis-btn:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-}
 
-.floating-search-btn,
-.floating-calculate-btn,
-.floating-view-analysis-btn i {
-    margin-right: 8px;
-}
-
-/* Hover Effects */
 
 /* Styling for the search criteria heading */
 .search-criteria-heading {

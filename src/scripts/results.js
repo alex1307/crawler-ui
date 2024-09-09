@@ -55,7 +55,9 @@ function initialize() {
             }
         });
     } else {
-        sortingSection.style.display = 'none';
+        if (document.getElementById('sorting-section')) {
+            document.getElementById('sorting-section').style.display = 'none';
+        }
     }
 
     if (requestData) {

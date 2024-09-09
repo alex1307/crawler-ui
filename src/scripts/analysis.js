@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         this.textContent = isHidden ? 'Less...' : 'More...';
     });
-    document.getElementById('floatingSearchButton').addEventListener('click', function () {
+    document.getElementById('searchButton').addEventListener('click', function () {
         const json = captureData();
         if (validateJSON(json)) {
             // Parse and display the selected parameters in the summary modal
