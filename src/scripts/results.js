@@ -25,9 +25,8 @@ function initialize() {
     const type = localStorage.getItem('type');
     const requestData = JSON.parse(localStorage.getItem('requestData'));
     const columns = JSON.parse(localStorage.getItem('columns'));
-    const sortingSection = document.querySelector('.sorting-section');
+
     if (columns && columns.length > 0) {
-        sortingSection.style.display = 'block';
         populateDropdown('orderColumn1', columns);
         populateDropdown('orderColumn2', columns);
 
