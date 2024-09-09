@@ -79,6 +79,132 @@
                 opacity: 1;
             }
         }
+
+        /* Set a dark background color for the body */
+        body {
+            background-color: #1e1e1e;
+            margin: 0;
+            /* Remove default margins */
+        }
+
+        /* Style the main image */
+        img {
+            border: none;
+            /* Remove any borders */
+            padding: 0;
+            margin: 0 auto;
+            /* Center the image */
+            max-width: auto;
+            /* Ensure the image is responsive */
+            height: auto;
+            /* Maintain aspect ratio */
+            display: inline-block;
+            /* Ensure image is visible and doesn't affect layout */
+        }
+
+        /* Header styles */
+        header.masthead {
+            background: none;
+            /* Remove any existing light background */
+            padding: 50px 0;
+            color: #f0f0f0;
+            /* Set header text to light color */
+        }
+
+
+
+        /* Darken the sidebar background */
+        #sidebar-wrapper {
+            background-color: #333;
+            border-right: none;
+        }
+
+        /* Update section styles for a modern look */
+
+
+        /* .content-section h2,
+        .content-section p {
+            color: #e0e0e0;
+        } */
+
+        /* Footer */
+        /* Common styles for Contact Us section and Footer */
+        /* Common styles for Contact Us section and Footer */
+        /* Common styles for Contact Us section and Footer */
+        .common-dark-section {
+            background-color: #2c2c2c;
+            /* Set the same dark background for both sections */
+            color: #e0e0e0;
+            /* Light text color for readability */
+            padding: 60px 0;
+            /* Add padding for spacing at the top and bottom */
+            margin: 0;
+            /* Remove any margins */
+            border: none;
+            /* Ensure no borders */
+            box-shadow: none;
+            /* Remove any box shadows */
+            display: flex;
+            /* Use flexbox for vertical centering */
+            flex-direction: column;
+            /* Arrange items in a column */
+            justify-content: center;
+            /* Center the content vertically */
+            align-items: center;
+            /* Center the content horizontally */
+        }
+
+        /* Reset styles for headings and text */
+        .common-dark-section .content-section-heading {
+            text-align: center;
+            /* Center align the heading */
+            margin: 0 auto;
+            /* Remove unwanted offsets */
+            padding-bottom: 20px;
+            /* Add some space below the heading */
+        }
+
+        /* Link styling for both sections */
+        .common-dark-section a {
+            color: #00aaff;
+            /* Set a light blue color for links */
+            text-decoration: none;
+            /* Remove underline from links */
+        }
+
+        .common-dark-section a:hover {
+            text-decoration: underline;
+            /* Underline on hover for better UX */
+        }
+
+        /* Footer specific styles */
+        .footer {
+            padding: 20px 0;
+            /* Add padding to the footer */
+            margin: 0;
+            /* Remove any margin */
+            border: none;
+            /* Remove any borders */
+            box-shadow: none;
+            /* Ensure no shadow effects */
+        }
+
+        .footer .text-muted {
+            color: #888;
+        }
+
+        /* Style the Contact section to match the overall dark theme */
+
+
+        /* Responsive adjustments to ensure good readability */
+        @media (max-width: 768px) {
+            #contact .content-section-heading {
+                margin-left: 0;
+                /* Remove any unwanted offsets on smaller screens */
+            }
+        }
+
+        /* Header styles */
     </style>
 
 
@@ -204,15 +330,11 @@
             </div>
         </div>
     </section>
-    <section class="callout" id="contact">
+    <section id="contact" class="common-dark-section">
         <div class="container px-4 px-lg-5">
-            <div class="content-section-heading" style="margin-left: 250px;">
-                <h3 class="text-primary mb-0">Contact Us</h3>
-                <h2 class="mb-5"></h2>
-                <h2 class="mb-5"></h2>
-            </div>
+
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-6 text-white">
+                <div class="col-lg-6">
                     <p><strong>Email:</strong> <a href="mailto:matkat@ehomeho.com">matkat@ehomeho.com</a></p>
                     <p><strong>Address:</strong> Hladilnika, Blvd. "Cherni vrah" 47, 1407 Sofia, Bulgaria</p>
                 </div>
@@ -220,9 +342,9 @@
         </div>
     </section>
 
-    <footer class="footer text-center">
-        <div class="container px-4 px-lg-5">
-            <p class="text-muted small mb-0">Copyright &copy; ehomeho.com 2024</p>
+    <footer class="footer common-dark-section">
+        <div class="container text-center">
+            <p class="text-muted">&© 2024 eXomeXo🦁🐸. All Rights Reserved.</p>
         </div>
     </footer>
     <!-- Scroll to Top Button-->
