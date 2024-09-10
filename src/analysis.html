@@ -2,19 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Vehicle Search</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description"
+        content="eXoMexo - Your premier platform for discovering car deals, comprehensive statistics, and accurate price estimations." />
+    <meta name="author" content="KatMat Team" />
+    <meta name="keywords" content="car deals, statistics, price, data analysis, car market, aggregator, eXoMexo" />
+    <title>eXoMexo🦁🐸</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/buttons.css">
-    <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/responsive.css">
-    <link rel="stylesheet" href="styles/header-footer.css">
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -23,6 +19,12 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/header-footer.css">
 
 </head>
 
@@ -340,68 +342,68 @@
                                         <input type="checkbox" id="statAvg" checked>
                                         <label class="form-check-label" for="statAvg">Avg</label>
                                     </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="statMedian">
-                                        <label class="form-check-label" for="statMedian">Median</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="statSum">
-                                        <label class="form-check-label" for="statSum">Sum</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="std">
-                                        <label class="form-check-label" for="std">Standard Deviation</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="rsd">
-                                        <label class="form-check-label" for="rsd">Relative Standard Deviation</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="statFrom">
-                                        <label class="form-check-label" for="statFrom">Min</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="statTo">
-                                        <label class="form-check-label" for="statTo">Max</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="quantile_60">
-                                        <label class="form-check-label" for="quantile_60">Percentile (60%)</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="quantile_66">
-                                        <label class="form-check-label" for="quantile_66">Percentile (66%)</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="quantile_70">
-                                        <label class="form-check-label" for="quantile_70">Percentile (70%)</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="quantile_75">
-                                        <label class="form-check-label" for="quantile_75">Percentile (75%)</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="quantile_80">
-                                        <label class="form-check-label" for="quantile_80">Percentile (80%)</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                        <input type="checkbox" id="quantile_90">
-                                        <label class="form-check-label" for="quantile_90">Percentile (90%)</label>
-                                    </div>
+                                    <div class="functions-checkbox-grid"></div>
+                                    <input type="checkbox" id="statSum" checked>
+                                    <label class="form-check-label" for="statSum">Sum</label>
                                 </div>
-                                <div class="custom-checkbox-grid">
-                                    <button class="btn-toggle more-btn" id="toggleFnMore">More...</button>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="statMedian">
+                                    <label class="form-check-label" for="statMedian">Median</label>
                                 </div>
-                                <!-- Checkboxes for statistical functions -->
-
-                                <!-- Add similar structure for other checkboxes -->
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="std">
+                                    <label class="form-check-label" for="std">Standard Deviation</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="rsd">
+                                    <label class="form-check-label" for="rsd">Relative Standard Deviation</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="statMin">
+                                    <label class="form-check-label" for="statMin">Min</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="statMax">
+                                    <label class="form-check-label" for="statMax">Max</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="quantile_60">
+                                    <label class="form-check-label" for="quantile_60">Percentile (60%)</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="quantile_66">
+                                    <label class="form-check-label" for="quantile_66">Percentile (66%)</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="quantile_70">
+                                    <label class="form-check-label" for="quantile_70">Percentile (70%)</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="quantile_75">
+                                    <label class="form-check-label" for="quantile_75">Percentile (75%)</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="quantile_80">
+                                    <label class="form-check-label" for="quantile_80">Percentile (80%)</label>
+                                </div>
+                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                    <input type="checkbox" id="quantile_90">
+                                    <label class="form-check-label" for="quantile_90">Percentile (90%)</label>
+                                </div>
                             </div>
+                            <div class="custom-checkbox-grid">
+                                <button class="btn-toggle more-btn" id="toggleFnMore">More...</button>
+                            </div>
+                            <!-- Checkboxes for statistical functions -->
+
+                            <!-- Add similar structure for other checkboxes -->
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
     </div>
 
     <!-- Floating Search Button -->

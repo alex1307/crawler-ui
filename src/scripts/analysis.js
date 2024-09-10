@@ -130,16 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('searchButton').addEventListener('click', function () {
         const json = captureData();
-        if (validateJSON(json)) {
-            // Parse and display the selected parameters in the summary modal
-            const data = JSON.parse(json);
-            populateModalSections(data);
-
-            // Show the summary modal
-            $('#summaryModal').modal('show');
-        } else {
-            return false; // Stop the process if JSON validation fails
-        }
+        const data = JSON.parse(json);
+        populateModalSections(data);
+        const modalElement = document.getElementById('summaryModal');
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
     });
     document.querySelector('#summaryModal .btn-primary').addEventListener('click', function () {
         const json = captureData();

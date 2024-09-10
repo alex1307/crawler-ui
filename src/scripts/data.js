@@ -53,32 +53,32 @@ export function redirect() {
 
 function generateRequestData() {
     const data = {
-        make: $('#make').val() || null,
-        model: $('#model').val() || null,
-        search: $('#search').val() || null,
-        gearbox: $('#gearbox').val() || null,
+        make: document.getElementById('make').value || null,
+        model: document.getElementById('model').value || null,
+        search: document.getElementById('search').value || null,
+        gearbox: document.getElementById('gearbox').value || null,
 
-        yearFrom: $('#yearFrom').val() ? parseInt($('#yearFrom').val(), 10) : null,
-        yearTo: $('#yearTo').val() ? parseInt($('#yearTo').val(), 10) : null,
-        powerFrom: $('#powerFrom').val() ? parseInt($('#powerFrom').val(), 10) : null,
-        powerTo: $('#powerTo').val() ? parseInt($('#powerTo').val(), 10) : null,
-        mileageFrom: $('#mileageFrom').val() ? parseInt($('#mileageFrom').val(), 10) : null,
-        mileageTo: $('#mileageTo').val() ? parseInt($('#mileageTo').val(), 10) : null,
-        ccFrom: $('#ccFrom').val() ? parseInt($('#ccFrom').val(), null) : null,
-        ccTo: $('#ccTo').val() ? parseInt($('#ccTo').val(), 10) : null,
+        yearFrom: document.getElementById('yearFrom').value ? parseInt(document.getElementById('yearFrom').value, 10) : null,
+        yearTo: document.getElementById('yearTo').value ? parseInt(document.getElementById('yearTo').value, 10) : null,
+        powerFrom: document.getElementById('powerFrom').value ? parseInt(document.getElementById('powerFrom').value, 10) : null,
+        powerTo: document.getElementById('powerTo').value ? parseInt(document.getElementById('powerTo').value, 10) : null,
+        mileageFrom: document.getElementById('mileageFrom').value ? parseInt(document.getElementById('mileageFrom').value, 10) : null,
+        mileageTo: document.getElementById('mileageTo').value ? parseInt(document.getElementById('mileageTo').value, 10) : null,
+        ccFrom: document.getElementById('ccFrom').value ? parseInt(document.getElementById('ccFrom').value, null) : null,
+        ccTo: document.getElementById('ccTo').value ? parseInt(document.getElementById('ccTo').value, 10) : null,
 
-        priceFrom: $('#priceFrom').val() ? parseInt($('#priceFrom').val(), 10) : null,
-        priceTo: $('#priceTo').val() ? parseInt($('#priceTo').val(), 10) : null,
+        priceFrom: document.getElementById('priceFrom').value ? parseInt(document.getElementById('priceFrom').value, 10) : null,
+        priceTo: document.getElementById('priceTo').value ? parseInt(document.getElementById('priceTo').value, 10) : null,
 
-        saveDiffFrom: $('#saveDiffFrom').val() ? parseInt($('#saveDiffFrom').val(), 10) : null,
-        saveDiffTo: $('#saveDiffTo').val() ? parseInt($('#saveDiffTo').val(), 10) : null,
+        saveDiffFrom: document.getElementById('saveDiffFrom').value ? parseInt(document.getElementById('saveDiffFrom').value, 10) : null,
+        saveDiffTo: document.getElementById('saveDiffTo').value ? parseInt(document.getElementById('saveDiffTo').value, 10) : null,
 
-        discountFrom: $('#discountFrom').val() ? parseInt($('#discountFrom').val(), 10) : null,
-        discountTo: $('#discountTo').val() ? parseInt($('#discountTo').val(), 10) : null,
+        discountFrom: document.getElementById('discountFrom').value ? parseInt(document.getElementById('discountFrom').value, 10) : null,
+        discountTo: document.getElementById('discountTo').value ? parseInt(document.getElementById('discountTo').value, 10) : null,
 
 
-        createdOnFrom: $('#createdOnFrom').val() ? parseInt($('#createdOnFrom').val(), 10) : null,
-        createdOnTo: $('#createdOnTo').val() ? parseInt($('#createdOnTo').val(), 10) : null,
+        createdOnFrom: document.getElementById('createdOnFrom').value ? parseInt(document.getElementById('createdOnFrom').value, 10) : null,
+        createdOnTo: document.getElementById('createdOnTo').value ? parseInt(document.getElementById('createdOnTo').value, 10) : null,
 
         order: [],
         engine: [],
