@@ -156,8 +156,8 @@
             filters.forEach(filter => populateFilter(filter));
 
 
-            document.getElementById('make').change(function () {
-                const selectedMake = $(this).value;
+            document.getElementById('make').addEventListener('change', async function () {
+                const selectedMake = this.value;
                 if (selectedMake) {
                     fetchModels(selectedMake);
                 } else {
