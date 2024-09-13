@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Ontdek de Beste Autodeals met",
+        "description": "ons ultieme platform voor het vergelijken van voertuigprijzen, het vinden van de beste deals en het verkrijgen van gedetailleerde statistieken en betrouwbare prijsinschattingen.",
+        "details": "We doorzoeken populaire websites om je de beste voertuigdeals op één plek te bieden. Verken gedetailleerde statistieken, krachtige zoekmogelijkheden en onze geavanceerde prijsmachine om de slimste aankoopbeslissingen te nemen.",
+        "learnMore": "Meer Informatie"
+    },
+    "searchSection": {
+        "title": "Zoek naar Autodeals 🧐🔎🚗",
+        "description": "Vind de Beste Prijzen: Zoek snel naar autodeals in verschillende categorieën, waaronder goede, eerlijke en hoge prijzen.",
+        "details": "Filter je Resultaten: Gebruik geavanceerde filters om je zoekopdracht te verfijnen op basis van merk, model, prijsklasse, kilometerstand, jaar en meer. Aangepaste Zoekopdracht: Pas je zoekopdracht aan naar jouw specifieke behoeften en voorkeuren."
+    },
+    "analysisSection": {
+        "title": "Gegevensanalyse 📈📊",
+        "description": "Analyse per Groep: Analyseer autogegevens door resultaten te groeperen op basis van geselecteerde velden zoals merk, model, jaar, motor, versnellingsbak en meer.",
+        "details": "Gedetailleerde Statistieken: Verkrijg diepgaande statistieken, waaronder aantal, gemiddelde, standaarddeviatie, mediaan en verschillende percentielen. Begrijp Markttrends: Krijg inzicht in de automarkt met uitgebreide statistische analyses."
+    },
+    "calculatorSection": {
+        "title": "Prijscalculator 🛝🎡🏷️💰",
+        "description": "Prijsinschatting: Bereken de geschatte prijs van een voertuig op basis van gedetailleerde criteria.",
+        "details": "Nauwkeurige Voorspellingen: Gebruik ons hulpmiddel om een betrouwbare schatting van de waarde van een auto te krijgen, zodat je weloverwogen beslissingen kunt nemen bij het kopen of verkopen. Geavanceerde Algoritmen: Onze calculator maakt gebruik van geavanceerde algoritmen om nauwkeurige en up-to-date prijsberekeningen te garanderen."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Diensten",
+            "title": "Wat Wij Bieden"
+        },
+        "searchDeal": {
+            "title": "Zoek naar Deals",
+            "description": "Vind de Beste Prijzen: Zoek snel naar autodeals in verschillende categorieën, waaronder goede, eerlijke en hoge prijzen."
+        },
+        "dataAnalysis": {
+            "title": "Gegevensanalyse",
+            "description": "Verkrijg diepgaande statistieken, waaronder aantal, gemiddelde, standaarddeviatie, mediaan en verschillende percentielen."
+        },
+        "priceCalculator": {
+            "title": "Prijscalculator",
+            "description": "Bereken de geschatte prijs van een voertuig op basis van gedetailleerde criteria."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "E-mail:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adres:",
+            "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofia, Bulgarije"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Discover the Best Car Deals with",
+        "description": "our ultimate platform for comparing vehicle prices, finding the best deals, and accessing in-depth statistics and reliable price estimations.",
+        "details": "We search across popular websites to bring you the top vehicle deals all in one place. Explore detailed statistics, powerful search capabilities, and our advanced price engine to make the smartest buying decisions.",
+        "learnMore": "Find Out More"
+    },
+    "searchSection": {
+        "title": "Search for Car Deals 🧐🔎🚗",
+        "description": "Find the Best Prices: Quickly search for car deals across various categories, including good, fair, and high prices.",
+        "details": "Filter Your Results: Use advanced filters to narrow down your search based on make, model, price range, mileage, year, and more. Customized Search: Tailor your search to meet your specific needs and preferences."
+    },
+    "analysisSection": {
+        "title": "Data Analysis 📈📊",
+        "description": "Group By Analysis: Analyze car data by grouping results based on selected fields such as make, model, year, engine, gearbox, and more.",
+        "details": "Detailed Statistics: Get in-depth statistics including count, mean, standard deviation, median, and various percentiles. Understand Market Trends: Gain insights into the car market with comprehensive statistical analyses."
+    },
+    "calculatorSection": {
+        "title": "Prices Playground 🛝🎡🏷️💰",
+        "description": "Price Estimator: Calculate the estimated price of a vehicle based on detailed criteria.",
+        "details": "Accurate Predictions: Use our tool to get a reliable estimate of a car’s value, helping you make informed buying or selling decisions. Advanced Algorithms: Our estimator uses advanced algorithms to ensure accurate and up-to-date price calculations."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Services",
+            "title": "What We Offer"
+        },
+        "searchDeal": {
+            "title": "Search for deals",
+            "description": "Find the Best Prices: Quickly search for car deals across various categories, including good, fair, and high prices."
+        },
+        "dataAnalysis": {
+            "title": "Data Analysis",
+            "description": "Get in-depth statistics including count, mean, standard deviation, median, and various percentiles."
+        },
+        "priceCalculator": {
+            "title": "Price Calculator",
+            "description": "Calculate the estimated price of a vehicle based on detailed criteria."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "Email:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Address:",
+            "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofia, Bulgaria"
+        }
+    }
+}

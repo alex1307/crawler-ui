@@ -193,6 +193,30 @@
             color: #888;
         }
 
+        /* Language Selector Styling */
+        .language-selector {
+            margin-top: 10px;
+            /* Add some margin for spacing */
+        }
+
+        #language-selector {
+            background-color: #333;
+            /* Match the navigation background */
+            color: #fff;
+            /* White text color */
+            border: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Hover effect */
+        #language-selector:hover {
+            background-color: #555;
+            /* Slightly lighter color on hover */
+        }
+
         /* Style the Contact section to match the overall dark theme */
 
 
@@ -207,6 +231,12 @@
         /* Header styles */
     </style>
 
+    <!-- Other head elements -->
+
+    <!-- Include i18next core library -->
+
+
+</head>
 
 </head>
 
@@ -220,23 +250,71 @@
             <li class="sidebar-nav-item"><a href="#about">About</a></li>
             <li class="sidebar-nav-item"><a href="#services">Services</a></li>
             <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+            <li class="sidebar-nav-item language-selector">
+                <select id="language-selector" class="form-select">
+                    <option value="en">English</option>
+                    <option value="bg">Български</option>
+                    <option value="ro">Română</option>
+                    <option value="pl">Polski</option>
+                    <option value="de">Deutsch</option>
+                    <option value="fr">Français</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="gr">Ελληνικά</option>
+                    <option value="sr">Српски</option>
+                    <option value="it">Italiano</option>
+                </select>
+            </li>
         </ul>
     </nav>
     <!-- Header-->
     <header class="masthead d-flex align-items-center">
-        <div class="container px-4 px-lg-5 text-center">
-            <h1 class="mb-1 product-name">
-                Welcome to
+        <!-- <div class="container px-4 px-lg-5 text-center">
+            <h1 class="mb-1 product-name" data-i18n="homepage.title">
+                Discover the Best Car Deals with
                 <span class="highlight">
                     e<span class="highlight-green">X</span>om<span class="highlight-euro">€</span><span
                         class="highlight-red">X</span>o
                 </span> 🦁🐸
             </h1>
-            <h3 class="mb-5 text-white">
-                <em>Your premier platform for discovering car deals, comprehensive statistics, and accurate price
-                    estimations.</em>
+            <h3 class="mb-5 text-white" data-i18n="homepage.description">
+                <em>Your ultimate platform for comparing vehicle prices, finding the best deals, and accessing in-depth
+                    statistics and reliable price estimations.</em>
             </h3>
-            <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+            <p class="lead text-white" data-i18n="homepage.details">
+                We search across popular websites to bring you the top vehicle deals all in one place. Explore detailed
+                statistics, powerful search capabilities, and our advanced price engine to make the smartest buying
+                decisions.
+            </p>
+            <a class="btn btn-primary btn-xl" href="#about" data-i18n="homepage.learnMore">Learn More</a>
+        </div> -->
+        <div class="container px-4 px-lg-5 text-center">
+            <h1 class="mb-1 product-name" data-i18n="homepage.title">
+                Discover the Best Car Deals with
+                <span class="highlight">
+                    e<span class="highlight-green">X</span>om<span class="highlight-euro">€</span><span
+                        class="highlight-red">X</span>o
+                </span> 🦁🐸
+            </h1>
+            <h1 class="mb-1 product-name">
+                <!-- Logo and styled product name that should not be affected by translations -->
+
+                <!-- Separate span for the translatable subtitle to avoid affecting the logo -->
+                <span class="translatable" data-i18n="homepage.subtitle">
+                    Your premier platform for discovering car deals, comprehensive statistics, and accurate price
+                    estimations.
+                </span>
+            </h1>
+            <h3 class="mb-5 text-white lead" data-i18n="homepage.details">
+                <em>
+                    We search across popular websites to bring you the top vehicle deals all in one place. Explore
+                    detailed
+                    statistics, powerful search capabilities, and our advanced price engine to make the smartest buying
+                    decisions.
+                </em>
+            </h3>
+            <a class="btn btn-primary btn-xl" href="#about" data-i18n="homepage.learnMore">
+                Learn More
+            </a>
         </div>
     </header>
     <!-- About-->
@@ -353,6 +431,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <script type="module" src="scripts/locale.js"></script>
     </div>
 
 </html>

@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Scopri le Migliori Offerte di Auto con",
+        "description": "la nostra piattaforma definitiva per confrontare i prezzi dei veicoli, trovare le migliori offerte e accedere a statistiche dettagliate e stime di prezzo affidabili.",
+        "details": "Cerchiamo sui siti più popolari per offrirti le migliori offerte di veicoli in un unico luogo. Esplora statistiche dettagliate, potenti funzionalità di ricerca e il nostro motore di prezzi avanzato per prendere le decisioni di acquisto più intelligenti.",
+        "learnMore": "Scopri di Più"
+    },
+    "searchSection": {
+        "title": "Cerca Offerte di Auto 🧐🔎🚗",
+        "description": "Trova i Migliori Prezzi: Cerca rapidamente offerte di auto in varie categorie, inclusi prezzi buoni, equi e alti.",
+        "details": "Filtra i tuoi Risultati: Usa filtri avanzati per restringere la tua ricerca in base a marca, modello, fascia di prezzo, chilometraggio, anno e altro. Ricerca Personalizzata: Adatta la tua ricerca alle tue esigenze e preferenze specifiche."
+    },
+    "analysisSection": {
+        "title": "Analisi dei Dati 📈📊",
+        "description": "Analisi per Gruppo: Analizza i dati delle auto raggruppando i risultati in base a campi selezionati come marca, modello, anno, motore, cambio e altro.",
+        "details": "Statistiche Dettagliate: Ottieni statistiche approfondite tra cui conteggio, media, deviazione standard, mediana e vari percentili. Comprendi le Tendenze del Mercato: Ottieni informazioni sul mercato automobilistico con analisi statistiche complete."
+    },
+    "calculatorSection": {
+        "title": "Calcolatore di Prezzi 🛝🎡🏷️💰",
+        "description": "Stima del Prezzo: Calcola il prezzo stimato di un veicolo in base a criteri dettagliati.",
+        "details": "Previsioni Accurate: Usa il nostro strumento per ottenere una stima affidabile del valore di un'auto, aiutandoti a prendere decisioni informate di acquisto o vendita. Algoritmi Avanzati: Il nostro calcolatore utilizza algoritmi avanzati per garantire calcoli dei prezzi accurati e aggiornati."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Servizi",
+            "title": "Cosa Offriamo"
+        },
+        "searchDeal": {
+            "title": "Cerca Offerte",
+            "description": "Trova i Migliori Prezzi: Cerca rapidamente offerte di auto in varie categorie, inclusi prezzi buoni, equi e alti."
+        },
+        "dataAnalysis": {
+            "title": "Analisi dei Dati",
+            "description": "Ottieni statistiche approfondite tra cui conteggio, media, deviazione standard, mediana e vari percentili."
+        },
+        "priceCalculator": {
+            "title": "Calcolatore di Prezzi",
+            "description": "Calcola il prezzo stimato di un veicolo in base a criteri dettagliati."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "Email:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Indirizzo:",
+            "details": "Hladilnika, Viale \"Cherni vrah\" 47, 1407 Sofia, Bulgaria"
+        }
+    }
+}

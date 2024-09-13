@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Odkryj najlepsze oferty samochodowe z",
+        "description": "naszą ostateczną platformą do porównywania cen pojazdów, znajdowania najlepszych ofert oraz dostępu do szczegółowych statystyk i wiarygodnych szacunków cen.",
+        "details": "Przeszukujemy popularne strony internetowe, aby dostarczyć Ci najlepsze oferty pojazdów w jednym miejscu. Przeglądaj szczegółowe statystyki, zaawansowane możliwości wyszukiwania oraz nasz zaawansowany silnik cenowy, aby podejmować najrozsądniejsze decyzje zakupowe.",
+        "learnMore": "Dowiedz się więcej"
+    },
+    "searchSection": {
+        "title": "Wyszukiwanie ofert samochodowych 🧐🔎🚗",
+        "description": "Znajdź najlepsze ceny: Szybko wyszukuj oferty samochodowe w różnych kategoriach, w tym dobre, uczciwe i wysokie ceny.",
+        "details": "Filtruj wyniki: Użyj zaawansowanych filtrów, aby zawęzić wyszukiwanie według marki, modelu, przedziału cenowego, przebiegu, roku i innych. Spersonalizowane wyszukiwanie: Dostosuj swoje wyszukiwanie do swoich specyficznych potrzeb i preferencji."
+    },
+    "analysisSection": {
+        "title": "Analiza danych 📈📊",
+        "description": "Analiza według grup: Analizuj dane samochodowe, grupując wyniki według wybranych pól, takich jak marka, model, rok, silnik, skrzynia biegów i inne.",
+        "details": "Szczegółowe statystyki: Uzyskaj szczegółowe statystyki, w tym liczbę, średnią, odchylenie standardowe, medianę i różne percentyle. Zrozum trendy rynkowe: Uzyskaj wgląd w rynek samochodowy dzięki kompleksowym analizom statystycznym."
+    },
+    "calculatorSection": {
+        "title": "Kalkulator cen 🛝🎡🏷️💰",
+        "description": "Kalkulator cen: Oblicz szacowaną cenę pojazdu na podstawie szczegółowych kryteriów.",
+        "details": "Dokładne prognozy: Skorzystaj z naszego narzędzia, aby uzyskać wiarygodną wycenę wartości samochodu, co pomoże Ci podjąć świadome decyzje o zakupie lub sprzedaży. Zaawansowane algorytmy: Nasz kalkulator wykorzystuje zaawansowane algorytmy, aby zapewnić dokładne i aktualne obliczenia cen."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Usługi",
+            "title": "Co Oferujemy"
+        },
+        "searchDeal": {
+            "title": "Wyszukiwanie ofert",
+            "description": "Znajdź najlepsze ceny: Szybko wyszukuj oferty samochodowe w różnych kategoriach, w tym dobre, uczciwe i wysokie ceny."
+        },
+        "dataAnalysis": {
+            "title": "Analiza danych",
+            "description": "Uzyskaj szczegółowe statystyki, w tym liczbę, średnią, odchylenie standardowe, medianę i różne percentyle."
+        },
+        "priceCalculator": {
+            "title": "Kalkulator cen",
+            "description": "Oblicz szacowaną cenę pojazdu na podstawie szczegółowych kryteriów."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "E-mail:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adres:",
+            "details": "Hladilnika, ul. \"Cherni vrah\" 47, 1407 Sofia, Bułgaria"
+        }
+    }
+}

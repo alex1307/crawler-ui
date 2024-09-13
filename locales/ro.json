@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Descoperă cele mai bune oferte auto cu",
+        "description": "platforma noastră supremă pentru compararea prețurilor vehiculelor, găsirea celor mai bune oferte și accesarea statisticilor detaliate și estimărilor de preț fiabile.",
+        "details": "Căutăm pe site-uri populare pentru a vă aduce cele mai bune oferte de vehicule într-un singur loc. Explorați statistici detaliate, capacități puternice de căutare și motorul nostru avansat de prețuri pentru a lua cele mai inteligente decizii de cumpărare.",
+        "learnMore": "Aflați Mai Multe"
+    },
+    "searchSection": {
+        "title": "Caută Oferte Auto 🧐🔎🚗",
+        "description": "Găsiți cele mai bune prețuri: Căutați rapid oferte auto în diverse categorii, inclusiv prețuri bune, corecte și ridicate.",
+        "details": "Filtrează Rezultatele: Folosiți filtre avansate pentru a restrânge căutarea în funcție de marcă, model, interval de preț, kilometraj, an și multe altele. Căutare Personalizată: Adaptați căutarea la nevoile și preferințele dvs. specifice."
+    },
+    "analysisSection": {
+        "title": "Analiză de Date 📈📊",
+        "description": "Analiză pe Grupuri: Analizați datele auto grupând rezultatele pe baza câmpurilor selectate, cum ar fi marca, modelul, anul, motorul, cutia de viteze și altele.",
+        "details": "Statistici Detaliate: Obțineți statistici detaliate, inclusiv număr, medie, abatere standard, mediană și diferite percentile. Înțelegeți Tendințele Pieței: Obțineți informații despre piața auto prin analize statistice cuprinzătoare."
+    },
+    "calculatorSection": {
+        "title": "Calculator de Prețuri 🛝🎡🏷️💰",
+        "description": "Estimare de Preț: Calculați prețul estimat al unui vehicul pe baza unor criterii detaliate.",
+        "details": "Previziuni Precise: Folosiți instrumentul nostru pentru a obține o estimare de încredere a valorii unei mașini, ajutându-vă să luați decizii informate de cumpărare sau vânzare. Algoritmi Avansați: Calculatorul nostru folosește algoritmi avansați pentru a asigura calcule de preț precise și actualizate."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Servicii",
+            "title": "Ce Oferim"
+        },
+        "searchDeal": {
+            "title": "Caută Oferte",
+            "description": "Găsiți cele mai bune prețuri: Căutați rapid oferte auto în diverse categorii, inclusiv prețuri bune, corecte și ridicate."
+        },
+        "dataAnalysis": {
+            "title": "Analiză de Date",
+            "description": "Obțineți statistici detaliate, inclusiv număr, medie, abatere standard, mediană și diferite percentile."
+        },
+        "priceCalculator": {
+            "title": "Calculator de Prețuri",
+            "description": "Calculați prețul estimat al unui vehicul pe baza unor criterii detaliate."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "E-mail:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adresă:",
+            "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofia, Bulgaria"
+        }
+    }
+}

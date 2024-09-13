@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Entdecken Sie die besten Autodeals mit",
+        "description": "unserer ultimativen Plattform zum Vergleichen von Fahrzeugpreisen, Finden der besten Angebote und Zugriff auf detaillierte Statistiken und zuverlässige Preisschätzungen.",
+        "details": "Wir durchsuchen beliebte Websites, um Ihnen die besten Fahrzeugangebote an einem Ort zu bieten. Erkunden Sie detaillierte Statistiken, leistungsstarke Suchfunktionen und unsere fortschrittliche Preis-Engine, um die klügsten Kaufentscheidungen zu treffen.",
+        "learnMore": "Mehr Erfahren"
+    },
+    "searchSection": {
+        "title": "Suche nach Autodeals 🧐🔎🚗",
+        "description": "Finden Sie die besten Preise: Suchen Sie schnell nach Autodeals in verschiedenen Kategorien, einschließlich guter, fairer und hoher Preise.",
+        "details": "Filtern Sie Ihre Ergebnisse: Verwenden Sie erweiterte Filter, um Ihre Suche nach Marke, Modell, Preisspanne, Kilometerstand, Jahr und mehr einzugrenzen. Angepasste Suche: Passen Sie Ihre Suche an Ihre spezifischen Bedürfnisse und Vorlieben an."
+    },
+    "analysisSection": {
+        "title": "Datenanalyse 📈📊",
+        "description": "Gruppenanalyse: Analysieren Sie Fahrzeugdaten, indem Sie die Ergebnisse nach ausgewählten Feldern wie Marke, Modell, Jahr, Motor, Getriebe und mehr gruppieren.",
+        "details": "Detaillierte Statistiken: Erhalten Sie detaillierte Statistiken, einschließlich Anzahl, Mittelwert, Standardabweichung, Median und verschiedener Perzentile. Verstehen Sie Markttendenzen: Gewinnen Sie Einblicke in den Automarkt mit umfassenden statistischen Analysen."
+    },
+    "calculatorSection": {
+        "title": "Preisrechner 🛝🎡🏷️💰",
+        "description": "Preisschätzer: Berechnen Sie den geschätzten Preis eines Fahrzeugs basierend auf detaillierten Kriterien.",
+        "details": "Genauere Prognosen: Nutzen Sie unser Tool, um eine zuverlässige Schätzung des Wertes eines Autos zu erhalten, die Ihnen hilft, fundierte Kauf- oder Verkaufsentscheidungen zu treffen. Fortschrittliche Algorithmen: Unser Schätzer verwendet fortschrittliche Algorithmen, um genaue und aktuelle Preiskalkulationen sicherzustellen."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Dienstleistungen",
+            "title": "Was Wir Anbieten"
+        },
+        "searchDeal": {
+            "title": "Suche nach Angeboten",
+            "description": "Finden Sie die besten Preise: Suchen Sie schnell nach Autodeals in verschiedenen Kategorien, einschließlich guter, fairer und hoher Preise."
+        },
+        "dataAnalysis": {
+            "title": "Datenanalyse",
+            "description": "Erhalten Sie detaillierte Statistiken, einschließlich Anzahl, Mittelwert, Standardabweichung, Median und verschiedener Perzentile."
+        },
+        "priceCalculator": {
+            "title": "Preisrechner",
+            "description": "Berechnen Sie den geschätzten Preis eines Fahrzeugs basierend auf detaillierten Kriterien."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "E-Mail:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adresse:",
+            "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofia, Bulgarien"
+        }
+    }
+}

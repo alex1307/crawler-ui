@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Otkrijte najbolje ponude za automobile sa",
+        "description": "našom vrhunskom platformom za upoređivanje cena vozila, pronalaženje najboljih ponuda i pristup detaljnim statistikama i pouzdanim procenama cena.",
+        "details": "Pretražujemo popularne sajtove kako bismo vam doneli najbolje ponude vozila na jednom mestu. Istražite detaljne statistike, moćne mogućnosti pretrage i naš napredni cenovni motor za donošenje najpametnijih odluka o kupovini.",
+        "learnMore": "Saznajte Više"
+    },
+    "searchSection": {
+        "title": "Pretraga ponuda za automobile 🧐🔎🚗",
+        "description": "Pronađite najbolje cene: Brzo pretražujte ponude automobila u raznim kategorijama, uključujući dobre, fer i visoke cene.",
+        "details": "Filtrirajte rezultate: Koristite napredne filtere da suzite pretragu prema marki, modelu, cenovnom opsegu, kilometraži, godini i još mnogo toga. Prilagođena pretraga: Prilagodite pretragu vašim specifičnim potrebama i preferencijama."
+    },
+    "analysisSection": {
+        "title": "Analiza podataka 📈📊",
+        "description": "Grupna analiza: Analizirajte podatke o automobilima grupišući rezultate prema izabranim poljima kao što su marka, model, godina, motor, menjač i još mnogo toga.",
+        "details": "Detaljne statistike: Dobijte detaljne statistike uključujući brojanje, srednju vrednost, standardnu devijaciju, medijanu i različite percentile. Razumite tržišne trendove: Steknite uvid u tržište automobila uz sveobuhvatne statističke analize."
+    },
+    "calculatorSection": {
+        "title": "Kalkulator cena 🛝🎡🏷️💰",
+        "description": "Procena cena: Izračunajte procenjenu cenu vozila na osnovu detaljnih kriterijuma.",
+        "details": "Precizne prognoze: Koristite naš alat za dobijanje pouzdane procene vrednosti automobila, pomažući vam da donesete informisane odluke o kupovini ili prodaji. Napredni algoritmi: Naš kalkulator koristi napredne algoritme za osiguranje preciznih i ažuriranih proračuna cena."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Usluge",
+            "title": "Šta Nudimo"
+        },
+        "searchDeal": {
+            "title": "Pretraga Ponuda",
+            "description": "Pronađite najbolje cene: Brzo pretražujte ponude automobila u raznim kategorijama, uključujući dobre, fer i visoke cene."
+        },
+        "dataAnalysis": {
+            "title": "Analiza Podataka",
+            "description": "Dobijte detaljne statistike uključujući brojanje, srednju vrednost, standardnu devijaciju, medijanu i različite percentile."
+        },
+        "priceCalculator": {
+            "title": "Kalkulator Cena",
+            "description": "Izračunajte procenjenu cenu vozila na osnovu detaljnih kriterijuma."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "E-mail:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adresa:",
+            "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofija, Bugarska"
+        }
+    }
+}

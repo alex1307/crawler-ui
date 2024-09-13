@@ -1,0 +1,51 @@
+{
+    "homepage": {
+        "title": "Découvrez les Meilleures Offres de Voitures avec",
+        "description": "notre plateforme ultime pour comparer les prix des véhicules, trouver les meilleures offres et accéder à des statistiques détaillées et des estimations de prix fiables.",
+        "details": "Nous recherchons sur des sites populaires pour vous offrir les meilleures offres de véhicules en un seul endroit. Explorez des statistiques détaillées, des capacités de recherche puissantes et notre moteur de prix avancé pour prendre les décisions d'achat les plus intelligentes.",
+        "learnMore": "En Savoir Plus"
+    },
+    "searchSection": {
+        "title": "Recherche d'Offres de Voitures 🧐🔎🚗",
+        "description": "Trouvez les Meilleurs Prix : Recherchez rapidement des offres de voitures dans diverses catégories, y compris bons, justes et élevés.",
+        "details": "Filtrez vos Résultats : Utilisez des filtres avancés pour affiner votre recherche selon la marque, le modèle, la gamme de prix, le kilométrage, l'année, et plus encore. Recherche Personnalisée : Adaptez votre recherche à vos besoins et préférences spécifiques."
+    },
+    "analysisSection": {
+        "title": "Analyse de Données 📈📊",
+        "description": "Analyse par Groupe : Analysez les données des voitures en regroupant les résultats selon des champs sélectionnés tels que la marque, le modèle, l'année, le moteur, la boîte de vitesses, et plus.",
+        "details": "Statistiques Détaillées : Obtenez des statistiques approfondies incluant le nombre, la moyenne, l'écart-type, la médiane et divers percentiles. Comprenez les Tendances du Marché : Gagnez des insights sur le marché automobile grâce à des analyses statistiques complètes."
+    },
+    "calculatorSection": {
+        "title": "Calculateur de Prix 🛝🎡🏷️💰",
+        "description": "Estimation de Prix : Calculez le prix estimé d'un véhicule en fonction de critères détaillés.",
+        "details": "Prédictions Précises : Utilisez notre outil pour obtenir une estimation fiable de la valeur d'une voiture, vous aidant à prendre des décisions d'achat ou de vente informées. Algorithmes Avancés : Notre estimateur utilise des algorithmes avancés pour garantir des calculs de prix précis et à jour."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Services",
+            "title": "Ce Que Nous Offrons"
+        },
+        "searchDeal": {
+            "title": "Recherche d'Offres",
+            "description": "Trouvez les Meilleurs Prix : Recherchez rapidement des offres de voitures dans diverses catégories, y compris bons, justes et élevés."
+        },
+        "dataAnalysis": {
+            "title": "Analyse de Données",
+            "description": "Obtenez des statistiques approfondies incluant le nombre, la moyenne, l'écart-type, la médiane et divers percentiles."
+        },
+        "priceCalculator": {
+            "title": "Calculateur de Prix",
+            "description": "Calculez le prix estimé d'un véhicule en fonction de critères détaillés."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "Email :",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adresse :",
+            "details": "Hladilnika, Blvd. « Cherni vrah » 47, 1407 Sofia, Bulgarie"
+        }
+    }
+}
