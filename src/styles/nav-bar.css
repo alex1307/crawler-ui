@@ -1,0 +1,96 @@
+/* Base styles for the navbar */
+.navbar {
+    background: linear-gradient(45deg, #6a0dad, #1e90ff);
+    /* Example color gradient */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Style for navbar-brand */
+.navbar-brand {
+    font-weight: bold;
+    color: #fff !important;
+    font-size: 1.5rem;
+}
+
+/* Adjust the collapse behavior of the navbar */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+/* Style the toggler icon */
+.navbar-toggler-icon {
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    /* Change to match the navbar */
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+/* Responsive adjustments for the toggle button */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        justify-content: flex-end;
+        background: linear-gradient(45deg, #6a0dad, #1e90ff);
+        margin-top: 10px;
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+}
+
+/* Ensuring the navbar remains aligned and within the view */
+.container-fluid {
+    padding: 0;
+}
+
+/* Remove any padding that might cause a line or gap */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.collapse.show {
+    display: block !important;
+    /* Override default to prevent expanded look */
+}

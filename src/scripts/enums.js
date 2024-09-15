@@ -90,7 +90,10 @@ function populateDropdown(data, type, elementId) {
                 option.value = key;
                 option.textContent = value;
             }
-            select.appendChild(option);
+            if (select) {
+                select.appendChild(option);
+            }
+
         });
 
 
@@ -110,10 +113,12 @@ function populateCheckboxes(data, containerId) {
         const label = document.createElement('label');
         label.htmlFor = containerId + key;
         label.textContent = value;
+        if (wrapper) {
+            wrapper.appendChild(checkbox);
+            wrapper.appendChild(label);
+            container.appendChild(wrapper);
+        }
 
-        wrapper.appendChild(checkbox);
-        wrapper.appendChild(label);
-        container.appendChild(wrapper);
     });
 }
 
@@ -131,7 +136,10 @@ function populateMakesDropdown() {
                     const option = document.createElement('option');
                     option.value = key;
                     option.textContent = value;
-                    select.appendChild(option);
+                    if (select) {
+                        select.appendChild(option);
+                    }
+
                 }
             });
         })

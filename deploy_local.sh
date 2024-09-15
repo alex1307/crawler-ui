@@ -1,6 +1,11 @@
 #!/bin/bash
 
-yarn build && \
-yarn copy-assets && \
-yarn copyfiles -u 1 static/**/* dist && \
-yarn serve
+echo "Building project"
+yarn build --emptyOutDir
+echo "Copying img folder to dist"
+cp -R img/ dist/img 
+echo "Copying assets folder to dist"
+yarn copy-assets
+echo "Copying views folder to dist"
+pm2 restart server.js
+echo "Deployed successfully"

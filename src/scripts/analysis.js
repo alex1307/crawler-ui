@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Toggle button text between Advanced and Basic
-        this.textContent = advancedFields.style.display === 'none' ? 'Advanced' : 'Basic';
+        this.textContent = advancedFields.style.display === 'none' ? 'Advanced 🔎' : 'Basic 🔎';
     });
     document.getElementById('make').addEventListener('change', function () {
         const selectedMake = this.value;
@@ -144,9 +144,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Initialize tooltips (if help icons are added later)
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+document.addEventListener('DOMContentLoaded', function () {
+    const groupHelpModal = new bootstrap.Modal(document.getElementById('groupHelpModal'));
+    const columnsHelpModal = new bootstrap.Modal(document.getElementById('columnsHelpModal'));
+    const functionsHelpModal = new bootstrap.Modal(document.getElementById('functionsHelpModal'));
+
+    document.querySelectorAll('[data-toggle="modal"]').forEach(item => {
+        item.addEventListener('click', function (event) {
+            const target = event.target.getAttribute('data-target');
+            if (target === '#groupHelpModal') groupHelpModal.show();
+            if (target === '#columnsHelpModal') columnsHelpModal.show();
+            if (target === '#functionsHelpModal') functionsHelpModal.show();
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });
 // Show help text on hover or click
 

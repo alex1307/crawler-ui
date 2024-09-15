@@ -10,7 +10,6 @@
     <meta name="keywords" content="car deals, statistics, price, data analysis, car market, aggregator, eXoMexo" />
     <title>eXoMexo🦁🐸</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -19,19 +18,110 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
-    <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/buttons.css">
-    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="./styles/searchstyles.css">
+    <link rel="stylesheet" href="styles/price-cards.css">
     <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/header-footer.css">
+    <link rel="stylesheet" href="styles/common-style.css">
+    <link rel="stylesheet" href="styles/nav-bar.css">
+    <style>
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 8px;
+            /* Adjust padding to provide more space */
+            min-height: 50px;
+            min-width: 45%;
+        }
 
+        .btn.btn-link {
+            padding: 0;
+            font-size: 16px;
+            text-align: left;
+            flex: 1;
+            /* Allow the button text to take up available space */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /* Prevent text wrapping to multiple lines */
+        }
+
+        .btn.btn-link i {
+            margin-left: 5px;
+            /* Adjust space between text and icon */
+        }
+
+        .fas.fa-info-circle {
+            margin-left: 8px;
+            /* Space between the button and the info icon */
+            cursor: pointer;
+        }
+
+        .btn-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card-header button {
+            width: auto;
+            /* Allow button width to adjust naturally */
+            max-width: 100%;
+            /* Ensure space for the icons */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .collapse:not(.show) {
+            height: auto !important;
+        }
+
+        /* Style for Advanced Search Button */
+        .btn-advanced {
+            background: linear-gradient(45deg, #4a90e2, #00c6ff);
+            /* Gradient color for the button */
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            /* Space between the icon and the text */
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-advanced i {
+            font-size: 18px;
+            /* Icon size */
+        }
+
+        .btn-advanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Active state for better user interaction */
+        .btn-advanced:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(0, 198, 255, 0.3);
+        }
+    </style>
 </head>
 
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">ExoMexo🦁🐸</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -41,362 +131,390 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="search">Search</a>
+                        <a class="nav-link" href="search" data-title="Search 🔎🛒😎👌🔥🎯💰">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="analysis">Data Analysis</a>
+                        <a class="nav-link" href="analysis" data-title="Data Analysis 📈📊📝">Data Analysis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="calculator">Price Calculator</a>
+                        <a class="nav-link" href="calculator" data-title="Price Calculator 💰📉🧮">Price Calculator</a>
                     </li>
                 </ul>
+                <!-- Language Selector -->
+                <select id="language-selector" class="form-select w-auto ms-3">
+                    <option value="en">English</option>
+                    <option value="bg">Български</option>
+                    <option value="ro">Română</option>
+                    <option value="pl">Polski</option>
+                    <option value="de">Deutsch</option>
+                    <option value="fr">Français</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="gr">Ελληνικά</option>
+                    <option value="sr">Српски</option>
+                    <option value="it">Italiano</option>
+                </select>
             </div>
         </div>
     </nav>
+
     <div class="container mt-4">
-        <h2 class="text-center">Data Analysis</h2>
+        <h2>Data Analysis 📈📊📝</h2>
+        <div class="search-form mt-5">
 
 
-        <div class="tab-content" id="myTabContent">
-            <!-- Search Tab -->
+            <div class="tab-content" id="myTabContent">
+                <!-- Search Tab -->
 
-            <h5 class="search-criteria-heading">
-                Search Criteria 🔎
-                <button id="toggleAdvancedSearch" class="btn btn-outline-secondary btn-sm">
-                    Advanced
-                </button>
-            </h5>
-            <div class="row mt-3">
-                <div class="col-md-6 mb-3">
-                    <label for="make">Make</label>
-                    <select id="make" class="form-control">
-                        <option value="">Select Make</option>
-                    </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="model">Model</label>
-                    <select id="model" class="form-control">
-                        <option value="">Select Model</option>
-                    </select>
-                </div>
-                <div class="col-md-12 mb-3">
-                    <!-- Adjust to ensure correct alignment within the layout -->
-                    <div class="col-md-12 mb-3">
-                        <label> Engine <div id="engine" class="custom-checkbox-grid">
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div id="basicSearch" style="display: block;">
+                <h5 class="search-criteria-heading">
+                    Search Criteria 🔎
+                    <button id="toggleAdvancedSearch" class="btn-advanced">
+                        Advanced 🔎
+                    </button>
+
+                </h5>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="yearFrom">Production Year</label>
-                        <select id="yearFrom" class="form-control"></select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="priceTo">Max Price</label>
-                        <select id="priceTo" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="mileageTo">Mileage</label>
-                        <select id="mileageTo" class="form-control"></select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="powerFrom">Power</label>
-                        <select id="powerFrom" class="form-control"></select>
-                    </div>
-                </div>
-
-            </div>
-            <div id="advancedSearch" style="display: none;">
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="gearbox">Gearbox</label>
-                        <select id="gearbox" class="form-control">
-                            <option value="">Select Gearbox</option>
+                        <label for="make">Make</label>
+                        <select id="make" class="form-control">
+                            <option value="">Select Make</option>
                         </select>
                     </div>
-                </div>
-                <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="advancedSearchYearFrom">Year</label>
-                        <select id="advancedSearchYearFrom" class="form-control"></select>
+                        <label for="model">Model</label>
+                        <select id="model" class="form-control">
+                            <option value="">Select Model</option>
+                        </select>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="yearTo">Year</label>
-                        <select id="yearTo" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="mileageFrom">Mileage</label>
-                        <select id="mileageFrom" class="form-control"></select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="advancedSearchMileageTo">Mileage</label>
-                        <select id="advancedSearchMileageTo" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="advancedSearchPowerFrom">Power</label>
-                        <select id="advancedSearchPowerFrom" class="form-control"></select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="powerTo">Power</label>
-                        <select id="powerTo" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="priceFrom">Price</label>
-                        <select id="priceFrom" class="form-control"></select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="priceTo">Price</label>
-                        <select id="advancedSearchPriceTo" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mb-3">
-                        <label for="ccFrom">cm³</label>
-                        <select id="ccFrom" class="form-control"></select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="ccTo">cm³</label>
-                        <select id="ccTo" class="form-control"></select>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion" id="compactAccordion">
-                <!-- Grouping Section -->
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <div class="header-container">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                                aria-controls="collapseOne">
-                                Group by Vehicle Attributes <i class="fas fa-car"></i>
-                            </button>
-                            <i class="fas fa-info-circle" data-toggle="modal" data-target="#groupHelpModal"></i>
+                    <div class="col-md-12 mb-3">
+                        <!-- Adjust to ensure correct alignment within the layout -->
+                        <div class="col-md-12 mb-3">
+                            <label> Engine <div id="engine" class="custom-checkbox-grid">
+                                </div>
+                            </label>
                         </div>
                     </div>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#compactAccordion">
-                        <div class="card-body">
-                            <div class="scrollable-container">
-                                <div class="form-check-inline">
-                                    <div class="description">
-                                        <p>Select fields to group vehicles data by:</p>
+                </div>
+                <div id="basicSearch" style="display: block;">
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="yearFrom">Production Year</label>
+                            <select id="yearFrom" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="priceTo">Max Price</label>
+                            <select id="priceTo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="mileageTo">Mileage</label>
+                            <select id="mileageTo" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="powerFrom">Power</label>
+                            <select id="powerFrom" class="form-control"></select>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="advancedSearch" style="display: none;">
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="gearbox">Gearbox</label>
+                            <select id="gearbox" class="form-control">
+                                <option value="">Select Gearbox</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="advancedSearchYearFrom">Year</label>
+                            <select id="advancedSearchYearFrom" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="yearTo">Year</label>
+                            <select id="yearTo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="mileageFrom">Mileage</label>
+                            <select id="mileageFrom" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="advancedSearchMileageTo">Mileage</label>
+                            <select id="advancedSearchMileageTo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="advancedSearchPowerFrom">Power</label>
+                            <select id="advancedSearchPowerFrom" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="powerTo">Power</label>
+                            <select id="powerTo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="priceFrom">Price</label>
+                            <select id="priceFrom" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="priceTo">Price</label>
+                            <select id="advancedSearchPriceTo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="ccFrom">cm³</label>
+                            <select id="ccFrom" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="ccTo">cm³</label>
+                            <select id="ccTo" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion" id="compactAccordion">
+                    <!-- Grouping Section -->
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <div class="header-container">
+                                <!-- Ensure data-bs-toggle and data-bs-target are used instead of data-toggle and data-target -->
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                    aria-controls="collapseOne">
+                                    Group by Vehicle Attributes <i class="fas fa-car"></i>
+                                </button>
+                                <i class="fas fa-info-circle" data-bs-toggle="modal"
+                                    data-bs-target="#groupHelpModal"></i>
+                            </div>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#compactAccordion">
+                            <div class="card-body">
+                                <div class="scrollable-container">
+                                    <div class="form-check-inline">
+                                        <div class="description">
+                                            <p>Select fields to group vehicles data by:</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-check-inline">
-                                    <div class="group-by-column-checkbox-grid">
-                                        <input type="checkbox" id="groupByMake" checked>
-                                        <label class="form-check-label" for="groupByMake">Make</label>
+                                    <div class="form-check-inline">
+                                        <div class="group-by-column-checkbox-grid">
+                                            <input type="checkbox" id="groupByMake" checked>
+                                            <label class="form-check-label" for="groupByMake">Make</label>
+                                        </div>
+                                        <div class="group-by-column-checkbox-grid">
+                                            <input type="checkbox" id="groupByYear">
+                                            <label class="form-check-label" for="groupByYear">Year</label>
+                                        </div>
+                                        <div class="group-by-column-checkbox-grid hidden-checkbox"
+                                            style="display: none;">
+                                            <input type="checkbox" id="groupByModel">
+                                            <label class="form-check-label" for="groupByModel">Model</label>
+                                        </div>
+                                        <div class="group-by-column-checkbox-grid hidden-checkbox"
+                                            style="display: none;">
+                                            <input type="checkbox" id="groupByEngine">
+                                            <label class="form-check-label" for="groupByEngine">Engine</label>
+                                        </div>
+                                        <div class="group-by-column-checkbox-grid hidden-checkbox"
+                                            style="display: none;">
+                                            <input type="checkbox" id="groupByGearbox">
+                                            <label class="form-check-label" for="groupByGearbox">Gearbox</label>
+                                        </div>
+                                        <div class="group-by-column-checkbox-grid hidden-checkbox"
+                                            style="display: none;">
+                                            <input type="checkbox" id="groupByMileage">
+                                            <label class="form-check-label" for="groupByMileage">Mileage</label>
+                                        </div>
+                                        <div class="group-by-column-checkbox-grid hidden-checkbox"
+                                            style="display: none;">
+                                            <input type="checkbox" id="groupByPower">
+                                            <label class="form-check-label" for="groupByPower">Power</label>
+                                        </div>
+
                                     </div>
-                                    <div class="group-by-column-checkbox-grid">
-                                        <input type="checkbox" id="groupByYear">
-                                        <label class="form-check-label" for="groupByYear">Year</label>
-                                    </div>
-                                    <div class="group-by-column-checkbox-grid hidden-checkbox" style="display: none;">
-                                        <input type="checkbox" id="groupByModel">
-                                        <label class="form-check-label" for="groupByModel">Model</label>
-                                    </div>
-                                    <div class="group-by-column-checkbox-grid hidden-checkbox" style="display: none;">
-                                        <input type="checkbox" id="groupByEngine">
-                                        <label class="form-check-label" for="groupByEngine">Engine</label>
-                                    </div>
-                                    <div class="group-by-column-checkbox-grid hidden-checkbox" style="display: none;">
-                                        <input type="checkbox" id="groupByGearbox">
-                                        <label class="form-check-label" for="groupByGearbox">Gearbox</label>
-                                    </div>
-                                    <div class="group-by-column-checkbox-grid hidden-checkbox" style="display: none;">
-                                        <input type="checkbox" id="groupByMileage">
-                                        <label class="form-check-label" for="groupByMileage">Mileage</label>
-                                    </div>
-                                    <div class="group-by-column-checkbox-grid hidden-checkbox" style="display: none;">
-                                        <input type="checkbox" id="groupByPower">
-                                        <label class="form-check-label" for="groupByPower">Power</label>
+                                    <div class="custom-checkbox-grid">
+                                        <button class="btn-toggle more-btn" id="toggleMoreColumns">More...</button>
                                     </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Columns and Statistical Functions Section -->
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <div class="header-container" style="width: 320px;">
+                                <!-- Corrected attributes: data-toggle -> data-bs-toggle, data-target -> data-bs-target -->
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Select Financial Data for Analysis <i class="fas fa-chart-bar"></i>
+                                </button>
+                                <!-- Updated modal trigger attributes to Bootstrap 5 format -->
+                                <i class="fas fa-info-circle" data-bs-toggle="modal"
+                                    data-bs-target="#columnsHelpModal"></i>
+                            </div>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#compactAccordion">
+                            <div class="card-body">
+                                <div class="scrollable-container">
+                                    <!-- Radio buttons for selecting columns -->
+                                    <div>
+                                        <div class="description">
+                                            <p><strong>Select Columns to Analyze:</strong> Choose one or more columns
+                                                from
+                                                your dataset
+                                                that you wish to analyze. Each checkbox represents a different column.
+                                                For
+                                                example, you
+                                                might want to analyze the 'Price' or 'Estimated Price' columns to
+                                                understand
+                                                their
+                                                distribution and summary statistics. <strong>All prices are in EUR(€).
+                                                    [Discount] and
+                                                    [Increase] columns are percentages (for example 25%).</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <div class="functions-checkbox-grid">
+                                            <input type="radio" name="statColumn" id="price_in_eur" value="price_in_eur"
+                                                checked="">
+                                            <label for="price_in_eur">Price</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid">
+                                            <input type="radio" name="statColumn" id="estimated_price_in_eur"
+                                                value="estimated_price_in_eur">
+                                            <label for="estimated_price_in_eur">Estimated Price</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                            <input type="radio" name="statColumn" id="save_diff_in_eur"
+                                                value="save_diff_in_eur">
+                                            <label for="save_diff_in_eur">Save Difference €</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                            <input type="radio" name="statColumn" id="extra_charge_in_eur"
+                                                value="extra_charge_in_eur">
+                                            <label for="extra_charge_in_eur">Extra Charge €</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                            <input type="radio" name="statColumn" id="discount" value="discount">
+                                            <label for="discount">Discount %</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid hidden-radio" style="display: none;">
+                                            <input type="radio" name="statColumn" id="increase" value="increase">
+                                            <label for="increase">Increased %</label>
+                                        </div>
+                                        <!-- Add similar structure for other radio buttons -->
+                                    </div>
+                                    <div class="custom-checkbox-grid">
+                                        <button class="btn-toggle more-btn" id="toggleStatColumn">More...</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistical Functions Section -->
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <div class="header-container" style="width: 225px;">
+                                <!-- Updated attributes for Bootstrap 5 -->
+                                <button class="btn btn-link text-left collapsed header-button" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Statistical Functions <i class="fas fa-signal"></i>
+                                </button>
+                                <!-- Updated modal trigger for Bootstrap 5 -->
+                                <i class="fas fa-info-circle" data-bs-toggle="modal"
+                                    data-bs-target="#functionsHelpModal"></i>
+                            </div>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#compactAccordion">
+                            <div class="card-body">
+                                <div class="scrollable-container">
+                                    <div>
+                                        <div class="description">
+                                            <p><strong>Select Statistical Functions to Apply:</strong> Choose the
+                                                statistical functions
+                                                you want to apply to the selected columns. These functions will help you
+                                                summarize and
+                                                understand the data better.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <div class="functions-checkbox-grid">
+                                            <input type="checkbox" id="statCount" checked>
+                                            <label class="form-check-label" for="statCount">Count</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid">
+                                            <input type="checkbox" id="statAvg" checked>
+                                            <label class="form-check-label" for="statAvg">Avg</label>
+                                        </div>
+                                        <div class="functions-checkbox-grid">
+                                            <input type="checkbox" id="statSum" checked>
+                                            <label class="form-check-label" for="statSum">Sum</label>
+                                        </div>
+                                    </div>
+                                    <!-- Hidden checkboxes, initially hidden and revealed as needed -->
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="statMedian">
+                                        <label class="form-check-label" for="statMedian">Median</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="std">
+                                        <label class="form-check-label" for="std">Standard Deviation</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="rsd">
+                                        <label class="form-check-label" for="rsd">Relative Standard Deviation</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="statMin">
+                                        <label class="form-check-label" for="statMin">Min</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="statMax">
+                                        <label class="form-check-label" for="statMax">Max</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="quantile_60">
+                                        <label class="form-check-label" for="quantile_60">Percentile (60%)</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="quantile_66">
+                                        <label class="form-check-label" for="quantile_66">Percentile (66%)</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="quantile_70">
+                                        <label class="form-check-label" for="quantile_70">Percentile (70%)</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="quantile_75">
+                                        <label class="form-check-label" for="quantile_75">Percentile (75%)</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="quantile_80">
+                                        <label class="form-check-label" for="quantile_80">Percentile (80%)</label>
+                                    </div>
+                                    <div class="functions-checkbox-grid hidden-function" style="display: none;">
+                                        <input type="checkbox" id="quantile_90">
+                                        <label class="form-check-label" for="quantile_90">Percentile (90%)</label>
+                                    </div>
                                 </div>
                                 <div class="custom-checkbox-grid">
-                                    <button class="btn-toggle more-btn" id="toggleMoreColumns">More...</button>
+                                    <button class="btn-toggle more-btn" id="toggleFnMore">More...</button>
                                 </div>
-
+                                <!-- Checkboxes for statistical functions -->
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Columns and Statistical Functions Section -->
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <div class="header-container" style="width: 320px;">
-
-                            <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                aria-controls="collapseTwo">
-                                Select Financial Data for Analysis <i class="fas fa-chart-bar"></i>
-                            </button>
-                            <i class="fas fa-info-circle" data-toggle="modal" data-target="#columnsHelpModal"></i>
-
-                        </div>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#compactAccordion">
-                        <div class="card-body">
-                            <div class="scrollable-container">
-                                <!-- Radio buttons for selecting columns -->
-                                <div>
-
-                                    <div class="description">
-                                        <p><strong>Select Columns to Analyze:</strong> Choose one or more columns from
-                                            your dataset
-                                            that you wish to analyze. Each checkbox represents a different column. For
-                                            example, you
-                                            might want to analyze the 'Price' or 'Estimated Price' columns to understand
-                                            their
-                                            distribution and summary statistics. <strong>All prices are in EUR(€).
-                                                [Discount] and
-                                                [Increase] columns are percentages (for example 25%).</strong></p>
-                                    </div>
-                                </div>
-                                <div class="form-check-inline">
-                                    <div class="functions-checkbox-grid">
-                                        <input type="radio" name="statColumn" id="price_in_eur" value="price_in_eur"
-                                            checked>
-                                        <label for="price_in_eur">Price</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid">
-                                        <input type="radio" name="statColumn" id="estimated_price_in_eur"
-                                            value="estimated_price_in_eur">
-                                        <label for="estimated_price_in_eur">Estimated Price</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
-                                        <input type="radio" name="statColumn" id="save_diff_in_eur"
-                                            value="save_diff_in_eur">
-                                        <label for="save_diff_in_eur">Save Difference €</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
-                                        <input type="radio" name="statColumn" id="extra_charge_in_eur"
-                                            value="extra_charge_in_eur">
-                                        <label for="extra_charge_in_eur">Extra Charge €</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
-                                        <input type="radio" name="statColumn" id="discount" value="discount">
-                                        <label for="discount">Discount %</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid hidden-radio" style="display: none;">
-                                        <input type="radio" name="statColumn" id="increase" value="increase">
-                                        <label for="increase">Increased %</label>
-                                    </div>
-                                    <!-- Add similar structure for other radio buttons -->
-                                </div>
-                                <div class="custom-checkbox-grid">
-                                    <button class="btn-toggle more-btn" id="toggleStatColumn">More...</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Statistical Functions Section -->
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-
-                        <div class="header-container" style="width: 225px;">
-                            <button class="btn btn-link text-left collapsed header-button" type="button"
-                                data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                aria-controls="collapseThree">
-                                Statistical Functions <i class="fas fa-signal"></i>
-                            </button>
-                            <i class="fas fa-info-circle" data-toggle="modal" data-target="#functionsHelpModal"></i>
-
-                            <!-- Add help text if needed -->
-                        </div>
-
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#compactAccordion">
-                        <div class="card-body">
-                            <div class="scrollable-container">
-                                <div>
-                                    <div class="description">
-                                        <p><strong>Select Statistical Functions to Apply:</strong> Choose the
-                                            statistical functions
-                                            you want to apply to the selected columns. These functions will help you
-                                            summarize and
-                                            understand the data better.</p>
-                                    </div>
-                                </div>
-                                <div class="form-check-inline">
-                                    <div class="functions-checkbox-grid">
-                                        <input type="checkbox" id="statCount" checked>
-                                        <label class="form-check-label" for="statCount">Count</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid">
-                                        <input type="checkbox" id="statAvg" checked>
-                                        <label class="form-check-label" for="statAvg">Avg</label>
-                                    </div>
-                                    <div class="functions-checkbox-grid"></div>
-                                    <input type="checkbox" id="statSum" checked>
-                                    <label class="form-check-label" for="statSum">Sum</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="statMedian">
-                                    <label class="form-check-label" for="statMedian">Median</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="std">
-                                    <label class="form-check-label" for="std">Standard Deviation</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="rsd">
-                                    <label class="form-check-label" for="rsd">Relative Standard Deviation</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="statMin">
-                                    <label class="form-check-label" for="statMin">Min</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="statMax">
-                                    <label class="form-check-label" for="statMax">Max</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="quantile_60">
-                                    <label class="form-check-label" for="quantile_60">Percentile (60%)</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="quantile_66">
-                                    <label class="form-check-label" for="quantile_66">Percentile (66%)</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="quantile_70">
-                                    <label class="form-check-label" for="quantile_70">Percentile (70%)</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="quantile_75">
-                                    <label class="form-check-label" for="quantile_75">Percentile (75%)</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="quantile_80">
-                                    <label class="form-check-label" for="quantile_80">Percentile (80%)</label>
-                                </div>
-                                <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                    <input type="checkbox" id="quantile_90">
-                                    <label class="form-check-label" for="quantile_90">Percentile (90%)</label>
-                                </div>
-                            </div>
-                            <div class="custom-checkbox-grid">
-                                <button class="btn-toggle more-btn" id="toggleFnMore">More...</button>
-                            </div>
-                            <!-- Checkboxes for statistical functions -->
-
-                            <!-- Add similar structure for other checkboxes -->
                         </div>
                     </div>
                 </div>
@@ -414,15 +532,12 @@
         </button>
     </div>
     <!-- Bootstrap Modal -->
-    <div class="modal fade" id="groupHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="groupHelpModal" tabindex="-1" aria-labelledby="groupHelpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="groupHelpModalLabel">Help Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p><strong>Understanding Grouping and Statistics:</strong></p>
@@ -469,20 +584,18 @@
                         each category, making it easier to analyze and make informed decisions.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="columnsHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+
+    <div class="modal fade" id="columnsHelpModal" tabindex="-1" aria-labelledby="columnsHelpModal" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="columnsHelpModal">Help Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="description">
@@ -498,20 +611,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="functionsHelpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
+
+    <div class="modal fade" id="functionsHelpModal" tabindex="-1" aria-labelledby="functionsHelpModal"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Grouping and Statistics Help</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="functionsHelpModal">Help Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p><strong>Statistical Functions Description:</strong></p>
@@ -542,7 +654,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -605,9 +717,9 @@
     </div>
 
     <script type="module" src="scripts/analysis.js">
-
     </script>
 
 </body>
+
 
 </html>

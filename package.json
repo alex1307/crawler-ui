@@ -15,7 +15,7 @@
         "vite": "5.4.5"
     },
     "dependencies": {
-        "@cubejs-client/core": "0.35",
+        "@cubejs-client/core": "0.36.0",
         "bootstrap": "^5.3",
         "chart.js": "^4.0",
         "express": "5.0.0",

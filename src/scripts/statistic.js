@@ -31,7 +31,8 @@ export function captureData() {
         group: [],
         aggregators: [],
         order: [],
-        stat_column: $('input[name="statColumn"]:checked').value || "price_in_eur",
+        // Vanilla JavaScript equivalent
+        stat_column: document.querySelector('input[name="statColumn"]:checked')?.value || "price_in_eur",
         estimated_price: document.getElementById('estimated_price') && document.getElementById('estimated_price').value
             ? parseInt(document.getElementById('estimated_price').value, 10) : null,
     };
@@ -100,13 +101,15 @@ export function captureData() {
     if (document.getElementById('orderColumn1') && document.getElementById('orderColumn1').value) {
         data.order.push({
             column: document.getElementById('orderColumn1').value,
-            asc: $('input[name="order1"]:checked').value === 'asc'
+            // Vanilla JavaScript equivalent
+            asc: document.querySelector('input[name="order1"]:checked')?.value === 'asc',
         });
     }
     if (document.getElementById('orderColumn2') && document.getElementById('orderColumn2').value) {
         data.order.push({
             column: document.getElementById('orderColumn2').value,
-            asc: $('input[name="order2"]:checked').value === 'asc'
+            // Vanilla JavaScript equivalent
+            asc: document.querySelector('input[name="order2"]:checked')?.value === 'asc',
         });
     }
 
