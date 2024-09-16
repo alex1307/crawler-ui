@@ -1,5 +1,6 @@
 #!/bin/bash
-
+yarn install
+yarn upgrade
 echo "Building project"
 yarn build --emptyOutDir
 echo "Copying img folder to dist"
