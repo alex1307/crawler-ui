@@ -17,15 +17,16 @@
     <link rel="stylesheet" href="styles/nav-bar.css">
     <style>
         * {
-            margin: 0;
-            padding: 0;
+
             box-sizing: border-box;
         }
 
         body {
+            margin: 5px;
+            padding: 5px;
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
-            overflow-x: hidden;
+            flex-direction: column;
         }
 
         .form-select {
@@ -220,8 +221,12 @@
                 font-size: 2.2rem;
             }
 
+            h1 {
+                font-size: 5rem;
+            }
+
             .highlight {
-                font-size: 0.8em;
+                font-size: 5rem;
             }
         }
 
@@ -254,8 +259,109 @@
                 padding: 10px 0;
             }
 
+            h1 {
+                font-size: 4rem;
+            }
+
             .highlight {
-                font-size: 0.5em;
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Adjust navbar items and logo */
+            .navbar-brand {
+                font-size: 20px;
+                /* Reduce the font size */
+            }
+
+            /* Adjust the spacing and alignment of the main content */
+            .service-card {
+                margin: 10px 0;
+                /* Reduce the margin between service cards */
+                text-align: center;
+                /* Ensure text is centered */
+                padding: 10px;
+                /* Adjust padding to fit smaller screens */
+            }
+
+            /* Resize service icons */
+            .service-icon {
+                font-size: 36px;
+                /* Reduce the size of the service icons */
+                margin-bottom: 10px;
+            }
+
+            /* Adjust font sizes for headings and text */
+            .service-card h4 {
+                font-size: 16px;
+                /* Smaller font size for mobile */
+            }
+
+            .service-card p {
+                font-size: 14px;
+                /* Adjust paragraph text size */
+            }
+
+
+            /* Fix overflow issues and padding */
+            .container {
+                padding: 15px;
+                /* Less padding on mobile */
+                overflow-x: hidden;
+                /* Prevent horizontal scrolling */
+            }
+
+            /* Adjust navbar for smaller screens */
+            .navbar {
+                position: auto;
+                padding: 5px 10px;
+                /* Adjust padding to fit better */
+            }
+
+            /* Prevent overlapping and maintain order */
+            .navbar-nav {
+                flex-direction: column;
+                /* Stack nav items vertically */
+                gap: 5px;
+                /* Add space between items */
+            }
+
+            /* Adjust button sizes */
+            .btn {
+                font-size: 14px;
+                /* Smaller button text */
+                padding: 8px 12px;
+                /* Adjust button padding */
+            }
+
+            .hero-content {
+                padding: 50px 30px;
+                margin-top: 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .highlight {
+                font-size: 2rem;
+                /* Adjust font size for mobile */
+                /* Add space to prevent overlap with navbar */
+                line-height: 1.1;
+                /* Adjust line height to keep text compact */
+                display: flex;
+                /* Ensure proper positioning */
+                justify-content: center;
+                /* Center the text */
+                align-items: center;
+                /* Align text vertically */
+                text-align: center;
+                /* Center align the text */
+                word-break: keep-all;
+                /* Prevent breaking words */
+                white-space: nowrap;
             }
         }
     </style>
@@ -303,7 +409,7 @@
     <header id="hero">
         <div class="hero-content">
             <h1><span class="highlight">e<span class="pulse-x-red">X</span>oM<span class="pulse-euro">€</span><span
-                        class="pulse-x-green">X</span>o</span> 🦁🐸
+                        class="pulse-x-green">X</span>o</span><span class="emojis">🦁🐸</span>
             </h1>
             <p>Your platform for car deals, data analysis, price calculation and estimations.</p>
         </div>
