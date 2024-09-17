@@ -1,9 +1,12 @@
 {
     "homepage": {
-        "title": "Discover the Best Car Deals with",
-        "description": "our ultimate platform for comparing vehicle prices, finding the best deals, and accessing in-depth statistics and reliable price estimations.",
-        "details": "We search across popular websites to bring you the top vehicle deals all in one place. Explore detailed statistics, powerful search capabilities, and our advanced price engine to make the smartest buying decisions.",
-        "learnMore": "Find Out More"
+        "title": "Discover the Best Car Deals with our ultimate platform for comparing vehicle prices, finding the best deals, and accessing in-depth statistics and reliable price estimations.",
+        "search_title": "Search for Car Deals",
+        "search_details": "Find the best prices across various categories, including good, fair, and high prices.",
+        "data_title": "Data Analysis",
+        "data_details": "Get detailed statistics and analyze car data with our advanced tools.",
+        "calculator_title": "Calculator",
+        "calculator_details": "Estimate vehicle prices accurately using our advanced statistic algorithms."
     },
     "searchSection": {
         "title": "Search for Car Deals 🧐🔎🚗",
