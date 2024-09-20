@@ -1,29 +1,32 @@
 {
     "homepage": {
-        "title": "Entdecken Sie die besten Autodeals mit",
-        "description": "unserer ultimativen Plattform zum Vergleichen von Fahrzeugpreisen, Finden der besten Angebote und Zugriff auf detaillierte Statistiken und zuverlässige Preisschätzungen.",
-        "details": "Wir durchsuchen beliebte Websites, um Ihnen die besten Fahrzeugangebote an einem Ort zu bieten. Erkunden Sie detaillierte Statistiken, leistungsstarke Suchfunktionen und unsere fortschrittliche Preis-Engine, um die klügsten Kaufentscheidungen zu treffen.",
-        "learnMore": "Mehr Erfahren"
+        "title": "Entdecken Sie die besten Autodeals mit unserer ultimativen Plattform zum Vergleichen von Fahrzeugpreisen, Finden der besten Angebote und Zugriff auf umfassende Statistiken und zuverlässige Preisberechnungen.",
+        "search_title": "Suche nach Autodeals",
+        "search_details": "Finden Sie die besten Preise in verschiedenen Kategorien, einschließlich guter, fairer und hoher Preise.",
+        "data_title": "Datenanalyse",
+        "data_details": "Erhalten Sie detaillierte Statistiken und analysieren Sie Autodaten mit unseren fortschrittlichen Tools.",
+        "calculator_title": "Preisrechner",
+        "calculator_details": "Schätzen Sie Fahrzeugpreise mit unseren fortschrittlichen Statistikalgorithmen genau ein."
     },
     "searchSection": {
         "title": "Suche nach Autodeals 🧐🔎🚗",
         "description": "Finden Sie die besten Preise: Suchen Sie schnell nach Autodeals in verschiedenen Kategorien, einschließlich guter, fairer und hoher Preise.",
-        "details": "Filtern Sie Ihre Ergebnisse: Verwenden Sie erweiterte Filter, um Ihre Suche nach Marke, Modell, Preisspanne, Kilometerstand, Jahr und mehr einzugrenzen. Angepasste Suche: Passen Sie Ihre Suche an Ihre spezifischen Bedürfnisse und Vorlieben an."
+        "details": "Filtern Sie Ihre Ergebnisse: Verwenden Sie erweiterte Filter, um Ihre Suche basierend auf Marke, Modell, Preisspanne, Kilometerstand, Baujahr und mehr einzugrenzen. Angepasste Suche: Passen Sie Ihre Suche an Ihre spezifischen Bedürfnisse und Vorlieben an."
     },
     "analysisSection": {
         "title": "Datenanalyse 📈📊",
-        "description": "Gruppenanalyse: Analysieren Sie Fahrzeugdaten, indem Sie die Ergebnisse nach ausgewählten Feldern wie Marke, Modell, Jahr, Motor, Getriebe und mehr gruppieren.",
-        "details": "Detaillierte Statistiken: Erhalten Sie detaillierte Statistiken, einschließlich Anzahl, Mittelwert, Standardabweichung, Median und verschiedener Perzentile. Verstehen Sie Markttendenzen: Gewinnen Sie Einblicke in den Automarkt mit umfassenden statistischen Analysen."
+        "description": "Gruppenanalyse: Analysieren Sie Autodaten, indem Sie die Ergebnisse nach ausgewählten Feldern wie Marke, Modell, Baujahr, Motor, Getriebe und mehr gruppieren.",
+        "details": "Detaillierte Statistiken: Erhalten Sie umfassende Statistiken, einschließlich Anzahl, Durchschnitt, Standardabweichung, Median und verschiedener Perzentile. Verstehen Sie Markttrends: Gewinnen Sie Einblicke in den Automobilmarkt mit umfassenden statistischen Analysen."
     },
     "calculatorSection": {
-        "title": "Preisrechner 🛝🎡🏷️💰",
+        "title": "Preisspielplatz 🛝🎡🏷️💰",
         "description": "Preisschätzer: Berechnen Sie den geschätzten Preis eines Fahrzeugs basierend auf detaillierten Kriterien.",
-        "details": "Genauere Prognosen: Nutzen Sie unser Tool, um eine zuverlässige Schätzung des Wertes eines Autos zu erhalten, die Ihnen hilft, fundierte Kauf- oder Verkaufsentscheidungen zu treffen. Fortschrittliche Algorithmen: Unser Schätzer verwendet fortschrittliche Algorithmen, um genaue und aktuelle Preiskalkulationen sicherzustellen."
+        "details": "Genauere Vorhersagen: Verwenden Sie unser Tool, um eine zuverlässige Schätzung des Fahrzeugwerts zu erhalten, die Ihnen hilft, informierte Kauf- oder Verkaufsentscheidungen zu treffen. Fortgeschrittene Algorithmen: Unser Schätzer verwendet fortschrittliche Algorithmen, um genaue und aktuelle Preisberechnungen sicherzustellen."
     },
     "servicesSection": {
         "heading": {
             "subtitle": "Dienstleistungen",
-            "title": "Was Wir Anbieten"
+            "title": "Was wir bieten"
         },
         "searchDeal": {
             "title": "Suche nach Angeboten",
@@ -31,7 +34,7 @@
         },
         "dataAnalysis": {
             "title": "Datenanalyse",
-            "description": "Erhalten Sie detaillierte Statistiken, einschließlich Anzahl, Mittelwert, Standardabweichung, Median und verschiedener Perzentile."
+            "description": "Erhalten Sie umfassende Statistiken, einschließlich Anzahl, Durchschnitt, Standardabweichung, Median und verschiedener Perzentile."
         },
         "priceCalculator": {
             "title": "Preisrechner",
@@ -46,6 +49,65 @@
         "address": {
             "label": "Adresse:",
             "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofia, Bulgarien"
+        }
+    },
+    "labels": {
+        "search": "Suche",
+        "makeModel": "Suche nach 🚗 Marke & 🏎️ Modell",
+        "make": "🚗 Marke",
+        "selectMake": "Marke auswählen",
+        "model": "🏎️ Modell",
+        "selectModel": "Modell auswählen",
+        "year": "📅 Baujahr",
+        "selectYear": "Baujahrbereich auswählen",
+        "price": "🏷️💶 Preis",
+        "selectPrice": "Preisspanne auswählen",
+        "estimated Price": "Geschätzter Preis",
+        "selectEstimatedPrice": "Geschätzte Preisspanne auswählen",
+        "mileage": "⏲ Kilometerstand",
+        "selectMileage": "Kilometerstandbereich auswählen",
+        "engine": "⛽🔌🔋 Motor",
+        "equipment": "🔧🔩🛠️ Ausstattung",
+        "gearbox": "🕹⚙️ Getriebe",
+        "selectGearbox": "Getriebe auswählen",
+        "power": "🐎💪⚡ Leistung",
+        "selectPower": "Leistungsbereich auswählen",
+        "cm3": "cm³",
+        "selectCm3": "cm³-Bereich auswählen",
+        "saveDiff": "🤑💰🛒  Ersparnis €",
+        "selectSaveDiff": "Ersparnisspanne auswählen",
+        "discount": "%🛒🛍️✨ Rabatt  (✂️🏷️%)",
+        "selectDiscount": "Rabattbereich auswählen",
+        "published": "📅 🏁 Veröffentlicht am",
+        "selectPublished": "Veröffentlichungsdatum auswählen",
+        "increasedLabel": "🤪 Erhöht %",
+        "selectIncreased": "Erhöhungsbereich auswählen",
+        "extraCharge": "Zusatzkosten €",
+        "selectExtraCharge": "Zusatzkostenbereich auswählen",
+        "from": "von",
+        "to": "bis",
+        "fromEur": "von €",
+        "toEur": "bis €",
+        "fromKm": "von km",
+        "toKm": "bis km",
+        "fromPower": "von h.p.",
+        "toPower": "bis h.p.",
+        "fromCm3": "von cm³",
+        "toCm3": "bis cm³",
+        "fromPercentage": "von %",
+        "toPercentage": "bis %",
+        "btn": {
+            "search": "Suche",
+            "viewAnalysis": "Analysedaten anzeigen",
+            "close": "Schließen",
+            "more": "Mehr...",
+            "less": "Weniger...",
+            "advanced": "Erweitert 🔎",
+            "basic": "Einfach 🔎",
+            "columnsGroupBy": "Gruppieren nach Fahrzeugeigenschaften",
+            "dataAnalysis": "Wählen Sie Finanzdaten zur Analyse",
+            "statFunctions": "Statistische Funktionen",
+            "confirm": "Bestätigen und los..."
         }
     }
 }

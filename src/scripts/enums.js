@@ -80,16 +80,8 @@ function populateDropdown(data, type, elementId) {
         .forEach(([key, value]) => {
             const option = document.createElement('option');
             option.name = elementId;
-            if (key === '0' && type === 'From') {
-                option.value = "";
-                option.textContent = "From";
-            } else if (key === '0' && type === 'To') {
-                option.value = "";
-                option.textContent = "To";
-            } else {
-                option.value = key;
-                option.textContent = value;
-            }
+            option.value = key;
+            option.textContent = value;
             if (select) {
                 select.appendChild(option);
             }
@@ -130,7 +122,6 @@ function populateMakesDropdown() {
         .then(data => {
             const sortedMakes = Object.entries(data).sort((a, b) => a[1].localeCompare(b[1])); // Sort by make names
             const select = document.getElementById('make');
-            select.innerHTML = '<option value="">Select a make</option>';
             sortedMakes.forEach(([key, value]) => {
                 if (value) { // Exclude empty values
                     const option = document.createElement('option');
@@ -145,58 +136,3 @@ function populateMakesDropdown() {
         })
         .catch(error => console.error('Error fetching makes:', error));
 }
-
-// export function updateSecondarySortVisibility() {
-//     const primarySort = document.getElementById('sort_by_primary').value;
-//     const secondarySortRow = document.getElementById('secondary_sort_row');
-//     const secondarySortSelect = document.getElementById('sort_by_secondary');
-
-//     if (primarySort) {
-//         secondarySortRow.style.display = ''; // Show the secondary sort options
-//         populateSecondaryOptions(primarySort); // Populate secondary options excluding the primary selected
-//     } else {
-//         secondarySortRow.style.display = 'none'; // Hide if no primary sort is selected
-//     }
-// }
-
-// function populateSecondaryOptions(excludeOption) {
-
-//     const ps = document.getElementById('sort_by_primary');
-//     const selected = ps.options[ps.selectedIndex].value;
-//     const secondarySortSelect = document.getElementById('sort_by_secondary');
-//     secondarySortSelect.innerHTML = '';
-//     Array.from(ps.options).filter(option => option.value !== selected).forEach(option => {
-//         const opt = document.createElement('option');
-//         opt.value = option.value;
-//         opt.textContent = option.textContent;
-//         secondarySortSelect.appendChild(opt);
-//     });
-// }
-
-// function updateSortOptions() {
-//     const groupBySelect = document.getElementById('group_by');
-//     const sortPrimarySelect = document.getElementById('sort_by_primary');
-
-//     // Get the currently selected value in group_by
-//     let selectedGroupBy = groupBySelect.value;
-//     const groupByCheckboxes = document.querySelectorAll('input[name="group_by"]:checked');
-//     if (groupByCheckboxes.length > 0) {
-//         selectedGroupBy = Array.from(groupByCheckboxes).map(cb => cb.value);
-//     }
-
-//     // Clear current options in sort dropdown
-//     sortPrimarySelect.innerHTML = '';
-
-//     // Add a new option based on the selected group_by
-
-
-//     selectedGroupBy.forEach(option => {
-//         const opt = document.createElement('option');
-//         opt.value = option;
-//         opt.textContent = option.charAt(0).toUpperCase() + option.slice(1); // Capitalize the first letter
-//         sortPrimarySelect.appendChild(opt);
-//     });
-
-//     // Optionally add more options or handle multiple group_by selections
-//     // This part can be expanded based on specific requirements
-// }

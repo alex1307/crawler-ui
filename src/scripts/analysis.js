@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { fetchModels, clearModels, generateRequestData, captureData, validateJSON, populateMakesDropdown, populateDropdown, populateCheckboxes } from './statistic.js';
 const isLocalhost = window.location.hostname === 'localhost';
 
@@ -32,7 +33,8 @@ map.forEach((enumName, elementId) => {
     populateFilters(enumName, elementId);
 });
 
-localStorage.clear();
+localStorage.removeItem('requestData');
+localStorage.removeItem('type');
 function redirectToResultsPage(requestData) {
     localStorage.setItem('requestData', JSON.stringify(requestData));
     const columns = [];
@@ -83,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-        // Toggle button text between Advanced and Basic
-        this.textContent = advancedFields.style.display === 'none' ? 'Advanced 🔎' : 'Basic 🔎';
+        this.textContent = advancedFields.style.display === 'none' ? i18next.t('labels.btn.advanced') : i18next.t('labels.btn.basic');
+
     });
     document.getElementById('make').addEventListener('change', function () {
         const selectedMake = this.value;
@@ -104,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         hiddenCheckboxes.forEach(checkbox => {
             checkbox.style.display = isHidden ? 'inline-block' : 'none';
         });
-        this.textContent = isHidden ? 'Less...' : 'More...';
+        this.textContent = isHidden ? i18next.t('labels.btn.less') : i18next.t('labels.btn.more');
+
     });
     document.getElementById('toggleStatColumn').addEventListener('click', function (event) {
         const hiddenCheckboxes = document.querySelectorAll('.hidden-radio');
@@ -115,7 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
         hiddenCheckboxes.forEach(checkbox => {
             checkbox.style.display = isHidden ? 'inline-block' : 'none';
         });
-        this.textContent = isHidden ? 'Less...' : 'More...';
+        this.textContent = isHidden ? i18next.t('labels.btn.less') : i18next.t('labels.btn.more');
+
     });
     document.getElementById('toggleFnMore').addEventListener('click', function (event) {
         const hiddenCheckboxes = document.querySelectorAll('.hidden-function');
@@ -126,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         hiddenCheckboxes.forEach(checkbox => {
             checkbox.style.display = isHidden ? 'inline-block' : 'none';
         });
-        this.textContent = isHidden ? 'Less...' : 'More...';
+        this.textContent = isHidden ? i18next.t('labels.btn.less') : i18next.t('labels.btn.more');
     });
     document.getElementById('searchButton').addEventListener('click', function () {
         const json = captureData();

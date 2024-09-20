@@ -251,16 +251,10 @@ export function populateDropdown(data, type, elementId) {
                 .forEach(([key, value]) => {
                     const option = document.createElement('option');
                     option.name = elementId;
-                    if (key === '0' && elementId.includes('From')) {
-                        option.value = key;
-                        option.textContent = 'From';
-                    } else if (key === '0' && elementId.includes('To')) {
-                        option.value = key;
-                        option.textContent = 'To';
-                    } else {
-                        option.value = key;
-                        option.textContent = value;
-                    }
+
+                    option.value = key;
+                    option.textContent = value;
+
                     select.appendChild(option);
                 });
         }
@@ -401,7 +395,6 @@ export function populateMakesDropdown() {
         .then(data => {
             const sortedMakes = Object.entries(data).sort((a, b) => a[1].localeCompare(b[1])); // Sort by make names
             const select = document.getElementById('make');
-            select.innerHTML = '<option value="">Select a make</option>';
             sortedMakes.forEach(([key, value]) => {
                 if (value) { // Exclude empty values
                     const option = document.createElement('option');

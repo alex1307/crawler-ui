@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/common-style.css">
     <link rel="stylesheet" href="styles/nav-bar.css">
+    <script type="module" src="scripts/locale.js"></script>
 </head>
 
 <body>
@@ -67,56 +68,61 @@
         <div class="mt-5 search-form">
             <!-- Step 1: Vehicle Filter -->
             <div id="step-1" class="tab-pane" role="tabpanel">
-                <div class="row">
+                <div class="row mt-3">
+                    <div class="col-12 mb-3">
+                        <label data-i18n="labels.makeModel">Search by make and model</label>
+                    </div>
                     <div class="col-md-6 mb-3">
-                        <label for="make">🚗 Make</label>
                         <select id="make" class="form-control">
-                            <option value="">Select Make</option>
+                            <option value="" data-i18n="labels.selectMake">Select Make</option>
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="model">Model</label>
                         <select id="model" class="form-control">
-                            <option value="">Select Model</option>
+                            <option value="" data-i18n="labels.selectModel">Select Model</option>
                         </select>
                     </div>
                 </div>
                 <div class="mt-3 row">
                     <div class="col-md-12 mb-3">
-                        <label>⛽🔌🔋 Engine:</label>
+                        <label data-i18n="labels.engine">⛽🔌🔋 Engine:</label>
                         <div id="engine" class="custom-checkbox-grid"></div>
                     </div>
                 </div>
                 <div class="row mt-3">
+
                     <div class="col-md-6 mb-3">
-                        <label for="gearbox">🕹⚙️ Gearbox</label>
+                        <label for="gearbox" data-i18n="labels.gearbox">Gearbox</label>
                         <select id="gearbox" class="form-control">
-                            <option value="">Select Gearbox</option>
+                            <option value="" data-i18n="labels.selectGearbox">
+                                Select gearbox
+                            </option>
                         </select>
                     </div>
+
                     <div class="col-md-6 mb-3">
-                        <label for="equipment">🛠🛒 Equipment</label>
+                        <label data-i18n="labels.equipment">🛠🛒 Equipment</label>
                         <input type="text" id="equipment" class="form-control"
                             placeholder="e.g., 4wd, parking, heated seats"></input>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="yearFrom">📅 Prod. Year</label>
+                        <label data-i18n="labels.year">📅 Prod. Year</label>
                         <select id="yearFrom" class="form-control"></select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="mileage">⏲Mileage (km)</label>
+                        <label data-i18n="labels.mileage">⏲Mileage (km)</label>
                         <input type="text" id="mileage" class="form-control" placeholder="e.g., 100000"></input>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6 mb-3">
-                        <label for="cc">cm³</label>
+                        <label data-i18n="labels.cm3">cm³</label>
                         <input type="text" id="cc" class="form-control" placeholder="e.g., 1200"></input>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="power">🐎💪⚡ Power</label>
+                        <label data-i18n="labels.power">🐎💪⚡ Power</label>
                         <input type="text" id="power" class="form-control" placeholder="e.g., 150"></input>
                     </div>
                 </div>
@@ -132,19 +138,14 @@
 
     <div class="footer">
         <p>&copy; 2024 ExoMexo🦁🐸</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="search">Search</a> |
-            <a href="analysis">Data Analysis</a> |
-            <a href="calculator">Price Calculator</a>
-        </p>
     </div>
 
     <script type="module">
         import { populateFilter, fetchModels, clearModels, generateRequestData, captureData, validateJSON } from './scripts/statistic.js';
         import { showStatisticData } from './scripts/rainbow.js';
 
-        localStorage.clear();
+        localStorage.removeItem('requestData');
+        localStorage.removeItem('type');
 
         document.addEventListener('DOMContentLoaded', function () {
             const filters = ['make', 'engine', 'gearbox', 'year'];

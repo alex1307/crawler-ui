@@ -1,40 +1,43 @@
 {
     "homepage": {
-        "title": "Découvrez les Meilleures Offres de Voitures avec",
-        "description": "notre plateforme ultime pour comparer les prix des véhicules, trouver les meilleures offres et accéder à des statistiques détaillées et des estimations de prix fiables.",
-        "details": "Nous recherchons sur des sites populaires pour vous offrir les meilleures offres de véhicules en un seul endroit. Explorez des statistiques détaillées, des capacités de recherche puissantes et notre moteur de prix avancé pour prendre les décisions d'achat les plus intelligentes.",
-        "learnMore": "En Savoir Plus"
+        "title": "Découvrez les meilleures offres de voitures avec notre plateforme ultime pour comparer les prix des véhicules, trouver les meilleures offres, accéder à des statistiques détaillées et des estimations de prix fiables.",
+        "search_title": "Recherche d'offres de voitures",
+        "search_details": "Trouvez les meilleurs prix dans diverses catégories, y compris les prix bons, justes et élevés.",
+        "data_title": "Analyse des données",
+        "data_details": "Obtenez des statistiques détaillées et analysez les données des voitures avec nos outils avancés.",
+        "calculator_title": "Calculateur de prix",
+        "calculator_details": "Estimez avec précision les prix des véhicules à l'aide de nos algorithmes avancés."
     },
     "searchSection": {
-        "title": "Recherche d'Offres de Voitures 🧐🔎🚗",
-        "description": "Trouvez les Meilleurs Prix : Recherchez rapidement des offres de voitures dans diverses catégories, y compris bons, justes et élevés.",
-        "details": "Filtrez vos Résultats : Utilisez des filtres avancés pour affiner votre recherche selon la marque, le modèle, la gamme de prix, le kilométrage, l'année, et plus encore. Recherche Personnalisée : Adaptez votre recherche à vos besoins et préférences spécifiques."
+        "title": "Recherche d'offres de voitures 🧐🔎🚗",
+        "description": "Trouvez les meilleurs prix : recherchez rapidement des offres de voitures dans diverses catégories, y compris des prix bons, justes et élevés.",
+        "details": "Affinez vos résultats : utilisez des filtres avancés pour affiner votre recherche en fonction de la marque, du modèle, de la fourchette de prix, du kilométrage, de l'année et plus encore. Recherche personnalisée : adaptez votre recherche à vos besoins et préférences spécifiques."
     },
     "analysisSection": {
-        "title": "Analyse de Données 📈📊",
-        "description": "Analyse par Groupe : Analysez les données des voitures en regroupant les résultats selon des champs sélectionnés tels que la marque, le modèle, l'année, le moteur, la boîte de vitesses, et plus.",
-        "details": "Statistiques Détaillées : Obtenez des statistiques approfondies incluant le nombre, la moyenne, l'écart-type, la médiane et divers percentiles. Comprenez les Tendances du Marché : Gagnez des insights sur le marché automobile grâce à des analyses statistiques complètes."
+        "title": "Analyse des données 📈📊",
+        "description": "Analyse par groupe : analysez les données des voitures en regroupant les résultats selon des champs sélectionnés tels que la marque, le modèle, l'année, le moteur, la boîte de vitesses, et plus encore.",
+        "details": "Statistiques détaillées : obtenez des statistiques complètes, y compris le nombre, la moyenne, l'écart-type, la médiane et divers percentiles. Comprendre les tendances du marché : obtenez des insights sur le marché automobile grâce à des analyses statistiques approfondies."
     },
     "calculatorSection": {
-        "title": "Calculateur de Prix 🛝🎡🏷️💰",
-        "description": "Estimation de Prix : Calculez le prix estimé d'un véhicule en fonction de critères détaillés.",
-        "details": "Prédictions Précises : Utilisez notre outil pour obtenir une estimation fiable de la valeur d'une voiture, vous aidant à prendre des décisions d'achat ou de vente informées. Algorithmes Avancés : Notre estimateur utilise des algorithmes avancés pour garantir des calculs de prix précis et à jour."
+        "title": "Aire de jeu des prix 🛝🎡🏷️💰",
+        "description": "Estimation du prix : calculez le prix estimé d'un véhicule en fonction de critères détaillés.",
+        "details": "Prédictions précises : utilisez notre outil pour obtenir une estimation fiable de la valeur d'une voiture, vous aidant ainsi à prendre des décisions d'achat ou de vente éclairées. Algorithmes avancés : notre estimateur utilise des algorithmes avancés pour garantir des calculs de prix précis et à jour."
     },
     "servicesSection": {
         "heading": {
             "subtitle": "Services",
-            "title": "Ce Que Nous Offrons"
+            "title": "Ce que nous offrons"
         },
         "searchDeal": {
-            "title": "Recherche d'Offres",
-            "description": "Trouvez les Meilleurs Prix : Recherchez rapidement des offres de voitures dans diverses catégories, y compris bons, justes et élevés."
+            "title": "Recherche d'offres",
+            "description": "Trouvez les meilleurs prix : recherchez rapidement des offres de voitures dans diverses catégories, y compris des prix bons, justes et élevés."
         },
         "dataAnalysis": {
-            "title": "Analyse de Données",
-            "description": "Obtenez des statistiques approfondies incluant le nombre, la moyenne, l'écart-type, la médiane et divers percentiles."
+            "title": "Analyse des données",
+            "description": "Obtenez des statistiques complètes, y compris le nombre, la moyenne, l'écart-type, la médiane et divers percentiles."
         },
         "priceCalculator": {
-            "title": "Calculateur de Prix",
+            "title": "Calculateur de prix",
             "description": "Calculez le prix estimé d'un véhicule en fonction de critères détaillés."
         }
     },
@@ -45,7 +48,66 @@
         },
         "address": {
             "label": "Adresse :",
-            "details": "Hladilnika, Blvd. « Cherni vrah » 47, 1407 Sofia, Bulgarie"
+            "details": "Hladilnika, Bd. \"Cherni Vrah\" 47, 1407 Sofia, Bulgarie"
+        }
+    },
+    "labels": {
+        "search": "Recherche",
+        "makeModel": "Recherche par 🚗 Marque & 🏎️ Modèle",
+        "make": "🚗 Marque",
+        "selectMake": "Sélectionnez la marque",
+        "model": "🏎️ Modèle",
+        "selectModel": "Sélectionnez le modèle",
+        "year": "📅 Année de production",
+        "selectYear": "Sélectionnez la plage d'années",
+        "price": "🏷️💶 Prix",
+        "selectPrice": "Sélectionnez la fourchette de prix",
+        "estimated Price": "Prix estimé",
+        "selectEstimatedPrice": "Sélectionnez la fourchette de prix estimée",
+        "mileage": "⏲ Kilométrage",
+        "selectMileage": "Sélectionnez la plage de kilométrage",
+        "engine": "⛽🔌🔋 Moteur",
+        "equipment": "🔧🔩🛠️ Équipement",
+        "gearbox": "🕹⚙️ Boîte de vitesses",
+        "selectGearbox": "Sélectionnez la boîte de vitesses",
+        "power": "🐎💪⚡ Puissance",
+        "selectPower": "Sélectionnez la plage de puissance",
+        "cm3": "cm³",
+        "selectCm3": "Sélectionnez la plage en cm³",
+        "saveDiff": "🤑💰🛒 Économie €",
+        "selectSaveDiff": "Sélectionnez la plage d'économie",
+        "discount": "%🛒🛍️✨ Remise  (✂️🏷️%)",
+        "selectDiscount": "Sélectionnez la plage de remise",
+        "published": "📅 🏁 Publié le",
+        "selectPublished": "Sélectionnez la date de publication",
+        "increasedLabel": "🤪 Augmentation %",
+        "selectIncreased": "Sélectionnez la plage d'augmentation",
+        "extraCharge": "Coût supplémentaire €",
+        "selectExtraCharge": "Sélectionnez la plage de coût supplémentaire",
+        "from": "de",
+        "to": "à",
+        "fromEur": "de €",
+        "toEur": "à €",
+        "fromKm": "de km",
+        "toKm": "à km",
+        "fromPower": "de ch",
+        "toPower": "à ch",
+        "fromCm3": "de cm³",
+        "toCm3": "à cm³",
+        "fromPercentage": "de %",
+        "toPercentage": "à %",
+        "btn": {
+            "search": "Recherche",
+            "viewAnalysis": "Voir l'analyse",
+            "close": "Fermer",
+            "more": "Plus...",
+            "less": "Moins...",
+            "advanced": "Avancé 🔎",
+            "basic": "Basique 🔎",
+            "columnsGroupBy": "Grouper par attributs du véhicule",
+            "dataAnalysis": "Sélectionner les données financières pour analyse",
+            "statFunctions": "Fonctions statistiques",
+            "confirm": "Confirmer et commencer..."
         }
     }
 }

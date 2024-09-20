@@ -19,6 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script type="module" src="scripts/locale.js"></script>
 
     <link rel="stylesheet" href="styles/buttons.css">
     <link rel="stylesheet" href="./styles/searchstyles.css">
@@ -158,7 +159,7 @@
     </nav>
 
     <div class="container mt-4">
-        <h2>Data Analysis 📈📊📝</h2>
+        <h2 data-i18n="analysis.title">Data Analysis 📈📊📝</h2>
         <div class="search-form mt-5">
 
 
@@ -166,29 +167,33 @@
                 <!-- Search Tab -->
 
                 <h5 class="search-criteria-heading">
-                    Search Criteria 🔎
-                    <button id="toggleAdvancedSearch" class="btn-advanced">
+                    <p data-i18n="analysis.searchTitle">Search Criteria 🔎</p>
+                    <button id="toggleAdvancedSearch" class="btn-advanced" data-i18n="labels.btn.advanced">
                         Advanced 🔎
                     </button>
 
                 </h5>
                 <div class="row mt-3">
+                    <div class="col-12 mb-3">
+                        <label data-i18n="labels.makeModel">Search by make and model</label>
+                    </div>
                     <div class="col-md-6 mb-3">
-                        <label for="make">Make</label>
                         <select id="make" class="form-control">
-                            <option value="">Select Make</option>
+                            <option value="" data-i18n="labels.selectMake">Select Make</option>
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="model">Model</label>
                         <select id="model" class="form-control">
-                            <option value="">Select Model</option>
+                            <option value="" data-i18n="labels.selectModel">Select Model</option>
                         </select>
                     </div>
+
                     <div class="col-md-12 mb-3">
                         <!-- Adjust to ensure correct alignment within the layout -->
                         <div class="col-md-12 mb-3">
-                            <label> Engine <div id="engine" class="custom-checkbox-grid">
+                            <label>
+                                <p data-i18n="labels.engine">Engine</p>
+                                <div id="engine" class="custom-checkbox-grid">
                                 </div>
                             </label>
                         </div>
@@ -197,22 +202,38 @@
                 <div id="basicSearch" style="display: block;">
                     <div class="row mt-3">
                         <div class="col-md-6 mb-3">
-                            <label for="yearFrom">Production Year</label>
-                            <select id="yearFrom" class="form-control"></select>
+                            <label for="yearFrom" data-i18n="labels.year">Production Year</label>
+                            <select id="yearFrom" class="form-control">
+                                <option value="" data-i18n="labels.from">
+                                    from
+                                </option>
+                            </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="priceTo">Max Price</label>
-                            <select id="priceTo" class="form-control"></select>
+                            <label for="priceTo" data-i18n="labels.price">Max Price</label>
+                            <select id="priceTo" class="form-control">
+                                <option value="" data-i18n="labels.toEur">
+                                    to €
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6 mb-3">
-                            <label for="mileageTo">Mileage</label>
-                            <select id="mileageTo" class="form-control"></select>
+                            <label for="mileageTo" data-i18n="labels.mileage">Mileage</label>
+                            <select id="mileageTo" class="form-control">
+                                <option value="" data-i18n="labels.toKm">
+                                    to km.
+                                </option>
+                            </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="powerFrom">Power</label>
-                            <select id="powerFrom" class="form-control"></select>
+                            <label for="powerFrom" data-i18n="labels.power">Power</label>
+                            <select id="powerFrom" class="form-control">
+                                <option value="" data-i18n="labels.fromPower">from h.p.
+                                </option>
+
+                            </select>
                         </div>
                     </div>
 
@@ -220,60 +241,94 @@
                 <div id="advancedSearch" style="display: none;">
                     <div class="row mt-3">
                         <div class="col-md-6 mb-3">
-                            <label for="gearbox">Gearbox</label>
+                            <label for="gearbox" data-i18n="labels.gearbox">Gearbox</label>
                             <select id="gearbox" class="form-control">
-                                <option value="">Select Gearbox</option>
+                                <option value="" data-i18n="labels.selectGearbox">
+                                    Select gearbox
+                                </option>
                             </select>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6 mb-3">
-                            <label for="advancedSearchYearFrom">Year</label>
-                            <select id="advancedSearchYearFrom" class="form-control"></select>
+                        <div class="col-12 mb-3">
+                            <label for="advancedSearchYearFrom" data-i18n="labels.year">Production Year Range</label>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="yearTo">Year</label>
-                            <select id="yearTo" class="form-control"></select>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6 mb-3">
-                            <label for="mileageFrom">Mileage</label>
-                            <select id="mileageFrom" class="form-control"></select>
+                            <select id="advancedSearchYearFrom" class="form-control">
+                                <option value="" data-i18n="labels.from">from
+                                </option>
+
+                            </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="advancedSearchMileageTo">Mileage</label>
-                            <select id="advancedSearchMileageTo" class="form-control"></select>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6 mb-3">
-                            <label for="advancedSearchPowerFrom">Power</label>
-                            <select id="advancedSearchPowerFrom" class="form-control"></select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="powerTo">Power</label>
-                            <select id="powerTo" class="form-control"></select>
+                            <select id="yearTo" class="form-control">
+                                <option value="" data-i18n="labels.to"> to
+                                </option>
+
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6 mb-3">
-                            <label for="priceFrom">Price</label>
-                            <select id="priceFrom" class="form-control"></select>
+                        <div class="col-12 mb-3">
+                            <label data-i18n="labels.mileage">Mileage</label>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="priceTo">Price</label>
-                            <select id="advancedSearchPriceTo" class="form-control"></select>
+                            <select id="mileageFrom" class="form-control">
+                                <option value="" data-i18n="labels.fromKm"> from km.
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="advancedSearchMileageTo" class="form-control">
+                                <option value="" data-i18n="labels.toKm"> to km.</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6 mb-3">
-                            <label for="ccFrom">cm³</label>
-                            <select id="ccFrom" class="form-control"></select>
+                        <div class="col-12 mb-3">
+                            <label data-i18n="labels.power">Power</label>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="ccTo">cm³</label>
-                            <select id="ccTo" class="form-control"></select>
+                            <select id="advancedSearchPowerFrom" class="form-control">
+                                <option value="" data-i18n="labels.fromPower">from h.p.
+                                </option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="powerTo" class="form-control">
+                                <option value="" data-i18n="labels.toPower"> to h.p.</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 mb-3">
+                            <label data-i18n="labels.price">Price</label>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="priceFrom" class="form-control">
+                                <option value="" data-i18n="labels.fromEur">from €</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="advancedSearchPriceTo" class="form-control">
+                                <option value="" data-i18n="labels.toEur">to €</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 mb-3">
+                            <label data-i18n="labels.cm3">cm³</label>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="ccFrom" class="form-control">
+                                <option value="" data-i18n="labels.from">from</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="ccTo" class="form-control">
+                                <option value="" data-i18n="labels.to">to</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -430,7 +485,7 @@
                                 <button class="btn btn-link text-left collapsed header-button" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
-                                    Statistical Functions <i class="fas fa-signal"></i>
+                                    Statistic Functions <i class="fas fa-signal"></i>
                                 </button>
                                 <!-- Updated modal trigger for Bootstrap 5 -->
                                 <i class="fas fa-info-circle" data-bs-toggle="modal"
@@ -540,48 +595,64 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Understanding Grouping and Statistics:</strong></p>
-                    <p>Selecting the checkboxes above allows you to group the vehicles based on the
-                        selected criteria. For example, you can group the vehicles by their make, model,
-                        or year of manufacture. This helps you to organize the data and see trends and
-                        patterns more clearly.</p>
-                    <p>Specifically for mileage, the vehicles will be grouped into the following
-                        categories:</p>
+                    <p><strong data-i18n="analysis.help.groupBy.modal.understandingTitle">Understanding Grouping and
+                            Statistics:</strong></p>
+                    <p data-i18n="analysis.help.groupBy.modal.groupingDescription">Selecting the checkboxes above allows
+                        you to group the
+                        vehicles based on the selected criteria. For example, you can group the vehicles by their make,
+                        model, or year of manufacture. This helps you to organize the data and see trends and patterns
+                        more clearly.</p>
+                    <p data-i18n="analysis.help.groupBy.modal.mileageCategoriesTitle">Specifically for mileage, the
+                        vehicles will be grouped
+                        into the following categories:</p>
                     <ul>
-                        <li>Up to 20,000 km.</li>
-                        <li>20,000 - 40,000 km.</li>
-                        <li>40,000 - 60,000 km.</li>
-                        <li>60,000 - 80,000 km.</li>
-                        <li>80,000 - 100,000 km.</li>
-                        <li>100,000 - 120,000 km.</li>
-                        <li>120,000 - 150,000 km.</li>
-                        <li>Over 150,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory1">Up to 20,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory2">20,000 - 40,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory3">40,000 - 60,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory4">60,000 - 80,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory5">80,000 - 100,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory6">100,000 - 120,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory7">120,000 - 150,000 km.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.mileageCategory8">Over 150,000 km.</li>
                     </ul>
-                    <p>Checking the power checkbox, the vehicles will be grouped into the following
-                        categories:</p>
+                    <p data-i18n="analysis.help.groupBy.modal.powerCategoriesTitle">Checking the power checkbox, the
+                        vehicles will be grouped
+                        into the following categories:</p>
                     <ul>
-                        <li>Up to 90 h.p.</li>
-                        <li>90 - 130 h.p.</li>
-                        <li>130 - 250 h.p.</li>
-                        <li>150 - 200 h.p.</li>
-                        <li>200 - 252 h.p.</li>
-                        <li>252 - 303 h.p.</li>
-                        <li>303 - 358 h.p.</li>
-                        <li>358 - 403 h.p.</li>
-                        <li>403 - 454 h.p.</li>
-                        <li>Over 454 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory1">Up to 90 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory2">90 - 130 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory3">130 - 150 h.p.</li>
+                        <li data-i18n="modal.powerCategory4">150 - 200 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory5">200 - 252 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory6">252 - 303 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.analysis.help.groupBy.modal.powerCategory7">303 - 358 h.p.
+                        </li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory8">358 - 403 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory9">403 - 454 h.p.</li>
+                        <li data-i18n="analysis.help.groupBy.modal.powerCategory10">Over 454 h.p.</li>
                     </ul>
-                    <p>By grouping vehicles in this way, you can get a statistical overview for each
-                        group, such as:</p>
+                    <p data-i18n="analysis.help.groupBy.modal.statisticsDescription">By grouping vehicles in this way,
+                        you can get a
+                        statistical overview for each group, such as:</p>
                     <ul>
-                        <li><strong>Count:</strong> The total number of vehicles in each group.</li>
-                        <li><strong>Average:</strong> The average value of a certain attribute (e.g.,
-                            price) within each group.</li>
-                        <li><strong>Minimum and Maximum:</strong> The lowest and highest values within
-                            each group.</li>
+                        <li><strong data-i18n="analysis.help.groupBy.modal.statisticsCountTitle">Count:</strong> <span
+                                data-i18n="modal.statisticsCountDescription">The total number of vehicles in each
+                                group.</span></li>
+                        <li><strong data-i18n="analysis.help.groupBy.modal.statisticsAverageTitle">Average:</strong>
+                            <span data-i18n="analysis.help.groupBy.modal.statisticsAverageDescription">The average value
+                                of a certain attribute
+                                (e.g., price) within each group.</span>
+                        </li>
+                        <li><strong data-i18n="analysis.help.groupBy.modal.statisticsMinMaxTitle">Minimum and
+                                Maximum:</strong> <span
+                                data-i18n="analysis.help.groupBy.modal.statisticsMinMaxDescription">The lowest and
+                                highest values within each
+                                group.</span></li>
                     </ul>
-                    <p>This statistical overview helps you understand the characteristics of vehicles in
-                        each category, making it easier to analyze and make informed decisions.</p>
+                    <p data-i18n="analysis.help.groupBy.modal.finalDescription">This statistical overview helps you
+                        understand the
+                        characteristics of vehicles in each category, making it easier to analyze and make informed
+                        decisions.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -599,15 +670,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="description">
-                        <p><strong>Select Columns to Analyze:</strong> Choose one or more columns from
-                            your dataset
-                            that you wish to analyze. Each checkbox represents a different column. For
-                            example, you
-                            might want to analyze the 'Price' or 'Estimated Price' columns to understand
-                            their
-                            distribution and summary statistics. <strong>All prices are in EUR(€).
-                                [Discount] and
-                                [Increase] columns are percentages (for example 25%).</strong></p>
+                        <p>
+                            <strong data-i18n="analysis.help.data.modal.selectColumnsTitle">Select Columns to
+                                Analyze:</strong>
+                            <span data-i18n="analysis.help.data.modal.selectColumnsDescription">
+                                Choose one or more columns from your dataset that you wish to analyze. Each checkbox
+                                represents a different column. For example, you might want to analyze the 'Price' or
+                                'Estimated Price' columns to understand their distribution and summary statistics.
+                            </span>
+                            <strong data-i18n="analysis.help.data.modal.priceNote">All prices are in EUR(€). [Discount]
+                                and [Increase]
+                                columns are percentages (for example 25%).</strong>
+                        </p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -626,31 +700,43 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Statistical Functions Description:</strong></p>
+                    <p><strong data-i18n="analysis.help.functions.modal.statFunctionsTitle">Statistical Functions
+                            Description:</strong></p>
                     <ul>
-                        <li><strong>Count:</strong> Total number of data points in the selected column.
+                        <li><strong data-i18n="analysis.help.functions.modal.countTitle">Count:</strong> <span
+                                data-i18n="analysis.help.functions.modal.countDescription">Total number of data points
+                                in the selected
+                                column.</span></li>
+                        <li><strong data-i18n="analysis.help.functions.modal.minTitle">Min:</strong> <span
+                                data-i18n="modal.minDescription">The
+                                smallest value in the selected column.</span></li>
+                        <li><strong data-i18n="analysis.help.functions.modal.maxTitle">Max:</strong> <span
+                                data-i18n="modal.maxDescription">The
+                                largest value in the selected column.</span></li>
+                        <li><strong data-i18n="analysis.help.functions.modal.averageTitle">Average (Mean):</strong>
+                            <span data-i18n="analysis.help.functions.modal.averageDescription">The sum of all values
+                                divided by the number of
+                                values in the selected column.</span>
                         </li>
-                        <li><strong>Min:</strong> The smallest value in the selected column.</li>
-                        <li><strong>Max:</strong> The largest value in the selected column.</li>
-                        <li><strong>Average (Mean):</strong> The sum of all values divided by the number
-                            of
-                            values in the selected column.</li>
-                        <li><strong>Median:</strong> The middle value when the selected column's values
-                            are
-                            ordered from smallest to largest.</li>
-                        <li><strong>Standard Deviation:</strong> A measure of how spread out the values
-                            in the
-                            selected column are around the mean.</li>
-                        <li><strong>Relative Standard Deviation (RSD):</strong> The standard deviation
-                            expressed
-                            as a percentage of the mean, indicating the extent of variability in
-                            relation to the
-                            mean.</li>
-                        <li><strong>Percentiles:</strong> Values below which a certain percentage of the
-                            data in
-                            the selected column falls. For example, the 60th percentile is the value
-                            below which
-                            60% of the data falls.</li>
+                        <li><strong data-i18n="analysis.help.functions.modal.medianTitle">Median:</strong> <span
+                                data-i18n="analysis.help.functions.modal.medianDescription">The middle value when the
+                                selected column's values
+                                are ordered from smallest to largest.</span></li>
+                        <li><strong data-i18n="analysis.help.functions.modal.stdDevTitle">Standard Deviation:</strong>
+                            <span data-i18n="analysis.help.functions.modal.stdDevDescription">A measure of how spread
+                                out the values in the
+                                selected column are around the mean.</span>
+                        </li>
+                        <li><strong data-i18n="analysis.help.functions.modal.rsdTitle">Relative Standard Deviation
+                                (RSD):</strong> <span data-i18n="analysis.help.functions.modal.rsdDescription">The
+                                standard deviation expressed as a percentage of the
+                                mean, indicating the extent of variability in relation to the mean.</span></li>
+                        <li><strong data-i18n="analysis.help.functions.modal.percentileTitle">Percentiles:</strong>
+                            <span data-i18n="analysis.help.functions.modal.percentileDescription">Values below which a
+                                certain percentage of the
+                                data in the selected column falls. For example, the 60th percentile is the value below
+                                which 60% of the data falls.</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -664,12 +750,6 @@
 
     <div class="footer">
         <p>&copy; 2024 ExoMexo🦁🐸</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="search">Search</a> |
-            <a href="analysis">Data Analysis</a> |
-            <a href="calculator">Price Calculator</a>
-        </p>
     </div>
 
 
@@ -717,6 +797,14 @@
     </div>
 
     <script type="module" src="scripts/analysis.js">
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('nav-bar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-bar-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
     </script>
 
 </body>

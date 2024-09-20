@@ -31,6 +31,15 @@
     <link rel="stylesheet" href="styles/nav-bar.css">
     <script type="module" src="./scripts/data.js"></script>
     <script type="module" src="./scripts/enums.js"></script>
+    <script type="module" src="scripts/locale.js"></script>
+    <style>
+        .option-spacing {
+            padding-left: 45px;
+            /* Adjust the value for the required space */
+            letter-spacing: 0.2em;
+            /* Optionally, use letter-spacing for wider control */
+        }
+    </style>
 </head>
 
 <body>
@@ -85,120 +94,161 @@
                     <input id="search" name="search" value="" type="text" class="form-control" />
                 </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="make">Make</label>
-                <select id="make" class="form-control">
-                    <option value="">Select Make</option>
-                </select>
+            <div class="row mt-3">
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.makeModel">Search by make and model</label>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select id="make" class="form-control">
+                        <option value="" data-i18n="labels.selectMake">Select Make</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select id="model" class="form-control">
+                        <option value="" data-i18n="labels.selectModel">Select Model</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="model">Model</label>
-                <select id="model" class="form-control">
-                    <option value="">Select Model</option>
-                </select>
-            </div>
+
             <div class="mt-3 row">
                 <div class="col-md-12 mb-3">
-                    <label>Engine:</label>
+                    <label data-i18n="labels.engine">Engine:</label>
                     <div id="engine" class="custom-checkbox-grid"></div>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-md-6 mb-3">
-                    <label for="gearbox">Gearbox</label>
+                    <label data-i18n="labels.gearbox">Gearbox</label>
                     <select id="gearbox" class="form-control">
-                        <option value="">Select Gearbox</option>
+                        <option value="" data-i18n="labels.selectGearbox">Select Gearbox</option>
                     </select>
                 </div>
             </div>
 
 
             <div class="row mt-3">
-                <div class="col-md-6 mb-3">
-                    <label for="yearFrom">Year</label>
-                    <select id="yearFrom" class="form-control"></select>
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.year">Production Year</label>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="yearTo">Year</label>
-                    <select id="yearTo" class="form-control"></select>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-6 mb-3">
-                    <label for="mileageFrom">Mileage</label>
-                    <select id="mileageFrom" class="form-control"></select>
+                    <select id="yearFrom" class="form-control">
+                        <option value="" data-i18n="labels.from">
+                            from
+                        </option>
+                    </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="mileageTo">Mileage</label>
-                    <select id="mileageTo" class="form-control"></select>
+                    <select id="yearTo" class="form-control">
+                        <option value="" data-i18n="labels.to">to</option>
+                    </select>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-6 mb-3">
-                    <label for="powerFrom">Power</label>
-                    <select id="powerFrom" class="form-control"></select>
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.mileage">Mileage</label>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="powerTo">Power</label>
-                    <select id="powerTo" class="form-control"></select>
+                    <select id="mileageFrom" class="form-control">
+                        <option value="" data-i18n="labels.fromKm">
+                            <p>from km.</p>
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select id="mileageTo" class="form-control">
+                        <option value="" data-i18n="labels.toKm">to km.</option>
+                    </select>
+
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-6 mb-3">
-                    <label for="ccFrom">cm³</label>
-                    <select id="ccFrom" class="form-control"></select>
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.power">Power</label>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="ccTo">cm³</label>
-                    <select id="ccTo" class="form-control"></select>
+                    <select id="powerFrom" class="form-control">
+                        <option value="" data-i18n="labels.fromPower">from h.p.</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select id="powerTo" class="form-control">
+                        <option value="" data-i18n="labels.toPower">to h.p.</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.cm3">cm³</label>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select id="ccFrom" class="form-control">
+                        <option value="" data-i18n="labels.fromCm3">from cm³</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <select id="ccTo" class="form-control">
+                        <option value="" data-i18n="labels.toCm3">to cm³</option>
+                    </select>
                 </div>
             </div>
 
             <!-- Price Range -->
 
             <div class="row mt-3">
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.price">Price</label>
+                </div>
                 <div class="col-md-6 mb-3">
-                    <label for="priceFrom">Price Min:</label>
                     <select id="priceFrom" class="form-control">
-
+                        <option value="" data-i18n="labels.fromEur">from €</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="priceTo">Price Max:</label>
                     <select id="priceTo" class="form-control">
-                        <option value="">Max. price(€)</option>
+                        <option value="" data-i18n="labels.toEur">to €</option>
                     </select>
                 </div>
             </div>
             <div class="row mt-3">
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.saveDiff">🤑💰🛒 Save Diffirence €</label>
+                </div>
                 <div class="col-md-6 mb-3">
-                    <label for="saveDiffFrom">Save Diff (min):</label>
                     <select id="saveDiffFrom" class="form-control">
+                        <option value="" data-i18n="labels.fromEur" class="option-spacing">from €</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="saveDiffTo">Save Diff (max):</label>
                     <select id="saveDiffTo" class="form-control">
+                        <option value="" data-i18n="labels.toEur" class="option-spacing">to €</option>
                     </select>
                 </div>
             </div>
             <div class="row mt-3">
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.discount">%🛒🛍️✨ Discount (✂️🏷️%)</label>
+                </div>
                 <div class="col-md-6 mb-3">
-                    <label for="discountFrom">Discount % (min):</label>
+
                     <select id="discountFrom" class="form-control">
+                        <option value="" data-i18n="labels.fromPercentage">from %</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="discountTo">Discount % (max):</label>
                     <select id="discountTo" class="form-control">
+                        <option value="" data-i18n="labels.toPercentage" class="option-spacing">
+                            to %
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row mt-3">
+                <div class="col-12 mb-3">
+                    <label data-i18n="labels.published">📅 🏁 Published On</label>
+                </div>
                 <div class="col-md-6 mb-3">
-                    <label for="createdOnFrom">Published From:</label>
                     <select id="createdOnFrom" class="form-control">
-                        <option value="">Select Start Date</option>
+                        <option value="" data-i18n="labels.from">from</option>
                         <option value="0">Today</option>
                         <option value="1">Yesterday</option>
                         <option value="3">3 days ago</option>
@@ -209,9 +259,8 @@
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="createdOnTo">Published To:</label>
                     <select id="createdOnTo" class="form-control">
-                        <option value="">Select End Date</option>
+                        <option value="" data-i18n="labels.to">to</option>
                         <option value="0">Today</option>
                         <option value="1">Yesterday</option>
                         <option value="3">3 days ago</option>
@@ -231,7 +280,7 @@
         </div>
     </div>
     <div class="floating-button-container">
-        <button type="button" id="searchButton" class="floating-btn">
+        <button type="button" id="searchButton" class="floating-btn" data-i18n="labels.btn.search">
             <i class="fas fa-search"></i> Search
         </button>
     </div>
@@ -240,18 +289,14 @@
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 ExoMexo🦁🐸</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="search">Search</a> |
-            <a href="analysis">Data Analysis</a> |
-            <a href="calculator">Price Calculator</a>
-        </p>
     </div>
 
     <script type="module">
         import { redirect } from './scripts/data.js';
         import { fetchModels, clearModels } from './scripts/enums.js';
-        localStorage.clear();
+
+        localStorage.removeItem('requestData');
+        localStorage.removeItem('type');
         document.getElementById('searchButton').addEventListener('click', redirect);
 
         document.getElementById('make').addEventListener('change', function () {
@@ -263,7 +308,7 @@
             }
         });
     </script>
-
+    <script type="module" src="scripts/locale.js"></script>
 </body>
 
 </html>

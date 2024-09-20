@@ -332,15 +332,18 @@
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 ExoMexo🦁🐸</p>
-        <p>
-            <a href="index.html">Home</a> |
-            <a href="search">Search</a> |
-            <a href="analysis">Data Analysis</a> |
-            <a href="calculator">Price Calculator</a>
-        </p>
     </div>
 
-    <script type="module" src="scripts/results.js"></script>
+    <script type="module" src="scripts/results.js">
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('nav-bar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-bar-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
+    </script>
 
 </body>
 

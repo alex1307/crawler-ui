@@ -1,41 +1,44 @@
 {
     "homepage": {
-        "title": "Descoperă cele mai bune oferte auto cu",
-        "description": "platforma noastră supremă pentru compararea prețurilor vehiculelor, găsirea celor mai bune oferte și accesarea statisticilor detaliate și estimărilor de preț fiabile.",
-        "details": "Căutăm pe site-uri populare pentru a vă aduce cele mai bune oferte de vehicule într-un singur loc. Explorați statistici detaliate, capacități puternice de căutare și motorul nostru avansat de prețuri pentru a lua cele mai inteligente decizii de cumpărare.",
-        "learnMore": "Aflați Mai Multe"
+        "title": "Descoperă cele mai bune oferte auto cu platforma noastră pentru compararea prețurilor vehiculelor, găsirea celor mai bune oferte, accesarea statisticilor detaliate și estimări de prețuri de încredere.",
+        "search_title": "Caută oferte auto",
+        "search_details": "Găsește cele mai bune prețuri în diverse categorii, inclusiv oferte bune, corecte și ridicate.",
+        "data_title": "Analiza datelor",
+        "data_details": "Obține statistici detaliate și analizează datele vehiculelor cu ajutorul instrumentelor noastre avansate.",
+        "calculator_title": "Calculator de prețuri",
+        "calculator_details": "Estimează prețurile vehiculelor cu exactitate folosind algoritmii noștri avansați."
     },
     "searchSection": {
-        "title": "Caută Oferte Auto 🧐🔎🚗",
-        "description": "Găsiți cele mai bune prețuri: Căutați rapid oferte auto în diverse categorii, inclusiv prețuri bune, corecte și ridicate.",
-        "details": "Filtrează Rezultatele: Folosiți filtre avansate pentru a restrânge căutarea în funcție de marcă, model, interval de preț, kilometraj, an și multe altele. Căutare Personalizată: Adaptați căutarea la nevoile și preferințele dvs. specifice."
+        "title": "Caută oferte auto 🧐🔎🚗",
+        "description": "Găsește cele mai bune prețuri: caută rapid oferte auto în diverse categorii, inclusiv oferte bune, corecte și ridicate.",
+        "details": "Filtrează rezultatele: folosește filtre avansate pentru a restrânge căutarea pe baza mărcii, modelului, intervalului de preț, kilometrajului, anului de fabricație și multe altele. Căutare personalizată: ajustează căutarea în funcție de nevoile și preferințele tale."
     },
     "analysisSection": {
-        "title": "Analiză de Date 📈📊",
-        "description": "Analiză pe Grupuri: Analizați datele auto grupând rezultatele pe baza câmpurilor selectate, cum ar fi marca, modelul, anul, motorul, cutia de viteze și altele.",
-        "details": "Statistici Detaliate: Obțineți statistici detaliate, inclusiv număr, medie, abatere standard, mediană și diferite percentile. Înțelegeți Tendințele Pieței: Obțineți informații despre piața auto prin analize statistice cuprinzătoare."
+        "title": "Analiza datelor 📈📊",
+        "description": "Grupare după: Analizează datele auto prin gruparea rezultatelor în funcție de câmpurile selectate, cum ar fi marca, modelul, anul de fabricație, motorul, cutia de viteze și altele.",
+        "details": "Statistici detaliate: obține statistici detaliate, inclusiv numărul, media, abaterea standard, mediana și diverse percentile. Înțelege tendințele pieței: obține informații despre piața auto cu ajutorul unei analize statistice detaliate."
     },
     "calculatorSection": {
-        "title": "Calculator de Prețuri 🛝🎡🏷️💰",
-        "description": "Estimare de Preț: Calculați prețul estimat al unui vehicul pe baza unor criterii detaliate.",
-        "details": "Previziuni Precise: Folosiți instrumentul nostru pentru a obține o estimare de încredere a valorii unei mașini, ajutându-vă să luați decizii informate de cumpărare sau vânzare. Algoritmi Avansați: Calculatorul nostru folosește algoritmi avansați pentru a asigura calcule de preț precise și actualizate."
+        "title": "Calculator de prețuri 🛝🎡🏷️💰",
+        "description": "Estimarea prețului: Calculează prețul estimat al unui vehicul pe baza unor criterii detaliate.",
+        "details": "Predicții precise: Folosește instrumentul nostru pentru a obține o estimare fiabilă a valorii unei mașini, ajutându-te să iei decizii informate de cumpărare sau vânzare. Algoritmi avansați: Calculatorul nostru utilizează algoritmi avansați pentru a asigura calcule de prețuri exacte și actualizate."
     },
     "servicesSection": {
         "heading": {
             "subtitle": "Servicii",
-            "title": "Ce Oferim"
+            "title": "Ce oferim"
         },
         "searchDeal": {
-            "title": "Caută Oferte",
-            "description": "Găsiți cele mai bune prețuri: Căutați rapid oferte auto în diverse categorii, inclusiv prețuri bune, corecte și ridicate."
+            "title": "Caută oferte",
+            "description": "Găsește cele mai bune prețuri: caută rapid oferte auto în diverse categorii, inclusiv oferte bune, corecte și ridicate."
         },
         "dataAnalysis": {
-            "title": "Analiză de Date",
-            "description": "Obțineți statistici detaliate, inclusiv număr, medie, abatere standard, mediană și diferite percentile."
+            "title": "Analiza datelor",
+            "description": "Obține statistici detaliate, inclusiv numărul, media, abaterea standard, mediana și diverse percentile."
         },
         "priceCalculator": {
-            "title": "Calculator de Prețuri",
-            "description": "Calculați prețul estimat al unui vehicul pe baza unor criterii detaliate."
+            "title": "Calculator de prețuri",
+            "description": "Calculează prețul estimat al unui vehicul pe baza unor criterii detaliate."
         }
     },
     "contactSection": {
@@ -45,7 +48,66 @@
         },
         "address": {
             "label": "Adresă:",
-            "details": "Hladilnika, Blvd. \"Cherni vrah\" 47, 1407 Sofia, Bulgaria"
+            "details": "Hladilnika, Bulevardul \"Cherni Vrah\" 47, 1407 Sofia, Bulgaria"
+        }
+    },
+    "labels": {
+        "search": "Caută",
+        "makeModel": "Caută după 🚗 Marcă & 🏎️ Model",
+        "make": "🚗 Marcă",
+        "selectMake": "Selectează Marca",
+        "model": "🏎️ Model",
+        "selectModel": "Selectează Modelul",
+        "year": "📅 Anul de Fabricație",
+        "selectYear": "Selectează Anul de Fabricație",
+        "price": "🏷️💶 Preț",
+        "selectPrice": "Selectează Intervalul de Preț",
+        "estimated Price": "Preț Estimat",
+        "selectEstimatedPrice": "Selectează Prețul Estimat",
+        "mileage": "⏲ Kilometraj",
+        "selectMileage": "Selectează Kilometrajul",
+        "engine": "⛽🔌🔋 Motor",
+        "equipment": "🔧🔩🛠️ Echipament",
+        "gearbox": "🕹⚙️ Cutie de Viteze",
+        "selectGearbox": "Selectează Cutia de Viteze",
+        "power": "🐎💪⚡ Putere",
+        "selectPower": "Selectează Clasa de Putere",
+        "cm3": "cm³",
+        "selectCm3": "Selectează cm³",
+        "saveDiff": "🤑💰🛒 Economisește €",
+        "selectSaveDiff": "Selectează Economiile",
+        "discount": "%🛒🛍️✨ Reducere (✂️🏷️%)",
+        "selectDiscount": "Selectează Procentajul de Reducere",
+        "published": "📅 🏁 Publicat pe",
+        "selectPublished": "Selectează Data Publicării",
+        "increasedLabel": "🤪 Creștere %",
+        "selectIncreased": "Selectează Creșterea %",
+        "extraCharge": "Supliment €",
+        "selectExtraCharge": "Selectează Suplimentul",
+        "from": "de la",
+        "to": "până la",
+        "fromEur": "de la €",
+        "toEur": "până la €",
+        "fromKm": "de la km",
+        "toKm": "până la km",
+        "fromPower": "de la putere",
+        "toPower": "până la putere",
+        "fromCm3": "de la cm³",
+        "toCm3": "până la cm³",
+        "fromPercentage": "de la %",
+        "toPercentage": "până la %",
+        "btn": {
+            "search": "Caută",
+            "viewAnalysis": "Vezi Analiza",
+            "close": "Închide",
+            "more": "Mai multe...",
+            "less": "Mai puține...",
+            "advanced": "Avansat 🔎",
+            "basic": "De bază 🔎",
+            "columnsGroupBy": "Grupare după Atributele Vehiculului",
+            "dataAnalysis": "Selectează Datele Financiare pentru Analiză",
+            "statFunctions": "Funcții Statistice",
+            "confirm": "Confirmă și Începe..."
         }
     }
 }
