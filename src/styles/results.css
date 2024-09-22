@@ -1,0 +1,204 @@
+/* General layout adjustment for consistent appearance */
+.container {
+    max-width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.results-container {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Center the table */
+    width: 100%;
+    overflow-x: auto;
+    /* Ensure the container handles overflow properly */
+    background: none;
+    /* Remove the white background */
+    border: none;
+    /* Remove any border */
+}
+
+.table {
+    font-size: 18px;
+    /* Make the text smaller for compact appearance */
+    table-layout: auto;
+    /* Allows the table to fit content better */
+    width: auto;
+    /* Let the table width adjust to its content */
+    margin: 0 auto;
+    /* Center the table */
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    /* Compact padding */
+    text-align: center;
+    /* Center-align text for better readability */
+    white-space: nowrap;
+    /* Prevent text wrapping for a cleaner look */
+}
+
+thead th {
+    position: sticky;
+    /* Keep headers visible when scrolling on small screens */
+    top: 0;
+    background-color: #343a40;
+    /* Dark background for headers */
+    color: white;
+    /* White text for headers */
+    z-index: 10;
+}
+
+.bg-primary,
+.bg-secondary,
+.bg-success,
+.bg-danger,
+.bg-warning,
+.bg-info,
+.bg-light,
+.bg-dark {
+    color: white;
+    /* Ensure text is readable on colorful backgrounds */
+}
+
+
+
+/* Tooltip container */
+a.tooltips {
+    position: relative;
+    display: inline;
+}
+
+a.tooltips span {
+    position: absolute;
+    width: 200px;
+    color: #FFFFFF;
+    background: #000000;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    visibility: hidden;
+    border-radius: 6px;
+}
+
+a.tooltips span:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #000000;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+
+a:hover.tooltips span {
+    visibility: visible;
+    opacity: 0.8;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -76px;
+    z-index: 999;
+}
+
+.one .equipment-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.one .equipment-container .tooltipx .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.one .equipment-container .tooltipx .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the equipment container */
+.one .equipment-container:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.order-control {
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.order-control select,
+.order-control .radio-inline {
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.order-control label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Center the cards horizontally */
+}
+
+.card {
+    flex: 1 1 250px;
+    /* Flex items, with a minimum width of 300px */
+    margin: 10px;
+    /* Add margin between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add some shadow for better visibility */
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 15px;
+}

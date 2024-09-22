@@ -43,9 +43,6 @@
         text-align: center;
     }
 
-    .search-form {
-        width: 100%;
-    }
 
     .table {
         font-size: 15px;
@@ -81,10 +78,6 @@
         text-align: center;
     }
 
-    .search-form {
-        width: 100%;
-    }
-
     .table {
         font-size: 12px;
     }
@@ -115,7 +108,4 @@
         flex: 1 1 calc(100% - 10px);
     }
 
-    .search-form {
-        width: 100%;
-    }
 }

@@ -7,10 +7,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-form {
-    width: 70%;
-    margin: 0 auto;
-}
+
 
 .search-table {
     width: 100%;
@@ -220,9 +217,6 @@
 
 /* Add responsiveness to the search form */
 @media (max-width: 768px) {
-    .search-form {
-        width: 100%;
-    }
 
     .search-table td {
         display: block;
@@ -253,11 +247,6 @@
 @media (max-width: 576px) {
     .header-title {
         font-size: 1.5em;
-    }
-
-    .search-form {
-        width: 100%;
-        padding: 0 10px;
     }
 
     .prices-section,

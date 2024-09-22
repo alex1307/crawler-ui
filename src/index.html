@@ -15,14 +15,9 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="styles/nav-bar.css">
+    <link rel="stylesheet" href="styles/ehomeho.css">
+    <link rel="stylesheet" href="styles/ui.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            flex-direction: column;
-            background-color: #474545;
-        }
-
         .form-select {
             background-color: rgba(255, 255, 255, 0.2);
             color: #fff;
@@ -37,58 +32,28 @@
             box-shadow: none;
         }
 
-        header {
-            height: 100vh;
-            background: url('img/background.jpg') center/cover no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            flex-direction: column;
-            /* Adjust based on navbar height */
-        }
 
-        .hero-content {
-            animation: fadeIn 2s ease-in-out;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            font-size: 7rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.05rem;
-            flex-wrap: wrap;
-        }
-
-        .highlight {
-            font-weight: bold;
-            font-size: 1.5em;
-            background: linear-gradient(45deg, #6a0dad, #1e90ff);
-            -webkit-background-clip: text;
+        .gradient-text {
+            background-image: linear-gradient(45deg, #553c9a, #ee4b2b);
             color: transparent;
+            opacity: 1.0;
+            background-clip: text;
+            -webkit-background-clip: text;
         }
 
-        .pulse-x-red {
-            color: #d41010;
-            animation: pulseXRed 3s infinite;
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
         }
 
-        .pulse-x-green {
-            color: #19c111;
-            animation: pulseXGreen 4s infinite;
+        .main-content {
+            height: 100%;
+            width: 100%;
+            background: url('img/background.jpg') center/cover no-repeat;
+            /* Centers the content vertically */
         }
 
-        .pulse-euro {
-            color: #b9e323fe;
-            animation: pulseEuro 2s infinite;
-        }
+
 
         .services {
             display: flex;
@@ -128,235 +93,6 @@
         .service-link:hover {
             color: #007bff;
             /* Or any other color you prefer for hover effect */
-        }
-
-        @keyframes pulseXRed {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulseXGreen {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulseEuro {
-            0% {
-                transform: scale(0.5);
-                opacity: 0.5;
-            }
-
-            50% {
-                transform: scale(0.9);
-                opacity: 0.9;
-            }
-
-            100% {
-                transform: scale(1.2);
-                opacity: 1.2;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1400px;
-                padding: 30px;
-            }
-
-            .hero-content {
-                padding: 150px 50px;
-            }
-
-            .service-card {
-                max-width: 300px;
-            }
-        }
-
-        /* Medium Screens (768px - 1200px) */
-        @media (max-width: 1200px) {
-            .hero-content {
-                padding: 80px 30px;
-            }
-
-            .navbar {
-                padding: 0.8rem;
-            }
-
-            .service-card {
-                max-width: 280px;
-                padding: 15px;
-            }
-
-            .service-icon {
-                font-size: 2.2rem;
-            }
-
-            h1 {
-                font-size: 5rem;
-            }
-
-            .highlight {
-                font-size: 5rem;
-            }
-        }
-
-        /* Small Screens (<768px) */
-        @media (max-width: 768px) {
-            .hero-content {
-                padding: 50px 30px;
-            }
-
-            .navbar {
-                padding: 0.5rem;
-            }
-
-            .services {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .service-card {
-                max-width: 100%;
-                padding: 10px;
-            }
-
-            .service-icon {
-                font-size: 2rem;
-            }
-
-            footer {
-                font-size: 0.9rem;
-                padding: 10px 0;
-            }
-
-            h1 {
-                font-size: 4rem;
-            }
-
-            .highlight {
-                font-size: 4rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            /* Adjust navbar items and logo */
-            .navbar-brand {
-                font-size: 20px;
-                /* Reduce the font size */
-            }
-
-            /* Adjust the spacing and alignment of the main content */
-            .service-card {
-                margin: 10px 0;
-                /* Reduce the margin between service cards */
-                text-align: center;
-                /* Ensure text is centered */
-                padding: 10px;
-                /* Adjust padding to fit smaller screens */
-            }
-
-            /* Resize service icons */
-            .service-icon {
-                font-size: 36px;
-                /* Reduce the size of the service icons */
-                margin-bottom: 10px;
-            }
-
-            /* Adjust font sizes for headings and text */
-            .service-card h4 {
-                font-size: 16px;
-                /* Smaller font size for mobile */
-            }
-
-            .service-card p {
-                font-size: 14px;
-                /* Adjust paragraph text size */
-            }
-
-
-            /* Fix overflow issues and padding */
-            .container {
-                padding: 15px;
-                /* Less padding on mobile */
-                overflow-x: hidden;
-                /* Prevent horizontal scrolling */
-            }
-
-            /* Adjust navbar for smaller screens */
-            .navbar {
-                position: auto;
-                padding: 5px 10px;
-                /* Adjust padding to fit better */
-            }
-
-            /* Prevent overlapping and maintain order */
-            .navbar-nav {
-                flex-direction: column;
-                /* Stack nav items vertically */
-                gap: 5px;
-                /* Add space between items */
-            }
-
-            /* Adjust button sizes */
-            .btn {
-                font-size: 14px;
-                /* Smaller button text */
-                padding: 8px 12px;
-                /* Adjust button padding */
-            }
-
-            .hero-content {
-                padding: 50px 30px;
-                margin-top: 25px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .highlight {
-                font-size: 2rem;
-                /* Adjust font size for mobile */
-                /* Add space to prevent overlap with navbar */
-                line-height: 1.1;
-                /* Adjust line height to keep text compact */
-                display: flex;
-                /* Ensure proper positioning */
-                justify-content: center;
-                /* Center the text */
-                align-items: center;
-                /* Align text vertically */
-                text-align: center;
-                /* Center align the text */
-                word-break: keep-all;
-                /* Prevent breaking words */
-                white-space: nowrap;
-            }
         }
     </style>
 </head>
@@ -399,53 +135,97 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header id="hero">
-        <div class="hero-content">
-            <h1><span class="highlight">e<span class="pulse-x-red">X</span>oM<span class="pulse-euro">€</span><span
-                        class="pulse-x-green">X</span>o</span><span class="emojis">🦁🐸</span>
-            </h1>
-            <p data-i18n="homepage.title">Your platform for car deals, data analysis, price calculation and
+    <div class="main-content">
+        <div class="container">
+            <div>
+                <div class="letter-animation a01">
+                    <h2>
+                        <span class="gradient-text">eXoM€Xo</span> 🦁🐸
+                    </h2>
+                </div>
+                <div class="letter-animation a02">
+                    <h2>
+                        <span class="gradient-text">eXoM€Xo</span> 🦁🐸
+                    </h2>
+                </div>
+                <div class="letter-animation a03">
+                    <h2>
+                        <a href="search" class="service-link"><span class="gradient-text">Deals</span> <i
+                                class="fas fa-search-dollar fa-sm service-icon"></i></a>
+                    </h2>
+                </div>
+                <div class="letter-animation a04">
+                    <h2>
+                        <a href="analysis" class="service-link"><span class="gradient-text">Analysis</span> <i
+                                class="fas fa-chart-line fa-sm service-icon"></i></a>
+                    </h2>
+                </div>
+                <div class="letter-animation a05">
+                    <h2>
+                        <a href="calulator" class="service-link"></a><span class="gradient-text">Calculator</span> <i
+                            class="fas fa-calculator fa-sm service-icon"></i></a>
+                    </h2>
+                </div>
+
+                <div class="letter-animation a06">
+                    <h2>
+                        <span class="gradient-text">eXoM€Xo</span> 🦁🐸
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p data-i18n="homepage.title" class="procuct-description">Your platform for
+                car deals, data analysis, price
+                calculation and
                 estimations.</p>
         </div>
+        <div class="mt-5">
 
+            <!-- About Section -->
+            <div class="services">
+                <div class="service-card">
 
-        <!-- About Section -->
-        <div class="services">
-            <div class="service-card">
+                    <h4><a href="search" class="service-link">
+                            <i class="fas fa-search-dollar service-icon"></i>
+                            <p data-i18n="homepage.search_title">Search for Car Deals</p>
+                        </a></h4>
+                    <p data-i18n="homepage.search_details">Find the best prices across various
+                        categories, including
+                        good, fair,
+                        and high prices.</p>
+                </div>
+                <div class="service-card">
 
-                <h4><a href="search" class="service-link">
-                        <i class="fas fa-search-dollar service-icon"></i>
-                        <p data-i18n="homepage.search_title">Search for Car Deals</p>
-                    </a></h4>
-                <p data-i18n="homepage.search_details">Find the best prices across various categories, including
-                    good, fair,
-                    and high prices.</p>
-            </div>
-            <div class="service-card">
+                    <h4><a href="analysis" class="service-link"><i class="fas fa-chart-line service-icon"></i>
+                            <p data-i18n="homepage.data_title">Data Analysis</p>
+                        </a></h4>
+                    <p data-i18n="homepage.data_details">Get detailed statistics and analyze car data with our
+                        advanced
+                        tools.
+                    </p>
+                </div>
+                <div class="service-card">
 
-                <h4><a href="analysis" class="service-link"><i class="fas fa-chart-line service-icon"></i>
-                        <p data-i18n="homepage.data_title">Data Analysis</p>
-                    </a></h4>
-                <p data-i18n="homepage.data_details">Get detailed statistics and analyze car data with our advanced
-                    tools.
-                </p>
-            </div>
-            <div class="service-card">
-
-                <h4><a href="calculator" class="service-link">
-                        <i class="fas fa-calculator service-icon"></i>
-                        <p data-i18n="homepage.calculator_title">Price Calculator </p>
-                    </a></h4>
-                <p data-i18n="homepage.calculator_details">Estimate vehicle prices accurately using our
-                    state-of-the-art
-                    algorithms.</p>
+                    <h4><a href="calculator" class="service-link">
+                            <i class="fas fa-calculator service-icon"></i>
+                            <p data-i18n="homepage.calculator_title">Price Calculator </p>
+                        </a></h4>
+                    <p data-i18n="homepage.calculator_details">Estimate vehicle prices accurately using our
+                        state-of-the-art
+                        algorithms.</p>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+    </div>
+
 
     <footer class="bg-dark text-white text-center py-4">
-        &copy; 2024 eXoMexo🦁🐸. All rights reserved.
+        <p>&copy; 2024 eXoMexo🦁🐸. All rights reserved. <i class="fas fa-envelope fa-sm service-icon"
+                style="font-size: 12px;"></i>
+            matkat@ehomeho.com</p>
+
     </footer>
 
     <script type="module" src="scripts/locale.js"></script>
