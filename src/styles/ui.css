@@ -628,19 +628,45 @@ h2 {
 
 footer {
     background-color: #343a40;
-    /* Change this to your preferred color */
     color: #fff;
-    padding: 10px 0;
+    padding: 5px 0;
+    /* Reduced padding */
     text-align: center;
     position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
     margin-top: auto;
+    font-size: 12px;
+    /* Reduced font size */
+    line-height: 1.2;
+    /* Adjusted line height to make it more compact */
+}
+
+footer p {
+    margin: 5px 0;
+    /* Reduced the top and bottom margins */
 }
 
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 1.25rem;
+    }
+
+    footer {
+        padding: 3px 0;
+        /* Further reduce padding on smaller screens */
+        font-size: 11px;
+        /* Adjust font size for smaller devices */
+    }
+
+    footer p {
+        margin: 3px 0;
+        /* Further reduce margin */
+    }
+
+    .service-icon {
+        font-size: 10px;
+        /* Reduce the size of the email icon */
     }
 }
