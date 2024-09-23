@@ -172,7 +172,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 40vh;
   height: 100vh;
   /* Make sure the container takes the full height of the viewport */
   position: relative;
@@ -464,7 +464,7 @@ h2 {
   }
 
   .ehomeho-text {
-    font-size: 3em;
+    font-size: 2em;
     /* Even smaller for very small screens */
     letter-spacing: 0.2px;
     /* Minimal letter-spacing */
