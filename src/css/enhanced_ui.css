@@ -759,3 +759,23 @@ footer p {
         /* Reduce the size of the email icon */
     }
 }
+/* Dark Mode Toggle */
+body[data-theme='dark'] {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.navbar, footer {
+    background-color: #1c1c1c;
+}
+
+/* Collapsible Filters for Mobile */
+.section.collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.section.collapsible.active {
+    max-height: 500px;
+}

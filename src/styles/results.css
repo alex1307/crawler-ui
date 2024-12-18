@@ -14,29 +14,32 @@
 }
 
 .results-container {
-    padding: 10px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    /* Center the table */
+    /* Center the table horizontally */
     width: 100%;
-    overflow-x: auto;
-    /* Ensure the container handles overflow properly */
-    background: none;
-    /* Remove the white background */
-    border: none;
-    /* Remove any border */
+    /* Take full width of container */
+    padding: 0 20px;
 }
 
 .table {
-    font-size: 18px;
-    /* Make the text smaller for compact appearance */
-    table-layout: auto;
-    /* Allows the table to fit content better */
-    width: auto;
-    /* Let the table width adjust to its content */
+    width: 100%;
+    /* Table spans the full width of the container */
     margin: 0 auto;
-    /* Center the table */
+    /* Ensure it's centered */
+    border-collapse: collapse;
+    /* Improve appearance of borders */
+}
+
+
+.table-striped tbody tr:nth-child(even) {
+    0886343454 background-color: #f8f9fa;
+    /* Light Gray for Even Rows */
+}
+
+.table-striped tbody tr:hover {
+    background-color: #f1f1f1;
+    /* Hover effect */
 }
 
 .table th,
@@ -201,4 +204,28 @@ a:hover.tooltips span {
 
 .card-body {
     padding: 15px;
+}
+
+#results:empty {
+    display: none;
+    /* Hide the container when there are no results */
+}
+
+.card {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+}
+
+.btn-check+.btn {
+    border: none;
+}
+
+.btn-check:checked+.btn {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.card label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }

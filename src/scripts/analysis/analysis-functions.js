@@ -1,15 +1,8 @@
-const isLocalhost = window.location.hostname === 'localhost';
+import { populateDropdown } from '../common/common-functions.js';
+const apiUrl = window.location.hostname === 'localhost'
+    ? 'https://localhost:3000/statistic'
+    : 'https://ehomeho.com:3000/statistic';
 
-const table_header_css = 'thead-dark';
-const light_mode_colors = ['table-primary',
-    'table-secondary',
-    'table-success',
-    'table-danger',
-    'table-warning',
-    'table-info',
-    'table-light',
-    'table-dark'
-];
 const dark_mode_colors = [
     'bg-primary',
     'bg-secondary',
@@ -19,16 +12,60 @@ const dark_mode_colors = [
     'bg-info',
     'bg-dark'
 ];
+document.addEventListener('DOMContentLoaded', loadPage);
 
-// Set the base URL based on the environment
-const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+function loadPage() {
 
-export function showStatisticData(requestData) {
+
+    const requestData = JSON.parse(localStorage.getItem('requestData'));
+    const columns = JSON.parse(localStorage.getItem('columns'));
+    const drawChartButton = document.getElementById("chartButton");
+    drawChartButton.addEventListener("click", function () {
+        window.location.href = "analysis_chart.html";
+    });
+
+    if (columns && columns.length > 0) {
+        populateDropdown('orderColumn1', columns);
+        populateDropdown('orderColumn2', columns);
+
+        document.getElementById('sortButton').addEventListener('click', function () {
+            const requestData = JSON.parse(localStorage.getItem('requestData'));
+            requestData.order = [];
+
+            if (document.getElementById('orderColumn1').value) {
+                requestData.order.push({
+                    column: document.getElementById('orderColumn1').value,
+                    asc: document.querySelector('input[name="order1"]:checked').value === 'asc'
+                });
+            }
+            if (document.getElementById('orderColumn2').value) {
+                requestData.order.push({
+                    column: document.getElementById('orderColumn2').value,
+                    asc: document.querySelector('input[name="order2"]:checked').value === 'asc'
+                });
+            }
+
+            // Trigger the correct function based on the type
+            if (type === 'statistic') {
+                showStatisticData(requestData);
+            } else if (type === 'search') {
+                showData(requestData);
+            }
+        });
+    } else if (document.getElementById('sorting-section')) {
+        document.getElementById('sorting-section').style.display = 'none';
+    }
+
+    requestAndDisplayData(requestData);
+
+}
+
+function requestAndDisplayData(requestData) {
     const isLocalhost = window.location.hostname === 'localhost';
 
     // Set the base URL based on the environment
-    const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
-    fetch(`${baseUrl}/statistic`, {
+
+    fetch(apiUrl, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -51,14 +88,13 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
     const container = document.getElementById(containerId);
     container.innerHTML = ""; // Clear previous contents
     const table = document.createElement("table");
-    table.className = "table table-sm table-borderless table-striped table-hover table-responsive-md";
-    table.style.margin = "auto";
+    // table.className = "table table-sm table-borderless table-striped table-hover table-responsive-md";
+    table.className = "table table-striped table-hover table-responsive-md";
     const table_header = table.createTHead();
 
 
     // Create the header row based on sorted metadata
     const headerRow = document.createElement("tr");
-    headerRow.className = table_header_css;
     metadata.forEach((meta, index) => {
         if (meta.visible === false) return; // Skip invisible columns
         const headerCell = document.createElement("th");
@@ -90,6 +126,3 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
     // Append the constructed table to its container
     container.appendChild(table);
 }
-
-
-

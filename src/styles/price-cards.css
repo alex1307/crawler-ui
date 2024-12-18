@@ -14,8 +14,12 @@
   width: 100%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: center;
+  /* Center align children */
+  gap: 20px;
+  /* Add consistent spacing between children */
 }
 
 .content .card {

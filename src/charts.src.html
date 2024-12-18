@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Stacked Bar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div style="width: 1000px; margin: auto;">
+        <canvas id="singleBarPerMakeChart"></canvas>
+    </div>
+    <script>
+        const ctx = document.getElementById('singleBarPerMakeChart').getContext('2d');
+
+        // Example dataset for Make, Engine, and Gearbox
+        const data = {
+            labels: ['Make A', 'Make B', 'Make C'], // X-axis: Makes
+            datasets: [
+                // Manual (Diesel + Petrol)
+                {
+                    label: 'Manual (Petrol)',
+                    data: [200, 150, 100], // Petrol counts for Manual
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue
+                    stack: 'Manual', // Group under Manual
+                },
+                {
+                    label: 'Manual (Diesel)',
+                    data: [120, 100, 80], // Diesel counts for Manual
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)', // Teal
+                    stack: 'Manual', // Group under Manual
+                },
+                // Automatic (Diesel + Petrol)
+                {
+                    label: 'Automatic (Petrol)',
+                    data: [180, 130, 90], // Petrol counts for Automatic
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)', // Orange
+                    stack: 'Automatic', // Group under Automatic
+                },
+                {
+                    label: 'Automatic (Diesel)',
+                    data: [150, 110, 70], // Diesel counts for Automatic
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)', // Red
+                    stack: 'Automatic', // Group under Automatic
+                },
+            ],
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top', // Place legend at the top
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            },
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        stacked: true, // Group Manual and Automatic stacks
+                        title: {
+                            display: true,
+                            text: 'Make',
+                        },
+                    },
+                    y: {
+                        stacked: true, // Stack values within each bar
+                        title: {
+                            display: true,
+                            text: 'Count',
+                        },
+                    },
+                },
+            },
+        };
+
+        const singleBarPerMakeChart = new Chart(ctx, config);
+    </script>
+</body>
+
+</html>

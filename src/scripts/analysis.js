@@ -53,7 +53,7 @@ function redirectToResultsPage(requestData) {
 
     localStorage.setItem('columns', JSON.stringify(columns));
     localStorage.setItem('type', 'statistic');
-    window.location.href = `results.html`;
+    window.location.href = `analysis_results.html`;
 }
 
 

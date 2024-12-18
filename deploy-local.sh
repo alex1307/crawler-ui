@@ -1,4 +1,5 @@
 #!/bin/bash
+#yarn cache clean
 yarn install
 yarn upgrade
 echo "Building project"
