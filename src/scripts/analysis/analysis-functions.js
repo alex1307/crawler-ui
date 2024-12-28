@@ -12,56 +12,55 @@ const dark_mode_colors = [
     'bg-info',
     'bg-dark'
 ];
-document.addEventListener('DOMContentLoaded', loadPage);
+document.addEventListener('DOMContentLoaded', function () {
+    loadPage();
+});
 
-function loadPage() {
+document.addEventListener('DOMContentLoaded', function () {
+    registerEventListeners();
+});
 
 
-    const requestData = JSON.parse(localStorage.getItem('requestData'));
-    const columns = JSON.parse(localStorage.getItem('columns'));
+function registerEventListeners() {
+
     const drawChartButton = document.getElementById("chartButton");
     drawChartButton.addEventListener("click", function () {
         window.location.href = "analysis_chart.html";
     });
 
+    const sortButton = document.getElementById("sortButton");
+    sortButton.addEventListener("click", function () {
+        const requestData = JSON.parse(localStorage.getItem('requestData'));
+        if (document.getElementById('orderColumn1').value) {
+            requestData.order.push({
+                column: document.getElementById('orderColumn1').value,
+                asc: document.querySelector('input[name="order1"]:checked').value === 'asc'
+            });
+        }
+        if (document.getElementById('orderColumn2').value) {
+            requestData.order.push({
+                column: document.getElementById('orderColumn2').value,
+                asc: document.querySelector('input[name="order2"]:checked').value === 'asc'
+            });
+
+        }
+        console.log(requestData.order);
+        requestAndDisplayData(requestData);
+    });
+}
+
+
+function loadPage() {
+    const columns = JSON.parse(localStorage.getItem('columns'));
     if (columns && columns.length > 0) {
         populateDropdown('orderColumn1', columns);
         populateDropdown('orderColumn2', columns);
 
-        document.getElementById('sortButton').addEventListener('click', function () {
-            const requestData = JSON.parse(localStorage.getItem('requestData'));
-            requestData.order = [];
-
-            if (document.getElementById('orderColumn1').value) {
-                requestData.order.push({
-                    column: document.getElementById('orderColumn1').value,
-                    asc: document.querySelector('input[name="order1"]:checked').value === 'asc'
-                });
-            }
-            if (document.getElementById('orderColumn2').value) {
-                requestData.order.push({
-                    column: document.getElementById('orderColumn2').value,
-                    asc: document.querySelector('input[name="order2"]:checked').value === 'asc'
-                });
-            }
-
-            // Trigger the correct function based on the type
-            if (type === 'statistic') {
-                showStatisticData(requestData);
-            } else if (type === 'search') {
-                showData(requestData);
-            }
-        });
-    } else if (document.getElementById('sorting-section')) {
-        document.getElementById('sorting-section').style.display = 'none';
     }
-
+    const requestData = JSON.parse(localStorage.getItem('requestData'));
     requestAndDisplayData(requestData);
-
 }
-
 function requestAndDisplayData(requestData) {
-    const isLocalhost = window.location.hostname === 'localhost';
 
     // Set the base URL based on the environment
 
