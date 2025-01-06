@@ -1,0 +1,85 @@
+/* Base styles for the navbar */
+.navbar {
+    background: linear-gradient(45deg, #6a0dad, #1e90ff);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Adjusted color to match your design */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+/* Centering the title in the navbar */
+.navbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Language selector styling */
+#language-selector {
+    min-width: 120px;
+    margin-left: auto;
+}
+
+/* Navbar toggle icon adjustments for smaller screens */
+.navbar-toggler {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+/* Style for the title in the navbar */
+.navbar-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Media query adjustments for responsiveness */
+@media (max-width: 992px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+        padding-right: 10px;
+    }
+
+    .navbar-collapse {
+        margin-top: 10px;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+}

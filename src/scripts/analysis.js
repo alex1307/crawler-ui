@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { fetchModels, clearModels, generateRequestData, captureData, validateJSON, populateMakesDropdown, populateDropdown, populateCheckboxes } from './statistic.js';
 const isLocalhost = window.location.hostname === 'localhost';
 
@@ -32,7 +33,8 @@ map.forEach((enumName, elementId) => {
     populateFilters(enumName, elementId);
 });
 
-localStorage.clear();
+localStorage.removeItem('requestData');
+localStorage.removeItem('type');
 function redirectToResultsPage(requestData) {
     localStorage.setItem('requestData', JSON.stringify(requestData));
     const columns = [];
@@ -51,7 +53,7 @@ function redirectToResultsPage(requestData) {
 
     localStorage.setItem('columns', JSON.stringify(columns));
     localStorage.setItem('type', 'statistic');
-    window.location.href = `results.html`;
+    window.location.href = `analysis_results.html`;
 }
 
 
@@ -83,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-        // Toggle button text between Advanced and Basic
-        this.textContent = advancedFields.style.display === 'none' ? 'Advanced' : 'Basic';
+        this.textContent = advancedFields.style.display === 'none' ? i18next.t('labels.btn.advanced') : i18next.t('labels.btn.basic');
+
     });
     document.getElementById('make').addEventListener('change', function () {
         const selectedMake = this.value;
@@ -95,51 +97,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.getElementById('toggleMoreColumns').addEventListener('click', function (event) {
-        const hiddenCheckboxes = document.querySelectorAll('.hidden-checkbox');
-        if (hiddenCheckboxes.length === 0) {
-            return;
-        }
-        const isHidden = hiddenCheckboxes[0].style.display === 'none';
-        hiddenCheckboxes.forEach(checkbox => {
-            checkbox.style.display = isHidden ? 'inline-block' : 'none';
-        });
-        this.textContent = isHidden ? 'Less...' : 'More...';
-    });
-    document.getElementById('toggleStatColumn').addEventListener('click', function (event) {
-        const hiddenCheckboxes = document.querySelectorAll('.hidden-radio');
-        if (hiddenCheckboxes.length === 0) {
-            return;
-        }
-        const isHidden = hiddenCheckboxes[0].style.display === 'none';
-        hiddenCheckboxes.forEach(checkbox => {
-            checkbox.style.display = isHidden ? 'inline-block' : 'none';
-        });
-        this.textContent = isHidden ? 'Less...' : 'More...';
-    });
-    document.getElementById('toggleFnMore').addEventListener('click', function (event) {
-        const hiddenCheckboxes = document.querySelectorAll('.hidden-function');
-        if (hiddenCheckboxes.length === 0) {
-            return;
-        }
-        const isHidden = hiddenCheckboxes[0].style.display === 'none';
-        hiddenCheckboxes.forEach(checkbox => {
-            checkbox.style.display = isHidden ? 'inline-block' : 'none';
-        });
-        this.textContent = isHidden ? 'Less...' : 'More...';
-    });
-    document.getElementById('floatingSearchButton').addEventListener('click', function () {
-        const json = captureData();
-        if (validateJSON(json)) {
-            // Parse and display the selected parameters in the summary modal
-            const data = JSON.parse(json);
-            populateModalSections(data);
 
-            // Show the summary modal
-            $('#summaryModal').modal('show');
-        } else {
-            return false; // Stop the process if JSON validation fails
-        }
+    document.getElementById('searchButton').addEventListener('click', function () {
+        const json = captureData();
+        const data = JSON.parse(json);
+        populateModalSections(data);
+        const modalElement = document.getElementById('summaryModal');
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
     });
     document.querySelector('#summaryModal .btn-primary').addEventListener('click', function () {
         const json = captureData();
@@ -149,9 +114,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Initialize tooltips (if help icons are added later)
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+document.addEventListener('DOMContentLoaded', function () {
+    const groupHelpModal = new bootstrap.Modal(document.getElementById('groupHelpModal'));
+    const columnsHelpModal = new bootstrap.Modal(document.getElementById('columnsHelpModal'));
+    const functionsHelpModal = new bootstrap.Modal(document.getElementById('functionsHelpModal'));
+
+    document.querySelectorAll('[data-toggle="modal"]').forEach(item => {
+        item.addEventListener('click', function (event) {
+            const target = event.target.getAttribute('data-target');
+            if (target === '#groupHelpModal') groupHelpModal.show();
+            if (target === '#columnsHelpModal') columnsHelpModal.show();
+            if (target === '#functionsHelpModal') functionsHelpModal.show();
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });
 // Show help text on hover or click
 

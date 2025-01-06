@@ -7,33 +7,34 @@ const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:30
 export function captureData() {
 
     const data = {
-        make: $('#make').val() || null,
-        model: $('#model').val() || null,
-        year: $('#year').val() ? parseInt($('#year').val(), 10) : null,
+        make: document.getElementById('make').value || null,
+        model: document.getElementById('model').value || null,
         engine: [],
-        gearbox: $('#gearbox').val() || null,
+        gearbox: document.getElementById('gearbox').value || null,
 
-        yearFrom: $('#yearFrom').val() ? parseInt($('#yearFrom').val(), 10) : null,
-        yearTo: $('#yearTo').val() ? parseInt($('#yearTo').val(), 10) : null,
-
-
-        powerFrom: $('#powerFrom').val() ? parseInt($('#powerFrom').val(), 10) : null,
-        powerTo: $('#powerTo').val() ? parseInt($('#powerTo').val(), 10) : null,
-
-        mileageFrom: $('#mileageFrom').val() ? parseInt($('#mileageFrom').val(), 10) : null,
-        mileageTo: $('#mileageTo').val() ? parseInt($('#mileageTo').val(), 10) : null,
+        yearFrom: document.getElementById('yearFrom').value ? parseInt(document.getElementById('yearFrom').value, 10) : null,
+        yearTo: document.getElementById('yearTo').value ? parseInt(document.getElementById('yearTo').value, 10) : null,
 
 
-        ccFrom: $('#ccFrom').val() ? parseInt($('#ccFrom').val(), null) : null,
-        ccTo: $('#ccTo').val() ? parseInt($('#ccTo').val(), 10) : null,
-        priceFrom: $('#priceFrom').val() ? parseInt($('#priceFrom').val(), 10) : null,
-        priceTo: $('#priceTo').val() ? parseInt($('#priceTo').val(), 10) : null,
+        powerFrom: document.getElementById('powerFrom').value ? parseInt(document.getElementById('powerFrom').value, 10) : null,
+        powerTo: document.getElementById('powerTo').value ? parseInt(document.getElementById('powerTo').value, 10) : null,
+
+        mileageFrom: document.getElementById('mileageFrom').value ? parseInt(document.getElementById('mileageFrom').value, 10) : null,
+        mileageTo: document.getElementById('mileageTo').value ? parseInt(document.getElementById('mileageTo').value, 10) : null,
+
+
+        ccFrom: document.getElementById('ccFrom').value ? parseInt(document.getElementById('ccFrom').value, null) : null,
+        ccTo: document.getElementById('ccTo').value ? parseInt(document.getElementById('ccTo').value, 10) : null,
+        priceFrom: document.getElementById('priceFrom').value ? parseInt(document.getElementById('priceFrom').value, 10) : null,
+        priceTo: document.getElementById('priceTo').value ? parseInt(document.getElementById('priceTo').value, 10) : null,
 
         group: [],
         aggregators: [],
         order: [],
-        stat_column: $('input[name="statColumn"]:checked').val() || "price_in_eur",
-        estimated_price: $('#estimated_price').val() ? parseInt($('#estimated_price').val(), 10) : null,
+        // Vanilla JavaScript equivalent
+        stat_column: document.querySelector('input[name="statColumn"]:checked')?.value || "price_in_eur",
+        estimated_price: document.getElementById('estimated_price') && document.getElementById('estimated_price').value
+            ? parseInt(document.getElementById('estimated_price').value, 10) : null,
     };
 
     const engineCheckboxes = document.querySelectorAll('input[name="engine"]:checked');
@@ -68,57 +69,54 @@ export function captureData() {
     }
 
 
-    if ($('#groupByMake').is(':checked')) data.group.push('make');
-    if ($('#groupByModel').is(':checked')) data.group.push('model');
-    if ($('#groupByYear').is(':checked')) data.group.push('year');
-    if ($('#groupByEngine').is(':checked')) data.group.push('engine');
-    if ($('#groupByGearbox').is(':checked')) data.group.push('gearbox');
-    if ($('#groupByPower').is(':checked')) data.group.push('power_breakdown');
-    if ($('#groupByMileage').is(':checked')) data.group.push('mileage_breakdown');
+    if (document.getElementById('groupByMake').checked) data.group.push('make');
+    if (document.getElementById('groupByModel').checked) data.group.push('model');
+    if (document.getElementById('groupByYear').checked) data.group.push('year');
+    if (document.getElementById('groupByEngine').checked) data.group.push('engine');
+    if (document.getElementById('groupByGearbox').checked) data.group.push('gearbox');
+    if (document.getElementById('groupByPower').checked) data.group.push('power_breakdown');
+    if (document.getElementById('groupByMileage').checked) data.group.push('mileage_breakdown');
 
     // Statistics checkboxes
-    if ($('#statCount').is(':checked')) data.aggregators.push('count');
-    if ($('#statAvg').is(':checked')) data.aggregators.push('avg');
-    if ($('#statMedian').is(':checked')) data.aggregators.push('median');
-    if ($('#statMean').is(':checked')) data.aggregators.push('mean');
-    if ($('#statMin').is(':checked')) data.aggregators.push('min');
-    if ($('#statMax').is(':checked')) data.aggregators.push('max');
-    if ($('#statP60').is(':checked')) data.aggregators.push('quantile_60');
-    if ($('#statP66').is(':checked')) data.aggregators.push('quantile_66');
-    if ($('#statP70').is(':checked')) data.aggregators.push('quantile_70');
-    if ($('#statP75').is(':checked')) data.aggregators.push('quantile_75');
-    if ($('#statP80').is(':checked')) data.aggregators.push('quantile_80');
-    if ($('#statP90').is(':checked')) data.aggregators.push('quantile_90');
-    if ($('#std').is(':checked')) data.aggregators.push('std');
-    if ($('#rsd').is(':checked')) data.aggregators.push('rsd');
+    if (document.getElementById('statCount').checked) data.aggregators.push('count');
+    if (document.getElementById('statSum').checked) data.aggregators.push('sum');
+    if (document.getElementById('statMedian').checked) data.aggregators.push('median');
+    if (document.getElementById('statAvg').checked) data.aggregators.push('mean');
+    if (document.getElementById('statMin').checked) data.aggregators.push('min');
+    if (document.getElementById('statMax').checked) data.aggregators.push('max');
+    if (document.getElementById('quantile_60').checked) data.aggregators.push('quantile_60');
+    if (document.getElementById('quantile_66').checked) data.aggregators.push('quantile_66');
+    if (document.getElementById('quantile_70').checked) data.aggregators.push('quantile_70');
+    if (document.getElementById('quantile_75').checked) data.aggregators.push('quantile_75');
+    if (document.getElementById('quantile_80').checked) data.aggregators.push('quantile_80');
+    if (document.getElementById('quantile_90').checked) data.aggregators.push('quantile_90');
+    if (document.getElementById('std').checked) data.aggregators.push('std');
+    if (document.getElementById('rsd').checked) data.aggregators.push('rsd');
 
 
 
 
 
     // Orders
-    if ($('#orderColumn1').val()) {
+    if (document.getElementById('orderColumn1') && document.getElementById('orderColumn1').value) {
         data.order.push({
-            column: $('#orderColumn1').val(),
-            asc: $('input[name="order1"]:checked').val() === 'asc'
+            column: document.getElementById('orderColumn1').value,
+            // Vanilla JavaScript equivalent
+            asc: document.querySelector('input[name="order1"]:checked')?.value === 'asc',
         });
     }
-    if ($('#orderColumn2').val()) {
+    if (document.getElementById('orderColumn2') && document.getElementById('orderColumn2').value) {
         data.order.push({
-            column: $('#orderColumn2').val(),
-            asc: $('input[name="order2"]:checked').val() === 'asc'
+            column: document.getElementById('orderColumn2').value,
+            // Vanilla JavaScript equivalent
+            asc: document.querySelector('input[name="order2"]:checked')?.value === 'asc',
         });
     }
-    if ($('#orderColumn3').val()) {
-        data.order.push({
-            column: $('#orderColumn3').val(),
-            asc: $('input[name="order3"]:checked').val() === 'asc'
-        });
-    }
+
     return JSON.stringify(data);
 }
 function showError(message) {
-    $('#errors').html(`<p>${message}</p>`);
+    document.getElementById('errors').html(`<p>${message}</p>`);
 }
 
 
@@ -143,11 +141,11 @@ export function validateJSON(json) {
             return false;
         }
         // Clear any previous errors
-        $('#errors').text('');
-        $('#vehiclePriceCalculator').show();
+        document.getElementById('errors').text('');
+        document.getElementById('vehiclePriceCalculator').show();
         return true;
     } catch (e) {
-        $('#errors').html('Invalid data format.');
+        document.getElementById('errors').html('Invalid data format.');
         return false;
     }
 }
@@ -253,16 +251,10 @@ export function populateDropdown(data, type, elementId) {
                 .forEach(([key, value]) => {
                     const option = document.createElement('option');
                     option.name = elementId;
-                    if (key === '0' && elementId.includes('From')) {
-                        option.value = key;
-                        option.textContent = 'From';
-                    } else if (key === '0' && elementId.includes('To')) {
-                        option.value = key;
-                        option.textContent = 'To';
-                    } else {
-                        option.value = key;
-                        option.textContent = value;
-                    }
+
+                    option.value = key;
+                    option.textContent = value;
+
                     select.appendChild(option);
                 });
         }
@@ -403,7 +395,6 @@ export function populateMakesDropdown() {
         .then(data => {
             const sortedMakes = Object.entries(data).sort((a, b) => a[1].localeCompare(b[1])); // Sort by make names
             const select = document.getElementById('make');
-            select.innerHTML = '<option value="">Select a make</option>';
             sortedMakes.forEach(([key, value]) => {
                 if (value) { // Exclude empty values
                     const option = document.createElement('option');

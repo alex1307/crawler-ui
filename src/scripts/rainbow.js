@@ -63,9 +63,6 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
         if (meta.visible === false) return; // Skip invisible columns
         const headerCell = document.createElement("th");
         headerCell.textContent = meta.column_name;
-        // headerCell.style.backgroundColor = colors[index];
-        // headerCell.style.border = "none";
-        // headerCell.style.borderColor = colors[index]; // Set column color
         headerRow.appendChild(headerCell);
     });
     table_header.appendChild(headerRow);
@@ -94,61 +91,5 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
     container.appendChild(table);
 }
 
-function generateRainbowColors(numColors) {
-    let colors = [];
-    for (let i = 0; i < numColors; i++) {
-        let hue = i / numColors;
-        let rgb = hsvToRgb(hue, 1, 1);
-        colors.push(`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`);
-    }
-    return colors;
-}
-
-function hsvToRgb(h, s, v) {
-    let r, g, b;
-    let i = Math.floor(h * 6);
-    let f = h * 6 - i;
-    let p = v * (1 - s);
-    let q = v * (1 - f * s);
-    let t = v * (1 - (1 - f) * s);
-    switch (i % 6) {
-        case 0:
-            r = v, g = t, b = p;
-            break;
-        case 1:
-            r = q, g = v, b = p;
-            break;
-        case 2:
-            r = p, g = v, b = t;
-            break;
-        case 3:
-            r = p, g = q, b = v;
-            break;
-        case 4:
-            r = t, g = p, b = v;
-            break;
-        case 5:
-            r = v, g = p, b = q;
-            break;
-    }
-    return [
-        Math.floor(r * 255),
-        Math.floor(g * 255),
-        Math.floor(b * 255)
-    ];
-}
 
 
-function getContrastingColor(rgb) {
-    const rgbArray = rgb.match(/\d+/g).map(Number);
-    const brightness = Math.round((parseInt(rgbArray[0]) * 299 + parseInt(rgbArray[1]) * 587 + parseInt(rgbArray[2]) * 114) / 1000);
-    return brightness > 125 ? "black" : "white";
-}
-// Helper function to generate random colors
-function randomColor() {
-    return "rgb(" + [
-        Math.floor(Math.random() * 256),
-        Math.floor(Math.random() * 256),
-        Math.floor(Math.random() * 256)
-    ].join(",") + ")";
-}

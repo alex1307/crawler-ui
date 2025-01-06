@@ -1,0 +1,761 @@
+/* html,
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    height: 100%;
+    width: 100%;
+    /* Centers the content vertically 
+}
+
+.container {
+    align-items: center;
+    max-width: 800px;
+    min-height: 100vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+*/
+html,
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    /* This ensures the main content takes up all available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Adjusts content to start from the top */
+    width: 100%;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    /* Ensures the container takes up the full width */
+    padding: 20px;
+    /* Adds some padding for better spacing */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+
+h2 {
+    font-size: calc(1.325rem + 0.9vw);
+    margin: 20px 0;
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 20px;
+    /* Center the heading for a better visual alignment */
+}
+
+.body-content {
+    padding-top: 60px;
+    /* Adjust padding to prevent overlap with the sticky nav bar */
+}
+
+
+.form-control,
+.btn {
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+
+.section h6 {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+
+.modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Heading */
+.section h6 {
+    font-weight: bold;
+    color: #0056b3;
+    /* Primary color for headings */
+}
+
+/* Section Description Text */
+.section p {
+    color: #666;
+    /* Subtle gray for description text */
+}
+
+/* Filters Section Styling */
+#modalFiltersSection {
+    background-color: #f8f9fa;
+    /* Light gray background for filters */
+    border-left: 5px solid #007BFF;
+    /* Blue accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Grouped/Classified By Section Styling */
+#modalGroupedBySection {
+    background-color: #eaf4fe;
+    /* Light blue background for grouped data */
+    border-left: 5px solid #007BFF;
+    /* Blue accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Statistical Functions Section Styling */
+#modalStatFunctionsSection {
+    background-color: #fef4ea;
+    /* Light orange background for statistical functions */
+    border-left: 5px solid #FFA500;
+    /* Orange accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Data to Analyze Section Styling */
+#modalDataToAnalyzeSection {
+    background-color: #eaf7ea;
+    /* Light green background for data to analyze */
+    border-left: 5px solid #28a745;
+    /* Green accent border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Modal Footer Button Styling */
+.modal-footer .btn-primary {
+    background-color: #007BFF;
+    border-color: #007BFF;
+    transition: background-color 0.3s;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+
+/* Ensure the accordion button text and icons are aligned */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    /* Adjust padding to provide more space */
+    min-height: 50px;
+    min-width: 45%;
+}
+
+.btn.btn-link {
+    padding: 0;
+    font-size: 16px;
+    text-align: left;
+    flex: 1;
+    /* Allow the button text to take up available space */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* Prevent text wrapping to multiple lines */
+}
+
+.btn.btn-link i {
+    margin-left: 5px;
+    /* Adjust space between text and icon */
+}
+
+.fas.fa-info-circle {
+    margin-left: 8px;
+    /* Space between the button and the info icon */
+    cursor: pointer;
+}
+
+.btn-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.card-header button {
+    width: auto;
+    /* Allow button width to adjust naturally */
+    max-width: 100%;
+    /* Ensure space for the icons */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.collapse:not(.show) {
+    height: auto !important;
+}
+
+/* Advanced Search Button Styling */
+.btn-advanced {
+    background: linear-gradient(45deg, #4a90e2, #00c6ff);
+    /* Gradient color for the button */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* Space between the icon and the text */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-advanced i {
+    font-size: 18px;
+    /* Icon size */
+}
+
+.btn-advanced:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+}
+
+/* Active state for better user interaction */
+.btn-advanced:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 198, 255, 0.3);
+}
+
+.header-button {
+    flex: 1;
+    /* Allow the button to take up available space */
+    display: flex;
+    align-items: center;
+    /* Center button content vertically */
+    justify-content: space-between;
+    /* Spread button content evenly */
+    margin: 0;
+    /* Remove default margins */
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    /* Increase the icon size */
+    cursor: pointer;
+    /* Change cursor to pointer */
+}
+
+.help-text {
+    font-size: 1rem;
+    /* Adjust font size as needed */
+    color: #333;
+    /* Customize text color */
+}
+
+
+.floating-button-container {
+    position: fixed;
+    /* Keeps the buttons fixed on the page */
+    bottom: 15%;
+    /* Distance from the bottom of the viewport */
+    right: 45%;
+    /* Distance from the right of the viewport */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    /* Space between buttons */
+    z-index: 1000;
+    /* Ensures buttons are above other elements */
+}
+
+/* Search Button Styling */
+
+
+/* Calculate Button Styling */
+/* Floating Button Styles (applies to all relevant buttons) */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Spacing for icons inside all floating buttons */
+.floating-btn i {
+    margin-right: 10px;
+    /* Consistent spacing for all button icons */
+}
+
+/* Hover Effects */
+.floating-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+
+
+
+/* Styling for the search criteria heading */
+.search-criteria-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Space between the text and the button */
+    font-weight: bold;
+    color: #0056b3;
+    /* Customize color to match your theme */
+    margin-bottom: 15px;
+}
+
+/* Advanced search button styling */
+#toggleAdvancedSearch {
+    margin-left: auto;
+    /* Pushes the button to the right end */
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#toggleAdvancedSearch:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-toggle {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.btn-toggle:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Optional: Adjust margin or position if needed */
+.btn-toggle.more-btn {
+    margin-top: 10px;
+    /* Add some spacing if needed */
+}
+
+.btn-cool {
+    background-color: #4c8bf5;
+    /* Cool blue color */
+    color: #fff;
+    /* White text */
+    font-weight: bold;
+    /* Bold text */
+    font-size: 16px;
+    /* Slightly larger font */
+    display: flex;
+    /* Flexbox to align icon and text */
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-cool i {
+    margin-right: 8px;
+    /* Space between icon and text */
+}
+
+.btn-cool:hover {
+    background-color: #3367d6;
+    /* Darker blue on hover */
+    cursor: pointer;
+    /* Pointer cursor */
+}
+
+
+
+/* General Component Styling */
+
+
+/* Button Toggle Styling */
+.btn-toggle {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.btn-toggle:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Floating Action Button */
+
+
+/* Modal Content Styling */
+.modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header,
+.modal-footer {
+    background-color: #f8f9fa;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+}
+
+/* Custom Checkbox Grid */
+.custom-checkbox-grid {
+    flex: 1 1 auto;
+    /* Flex to occupy available space evenly */
+    min-width: 100px;
+    /* Minimum width to keep checkboxes readable */
+
+    /* Ensure three checkboxes per row by default */
+}
+
+.custom-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 130px;
+}
+
+.custom-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.custom-checkbox-grid input[type="checkbox"]:checked+label::before {
+    /* background: #007BFF; */
+    border-color: #007BFF;
+}
+
+.custom-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #007BFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Group-by Column Checkbox Grid */
+.group-by-column-checkbox-grid {
+    flex: 1 1 auto;
+    min-width: 100px;
+    max-width: calc(25% - 10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 90px;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]:checked+label::before {
+    /* background: #007BFF; */
+    border-color: #007BFF;
+}
+
+.group-by-column-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #007BFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.functions-checkbox-grid {
+    flex: 1 1 auto;
+    /* Flex to occupy available space evenly */
+    min-width: 120px;
+    /* Minimum width to keep checkboxes readable */
+    max-width: calc(25% - 10px);
+    /* Ensure four checkboxes per row by default */
+
+}
+
+.functions-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.functions-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 250px;
+}
+
+.functions-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.functions-checkbox-grid input[type="checkbox"]:checked+label::before {
+    /* background: #007BFF; */
+    border-color: #007BFF;
+}
+
+.functions-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #007BFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.filter-checkbox-grid input[type="checkbox"] {
+    display: none;
+}
+
+.filter-checkbox-grid input[type="checkbox"]+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 5px;
+    width: 250px;
+}
+
+.filter-checkbox-grid input[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s;
+}
+
+.filter-checkbox-grid input[type="checkbox"]:checked+label::before {
+    background: #007BFF;
+    /* Ensure the visual update reflects the checked state */
+    border-color: #007BFF;
+}
+
+.filter-checkbox-grid input[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: 2px solid #007BFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.form-check-inline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 5px 0;
+    /* Reduced padding */
+    text-align: center;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+    font-size: 12px;
+    /* Reduced font size */
+    line-height: 1.2;
+    /* Adjusted line height to make it more compact */
+}
+
+footer p {
+    margin: 5px 0;
+    /* Reduced the top and bottom margins */
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#chartTypeSection {
+    background-color: #eaf4fe;
+    /* Light blue */
+}
+
+#filterSection {
+    background-color: #f8f9fa;
+    /* Light gray */
+}
+
+#statisticsSection {
+    background-color: #fef4ea;
+    /* Light orange */
+}
+
+#distributionFieldsSection {
+    background-color: #eaf7ea;
+    /* Light green */
+}
+
+/* Accordion Buttons */
+.accordion .card-header {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    padding: 10px;
+}
+
+.accordion .card-header button {
+    color: #fff;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    footer {
+        padding: 3px 0;
+        /* Further reduce padding on smaller screens */
+        font-size: 11px;
+        /* Adjust font size for smaller devices */
+    }
+
+    footer p {
+        margin: 3px 0;
+        /* Further reduce margin */
+    }
+
+    .service-icon {
+        font-size: 10px;
+        /* Reduce the size of the email icon */
+    }
+}

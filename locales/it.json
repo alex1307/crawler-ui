@@ -1,0 +1,113 @@
+{
+    "homepage": {
+        "title": "Scopri le migliori offerte di auto con la nostra piattaforma definitiva per confrontare i prezzi dei veicoli, trovare le migliori offerte, accedere a statistiche dettagliate e stime dei prezzi affidabili.",
+        "search_title": "Cerca Offerte di Auto",
+        "search_details": "Trova i migliori prezzi in varie categorie, comprese offerte buone, giuste e alte.",
+        "data_title": "Analisi dei Dati",
+        "data_details": "Ottieni statistiche dettagliate e analizza i dati delle auto con i nostri strumenti avanzati.",
+        "calculator_title": "Calcolatore di Prezzi",
+        "calculator_details": "Stima accuratamente i prezzi dei veicoli utilizzando i nostri algoritmi all'avanguardia."
+    },
+    "searchSection": {
+        "title": "Cerca Offerte di Auto 🧐🔎🚗",
+        "description": "Trova i migliori prezzi: cerca rapidamente offerte di auto in varie categorie, comprese buone, giuste e alte offerte.",
+        "details": "Filtra i tuoi risultati: usa filtri avanzati per restringere la tua ricerca in base a marca, modello, fascia di prezzo, chilometraggio, anno e altro. Ricerca personalizzata: personalizza la tua ricerca per soddisfare le tue esigenze e preferenze specifiche."
+    },
+    "analysisSection": {
+        "title": "Analisi dei Dati 📈📊",
+        "description": "Analisi per gruppo: analizza i dati delle auto raggruppando i risultati in base a campi selezionati come marca, modello, anno, motore, cambio e altro.",
+        "details": "Statistiche dettagliate: ottieni statistiche approfondite tra cui conteggio, media, deviazione standard, mediana e vari percentili. Comprendi le tendenze del mercato: ottieni approfondimenti sul mercato automobilistico con un'analisi statistica completa."
+    },
+    "calculatorSection": {
+        "title": "Calcolatore di Prezzi 🛝🎡🏷️💰",
+        "description": "Stima del Prezzo: calcola il prezzo stimato di un veicolo in base a criteri dettagliati.",
+        "details": "Previsioni accurate: usa il nostro strumento per ottenere una stima affidabile del valore di un'auto, aiutandoti a prendere decisioni di acquisto o vendita informate. Algoritmi avanzati: il nostro calcolatore utilizza algoritmi avanzati per garantire stime di prezzo accurate e aggiornate."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Servizi",
+            "title": "Cosa Offriamo"
+        },
+        "searchDeal": {
+            "title": "Cerca Offerte",
+            "description": "Trova i migliori prezzi: cerca rapidamente offerte di auto in varie categorie, comprese offerte buone, giuste e alte."
+        },
+        "dataAnalysis": {
+            "title": "Analisi dei Dati",
+            "description": "Ottieni statistiche dettagliate, tra cui conteggio, media, deviazione standard, mediana e vari percentili."
+        },
+        "priceCalculator": {
+            "title": "Calcolatore di Prezzi",
+            "description": "Calcola il prezzo stimato di un veicolo in base a criteri dettagliati."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "Email:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Indirizzo:",
+            "details": "Hladilnika, Viale \"Cherni Vrah\" 47, 1407 Sofia, Bulgaria"
+        }
+    },
+    "labels": {
+        "search": "Cerca",
+        "makeModel": "Cerca per 🚗 Marca & 🏎️ Modello",
+        "make": "🚗 Marca",
+        "selectMake": "Seleziona Marca",
+        "model": "🏎️ Modello",
+        "selectModel": "Seleziona Modello",
+        "year": "📅 Anno di Produzione",
+        "selectYear": "Seleziona Anno di Produzione",
+        "price": "🏷️💶 Prezzo",
+        "selectPrice": "Seleziona Fascia di Prezzo",
+        "estimated Price": "Prezzo Stimato",
+        "selectEstimatedPrice": "Seleziona Fascia di Prezzo Stimato",
+        "mileage": "⏲ Chilometraggio",
+        "selectMileage": "Seleziona Fascia di Chilometraggio",
+        "engine": "⛽🔌🔋 Motore",
+        "equipment": "🔧🔩🛠️ Equipaggiamento",
+        "gearbox": "🕹⚙️ Cambio",
+        "selectGearbox": "Seleziona Cambio",
+        "power": "🐎💪⚡ Potenza",
+        "selectPower": "Seleziona Fascia di Potenza",
+        "cm3": "cm³",
+        "selectCm3": "Seleziona Fascia cm³",
+        "saveDiff": "🤑💰🛒 Risparmio €",
+        "selectSaveDiff": "Seleziona Fascia Risparmio",
+        "discount": "%🛒🛍️✨ Sconto (✂️🏷️%)",
+        "selectDiscount": "Seleziona Fascia Sconto",
+        "published": "📅 🏁 Pubblicato il",
+        "selectPublished": "Seleziona Data di Pubblicazione",
+        "increasedLabel": "🤪 Aumento %",
+        "selectIncreased": "Seleziona Fascia Aumento",
+        "extraCharge": "Sovrapprezzo €",
+        "selectExtraCharge": "Seleziona Fascia Sovrapprezzo",
+        "from": "da",
+        "to": "a",
+        "fromEur": "da €",
+        "toEur": "a €",
+        "fromKm": "da km",
+        "toKm": "a km",
+        "fromPower": "da cavalli",
+        "toPower": "a cavalli",
+        "fromCm3": "da cm³",
+        "toCm3": "a cm³",
+        "fromPercentage": "da %",
+        "toPercentage": "a %",
+        "btn": {
+            "search": "Cerca",
+            "viewAnalysis": "Visualizza Analisi",
+            "close": "Chiudi",
+            "more": "Altro...",
+            "less": "Meno...",
+            "advanced": "Avanzato 🔎",
+            "basic": "Base 🔎",
+            "columnsGroupBy": "Raggruppa per Attributi del Veicolo",
+            "dataAnalysis": "Seleziona Dati Finanziari per Analisi",
+            "statFunctions": "Funzioni Statistiche",
+            "confirm": "Conferma e Inizia..."
+        }
+    }
+}

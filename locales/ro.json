@@ -1,0 +1,113 @@
+{
+    "homepage": {
+        "title": "Descoperă cele mai bune oferte auto cu platforma noastră pentru compararea prețurilor vehiculelor, găsirea celor mai bune oferte, accesarea statisticilor detaliate și estimări de prețuri de încredere.",
+        "search_title": "Caută oferte auto",
+        "search_details": "Găsește cele mai bune prețuri în diverse categorii, inclusiv oferte bune, corecte și ridicate.",
+        "data_title": "Analiza datelor",
+        "data_details": "Obține statistici detaliate și analizează datele vehiculelor cu ajutorul instrumentelor noastre avansate.",
+        "calculator_title": "Calculator de prețuri",
+        "calculator_details": "Estimează prețurile vehiculelor cu exactitate folosind algoritmii noștri avansați."
+    },
+    "searchSection": {
+        "title": "Caută oferte auto 🧐🔎🚗",
+        "description": "Găsește cele mai bune prețuri: caută rapid oferte auto în diverse categorii, inclusiv oferte bune, corecte și ridicate.",
+        "details": "Filtrează rezultatele: folosește filtre avansate pentru a restrânge căutarea pe baza mărcii, modelului, intervalului de preț, kilometrajului, anului de fabricație și multe altele. Căutare personalizată: ajustează căutarea în funcție de nevoile și preferințele tale."
+    },
+    "analysisSection": {
+        "title": "Analiza datelor 📈📊",
+        "description": "Grupare după: Analizează datele auto prin gruparea rezultatelor în funcție de câmpurile selectate, cum ar fi marca, modelul, anul de fabricație, motorul, cutia de viteze și altele.",
+        "details": "Statistici detaliate: obține statistici detaliate, inclusiv numărul, media, abaterea standard, mediana și diverse percentile. Înțelege tendințele pieței: obține informații despre piața auto cu ajutorul unei analize statistice detaliate."
+    },
+    "calculatorSection": {
+        "title": "Calculator de prețuri 🛝🎡🏷️💰",
+        "description": "Estimarea prețului: Calculează prețul estimat al unui vehicul pe baza unor criterii detaliate.",
+        "details": "Predicții precise: Folosește instrumentul nostru pentru a obține o estimare fiabilă a valorii unei mașini, ajutându-te să iei decizii informate de cumpărare sau vânzare. Algoritmi avansați: Calculatorul nostru utilizează algoritmi avansați pentru a asigura calcule de prețuri exacte și actualizate."
+    },
+    "servicesSection": {
+        "heading": {
+            "subtitle": "Servicii",
+            "title": "Ce oferim"
+        },
+        "searchDeal": {
+            "title": "Caută oferte",
+            "description": "Găsește cele mai bune prețuri: caută rapid oferte auto în diverse categorii, inclusiv oferte bune, corecte și ridicate."
+        },
+        "dataAnalysis": {
+            "title": "Analiza datelor",
+            "description": "Obține statistici detaliate, inclusiv numărul, media, abaterea standard, mediana și diverse percentile."
+        },
+        "priceCalculator": {
+            "title": "Calculator de prețuri",
+            "description": "Calculează prețul estimat al unui vehicul pe baza unor criterii detaliate."
+        }
+    },
+    "contactSection": {
+        "email": {
+            "label": "E-mail:",
+            "address": "matkat@ehomeho.com"
+        },
+        "address": {
+            "label": "Adresă:",
+            "details": "Hladilnika, Bulevardul \"Cherni Vrah\" 47, 1407 Sofia, Bulgaria"
+        }
+    },
+    "labels": {
+        "search": "Caută",
+        "makeModel": "Caută după 🚗 Marcă & 🏎️ Model",
+        "make": "🚗 Marcă",
+        "selectMake": "Selectează Marca",
+        "model": "🏎️ Model",
+        "selectModel": "Selectează Modelul",
+        "year": "📅 Anul de Fabricație",
+        "selectYear": "Selectează Anul de Fabricație",
+        "price": "🏷️💶 Preț",
+        "selectPrice": "Selectează Intervalul de Preț",
+        "estimated Price": "Preț Estimat",
+        "selectEstimatedPrice": "Selectează Prețul Estimat",
+        "mileage": "⏲ Kilometraj",
+        "selectMileage": "Selectează Kilometrajul",
+        "engine": "⛽🔌🔋 Motor",
+        "equipment": "🔧🔩🛠️ Echipament",
+        "gearbox": "🕹⚙️ Cutie de Viteze",
+        "selectGearbox": "Selectează Cutia de Viteze",
+        "power": "🐎💪⚡ Putere",
+        "selectPower": "Selectează Clasa de Putere",
+        "cm3": "cm³",
+        "selectCm3": "Selectează cm³",
+        "saveDiff": "🤑💰🛒 Economisește €",
+        "selectSaveDiff": "Selectează Economiile",
+        "discount": "%🛒🛍️✨ Reducere (✂️🏷️%)",
+        "selectDiscount": "Selectează Procentajul de Reducere",
+        "published": "📅 🏁 Publicat pe",
+        "selectPublished": "Selectează Data Publicării",
+        "increasedLabel": "🤪 Creștere %",
+        "selectIncreased": "Selectează Creșterea %",
+        "extraCharge": "Supliment €",
+        "selectExtraCharge": "Selectează Suplimentul",
+        "from": "de la",
+        "to": "până la",
+        "fromEur": "de la €",
+        "toEur": "până la €",
+        "fromKm": "de la km",
+        "toKm": "până la km",
+        "fromPower": "de la putere",
+        "toPower": "până la putere",
+        "fromCm3": "de la cm³",
+        "toCm3": "până la cm³",
+        "fromPercentage": "de la %",
+        "toPercentage": "până la %",
+        "btn": {
+            "search": "Caută",
+            "viewAnalysis": "Vezi Analiza",
+            "close": "Închide",
+            "more": "Mai multe...",
+            "less": "Mai puține...",
+            "advanced": "Avansat 🔎",
+            "basic": "De bază 🔎",
+            "columnsGroupBy": "Grupare după Atributele Vehiculului",
+            "dataAnalysis": "Selectează Datele Financiare pentru Analiză",
+            "statFunctions": "Funcții Statistice",
+            "confirm": "Confirmă și Începe..."
+        }
+    }
+}
