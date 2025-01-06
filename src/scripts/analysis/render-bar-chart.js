@@ -1,14 +1,25 @@
 import { cleanObject } from '../common/common-functions.js';
+const apiUrl = `${window.location.hostname === 'localhost' ? 'https://localhost:3000' : 'https://ehomeho.com:3000'}/pivot-chart`;
 document.addEventListener('DOMContentLoaded', async () => {
     const chartCanvasId = 'chartCanvas'; // The canvas ID where the chart will be rendered
-    const apiUrl = `${window.location.hostname === 'localhost' ? 'https://localhost:3000' : 'https://ehomeho.com:3000'}/analysis-chart`;
-
-    // Retrieve filters from local storage
-    const filter = JSON.parse(localStorage.getItem('requestData')) || {};
-    const cleandedFilter = cleanObject(filter);
-
-    // Show the chart using the distributionChart function
+    const pivotData = JSON.parse(localStorage.getItem('pivotData')) || {};
+    const cleandedFilter = cleanObject(pivotData);
+    const requestData = JSON.parse(localStorage.getItem('requestData'));
+    populateDropdowns(requestData);
+    populateStatFunctions();
     renderChart(apiUrl, cleandedFilter, chartCanvasId);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    registerEventListeners();
+});
+
+document.querySelectorAll('input[name="chartType"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+        const pivotData = JSON.parse(localStorage.getItem('pivotData')) || {};
+        const cleandedFilter = cleanObject(pivotData);
+        summaryChart(apiUrl, cleandedFilter, 'chartCanvas');
+    });
 });
 
 
@@ -59,7 +70,8 @@ async function summaryChart(apiUrl, requestData, canvasId) {
 
         // Prepare the chart data
         const chartData = prepareChartData(data);
-
+        const selectedChartType = document.querySelector('input[name="chartType"]:checked').value;
+        const isStacked = selectedChartType === "stacked";
         // Destroy any existing chart instance
         if (window.chartInstance) {
             window.chartInstance.destroy();
@@ -80,11 +92,11 @@ async function summaryChart(apiUrl, requestData, canvasId) {
                 },
                 scales: {
                     x: {
-                        stacked: true,
+                        stacked: isStacked,
                         beginAtZero: true,
                     },
                     y: {
-                        stacked: true,
+                        stacked: isStacked,
                         beginAtZero: true,
                     },
                 },
@@ -120,4 +132,97 @@ function generateRandomColors(count) {
     return Array.from({ length: count }, () =>
         `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.7)`
     );
+}
+
+function populateDropdowns(data) {
+    const group = data.group;
+
+    // Populate the X column dropdown (Primary Group)
+    const xColumn = document.getElementById("xColumn");
+    xColumn.innerHTML = group.map((value) => `<option value="${value}">${value}</option>`).join("");
+
+    // Update dependent dropdowns when the X column changes
+    xColumn.addEventListener("change", () => updateDependentDropdowns(group));
+
+    // Initial population of dependent dropdowns
+    updateDependentDropdowns(group);
+}
+
+function updateDependentDropdowns(group) {
+    const xColumnValue = document.getElementById("xColumn").value;
+    const restGroup = group.filter((value) => value !== xColumnValue);
+    const pivotColumn = document.getElementById("pivotColumn");
+    pivotColumn.innerHTML = `<option value="">Please select...</option>` +
+        restGroup.map((value) => `<option value="${value}">${value}</option>`).join("");
+}
+
+const statFunctions = [
+    { value: "count", label: "Count" },
+    { value: "min", label: "Minimum" },
+    { value: "max", label: "Maximum" },
+    { value: "mean", label: "Mean" },
+    { value: "median", label: "Median" },
+    { value: "sum", label: "Sum" },
+    { value: "avg", label: "Average" },
+    { value: "std", label: "Standard Deviation" },
+    { value: "rsd", label: "Relative Standard Deviation" },
+    { value: "quantile_60", label: "60th Percentile" },
+    { value: "quantile_66", label: "66th Percentile" },
+    { value: "quantile_70", label: "70th Percentile" },
+    { value: "quantile_75", label: "75th Percentile" },
+    { value: "quantile_80", label: "80th Percentile" },
+    { value: "quantile_90", label: "90th Percentile" },
+];
+
+// Populate the Y function dropdown with user-friendly labels
+function populateStatFunctions() {
+    const yFunctionDropdown = document.getElementById("yFunction");
+
+    if (yFunctionDropdown) {
+        yFunctionDropdown.innerHTML = statFunctions
+            .map((func) => `<option value="${func.value}">${func.label}</option>`)
+            .join("");
+
+        // Set a default value (optional)
+        yFunctionDropdown.value = "count";
+    } else {
+        console.error("Element with id 'yFunction' not found.");
+    }
+}
+
+function registerEventListeners() {
+
+    const drawChartButton = document.getElementById("chartButton");
+    drawChartButton.addEventListener("click", function () {
+        // Retrieve the StatisticSearchPayload from localStorage
+        const requestData = JSON.parse(localStorage.getItem("requestData"));
+        if (document.getElementById('xColumn').value) {
+            requestData.order.push({
+                column: document.getElementById('xColumn').value,
+                asc: document.querySelector('input[name="axisOrder"]:checked').value === 'asc'
+            });
+        }
+
+
+        // Get the values from the dropdowns
+        const xColumn = document.getElementById("xColumn").value;
+        const pivotColumn = document.getElementById("pivotColumn").value || null; // Optional
+        const yFunction = document.getElementById("yFunction").value;
+
+        // Construct the PivotData object
+        const pivotData = {
+            x_column: xColumn,
+            y_column: requestData.stat_column || "default_column", // Replace "default_column" with a fallback value if needed
+            y_function: yFunction,
+            pivot_column: pivotColumn,
+            filter: requestData, // Use the StatisticSearchPayload from localStorage
+        };
+
+        // Store the PivotData in localStorage for use in the next page
+        localStorage.setItem("pivotData", JSON.stringify(pivotData));
+
+        // Navigate to the analysis_chart.html page
+        window.location.href = "analysis_chart.html";
+    });
+
 }

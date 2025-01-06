@@ -97,41 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.getElementById('toggleMoreColumns').addEventListener('click', function (event) {
-        const hiddenCheckboxes = document.querySelectorAll('.hidden-checkbox');
-        if (hiddenCheckboxes.length === 0) {
-            return;
-        }
-        const isHidden = hiddenCheckboxes[0].style.display === 'none';
-        hiddenCheckboxes.forEach(checkbox => {
-            checkbox.style.display = isHidden ? 'inline-block' : 'none';
-        });
-        this.textContent = isHidden ? i18next.t('labels.btn.less') : i18next.t('labels.btn.more');
 
-    });
-    document.getElementById('toggleStatColumn').addEventListener('click', function (event) {
-        const hiddenCheckboxes = document.querySelectorAll('.hidden-radio');
-        if (hiddenCheckboxes.length === 0) {
-            return;
-        }
-        const isHidden = hiddenCheckboxes[0].style.display === 'none';
-        hiddenCheckboxes.forEach(checkbox => {
-            checkbox.style.display = isHidden ? 'inline-block' : 'none';
-        });
-        this.textContent = isHidden ? i18next.t('labels.btn.less') : i18next.t('labels.btn.more');
-
-    });
-    document.getElementById('toggleFnMore').addEventListener('click', function (event) {
-        const hiddenCheckboxes = document.querySelectorAll('.hidden-function');
-        if (hiddenCheckboxes.length === 0) {
-            return;
-        }
-        const isHidden = hiddenCheckboxes[0].style.display === 'none';
-        hiddenCheckboxes.forEach(checkbox => {
-            checkbox.style.display = isHidden ? 'inline-block' : 'none';
-        });
-        this.textContent = isHidden ? i18next.t('labels.btn.less') : i18next.t('labels.btn.more');
-    });
     document.getElementById('searchButton').addEventListener('click', function () {
         const json = captureData();
         const data = JSON.parse(json);

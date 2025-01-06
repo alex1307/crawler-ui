@@ -68,67 +68,84 @@
 
     <!-- Results Section -->
     <div class="container mb-4">
-        <div class="row">
-            <div class="card shadow-sm p-3 mb-4">
-                <h5 class="fw-bold mb-3">Sorting Options</h5>
-                <div class="row gx-3 gy-2 align-items-center">
-                    <!-- Sort Column 1 with Direction -->
-                    <div class="col-12 col-md-6 d-flex align-items-center">
-                        <select id="orderColumn1" class="form-select" style="min-width: 120px;">
-                            <option>Sort by column:</option>
+
+        <div class="card shadow-sm p-4">
+            <h5 class="fw-bold mb-3">Chart and Data Options</h5>
+            <form id="chartDataForm">
+                <!-- Pivot Options -->
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="xColumn" class="form-label">Primary Group (X Column)</label>
+                        <select id="xColumn" class="form-select"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pivotColumn" class="form-label">Pivot Column (Optional)</label>
+                        <select id="pivotColumn" class="form-select">
+                            <option value="" selected>None</option>
                         </select>
-                        <div class="btn-group ms-2" role="group">
-                            <input type="radio" class="btn-check" name="order1" value="asc" id="order1-asc" checked>
-                            <label class="btn btn-outline-primary" for="order1-asc"><i
-                                    class="fa-solid fa-arrow-up"></i></label>
-                            <input type="radio" class="btn-check" name="order1" value="desc" id="order1-desc">
-                            <label class="btn btn-outline-primary" for="order1-desc"><i
-                                    class="fa-solid fa-arrow-down"></i></label>
-                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="secondXColumn" class="form-label">Secondary Group (Optional)</label>
+                        <select id="secondXColumn" class="form-select">
+                            <option value="" selected>None</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="yFunction" class="form-label">Aggregation Function</label>
+                        <select id="yFunction" class="form-select">
+                            <!-- Options will be dynamically populated -->
+                        </select>
                     </div>
 
-                    <!-- Sort Column 2 with Direction -->
-                    <div class="col-12 col-md-6 d-flex align-items-center">
-                        <select id="orderColumn2" class="form-select" style="min-width: 120px;">
-                            <option>Sort by column:</option>
-                        </select>
-                        <div class="btn-group ms-2" role="group">
-                            <input type="radio" class="btn-check" name="order2" value="asc" id="order2-asc" checked>
-                            <label class="btn btn-outline-primary" for="order2-asc"><i
-                                    class="fa-solid fa-arrow-up"></i></label>
-                            <input type="radio" class="btn-check" name="order2" value="desc" id="order2-desc">
-                            <label class="btn btn-outline-primary" for="order2-desc"><i
-                                    class="fa-solid fa-arrow-down"></i></label>
+
+                    <!-- Sorting Options -->
+                    <div class="border-top pt-3 mt-3">
+                        <h6>Sorting Options</h6>
+                        <div class="row gx-3 gy-2 align-items-center">
+                            <!-- Sort Column 1 with Direction -->
+                            <div class="col-6 col-md-3 d-flex align-items-center">
+                                <select id="orderColumn1" class="form-select" style="min-width: 150px;">
+                                    <option>Sort by column:</option>
+                                </select>
+                                <fieldset class="btn-group ms-2">
+                                    <input type="radio" class="btn-check" name="order1" value="asc" id="order1-asc"
+                                        checked>
+                                    <label class="btn btn-outline-primary" for="orderColumn1"><i
+                                            class="fa-solid fa-arrow-up"></i></label>
+                                    <input type="radio" class="btn-check" name="order1" value="desc" id="order1-desc">
+                                    <label class="btn btn-outline-primary" for="order1-desc"><i
+                                            class="fa-solid fa-arrow-down"></i></label>
+                            </div>
+                        </div>
+
+                        <!-- Sort Column 2 with Direction -->
+                        <div class="col-12 col-md-6 d-flex align-items-center">
+                            <select id="orderColumn2" class="form-select" style="min-width: 120px;">
+                                <option>Sort by column:</option>
+                            </select>
+                            <div class="btn-group ms-2" role="group">
+                                <input type="radio" class="btn-check" name="order2" value="asc" id="order2-asc" checked>
+                                <label class="btn btn-outline-primary" for="order2-asc"><i
+                                        class="fa-solid fa-arrow-up"></i></label>
+                                <input type="radio" class="btn-check" name="order2" value="desc" id="order2-desc">
+                                <label class="btn btn-outline-primary" for="order2-desc"><i
+                                        class="fa-solid fa-arrow-down"></i></label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button id="sortButton" class="btn btn-success mt-3 w-100">
-                    <i class="fa-solid fa-sort"></i> Sort
-                </button>
-            </div>
-            <div class="card shadow-sm p-3">
-                <h5 class="fw-bold mb-3">Chart Options</h5>
-                <div class="row">
-                    <div class="col-md-5 mb-2">
-                        <label for="chartColumn" class="form-label fw-bold">Select Dataset</label>
-                        <select id="chartColumn" class="form-select">
-                            <option value="count">Count</option>
-                            <option value="sum">Sum</option>
-                            <option value="mean">Mean</option>
-                        </select>
-                    </div>
-                    <!-- Second Set of Sorting Columns -->
-                    <div class="col-md-5 mb-2">
-                        <label for="orderColumn3" class="form-label fw-bold">Sort Column 3</label>
-                        <select id="orderColumn3" class="form-select"></select>
-                    </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="button" id="dataButton" class="btn btn-success mt-3 w-25">
+                        <i class="fa-solid fa-table"></i> Show Data
+                    </button>
+                    <button type="button" id="chartButton" class="btn btn-primary mt-3 w-25">
+                        <i class="fa-solid fa-chart-line"></i> Draw Chart
+                    </button>
                 </div>
-                <button id="chartButton" class="btn btn-info mt-3 w-100">
-                    <i class="fa-solid fa-chart-line"></i> Show Chart
-                </button>
-            </div>
+            </form>
         </div>
-
         <div id="results" class="results-container">
         </div>
     </div>

@@ -265,46 +265,65 @@
                                                     <p>Select fields to group vehicles data by:</p>
                                                 </div>
                                             </div>
-                                            <div class="form-check-inline">
-                                                <div class="group-by-column-checkbox-grid">
-                                                    <input type="checkbox" id="groupByMake" checked>
-                                                    <label class="form-check-label" for="groupByMake">Make</label>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByMake" value="make">
+                                                            <label class="form-check-label"
+                                                                for="groupByMake">Make</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByModel" value="model">
+                                                            <label class="form-check-label"
+                                                                for="groupByModel">Model</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByYear" value="year">
+                                                            <label class="form-check-label"
+                                                                for="groupByYear">Year</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByEngine" value="engine">
+                                                            <label class="form-check-label"
+                                                                for="groupByEngine">Engine</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByGearbox" value="year">
+                                                            <label class="form-check-label"
+                                                                for="groupByGearbox">Gearbox</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByPower" value="year">
+                                                            <label class="form-check-label"
+                                                                for="groupByPower">Power</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="groupByPrice" value="price">
+                                                            <label class="form-check-label"
+                                                                for="groupByPrice">Price</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input class=" form-check-input" type="checkbox"
+                                                                id="groupByMileage" value="mileage">
+                                                            <label class="form-check-label"
+                                                                for="groupByMileage">Mileage</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="group-by-column-checkbox-grid">
-                                                    <input type="checkbox" id="groupByYear">
-                                                    <label class="form-check-label" for="groupByYear">Year</label>
-                                                </div>
-                                                <div class="group-by-column-checkbox-grid hidden-checkbox"
-                                                    style="display: none;">
-                                                    <input type="checkbox" id="groupByModel">
-                                                    <label class="form-check-label" for="groupByModel">Model</label>
-                                                </div>
-                                                <div class="group-by-column-checkbox-grid hidden-checkbox"
-                                                    style="display: none;">
-                                                    <input type="checkbox" id="groupByEngine">
-                                                    <label class="form-check-label" for="groupByEngine">Engine</label>
-                                                </div>
-                                                <div class="group-by-column-checkbox-grid hidden-checkbox"
-                                                    style="display: none;">
-                                                    <input type="checkbox" id="groupByGearbox">
-                                                    <label class="form-check-label" for="groupByGearbox">Gearbox</label>
-                                                </div>
-                                                <div class="group-by-column-checkbox-grid hidden-checkbox"
-                                                    style="display: none;">
-                                                    <input type="checkbox" id="groupByMileage">
-                                                    <label class="form-check-label" for="groupByMileage">Mileage</label>
-                                                </div>
-                                                <div class="group-by-column-checkbox-grid hidden-checkbox"
-                                                    style="display: none;">
-                                                    <input type="checkbox" id="groupByPower">
-                                                    <label class="form-check-label" for="groupByPower">Power</label>
-                                                </div>
+                                            </div>
 
-                                            </div>
-                                            <div class="custom-checkbox-grid">
-                                                <button class="btn-toggle more-btn"
-                                                    id="toggleMoreColumns">More...</button>
-                                            </div>
 
                                         </div>
                                     </div>
@@ -315,7 +334,7 @@
                             <!-- Columns and Statistical Functions Section -->
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
-                                    <div class="header-container" style="width: 320px;">
+                                    <div class="header-container">
                                         <!-- Corrected attributes: data-toggle -> data-bs-toggle, data-target -> data-bs-target -->
                                         <button class="btn btn-link btn-block text-left collapsed" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseTwo"
@@ -354,46 +373,26 @@
                                                 </div>
                                             </div>
                                             <div class="form-check-inline">
-                                                <div class="functions-checkbox-grid">
-                                                    <input type="" name="statColumn" id="price_in_eur"
-                                                        value="price_in_eur" checked="">
-                                                    <label for="price_in_eur">Price</label>
-                                                </div>
-                                                <div class="functions-checkbox-grid">
-                                                    <input type="radio" name="statColumn" id="estimated_price_in_eur"
-                                                        value="estimated_price_in_eur">
-                                                    <label for="estimated_price_in_eur">Estimated Price</label>
-                                                </div>
-                                                <div class="functions-checkbox-grid hidden-radio"
-                                                    style="display: none;">
-                                                    <input type="radio" name="statColumn" id="save_diff_in_eur"
-                                                        value="save_diff_in_eur">
-                                                    <label for="save_diff_in_eur">Save Difference €</label>
-                                                </div>
-                                                <div class="functions-checkbox-grid hidden-radio"
-                                                    style="display: none;">
-                                                    <input type="radio" name="statColumn" id="extra_charge_in_eur"
-                                                        value="extra_charge_in_eur">
-                                                    <label for="extra_charge_in_eur">Extra Charge €</label>
-                                                </div>
-                                                <div class="functions-checkbox-grid hidden-radio"
-                                                    style="display: none;">
-                                                    <input type="radio" name="statColumn" id="discount"
-                                                        value="discount">
-                                                    <label for="discount">Discount %</label>
-                                                </div>
-                                                <div class="functions-checkbox-grid hidden-radio"
-                                                    style="display: none;">
-                                                    <input type="radio" name="statColumn" id="increase"
-                                                        value="increase">
-                                                    <label for="increase">Increased %</label>
+                                                <div class="form-group">
+                                                    <label for="columnsToAnalyze">Select Columns to Analyze:</label>
+                                                    <p>Choose one or more columns from your dataset that you wish to
+                                                        analyze. Each option represents a different column. For example,
+                                                        you might want to analyze the 'Price' or 'Estimated Price'
+                                                        columns to understand their distribution and summary statistics.
+                                                        <strong>All prices are in EUR(€).</strong>
+                                                    </p>
+                                                    <select id="columnsToAnalyze" class="form-control">
+                                                        <option value="price_in_eur" selected>Price</option>
+                                                        <option value="estimated_price_in_eur">Estimated Price</option>
+                                                        <option value="save_diff_in_eur">Save Difference €</option>
+                                                        <option value="extra_charge_in_eur">Extra Charge €</option>
+                                                        <option value="discount">Discount %</option>
+                                                        <option value="increase">Increased %</option>
+                                                    </select>
                                                 </div>
                                                 <!-- Add similar structure for other radio buttons -->
                                             </div>
-                                            <div class="custom-checkbox-grid">
-                                                <button class="btn-toggle more-btn"
-                                                    id="toggleStatColumn">More...</button>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -402,7 +401,7 @@
                             <!-- Statistical Functions Section -->
                             <div class="card">
                                 <div class="card-header" id="headingThree">
-                                    <div class="header-container" style="width: 225px;">
+                                    <div class="header-container">
                                         <!-- Updated attributes for Bootstrap 5 -->
                                         <button class="btn btn-link text-left collapsed header-button" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseThree"
@@ -429,75 +428,84 @@
                                                         understand the data better.</p>
                                                 </div>
                                             </div>
-                                            <div class="form-check-inline">
-                                                <div class="functions-checkbox-grid">
-                                                    <input type="checkbox" id="statCount" checked>
-                                                    <label class="form-check-label" for="statCount">Count</label>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="statCount" checked>
+                                                            <label class="form-check-label"
+                                                                for="statCount">Count</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="statAvg">
+                                                            <label class="form-check-label" for="statAvg">Avg</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="statSum">
+                                                            <label class="form-check-label" for="statSum">Sum</label>
+                                                        </div>
+
+
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="statMedian">
+                                                            <label class="form-check-label"
+                                                                for="statMedian">Median</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="std">
+                                                            <label class="form-check-label" for="std">Standard
+                                                                Deviation</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="rsd">
+                                                            <label class="form-check-label" for="rsd">Relative Standard
+                                                                Deviation</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="statMin">
+                                                            <label class="form-check-label" for="statMin">Min</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="statMax">
+                                                            <label class="form-check-label" for="statMax">Max</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="quantile_60">
+                                                            <label class="form-check-label" for="quantile_60">Percentile
+                                                                (60%)</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="quantile_66">
+                                                            <label class="form-check-label" for="quantile_66">Percentile
+                                                                (66%)</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="quantile_70">
+                                                            <label class="form-check-label" for="quantile_70">Percentile
+                                                                (70%)</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="quantile_75">
+                                                            <label class="form-check-label" for="quantile_75">Percentile
+                                                                (75%)</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="quantile_80">
+                                                            <label class="form-check-label" for="quantile_80">Percentile
+                                                                (80%)</label>
+                                                        </div>
+                                                        <div class="functions-checkbox-grid">
+                                                            <input type="checkbox" id="quantile_90">
+                                                            <label class="form-check-label" for="quantile_90">Percentile
+                                                                (90%)</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="functions-checkbox-grid">
-                                                    <input type="checkbox" id="statAvg" checked>
-                                                    <label class="form-check-label" for="statAvg">Avg</label>
-                                                </div>
-                                                <div class="functions-checkbox-grid">
-                                                    <input type="checkbox" id="statSum" checked>
-                                                    <label class="form-check-label" for="statSum">Sum</label>
-                                                </div>
                                             </div>
-                                            <!-- Hidden checkboxes, initially hidden and revealed as needed -->
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="statMedian">
-                                                <label class="form-check-label" for="statMedian">Median</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="std">
-                                                <label class="form-check-label" for="std">Standard Deviation</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="rsd">
-                                                <label class="form-check-label" for="rsd">Relative Standard
-                                                    Deviation</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="statMin">
-                                                <label class="form-check-label" for="statMin">Min</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="statMax">
-                                                <label class="form-check-label" for="statMax">Max</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="quantile_60">
-                                                <label class="form-check-label" for="quantile_60">Percentile
-                                                    (60%)</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="quantile_66">
-                                                <label class="form-check-label" for="quantile_66">Percentile
-                                                    (66%)</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="quantile_70">
-                                                <label class="form-check-label" for="quantile_70">Percentile
-                                                    (70%)</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="quantile_75">
-                                                <label class="form-check-label" for="quantile_75">Percentile
-                                                    (75%)</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="quantile_80">
-                                                <label class="form-check-label" for="quantile_80">Percentile
-                                                    (80%)</label>
-                                            </div>
-                                            <div class="functions-checkbox-grid hidden-function" style="display: none;">
-                                                <input type="checkbox" id="quantile_90">
-                                                <label class="form-check-label" for="quantile_90">Percentile
-                                                    (90%)</label>
-                                            </div>
-                                        </div>
-                                        <div class="custom-checkbox-grid">
-                                            <button class="btn-toggle more-btn" id="toggleFnMore">More...</button>
                                         </div>
                                         <!-- Checkboxes for statistical functions -->
                                     </div>

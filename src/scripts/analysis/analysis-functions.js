@@ -25,10 +25,45 @@ function registerEventListeners() {
 
     const drawChartButton = document.getElementById("chartButton");
     drawChartButton.addEventListener("click", function () {
+        // Retrieve the StatisticSearchPayload from localStorage
+        const requestData = JSON.parse(localStorage.getItem("requestData"));
+        if (document.getElementById('orderColumn1').value) {
+            requestData.order.push({
+                column: document.getElementById('orderColumn1').value,
+                asc: document.querySelector('input[name="order1"]:checked').value === 'asc'
+            });
+        }
+        if (document.getElementById('orderColumn2').value) {
+            requestData.order.push({
+                column: document.getElementById('orderColumn2').value,
+                asc: document.querySelector('input[name="order2"]:checked').value === 'asc'
+            });
+
+        }
+
+        // Get the values from the dropdowns
+        const xColumn = document.getElementById("xColumn").value;
+        const secondXColumn = document.getElementById("secondXColumn").value || null; // Optional
+        const pivotColumn = document.getElementById("pivotColumn").value || null; // Optional
+        const yFunction = document.getElementById("yFunction").value;
+
+        // Construct the PivotData object
+        const pivotData = {
+            x_column: xColumn,
+            second_x_column: secondXColumn,
+            y_column: requestData.stat_column || "default_column", // Replace "default_column" with a fallback value if needed
+            y_function: yFunction,
+            pivot_column: pivotColumn,
+            filter: requestData, // Use the StatisticSearchPayload from localStorage
+        };
+
+        // Store the PivotData in localStorage for use in the next page
+        localStorage.setItem("pivotData", JSON.stringify(pivotData));
+
+        // Navigate to the analysis_chart.html page
         window.location.href = "analysis_chart.html";
     });
-
-    const sortButton = document.getElementById("sortButton");
+    const sortButton = document.getElementById("dataButton");
     sortButton.addEventListener("click", function () {
         const requestData = JSON.parse(localStorage.getItem('requestData'));
         if (document.getElementById('orderColumn1').value) {
@@ -59,6 +94,8 @@ function loadPage() {
     }
     const requestData = JSON.parse(localStorage.getItem('requestData'));
     requestAndDisplayData(requestData);
+    populateDropdowns(requestData);
+    populateStatFunctions();
 }
 function requestAndDisplayData(requestData) {
 
@@ -87,7 +124,6 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
     const container = document.getElementById(containerId);
     container.innerHTML = ""; // Clear previous contents
     const table = document.createElement("table");
-    // table.className = "table table-sm table-borderless table-striped table-hover table-responsive-md";
     table.className = "table table-striped table-hover table-responsive-md";
     const table_header = table.createTHead();
 
@@ -124,4 +160,69 @@ function createTableFromData(data, containerId, colors = dark_mode_colors) {
     }
     // Append the constructed table to its container
     container.appendChild(table);
+}
+
+function populateDropdowns(data) {
+    const group = data.group;
+
+    // Populate the X column dropdown (Primary Group)
+    const xColumn = document.getElementById("xColumn");
+    xColumn.innerHTML = group.map((value) => `<option value="${value}">${value}</option>`).join("");
+
+    // Update dependent dropdowns when the X column changes
+    xColumn.addEventListener("change", () => updateDependentDropdowns(group));
+
+    // Initial population of dependent dropdowns
+    updateDependentDropdowns(group);
+}
+
+function updateDependentDropdowns(group) {
+    const xColumnValue = document.getElementById("xColumn").value;
+    const restGroup = group.filter((value) => value !== xColumnValue);
+
+    // Populate the Second X column dropdown
+    const secondXColumn = document.getElementById("secondXColumn");
+    secondXColumn.innerHTML = `<option value="">Please select...</option>` +
+        restGroup.map((value) => `<option value="${value}">${value}</option>`).join("");
+
+    // Populate the Pivot column dropdown
+    const pivotColumn = document.getElementById("pivotColumn");
+    pivotColumn.innerHTML = `<option value="">Please select...</option>` +
+        restGroup.map((value) => `<option value="${value}">${value}</option>`).join("");
+
+
+}
+
+const statFunctions = [
+    { value: "count", label: "Count" },
+    { value: "min", label: "Minimum" },
+    { value: "max", label: "Maximum" },
+    { value: "mean", label: "Mean" },
+    { value: "median", label: "Median" },
+    { value: "sum", label: "Sum" },
+    { value: "avg", label: "Average" },
+    { value: "std", label: "Standard Deviation" },
+    { value: "rsd", label: "Relative Standard Deviation" },
+    { value: "quantile_60", label: "60th Percentile" },
+    { value: "quantile_66", label: "66th Percentile" },
+    { value: "quantile_70", label: "70th Percentile" },
+    { value: "quantile_75", label: "75th Percentile" },
+    { value: "quantile_80", label: "80th Percentile" },
+    { value: "quantile_90", label: "90th Percentile" },
+];
+
+// Populate the Y function dropdown with user-friendly labels
+function populateStatFunctions() {
+    const yFunctionDropdown = document.getElementById("yFunction");
+
+    if (yFunctionDropdown) {
+        yFunctionDropdown.innerHTML = statFunctions
+            .map((func) => `<option value="${func.value}">${func.label}</option>`)
+            .join("");
+
+        // Set a default value (optional)
+        yFunctionDropdown.value = "count";
+    } else {
+        console.error("Element with id 'yFunction' not found.");
+    }
 }
