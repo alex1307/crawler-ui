@@ -3,6 +3,10 @@ const apiUrl = window.location.hostname === 'localhost'
     ? 'https://localhost:3000/statistic'
     : 'https://ehomeho.com:3000/statistic';
 
+const pivotUrl = window.location.hostname === 'localhost'
+    ? 'https://localhost:3000/pivot-data'
+    : 'https://ehomeho.com:3000/pivot-data';
+
 const dark_mode_colors = [
     'bg-primary',
     'bg-secondary',
@@ -64,8 +68,11 @@ function registerEventListeners() {
         window.location.href = "analysis_chart.html";
     });
     const sortButton = document.getElementById("dataButton");
-    sortButton.addEventListener("click", function () {
+    sortButton.addEventListener("click", async function () {
+        // Retrieve the StatisticSearchPayload from localStorage
         const requestData = JSON.parse(localStorage.getItem('requestData'));
+
+        // Update sorting options from the UI
         if (document.getElementById('orderColumn1').value) {
             requestData.order.push({
                 column: document.getElementById('orderColumn1').value,
@@ -77,10 +84,43 @@ function registerEventListeners() {
                 column: document.getElementById('orderColumn2').value,
                 asc: document.querySelector('input[name="order2"]:checked').value === 'asc'
             });
-
         }
-        console.log(requestData.order);
-        requestAndDisplayData(requestData);
+
+        // Collect other values for PivotData
+        const xColumn = document.getElementById("xColumn").value;
+        const secondXColumn = document.getElementById("secondXColumn").value || null; // Optional
+        const pivotColumn = document.getElementById("pivotColumn").value || null; // Optional
+        const yFunction = document.getElementById("yFunction").value;
+
+        // Construct the PivotData object
+        const pivotData = {
+            x_column: xColumn,
+            second_x_column: secondXColumn,
+            y_column: requestData.stat_column || "default_column", // Replace with a fallback if needed
+            y_function: yFunction,
+            pivot_column: pivotColumn,
+            filter: requestData // Include the StatisticSearchPayload as part of the filter
+        };
+
+        console.log("PivotData Payload:", pivotData);
+
+        try {
+            // Send a POST request to the /pivot-data endpoint
+            const response = await fetch(`${pivotUrl}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pivotData)
+            });
+
+            // Parse and display the response
+            const data = await response.json();
+            document.getElementById('results').innerHTML = ""; // Clear previous results
+            createTableFromData(data, "results", dark_mode_colors); // Display the new results
+        } catch (error) {
+            console.error("Error:", error);
+        }
     });
 }
 
