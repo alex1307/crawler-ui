@@ -15,11 +15,12 @@
         "vite": "^6.0"
     },
     "dependencies": {
-        "@cubejs-client/core": "^1.0",
+        "@cubejs-client/core": "^1.1",
         "@kurkle/color": "kurkle/color",
         "bootstrap": "^5.3",
         "chart.js": "^4.4",
-        "chartjs-plugin-datalabels": "^2.2.0",
+        "chartjs-plugin-annotation": "^3.1",
+        "chartjs-plugin-datalabels": "^2.2",
         "express": "^4.21",
         "i18next": "^24.2",
         "i18next-browser-languagedetector": "^8.0",

@@ -1,4 +1,4 @@
-import { distributionChart } from '../charts/chart-handler.js';
+import { distributionCurve } from '../charts/chart-handler.js';
 import { cleanObject } from '../common/common-functions.js';
 
 /**
@@ -53,7 +53,7 @@ async function renderChart(apiUrl, payload, canvasId) {
         const jsonDisplay = document.getElementById("jsonDisplay");
         jsonDisplay.textContent = json;
         // Call the distributionChart function to render the chart
-        await distributionChart(apiUrl, payload, canvasId);
+        await distributionCurve(apiUrl, payload, canvasId);
     } catch (error) {
         console.error('Error rendering the chart:', error);
         alert('Failed to render chart. Please try again later.');

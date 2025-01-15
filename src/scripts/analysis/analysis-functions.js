@@ -47,14 +47,12 @@ function registerEventListeners() {
 
         // Get the values from the dropdowns
         const xColumn = document.getElementById("xColumn").value;
-        const secondXColumn = document.getElementById("secondXColumn").value || null; // Optional
         const pivotColumn = document.getElementById("pivotColumn").value || null; // Optional
         const yFunction = document.getElementById("yFunction").value;
 
         // Construct the PivotData object
         const pivotData = {
             x_column: xColumn,
-            second_x_column: secondXColumn,
             y_column: requestData.stat_column || "default_column", // Replace "default_column" with a fallback value if needed
             y_function: yFunction,
             pivot_column: pivotColumn,
@@ -88,14 +86,12 @@ function registerEventListeners() {
 
         // Collect other values for PivotData
         const xColumn = document.getElementById("xColumn").value;
-        const secondXColumn = document.getElementById("secondXColumn").value || null; // Optional
         const pivotColumn = document.getElementById("pivotColumn").value || null; // Optional
         const yFunction = document.getElementById("yFunction").value;
 
         // Construct the PivotData object
         const pivotData = {
             x_column: xColumn,
-            second_x_column: secondXColumn,
             y_column: requestData.stat_column || "default_column", // Replace with a fallback if needed
             y_function: yFunction,
             pivot_column: pivotColumn,
@@ -219,11 +215,6 @@ function populateDropdowns(data) {
 function updateDependentDropdowns(group) {
     const xColumnValue = document.getElementById("xColumn").value;
     const restGroup = group.filter((value) => value !== xColumnValue);
-
-    // Populate the Second X column dropdown
-    const secondXColumn = document.getElementById("secondXColumn");
-    secondXColumn.innerHTML = `<option value="">Please select...</option>` +
-        restGroup.map((value) => `<option value="${value}">${value}</option>`).join("");
 
     // Populate the Pivot column dropdown
     const pivotColumn = document.getElementById("pivotColumn");

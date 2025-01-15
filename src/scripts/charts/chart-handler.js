@@ -1,4 +1,9 @@
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import Chart from 'chart.js/auto';
+import annotationPlugin from 'chartjs-plugin-annotation';
+
+// Register the annotation plugin
+Chart.register(annotationPlugin);
 
 const isLocalhost = window.location.hostname === 'localhost';
 const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
@@ -139,8 +144,404 @@ export async function summaryChart(apiUrl, requestData, canvasId) {
         alert(`Error: ${error.message}`);
     }
 }
+export async function distributionCurve(apiUrl, requestData, canvasId) {
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData),
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
 
+
+
+    const data = await response.json();
+    const min = data.min;
+    const max = data.max;
+    const avg = data.mean;
+    const median = data.median;
+
+    const total = data.count; // Total count of all data
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+
+    // Add "All" label for the first bar
+    const labels = ['All', ...data.data.map((bin) => {
+        const min = Math.floor(bin.min / 1000);
+        const max = Math.floor(bin.max / 1000);
+        return `${min}K-${max}K`;
+    })];
+
+    // Add the total count for the new bar
+    const barData = [total, ...data.data.map((bin) => bin.count)];
+
+
+    // Calculate cumulative percentages for the curve (excluding the "All" bar)
+    const curvePercentages = data.data.reduce(
+        (cumulative, bin) => {
+            cumulative.total += bin.count;
+            cumulative.values.push(Math.round((cumulative.total / total) * 100));
+            return cumulative;
+        },
+        { total: 0, values: [] }
+    ).values;
+
+    const curveDistribution = data.data.reduce(
+        (cumulative, bin) => {
+            cumulative.values.push(Math.round((bin.count / total) * 100));
+            return cumulative;
+        },
+        { total: 0, values: [] }
+    ).values;
+
+
+    // Add a placeholder value for the curve's first point
+    const curveData = [null, ...curvePercentages];
+    const distData = [null, ...curveDistribution];
+
+    // Destroy any previous chart instance
+    if (chartInstance) {
+        chartInstance.destroy();
+        chartInstance = null;
+    }
+
+    // Create the new chart
+    chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Count',
+                    yAxisID: 'yAxis0',
+                    data: barData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+
+                },
+                {
+                    label: 'Accumulative Curve',
+                    data: curveData,
+                    yAxisID: 'yAxis1',
+                    type: 'line',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 3,
+                    pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                    pointRadius: 4,
+                    tension: 0.4, // Smooth the curve
+                    datalabels: {
+                        display: true, // Keep labels visible
+                        color: 'blue', // Custom color
+                        anchor: 'end', // Align the labels at the end of the curve points
+                        align: 'start',
+                        offset: 5,
+                        font: {
+                            family: 'Arial', // Custom font
+                            size: 12, // Font size
+                            weight: 'bold', // Optional: bold font
+                        },
+                        formatter: (value, context) => `${value}%`, // Keep the label content clean
+                    },
+                    // Ensure tooltips are enabled for this dataset
+                    tooltips: {
+                        enabled: true, // Keep the default tooltip for hover
+                        callbacks: {
+                            label: (tooltipItem) => {
+                                return `${tooltipItem.dataset.label}: ${tooltipItem.formattedValue}%`;
+                            },
+                        },
+                    },
+                },
+                {
+                    label: 'Distribution Curve',
+                    data: distData,
+                    yAxisID: 'yAxis1',
+                    type: 'line',
+                    borderColor: 'rgb(99, 255, 120)',
+                    borderWidth: 3,
+                    pointBackgroundColor: 'rgb(99, 255, 120)',
+                    pointRadius: 4,
+                    tension: 0.4, // Smooth the curve
+                    datalabels: {
+                        display: true, // Keep labels visible
+                        color: 'gray', // Custom color
+                        anchor: 'end', // Align the labels at the end of the curve points
+                        align: 'start',
+                        offset: 5,
+                        font: {
+                            family: 'Arial', // Custom font
+                            size: 12, // Font size
+                            weight: 'bold', // Optional: bold font
+                        },
+                        formatter: (value, context) => `${value}%`, // Keep the label content clean
+                    },
+                },
+            ],
+        },
+        plugins: [ChartDataLabels],
+        options: {
+            responsive: true,
+            plugins: {
+                annotation: {
+                    annotations: {
+                        label1: {
+                            type: 'label',
+                            content: `Min: ${min} EUR`,
+                            enabled: true,
+                            position: 'start', // Position the label at the start
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent background
+                            color: 'white', // White text for contrast
+                            xValue: 'All',
+                            yValue: 25,
+                            yScaleID: 'yAxis1',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                            },
+                            padding: 5,
+                        },
+                        label2: {
+                            type: 'label',
+                            content: `AVG: ${avg} EUR`,
+                            enabled: true,
+                            position: 'start',
+                            backgroundColor: 'rgba(57, 218, 17, 0.7)',
+                            color: 'black',
+                            xValue: 'All',
+                            yValue: 40,
+                            yScaleID: 'yAxis1',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                            },
+                            padding: 5,
+                        },
+                        label3: {
+                            type: 'label',
+                            content: `Median: ${median} EUR`,
+                            enabled: true,
+                            position: 'start',
+                            backgroundColor: 'rgba(57, 218, 17, 0.7)',
+                            color: 'black',
+                            xValue: 'All',
+                            yValue: 60,
+                            yScaleID: 'yAxis1',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                            },
+                            padding: 5,
+                        },
+                        label4: {
+                            type: 'label',
+                            content: `Max: ${max} EUR`,
+                            enabled: true,
+                            position: 'start',
+                            backgroundColor: 'rgba(193, 13, 19, 0.7)',
+                            color: 'white',
+                            xValue: 'All',
+                            yValue: 80,
+                            yScaleID: 'yAxis1',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                            },
+                            padding: 5,
+                        },
+                    },
+                },
+            },
+            scales: {
+                yAxis0: {
+                    scaleLabel: {
+                        display: true,
+                        labelString: "left outside",
+                    },
+                    position: "left",
+                    id: "y-0",
+                },
+                yAxis1: {
+                    scaleLabel: {
+                        display: true,
+                        labelString: "right",
+                    },
+                    position: "right",
+                    id: "y-1",
+                    grid: {
+                        drawOnChartArea: false, // Avoid overlapping grid lines
+                    },
+                },
+            },
+        },
+    });
+}
+
+// export async function distributionCurve(apiUrl, requestData, canvasId) {
+//     console.log('distributionCurve:', apiUrl, requestData, canvasId);
+//     const response = await fetch(apiUrl, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(requestData),
+//     });
+//     if (!response.ok) {
+//         throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+
+//     const data = await response.json();
+//     const total = data.count; // Total count of all data
+//     const canvas = document.getElementById(canvasId);
+//     const ctx = canvas.getContext('2d');
+
+//     // Extract labels, bar data, and percentages for bars
+//     const labels = data.data.map((bin) => {
+//         const min = Math.floor(bin.min / 1000);
+//         const max = Math.floor(bin.max / 1000);
+//         return `${min}K-${max}K`;
+//     });
+
+//     const actualLabels = data.data.map((bin) => Math.floor(bin.min));
+//     console.log('Actual:', actualLabels);
+//     const barData = data.data.map((bin) => bin.count); // Bar heights
+//     const barPercentages = data.data.map((bin) => Math.round((bin.count / total) * 100)); // Individual percentages for each bar
+//     console.log('Bar:', barPercentages);
+//     // Calculate cumulative percentages for the curve
+//     const curvePercentages = data.data.reduce(
+//         (cumulative, bin) => {
+//             cumulative.total += bin.count;
+//             cumulative.values.push(Math.round((cumulative.total / total) * 100)); // Cumulative percentage
+//             return cumulative;
+//         },
+//         { total: 0, values: [] }
+//     ).values;
+
+//     console.log('Curve:', curvePercentages);
+//     // Destroy any previous chart instance
+//     if (chartInstance) {
+//         chartInstance.destroy();
+//         chartInstance = null;
+//     }
+
+//     // Create the new chart
+//     chartInstance = new Chart(ctx, {
+//         type: 'bar',
+//         data: {
+//             labels: labels,
+//             datasets: [
+//                 {
+//                     label: 'Count',
+//                     data: barData,
+//                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
+//                     borderColor: 'rgba(54, 162, 235, 1)',
+//                     borderWidth: 1,
+//                     datalabels: {
+//                         display: true, // Enable data labels for bars
+//                         color: '#000',
+//                         anchor: 'start', // Place labels at the end of bars (top)
+//                         align: 'center',  // Align labels at the top of bars
+//                         font: {
+//                             weight: 'bold',
+//                             size: 12,
+//                         },
+//                         formatter: (value, context) => {
+//                             const dataIndex = context.dataIndex;
+//                             return `${barPercentages[dataIndex]}%`;
+//                         },
+//                     },
+//                 },
+//                 {
+//                     label: 'Distribution Curve',
+//                     data: curvePercentages,
+//                     type: 'line',
+//                     fill: false,
+//                     borderColor: 'rgba(255, 99, 132, 1)',
+//                     tension: 0.4,
+//                     datalabels: {
+//                         display: true, // Enable data labels for the curve
+//                         color: '#000',
+//                         anchor: 'center', // Center curve labels on points
+//                         align: 'center',  // Center align the curve labels
+//                         font: {
+//                             weight: 'bold',
+//                             size: 10,
+//                         },
+//                         formatter: (value, context) => {
+//                             const dataIndex = context.dataIndex;
+//                             return `${curvePercentages[dataIndex]}%`;
+//                         },
+//                     },
+//                 },
+//             ],
+//         },
+//         plugins: [ChartDataLabels],
+//         options: {
+//             responsive: true,
+//             plugins: {
+//                 annotation: {
+//                     annotations: {
+//                         line1: {
+//                             type: 'line',
+//                             borderColor: 'rgb(255, 99, 132)',
+//                             borderWidth: 3,
+//                             xMin: '11K-18K',
+//                             xMax: '11K-18K',
+
+//                         },
+//                         label1: {
+//                             type: 'label',
+//                             content: 'Median: 21K',
+//                             enabled: true,
+//                             position: 'center',
+//                             color: 'rgb(57, 218, 17)',
+//                             xValue: '11K-18K',
+//                             yValue: 500,
+
+//                         },
+//                     }
+//                 }
+//             },
+//             scales: {
+//                 x: {
+//                     title: {
+//                         display: true,
+//                         text: 'Price Ranges (e.g., 11K-18K)',
+//                     },
+//                     ticks: {
+//                         callback: function (value, index) {
+//                             return labels[index]; // Use range labels for the primary axis
+//                         },
+//                     },
+//                 },
+//                 x2: {
+//                     position: 'top', // Position this axis above the primary X-axis
+//                     title: {
+//                         display: true,
+//                         text: 'Prices in EUR',
+//                     },
+//                     ticks: {
+//                         callback: function (value, index) {
+//                             return actualLabels[index]; // Use actual labels for the secondary axis
+//                         },
+//                     },
+//                     grid: {
+//                         drawOnChartArea: false, // Prevent gridlines from overlapping the primary axis
+//                     },
+//                 },
+//                 y: {
+//                     beginAtZero: true,
+//                     title: {
+//                         display: true,
+//                         text: 'Count / Percentage',
+//                     },
+//                 },
+//             },
+
+//         },
+//     });
+// }
 /**
  * Updates the chart with the specified metric.
  * @param {Object} data - The data object containing bins and counts.
@@ -161,7 +562,7 @@ export async function distributionChart(apiUrl, requestData, canvasId) {
     const data = await response.json();
     const total = data.count;
     let metric = 'count';
-    const median = Math.floor(data.median || 0);
+    const median = 21000;
     const canvas = document.getElementById(canvasId);
     const ctx = canvas.getContext('2d');
 
@@ -239,17 +640,17 @@ export async function distributionChart(apiUrl, requestData, canvasId) {
                     annotations: {
                         medianLine: {
                             type: 'line',
-                            borderColor: 'black',
+                            borderColor: 'red',
                             borderWidth: 3,
-                            xMin: 1,
-                            xMax: 1,
+                            xMin: 2,
+                            xMax: 2,
                             label: {
                                 content: `Median: ${median}`,
                                 enabled: true,
                                 position: 'end',
-                                color: 'black',
+                                color: 'red',
                                 font: {
-                                    size: 12,
+                                    size: 16,
                                     style: 'bold',
                                 },
                             },
@@ -304,7 +705,7 @@ export function fetchAndRenderChart(apiUrl, payload, canvasId, chartType) {
 
             // Render chart based on the chart type
             if (chartType === 'distribution') {
-                distributionChart(apiUrl, payload, canvasId);
+                distributionCurve(apiUrl, payload, canvasId);
             } else if (chartType === 'summary') {
                 summaryChart(apiUrl, payload, canvasId);
             }
