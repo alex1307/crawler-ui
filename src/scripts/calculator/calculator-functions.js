@@ -1,6 +1,6 @@
 const apiUrl = window.location.hostname === 'localhost'
-    ? 'https://localhost:3000/calculator'
-    : 'https://ehomeho.com:3000/calculator';
+    ? 'http://localhost:3000/calculator'
+    : 'http://ehomeho.com:3000/calculator';
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchAndRenderData(); // Fetch and render your data first

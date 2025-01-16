@@ -6,7 +6,7 @@ import annotationPlugin from 'chartjs-plugin-annotation';
 Chart.register(annotationPlugin);
 
 const isLocalhost = window.location.hostname === 'localhost';
-const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
 
 let chartInstance = null;
 /**

@@ -363,7 +363,7 @@ function transformDataForChart(data) {
 
 
 async function fetchChartDataAndRender(requestBody) {
-    const endpointUrl = 'https://localhost:3000/charts-data';
+    const endpointUrl = 'http://localhost:3000/charts-data';
 
     // Extract groupByColumns and statFunctions from the requestBody
     const groupByColumns = requestBody.group || [];

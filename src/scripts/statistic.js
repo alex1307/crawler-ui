@@ -2,7 +2,7 @@
 const isLocalhost = window.location.hostname === 'localhost';
 
 // Set the base URL based on the environment
-const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
 
 export function captureData() {
 

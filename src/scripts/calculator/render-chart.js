@@ -7,7 +7,7 @@ import { cleanObject } from '../common/common-functions.js';
  */
 document.addEventListener('DOMContentLoaded', () => {
     const chartCanvasId = 'chartCanvas'; // The canvas ID where the chart will be rendered
-    const apiUrl = `${window.location.hostname === 'localhost' ? 'https://localhost:3000' : 'https://ehomeho.com:3000'}/data-distribution`;
+    const apiUrl = `${window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'http://ehomeho.com:3000'}/data-distribution`;
 
     // Retrieve filters from local storage
     const filter = JSON.parse(localStorage.getItem('requestData')) || {};

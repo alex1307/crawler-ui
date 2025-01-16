@@ -1,5 +1,5 @@
 import { cleanObject } from '../common/common-functions.js';
-const apiUrl = `${window.location.hostname === 'localhost' ? 'https://localhost:3000' : 'https://ehomeho.com:3000'}/pivot-chart`;
+const apiUrl = `${window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'http://ehomeho.com:3000'}/pivot-chart`;
 document.addEventListener('DOMContentLoaded', async () => {
     const chartCanvasId = 'chartCanvas'; // The canvas ID where the chart will be rendered
     const pivotData = JSON.parse(localStorage.getItem('pivotData')) || {};

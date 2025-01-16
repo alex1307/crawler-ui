@@ -1,17 +1,9 @@
-const https = require('https');
-const fs = require('fs');
+// server.js
 const express = require('express');
 const path = require('path');
-
 const app = express();
 
-// Load SSL certificate and key
-const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/ehomeho.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/ehomeho.com/fullchain.pem')
-};
-
-// Serve static files
+// Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Define specific routes for each HTML file
@@ -31,13 +23,12 @@ app.get(['/search', '/search.html'], (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'search.html'));
 });
 
-// Catch-all route for undefined routes
+// Catch-all route to serve index.html for any undefined routes
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
-// Start HTTPS server
-const PORT = process.env.PORT || 443;
-https.createServer(options, app).listen(PORT, () => {
-    console.log(`Server running on https://localhost:${PORT}`);
+const PORT = process.env.PORT || 9090;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });

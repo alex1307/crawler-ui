@@ -1,11 +1,11 @@
 import { populateDropdown } from '../common/common-functions.js';
 const apiUrl = window.location.hostname === 'localhost'
-    ? 'https://localhost:3000/statistic'
-    : 'https://ehomeho.com:3000/statistic';
+    ? 'http://localhost:3000/statistic'
+    : 'http://ehomeho.com:3000/statistic';
 
 const pivotUrl = window.location.hostname === 'localhost'
-    ? 'https://localhost:3000/pivot-data'
-    : 'https://ehomeho.com:3000/pivot-data';
+    ? 'http://localhost:3000/pivot-data'
+    : 'http://ehomeho.com:3000/pivot-data';
 
 const dark_mode_colors = [
     'bg-primary',

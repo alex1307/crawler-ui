@@ -72,7 +72,7 @@
             const requestData = JSON.parse(jsonInput.value);
 
             // Fetch data from the service endpoint
-            const response = await fetch('https://localhost:3000/charts-data', {
+            const response = await fetch('http://localhost:3000/charts-data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

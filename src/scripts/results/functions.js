@@ -97,7 +97,7 @@ function initialize() {
 
 function price_statistic(requestData) {
     const isLocalhost = window.location.hostname === 'localhost';
-    const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+    const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
 
     fetch(`${baseUrl}/calculator`, {
         method: "POST",
@@ -196,7 +196,7 @@ function showData(requestData) {
     const isLocalhost = window.location.hostname === 'localhost';
 
     // Set the base URL based on the environment
-    const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+    const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
     fetch(`${baseUrl}/search`, {
         method: "POST",
         headers: {
@@ -362,7 +362,7 @@ function showStatisticData(requestData) {
     const isLocalhost = window.location.hostname === 'localhost';
 
     // Set the base URL based on the environment
-    const baseUrl = isLocalhost ? 'https://localhost:3000' : 'https://ehomeho.com:3000';
+    const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
     fetch(`${baseUrl}/statistic`, {
         method: "POST",
         headers: {
