@@ -3,7 +3,7 @@ import { fetchModels, clearModels, generateRequestData, captureData, validateJSO
 const isLocalhost = window.location.hostname === 'localhost';
 
 // Set the base URL based on the environment
-const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
+const baseUrl = isLocalhost ? 'http://localhost:3000' : '/api';
 
 let map = new Map();
 map.set('make', 'make');

@@ -2,7 +2,7 @@ import { setupToggle, generateAndRenderChart } from './chart-handler.js';
 import i18next from "i18next";
 
 const isLocalhost = window.location.hostname === 'localhost';
-const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
+const baseUrl = isLocalhost ? 'http://localhost:3000' : '/api';
 
 function parseNumber(value) {
     return value ? parseInt(value, 10) : null;

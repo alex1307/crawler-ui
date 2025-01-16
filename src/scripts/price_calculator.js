@@ -4,7 +4,7 @@ export function price_statistic(requestData) {
     const isLocalhost = window.location.hostname === 'localhost';
 
     // Set the base URL based on the environment
-    const baseUrl = isLocalhost ? 'http://localhost:3000' : 'http://ehomeho.com:3000';
+    const baseUrl = isLocalhost ? 'http://localhost:3000' : '/api';
 
     fetch(`${baseUrl}/calculator`, {
         method: "POST",
