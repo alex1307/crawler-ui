@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const isLocalhost = window.location.hostname === 'localhost';
 
 // Set the base URL based on the environment
-const baseUrl = isLocalhost ? 'http://localhost:3000' : '.com:3000';
+const baseUrl = isLocalhost ? 'http://localhost:3000' : '';
 
 export function fetchModels(make) {
     const url = `${baseUrl}/enums/${make}/models?source=estimated_price`;

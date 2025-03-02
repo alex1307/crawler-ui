@@ -12,11 +12,10 @@
     "devDependencies": {
         "copyfiles": "^2.4",
         "http-server": "^14.1",
-        "vite": "^6.0"
+        "vite": "^6.2"
     },
     "dependencies": {
-        "@cubejs-client/core": "^1.1",
-        "@kurkle/color": "kurkle/color",
+        "@cubejs-client/core": "^1.2",
         "bootstrap": "^5.3",
         "chart.js": "^4.4",
         "chartjs-plugin-annotation": "^3.1",
